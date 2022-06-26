@@ -1,6 +1,6 @@
 # My Talks
 
-The LaTex sources for my talks. Feel free to reuse these sources for your own talks.
+The LaTeX sources for my talks. Feel free to reuse these sources for your own talks.
 
 ## FSE 2020
 
