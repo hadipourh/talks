@@ -46,6 +46,8 @@
 \usepackage{bm}
 \usepackage{pgfplots}
 \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{framed, color}
+
 
 \tikzset{
   invisible/.style={opacity=0},
@@ -119,11 +121,11 @@
 \end{frame}
 
 \begin{frame}{Persisent Fault Attack (PFA)}
-PFA fault model\cite{tches_0010L0BHDQR18}:
+PFA fault model \cite{tches_0010L0BHDQR18}:
 \begin{itemize}
-\item<1-> We can inject the faults before the encryption
+\item<1-> The injected faults are persistent until the reset of the device
 \item<2-> The injected faults typically alter the stored algorithm constants
-\item<3-> The injected faults are persistent until the reset of the device
+\item<3-> We can inject the faults before the encryption
 \item<4-> We can collect multiple faulty ciphertexts
 \end{itemize}
 \onslide<2->{
@@ -134,10 +136,10 @@ PFA fault model\cite{tches_0010L0BHDQR18}:
       \hline
       $x$   & $\mathtt 0$ & $\mathtt 1$ & $\mathtt 2$ & $\mathtt 3$ & $ \mathtt 4$ & $\mathtt 5$ & $\mathtt 6$ & $\mathtt 7$ & $ \mathtt 8$ & $\mathtt 9$ & $\mathtt a$ & $\mathtt b$ & $\mathtt c$ & $\mathtt d$ & $\mathtt e$ & $\mathtt f$ \\
       \hline
-      $\mathcal S(x)$ & $\mathtt 6$ & $\mathtt 4$ & $\mathtt  c$ & $\mathtt 5$ & $\mathtt 0$ & $\mathtt 7$ & $\mathtt 2$ & \cellcolor{tugred} $\mathtt e$ & $\mathtt 1$ & $\mathtt f$ & $\mathtt 3$ & $\mathtt d$ & $\mathtt 8$ & $\mathtt a$ & $\mathtt 9$ & $\mathtt b$\\
+      $\mathcal S(x)$ & $\mathtt 6$ & $\mathtt 4$ & $\mathtt  c$ & $\mathtt 5$ & $\mathtt 0$ & $\mathtt 7$ & $\mathtt 2$ & \cellcolor{tugred}$\mathtt e$ & $\mathtt 1$ & $\mathtt f$ & $\mathtt 3$ & $\mathtt d$ & $\mathtt 8$ & $\mathtt a$ & $\mathtt 9$ & $\mathtt b$\\
       \hline
       \hline
-      $\mathcal S'(x)$ & $\mathtt 6$ & $\mathtt 4$ & $\mathtt  c$ & $\mathtt 5$ & $\mathtt 0$ & $\mathtt 7$ & $\mathtt 2$ & \cellcolor{tugred} $\mathtt 4$ & $\mathtt 1$ & $\mathtt f$ & $\mathtt 3$ & $\mathtt d$ & $\mathtt 8$ & $\mathtt a$ & $\mathtt 9$ & $\mathtt b$\\
+      $\mathcal S'(x)$ & $\mathtt 6$ & $\mathtt 4$ & $\mathtt  c$ & $\mathtt 5$ & $\mathtt 0$ & $\mathtt 7$ & $\mathtt 2$ & \cellcolor{tugred}$\mathtt 4$ & $\mathtt 1$ & $\mathtt f$ & $\mathtt 3$ & $\mathtt d$ & $\mathtt 8$ & $\mathtt a$ & $\mathtt 9$ & $\mathtt b$\\
       \hline
     \end{tabular}
   }
@@ -155,7 +157,7 @@ PFA fault model\cite{tches_0010L0BHDQR18}:
     \hline
     $x$   & $\mathtt 0$ & $\mathtt 1$ & $\mathtt 2$ & $\mathtt 3$ & $ \mathtt 4$ & $\mathtt 5$ & $\mathtt 6$ & $\mathtt 7$ & $ \mathtt 8$ & $\mathtt 9$ & $\mathtt a$ & $\mathtt b$ & $\mathtt c$ & $\mathtt d$ & $\mathtt e$ & $\mathtt f$ \\
     \hline
-    $\mathcal S(x)$ & $\mathtt 6$ & $\mathtt 4$ & $\mathtt  c$ & $\mathtt 5$ & $\mathtt 0$ & $\mathtt 7$ & $\mathtt 2$ & \cellcolor{tugyellow}{$\mathtt e$} & $\mathtt 1$ & $\mathtt f$ & $\mathtt 3$ & $\mathtt d$ & $\mathtt 8$ & $\mathtt a$ & $\mathtt 9$ & $\mathtt b$\\
+    $\mathcal S(x)$ & $\mathtt 6$ & $\mathtt 4$ & $\mathtt  c$ & $\mathtt 5$ & $\mathtt 0$ & $\mathtt 7$ & $\mathtt 2$ & \only<2->{\cellcolor{tugyellow}{$\mathtt e$}}\only<1>{$\mathtt e$} & $\mathtt 1$ & $\mathtt f$ & $\mathtt 3$ & $\mathtt d$ & $\mathtt 8$ & $\mathtt a$ & $\mathtt 9$ & $\mathtt b$\\
     \hline
   \end{tabular}
 }
@@ -226,33 +228,39 @@ PFA fault model\cite{tches_0010L0BHDQR18}:
 % \end{itemize
 \end{frame}
 
-\begin{frame}{Limits if the Original PFA}
-The original PFA requires about 2000 faulty ciphertexts per key \cite{tches_0010L0BHDQR18}
+\begin{frame}{Limits of the Original PFA}
+\only<1>{PFA requires about 2000 faulty ciphertexts per key \cite{tches_0010L0BHDQR18}}
+\only<2>{PFA is very time consuming for multiple faults \cite{tches_0010L0BHDQR18}}
 \begin{columns}[onlytextwidth]
 \column[c]{0.6\textwidth}
+\vspace{-0.5cm}
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{./figures/pfa_residual_keys.pdf}
 \end{figure}
 \column[c]{0.4\textwidth}
 \begin{tikzpicture}[very thick, >=latex, xscale=0.6, yscale=0.6]
-\pgfmathsetmacro{\esep}{0.7}
+\pgfmathsetmacro{\esep}{1}
 \node (x) at (0,0) {$x$};
 \node[box, below=\esep of x] (sbox) {$S'$};
 \node[xor, below=\esep of sbox] (xor) {};
 \node[left=\esep of xor] (k) {\textcolor{tugred}{$k$}};
 \node[below=\esep of xor] (c) {$c$};
 \draw[->] (x) -- (sbox);
-\draw[->] (sbox) --node[anchor=west] {$\neq v$} (xor);
+\draw[->] (sbox) --node[anchor=east] {$y$} (xor);
 \draw[->] (xor) -- (c);
 \draw[->] (k) -- (xor);
-\draw[visible on=<1>] (c.south) node[below] {$S'(x) \neq v \Rightarrow \textcolor{tug}{k} \neq c \oplus v$};
-\draw[visible on=<2>] (c.south) node[below] {$\lambda = 12 \Rightarrow \textcolor{tugred}{|\text{Keys}| = 12^{16} \approx 2^{57.36}}$};
+\draw[visible on=<1>] ($(c) + (0, -0.7)$) node[below] {$N \gtrapprox 2000 \Rightarrow |K| = \lambda^{16}$};
+\draw[visible on=<2>] ($(c) + (0, -0.7)$) node[below] {$\lambda = 12 \Rightarrow \textcolor{tugred}{|K| = 12^{16} \approx {\bm 2^{57.36}}}$};
+\draw[style=state] ($(x) + (2, -1)$) node (beforesbox) {\State{\FillCell[tugblue]{s0}}};
+\draw[style=state] ($(xor) + (2, 1)$) node (aftersbox) {\State{\FillCell[tugblue]{s0}}};
+\draw[style=state] ($(k) + (-1.5, 0)$) node (roundkey) {\State{\FillCell[tugblue]{s0}}};
+\draw[style=state] ($(c) + (2, 0.5)$) node (afteraddroundkey) {\State{\FillCell[tugblue]{s0}}};
 \end{tikzpicture}
 \end{columns}
 \end{frame}
 
-\begin{frame}{Limits of PFA and Its Enhanced Versions}
+\begin{frame}{More Limits of PFA and Its Enhanced Versions}
 \begin{itemize}
 \item<1-> The \textcolor{tug}{location of the injected} fault is supposed to be known
 \item<2-> For multiple fault injections:
@@ -266,8 +274,8 @@ The original PFA requires about 2000 faulty ciphertexts per key \cite{tches_0010
 \end{itemize}
 \end{frame}
 
-\section{Our Framework for PFA with Multiple Faults}
-\sectionheader[\huge\color{tug}\faBook]{Our Framework for PFA with Multiple Faults}
+\section{Our Framework for PFA With Multiple Faults}
+\sectionheader[\huge\color{tug}\faGear]{Our Framework for PFA With Multiple Faults}
 
 % \begin{frame}{Our Fault Model}
 % \begin{itemize}
@@ -279,30 +287,33 @@ The original PFA requires about 2000 faulty ciphertexts per key \cite{tches_0010
 % \end{itemize}
 % \end{frame}
 
-\begin{frame}{Some Notations}
+\begin{frame}{Core Idea}
 \begin{columns}[onlytextwidth]
 \column[c]{0.65\textwidth}
+\vspace{-0.4cm}
 \begin{flushleft}
 \begin{itemize}
   \item<1-> $V$: Impossible values in the output of faulty S-box
-  \item<2-> $D[i]$: Impossible values in the $i$th word of ciphertext
+  \item<2-> $D[i]$: Impossible values in the $i$th word of ciphertext  
+  \item<3-> $D[i] = V \oplus \textcolor{tug}{K[i]}$ for all $i \in \{1, \dots, 15\}$
   \item<3-> $V = \textcolor{tug}{K[0]} \oplus D[0]$
-  \item<3-> $D[i] = V \oplus \textcolor{tug}{K[i]}$ for all $i \in {1, \dots, 15}$
   \item<4-> $D[i] = (\textcolor{tug}{K[0]} \oplus \textcolor{tug}{K[i]}) \oplus D[0]$
   \item<4-> $\textcolor{tug}{\delta[i]} = \textcolor{tug}{K[0]} \oplus \textcolor{tug}{K[i]}$
+  \item<4-> We can derive $\textcolor{tugred}{\delta[i]}$ from $(D[0], D[i])$
 \end{itemize}
 \end{flushleft}
 \column[c]{0.35\textwidth}
+\vspace{-0.4cm}
 \begin{center}
 \begin{tikzpicture}[very thick, >=latex]
-  \pgfmathsetmacro{\esep}{0.7}
+  \pgfmathsetmacro{\esep}{1}
   \node (x) at (0,0) {$X[i]$};
   \node[box, below=\esep of x] (sbox) {$S'$};
   \node[xor, below=\esep of sbox] (xor) {};
   \node[left=\esep of xor] (k) {\textcolor{tug}{$K[i]$}};
-  \node[below=\esep of xor] (c) {$\only<1-3>{\neq} D[i]$};
+  \node[below=\esep of xor] (c) {$\only<1-3>{\notin} D[i]$};
   \draw[->] (x) -- (sbox);
-  \draw[->] (sbox) --node[anchor=west] {$\!\visible<1-4>{\neq} V$} (xor);
+  \draw[->] (sbox) --node[anchor=west] {$\!\visible<1-4>{\notin} V$} (xor);
   \draw[->] (xor) -- (c);
   \draw[->] (k) -- (xor); 
 \onslide<3->{
@@ -310,9 +321,9 @@ The original PFA requires about 2000 faulty ciphertexts per key \cite{tches_0010
   \node[box, below=\esep of x] (sbox) {$S'$};
   \node[xor, below=\esep of sbox] (xor) {};
   \node[left=\esep of xor] (k) {\textcolor{tug}{$K[0]$}};
-  \node[below=\esep of xor] (c) {$\only<1-3>{\neq} D[0]$};
+  \node[below=\esep of xor] (c) {$\only<1-3>{\notin} D[0]$};
   \draw[->] (x) -- (sbox);
-  \draw[->] (sbox) --node[anchor=west] {$\!\visible<1-4>{\neq} V$} (xor);
+  \draw[->] (sbox) --node[anchor=west] {$\!\visible<1-4>{\notin} V$} (xor);
   \draw[->] (xor) -- (c);
   \draw[->] (k) -- (xor);
   \draw[dashed, <->, visible on=<4->] (c) --node[below] {\textcolor{tug}{$\delta[i]$}} ++(2, 0);
@@ -322,28 +333,28 @@ The original PFA requires about 2000 faulty ciphertexts per key \cite{tches_0010
 \end{columns}
 \end{frame}
 
-\begin{frame}{Number of Required Ciphertexts}
-\vspace{-0.4cm}
-\begin{columns}[onlytextwidth]
-\column[c]{0.5\textwidth}
-\centering
-\includegraphics[width=0.77\textwidth]{./figures/overview_diagram_of_non_observed_values.pdf}
-\column[c]{0.5\textwidth}
-\centering
-\includegraphics[width=0.77\textwidth]{./figures/close_up_diagram_of_non_observed_values.pdf}
-\end{columns}
-\begin{block}{Lemma}
-\footnotesize
-Assume that the number of injected faults is $\lambda$. 
-Given $N$ faulty ciphertexts, the number of non-observed values in each word of ciphertext is
-$\lambda' = \left(2^{c} - \lambda\right) e^{-\left(\frac{1}{2^{c} - \lambda}\right)\cdot N} + \lambda$, where $c$ is the cell size (8 for AES).
-\end{block}
-\end{frame}
+% \begin{frame}{Number of Required Ciphertexts}
+% \vspace{-0.4cm}
+% \begin{columns}[onlytextwidth]
+% \column[c]{0.5\textwidth}
+% \centering
+% \includegraphics[width=0.77\textwidth]{./figures/overview_diagram_of_non_observed_values.pdf}
+% \column[c]{0.5\textwidth}
+% \centering
+% \includegraphics[width=0.77\textwidth]{./figures/close_up_diagram_of_non_observed_values.pdf}
+% \end{columns}
+% \begin{block}{Lemma}
+% \footnotesize
+% Assume that the number of injected faults is $\lambda$. 
+% Given $N$ faulty ciphertexts, the number of non-observed values in each word of ciphertext is
+% $\lambda' = \left(2^{c} - \lambda\right) e^{-\left(\frac{1}{2^{c} - \lambda}\right)\cdot N} + \lambda$, where $c$ is the cell size (8 for AES).
+% \end{block}
+% \end{frame}
 
-\begin{frame}{\textbf{Core Idea} to Reduce the Number of Key Candidates}
+\begin{frame}{Reducing the Number of Key Candidates to $2^{8}$}
 \begin{center}
 \begin{tikzpicture}[very thick, >=latex]
-\pgfmathsetmacro{\esep}{0.7}
+\pgfmathsetmacro{\esep}{0.85}
 \foreach \i in {0,...,6}{  
   \pgfmathtruncatemacro{\sn}{(\i + 1)};
   \visible<\sn>{
@@ -374,29 +385,29 @@ $\lambda' = \left(2^{c} - \lambda\right) e^{-\left(\frac{1}{2^{c} - \lambda}\rig
 \end{tikzpicture}
 \end{center}
 \begin{itemize}
-\vspace{-0.2cm}
-\item[\faCheckCircle]<7-> Guess $\textcolor{tugred}{K[0]}$ and determine $\textcolor{tugred}{K[i]}$ for all $i \in \{1, \dots, 15\}$
+\vspace{-0.35cm}
+\item[\faCheckCircle]<7-> Guess $\textcolor{tugred}{K[0]}$ and determine $\textcolor{tugred}{K[i]}$ for all $i \in \{1, \dots, 15\}$. So, $|K| = 2^{8}$ for AES!
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Number of Remaining Key Candidates}
-\begin{itemize}
-  \item<1-> Let $c$ be the cell size ($c = 8$ bits for AES)
-  \item<2-> Let $L$ be the number of cells in the state array ($L = 16$ for AES)
-  \item<2-> Let $\lambda$ be the number of faults
-  \item<3-> As long as we have enough number of faulty ciphertexts:
-  \begin{itemize}
-    \item If $\lambda \neq 2$, then $\text{\#key candidates}=2^{c}$ ($\textcolor{tugred}{2^{8}}$ for AES)
-    \item If $\lambda  = 2$, then $\text{\#key candidates}=2^{c}\cdot 2^{L - 1}$ ($\textcolor{tugred}{2^{23}}$ for AES)
-  \end{itemize}
-  \item[\faQuestion]<4-> How to detect the correct key in the ciphertext only setting?
-\end{itemize}
-\end{frame}
+% \begin{frame}{Number of Remaining Key Candidates}
+% \begin{itemize}
+%   \item<1-> Let $c$ be the cell size ($c = 8$ bits for AES)
+%   \item<2-> Let $L$ be the number of cells in the state array ($L = 16$ for AES)
+%   \item<2-> Let $\lambda$ be the number of faults
+%   \item<3-> As long as we have enough number of faulty ciphertexts:
+%   \begin{itemize}
+%     \item If $\lambda \neq 2$, then $\text{\#key candidates}=2^{c}$ ($\textcolor{tugred}{2^{8}}$ for AES)
+%     \item If $\lambda  = 2$, then $\text{\#key candidates}=2^{c}\cdot 2^{L - 1}$ ($\textcolor{tugred}{2^{23}}$ for AES)
+%   \end{itemize}
+%   \item[\faQuestion]<4-> How to detect the correct key in the ciphertext only setting?
+% \end{itemize}
+% \end{frame}
 
 \section{A Generic Key Recovery Framework}
 \sectionheader[\huge\color{tug}\faKey]{A Generic Key Recovery Framework}
 
-\begin{frame}{Going Deeper into the Decryption}
+\begin{frame}{Going Deeper Into the Decryption Rounds}
 \begin{columns}[onlytextwidth]
 \column[c]{0.8\textwidth}
 \only<1-4>{
@@ -422,7 +433,7 @@ $\lambda' = \left(2^{c} - \lambda\right) e^{-\left(\frac{1}{2^{c} - \lambda}\rig
   \draw[->] (sbox3) --node[anchor=west] (y3) {$Y_{r-2}$} (xor3);
   \draw[->] (k3) -- (xor3);
   }
-  \visible<3->{
+  \visible<2->{
   \node (x2) at (xor3) {};
   \node[box, below=\esep of x2, fill=tuggreen] (sbox2) {S-box layer};
   \node[xor, below=\esep of sbox2] (xor2) {};
@@ -438,17 +449,17 @@ $\lambda' = \left(2^{c} - \lambda\right) e^{-\left(\frac{1}{2^{c} - \lambda}\rig
   \node[below=\esep of xor1] (c1) {$C_{r}$};
   \node[left=\esep of xor1] (k1) {\textcolor{tugred}{$K_{r}$}};
   \draw[->] (x1) -- (sbox1);
-  \draw[->] (sbox1) --node[anchor=west] (y1) {$Y_{r}\only<1>{\notin V}$} (xor1);
+  \draw[->] (sbox1) --node[anchor=west] (y1) {$Y_{r}$} (xor1);
   \draw[->] (k1) -- (xor1);
   \draw[->] (xor1) -- (c1);
   }
-  \onslide<1>{
+  \visible<1>{
     \draw[->,tugred] (c1.east) to [out=25, in=-25] (y1.east);
   }
-  \onslide<3->{
+  \visible<2->{
     \draw[->,blue] (c1.east) to [out=25, in=-25] (y2.east);
   }
-  \onslide<4->{
+  \visible<4->{
     \draw[->,blue] (y2.east) to [out=25, in=-25] (y3.east);
   }
 \end{tikzpicture}
@@ -456,7 +467,7 @@ $\lambda' = \left(2^{c} - \lambda\right) e^{-\left(\frac{1}{2^{c} - \lambda}\rig
 \end{columns}
 \end{frame}
 
-\begin{frame}{Our Key recovery Framework}
+\begin{frame}{Our Key-recovery Framework}
 \vspace{-0.5cm}
 \begin{columns}[onlytextwidth]
 \column[c]{0.55\textwidth}
@@ -483,9 +494,9 @@ $\lambda' = \left(2^{c} - \lambda\right) e^{-\left(\frac{1}{2^{c} - \lambda}\rig
   \Return key with maximum $\texttt{cnt}[K, V]$\;
 \end{algorithm}}
 \column[c]{0.45\textwidth}
-\vspace{-0.6cm}
+\vspace{-0.7cm}
 \begin{flushleft}
-\resizebox{1\textwidth}{!}{
+\resizebox{1.05\textwidth}{!}{
   \begin{tikzpicture}[very thick, >=latex]
     \pgfmathsetmacro{\esep}{0.8}
     \node (x3) at (0,0) {};
@@ -515,22 +526,22 @@ $\lambda' = \left(2^{c} - \lambda\right) e^{-\left(\frac{1}{2^{c} - \lambda}\rig
     \draw[->,blue] (y1.east) to [out=25, in=-25] (y2.east);
     \draw[->,blue] (y2.east) to [out=25, in=-25] (y3.east);
     \visible<3>{
-      \node[ellipse, draw, minimum width = 2cm, minimum height = 1cm, fill=tugblue] (cipherpool1) at ($(y1) + (4cm, 0)$) {\textcolor{white}{$N$}};
-      \node[ellipse, draw, minimum width = 2cm, minimum height = 1cm, fill=tugblue] (cipherpool2) at ($(y2) + (4cm, 0)$) {\textcolor{white}{$p\cdot N$}};
-      \node[ellipse, draw, minimum width = 2cm, minimum height = 1cm, fill=tugblue] (cipherpool3) at ($(y3) + (4cm, 0)$) {\textcolor{white}{$p^{2}\cdot N$}};
-      \node[] (cipherpool4) at ($(y3) + (4cm, 3*\esep)$) {};
+      \node[ellipse, draw, minimum width = 2cm, minimum height = 1cm, fill=tugblue] (cipherpool1) at ($(y1) + (3.6cm, 0)$) {\textcolor{white}{$N$}};
+      \node[ellipse, draw, minimum width = 2cm, minimum height = 1cm, fill=tugblue] (cipherpool2) at ($(y2) + (3.6cm, 0)$) {\textcolor{white}{$p N$}};
+      \node[ellipse, draw, minimum width = 2cm, minimum height = 1cm, fill=tugblue] (cipherpool3) at ($(y3) + (3.6cm, 0)$) {\textcolor{white}{$p^{2} N$}};
+      \node[ellipse, draw, minimum width = 2cm, minimum height = 1cm, fill=tugblue] (cipherpool4) at ($(y3) + (3.6cm, 3*\esep)$) {\textcolor{white}{$p^{3}N$}};
       \draw[->] (cipherpool1) --node[anchor=west] {$p$} (cipherpool2);
       \draw[->] (cipherpool2) --node[anchor=west] {$p$} (cipherpool3);
       \draw[->, dashed] (cipherpool3) --node[anchor=west] {$p$} (cipherpool4);
     }
     \visible<4->{
-      \node[ellipse, draw, minimum width = 2cm, minimum height = 1cm, fill=green] (cipherpool1) at ($(y1) + (4cm, 0)$) {$N$};
-      \node[ellipse, draw, minimum width = 2cm, minimum height = 1cm, fill=green] (cipherpool2_1) at ($(y2) + (4cm, 0)$) {$p N$};      
-      \node[ellipse, draw, minimum width = 2cm, minimum height = 1cm, fill=green] (cipherpool3_1) at ($(y3) + (4cm, 0)$) {$p^{2} N$};      
-      \node[ellipse, draw, minimum width = 2cm, minimum height = 1cm, fill=green] (cipherpool4_1) at ($(y3) + (4cm, 3*\esep)$) {$p^{3}N$};
+      \node[ellipse, draw, minimum width = 2cm, minimum height = 1cm, fill=green] (cipherpool1) at ($(y1) + (3.6cm, 0)$) {$N$};
+      \node[ellipse, draw, minimum width = 2cm, minimum height = 1cm, fill=green] (cipherpool2_1) at ($(y2) + (3.6cm, 0)$) {$p N$};      
+      \node[ellipse, draw, minimum width = 2cm, minimum height = 1cm, fill=green] (cipherpool3_1) at ($(y3) + (3.6cm, 0)$) {$p^{2} N$};      
+      \node[ellipse, draw, minimum width = 2cm, minimum height = 1cm, fill=green] (cipherpool4_1) at ($(y3) + (3.6cm, 3*\esep)$) {$p^{3}N$};
       \draw[->] (cipherpool1) --node[anchor=west] {$p$} (cipherpool2_1);      
       \draw[->] (cipherpool2_1) --node[anchor=west] {$p$} (cipherpool3_1);          
-      \draw[->] (cipherpool3_1) --node[anchor=west] {$p$} (cipherpool4_1);      
+      \draw[->, dashed] (cipherpool3_1) --node[anchor=west] {$p$} (cipherpool4_1);      
     }
   \visible<5->{
     \node[ellipse, draw, minimum width = 2cm, minimum height = 1cm, fill=tugyellow] (cipherpool2_2) at ($(y2) + (9cm, 0)$) {$p(1-p)N$};
@@ -550,13 +561,13 @@ $\lambda' = \left(2^{c} - \lambda\right) e^{-\left(\frac{1}{2^{c} - \lambda}\rig
 \begin{center}
 {\footnotesize
   \onslide<2->{
-  \textcolor{tugred}{$p = \left(1 - \frac{|V|}{256}\right)^{16},$}
+  \textcolor{tugred}{$p = \left(1 - \frac{|V|}{256}\right)^{16}$},
   }
   \onslide<3->{
-  \textcolor{tugblue}{$\texttt{cnt}_{w} = N\sum_{r = 1}^{R - 1}p^{r},$}
+  \colorbox{tugblue}{\textcolor{white}{$\texttt{cnt}_{w} = N\sum_{r = 1}^{R - 1}p^{r}$}},
   }
   \onslide<4->{
-  $\texttt{cnt}_{c} = N\sum_{r = 1}^{R - 1}p^{r} + \visible<5>{N \sum_{r = 1}^{R - 1}r p^{r} (1 - p)}$
+  $\texttt{cnt}_{c} = $\colorbox{green}{$N\sum_{r = 1}^{R - 1}p^{r}$} $+$ \visible<5>{\colorbox{tugyellow}{$N \sum_{r = 1}^{R - 1}r p^{r} (1 - p)$}}
   }
 }
 \end{center}
@@ -591,9 +602,9 @@ $\lambda' = \left(2^{c} - \lambda\right) e^{-\left(\frac{1}{2^{c} - \lambda}\rig
 \begin{frame}{Our Main Contributions}
 \begin{itemize}
 \item[\faCheckCircleO] We removed the assumption of knowing the fault location in PFA
+\item[\faCheckCircleO] Our new technique decreases the number of key candidates by a factor of $\approx 2^{50}$
 \item[\faCheckCircleO] We exploit the fault leakages in deeper rounds (until the first round)
-\item[\faCheckCircleO] Our new technique decreases the number of key candidates by a factor of $\approx 2^{45}$
-\item[\faCheckCircleO] Our new technique reduces the number of required ciphertexts
+\item[\faCheckCircleO] Our new technique reduces the number of required ciphertexts (refer to our paper)
 \end{itemize}
 
 \begin{center}
