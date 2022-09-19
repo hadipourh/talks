@@ -30,3 +30,11 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
 - [Paper-Full Version](https://eprint.iacr.org/2021/1529)
 - [Slides](20220622-ACNS-2022)
 - Venue: [Sapienza University of Rome](https://acns22.di.uniroma1.it/)
+
+## CHES 2022
+
+***Practical Multiple Persistent Fault Attack***
+
+- [Paper](https://tches.iacr.org/index.php/TCHES/article/view/9301)
+- [Slides](20220920-CHES-2022)
+- Venue: [Belgium](https://ches.iacr.org/2022/)
