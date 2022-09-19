@@ -1,6 +1,6 @@
-# My Talk in FSE 2022
+# My Talk in CHES 2022
 
-This repository includes the LaTex sources of my talk in FSE 2022 to present our paper titled ***Improved Rectangle Attacks on SKINNY and CRAFT***
+This repository includes the LaTex sources of my talk in CHES 2022 to present our paper titled ***Practical Multiple Persistent Fault Attack***
 
 Use the following command to compile:
 
