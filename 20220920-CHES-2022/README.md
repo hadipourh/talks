@@ -5,5 +5,5 @@ This repository includes the LaTex sources of my talk in CHES 2022 to present ou
 Use the following command to compile:
 
 ```sh
-latexmk -pdf boomerang.tex
+latexmk -pdf mpfa.tex
 ```
