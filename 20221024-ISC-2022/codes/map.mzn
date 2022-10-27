@@ -1,0 +1,10 @@
+int: nc = 3;
+array[1..9] of var 1..nc: r;
+constraint r[1] != r[3]; constraint r[1] != r[6];
+constraint r[2] != r[5]; constraint r[2] != r[6]; 
+constraint r[2] != r[7]; constraint r[3] != r[9]; 
+constraint r[3] != r[6]; constraint r[3] != r[4];
+constraint r[4] != r[6]; constraint r[4] != r[5];
+constraint r[5] != r[6]; constraint r[5] != r[7];
+constraint r[7] != r[8];
+solve satisfy;
