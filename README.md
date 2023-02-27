@@ -51,5 +51,5 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
 
 - [Paper](https://eprint.iacr.org/2022/1147)
 - [Slides](20221024-ISC-2022)
-- [Video](TBA)
-- Venue: [Virtual](TBA)
+- [Video]([TBA](https://www.aparat.com/v/ofAxe))
+- Venue: [Virtual](https://www.aparat.com/Irancrypt/%D8%A7%D9%86%D8%AC%D9%85%D9%86%20%D8%B1%D9%85%D8%B2%20%D8%A7%DB%8C%D8%B1%D8%A7%D9%86)
