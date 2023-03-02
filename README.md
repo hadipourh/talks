@@ -8,6 +8,7 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
   - [ACNS 2022](#acns-2022)
   - [FSE 2022](#fse-2022)
   - [FSE 2020](#fse-2020)
+- [Credits](#credits)
 
 ## ISC 2022
 
@@ -53,3 +54,11 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
 - [Slides](20201113-FSE-2020)
 - [Video](https://www.youtube.com/watch?v=GgmIaPiTgVg)
 - Venue: [Virtual](https://fse.iacr.org/2020/program.php)
+
+# Credits
+
+I like to thank [Maria Eichlseder](https://www.iaik.tugraz.at/person/maria-eichlseder/) and TU Graz for providing the Latex template and some other Latex libraries that I have used in my talks:
+
+- [TikZ crypto library](https://extgit.iaik.tugraz.at/meichlseder/tikz)
+- [LaTeX template](https://extgit.iaik.tugraz.at/meichlseder/tugraz-presentation)
+- [TU Graz Corporate Design](https://www.tugraz.at/)
