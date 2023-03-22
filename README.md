@@ -3,6 +3,7 @@
 The LaTeX sources for my talks. Feel free to reuse these sources for your own talks.
 
 - [My Talks](#my-talks)
+  - [FSE 2023 - Boomerang](#fse-2023---boomerang)
   - [ISC 2022](#isc-2022)
   - [CHES 2022](#ches-2022)
   - [ACNS 2022](#acns-2022)
@@ -10,13 +11,25 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
   - [FSE 2020](#fse-2020)
 - [Credits](#credits)
 
+## FSE 2023 - Boomerang
+
+***Throwing Boomerangs into Feistel Structures:***
+*Application to CLEFIA, WARP, LBlock, LBlock-s and TWINE*
+
+- [Paper](https://eprint.iacr.org/2022/745)
+- [Slides](20230321-FSE-2023)
+- [Video](https://youtu.be/7ABCANs2dMM?t=1084)
+- Venue: [Kobe, Japan](https://fse.iacr.org/2023/)
+
+
+
 ## ISC 2022
 
 ***Feeding Three Dragons With One Scone: Automated Search for Full Impossible Differential, Zero-Correlation, and Integral Attacks***
 
 - [Paper](https://eprint.iacr.org/2022/1147)
 - [Slides](20221024-ISC-2022)
-- [Video]([TBA](https://www.aparat.com/v/ofAxe))
+- [Video](https://www.aparat.com/v/ofAxe)
 - Venue: [Virtual](https://www.aparat.com/Irancrypt/%D8%A7%D9%86%D8%AC%D9%85%D9%86%20%D8%B1%D9%85%D8%B2%20%D8%A7%DB%8C%D8%B1%D8%A7%D9%86)
 
 ## CHES 2022
