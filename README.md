@@ -57,7 +57,7 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
 
 # Credits
 
-I like to thank [Maria Eichlseder](https://www.iaik.tugraz.at/person/maria-eichlseder/) and TU Graz for providing the Latex template and some other Latex libraries that I have used in my talks:
+I like to thank [Maria Eichlseder](https://www.iaik.tugraz.at/person/maria-eichlseder/) and TU Graz for providing the Latex template and some other Latex libraries that I have used in my presentations:
 
 - [TikZ crypto library](https://extgit.iaik.tugraz.at/meichlseder/tikz)
 - [LaTeX template](https://extgit.iaik.tugraz.at/meichlseder/tugraz-presentation)

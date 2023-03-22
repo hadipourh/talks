@@ -1,0 +1,113 @@
+\documentclass[varwidth=50cm]{standalone}
+\usepackage{skinnyzero}
+\begin{document}
+\begin{tikzpicture}
+\SkinnyInit{}{}{}{} % init coordinates, print labels
+
+\SkinnyRoundTK[0]
+              {\BFill[loweractive]{s0}\Cell{s0}{\texttt{2}}\BFill[loweractive]{s1}\Cell{s1}{\texttt{a}}\BFill[loweractive]{s2}\Cell{s2}{\texttt{c}}\BFill[loweractive]{s3}\Cell{s3}{\texttt{2}}\BFill[loweractive]{s4}\Cell{s4}{\texttt{2}}\BFill[loweractive]{s5}\Cell{s5}{\texttt{0}}\BFill[loweractive]{s6}\Cell{s6}{\texttt{b}}\BFill[loweractive]{s7}\Cell{s7}{\texttt{e}}\BFill[loweractive]{s8}\Cell{s8}{\texttt{0}}\BFill[loweractive]{s9}\Cell{s9}{\texttt{6}}\BFill[loweractive]{s10}\Cell{s10}{\texttt{0}}\BFill[loweractive]{s11}\Cell{s11}{\texttt{3}}\BFill[loweractive]{s12}\Cell{s12}{\texttt{0}}\BFill[loweractive]{s13}\Cell{s13}{\texttt{6}}\BFill[loweractive]{s14}\Cell{s14}{\texttt{4}}\BFill[loweractive]{s15}\Cell{s15}{\texttt{c}}} % state (input)
+              {\BFill[loweractive]{s1}\Cell{s1}{\texttt{3}}\BFill[loweractive]{s7}\Cell{s7}{\texttt{b}}} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {\BFill[loweractive]{s0}\Cell{s0}{\texttt{6}}\BFill[loweractive]{s1}\Cell{s1}{\texttt{a}}\BFill[loweractive]{s2}\Cell{s2}{\texttt{8}}\BFill[loweractive]{s3}\Cell{s3}{\texttt{3}}\BFill[loweractive]{s4}\Cell{s4}{\texttt{3}}\BFill[loweractive]{s5}\Cell{s5}{\texttt{0}}\BFill[loweractive]{s6}\Cell{s6}{\texttt{d}}\BFill[loweractive]{s7}\Cell{s7}{\texttt{7}}\BFill[loweractive]{s8}\Cell{s8}{\texttt{0}}\BFill[loweractive]{s9}\Cell{s9}{\texttt{1}}\BFill[loweractive]{s10}\Cell{s10}{\texttt{0}}\BFill[loweractive]{s11}\Cell{s11}{\texttt{9}}\BFill[loweractive]{s12}\Cell{s12}{\texttt{0}}\BFill[loweractive]{s13}\Cell{s13}{\texttt{4}}\BFill[loweractive]{s14}\Cell{s14}{\texttt{7}}\BFill[loweractive]{s15}\Cell{s15}{\texttt{2}}} % state (after subcells)
+              {\BFill[loweractive]{s0}\Cell{s0}{\texttt{6}}\BFill[loweractive]{s1}\Cell{s1}{\texttt{9}}\BFill[loweractive]{s2}\Cell{s2}{\texttt{8}}\BFill[loweractive]{s3}\Cell{s3}{\texttt{3}}\BFill[loweractive]{s4}\Cell{s4}{\texttt{3}}\BFill[loweractive]{s5}\Cell{s5}{\texttt{0}}\BFill[loweractive]{s6}\Cell{s6}{\texttt{d}}\BFill[loweractive]{s7}\Cell{s7}{\texttt{c}}\BFill[loweractive]{s8}\Cell{s8}{\texttt{0}}\BFill[loweractive]{s9}\Cell{s9}{\texttt{1}}\BFill[loweractive]{s10}\Cell{s10}{\texttt{0}}\BFill[loweractive]{s11}\Cell{s11}{\texttt{9}}\BFill[loweractive]{s12}\Cell{s12}{\texttt{0}}\BFill[loweractive]{s13}\Cell{s13}{\texttt{4}}\BFill[loweractive]{s14}\Cell{s14}{\texttt{7}}\BFill[loweractive]{s15}\Cell{s15}{\texttt{2}}} % state (after addtweakey)
+              {\BFill[loweractive]{s0}\Cell{s0}{\texttt{6}}\BFill[loweractive]{s1}\Cell{s1}{\texttt{9}}\BFill[loweractive]{s2}\Cell{s2}{\texttt{8}}\BFill[loweractive]{s3}\Cell{s3}{\texttt{3}}\BFill[loweractive]{s5}\Cell{s5}{\texttt{3}}\BFill[loweractive]{s6}\Cell{s6}{\texttt{0}}\BFill[loweractive]{s7}\Cell{s7}{\texttt{d}}\BFill[loweractive]{s4}\Cell{s4}{\texttt{c}}\BFill[loweractive]{s10}\Cell{s10}{\texttt{0}}\BFill[loweractive]{s11}\Cell{s11}{\texttt{1}}\BFill[loweractive]{s8}\Cell{s8}{\texttt{0}}\BFill[loweractive]{s9}\Cell{s9}{\texttt{9}}\BFill[loweractive]{s15}\Cell{s15}{\texttt{0}}\BFill[loweractive]{s12}\Cell{s12}{\texttt{4}}\BFill[loweractive]{s13}\Cell{s13}{\texttt{7}}\BFill[loweractive]{s14}\Cell{s14}{\texttt{2}}} % state (after shiftrows)
+
+\SkinnyRoundTK[1]
+              {\BFill[loweractive]{s0}\Cell{s0}{\texttt{2}}\BFill[loweractive]{s1}\Cell{s1}{\texttt{7}}\BFill[loweractive]{s2}\Cell{s2}{\texttt{a}}\BFill[loweractive]{s3}\Cell{s3}{\texttt{2}}\BFill[loweractive]{s4}\Cell{s4}{\texttt{6}}\BFill[loweractive]{s5}\Cell{s5}{\texttt{9}}\BFill[loweractive]{s6}\Cell{s6}{\texttt{8}}\BFill[loweractive]{s7}\Cell{s7}{\texttt{3}}\BFill[loweractive]{s8}\Cell{s8}{\texttt{c}}\BFill[loweractive]{s9}\Cell{s9}{\texttt{a}}\BFill[loweractive]{s10}\Cell{s10}{\texttt{0}}\BFill[loweractive]{s11}\Cell{s11}{\texttt{c}}\BFill[loweractive]{s12}\Cell{s12}{\texttt{6}}\BFill[loweractive]{s13}\Cell{s13}{\texttt{0}}\BFill[loweractive]{s14}\Cell{s14}{\texttt{8}}\BFill[loweractive]{s15}\Cell{s15}{\texttt{2}}} % state (input)
+              {} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {\BFill[loweractive]{s0}\Cell{s0}{\texttt{6}}\BFill[loweractive]{s1}\Cell{s1}{\texttt{7}}\BFill[loweractive]{s2}\Cell{s2}{\texttt{5}}\BFill[loweractive]{s3}\Cell{s3}{\texttt{5}}\BFill[loweractive]{s4}\Cell{s4}{\texttt{a}}\BFill[loweractive]{s5}\Cell{s5}{\texttt{5}}\BFill[loweractive]{s6}\Cell{s6}{\texttt{c}}\BFill[loweractive]{s7}\Cell{s7}{\texttt{c}}\BFill[loweractive]{s8}\Cell{s8}{\texttt{6}}\BFill[loweractive]{s9}\Cell{s9}{\texttt{6}}\BFill[loweractive]{s10}\Cell{s10}{\texttt{0}}\BFill[loweractive]{s11}\Cell{s11}{\texttt{8}}\BFill[loweractive]{s12}\Cell{s12}{\texttt{d}}\BFill[loweractive]{s13}\Cell{s13}{\texttt{0}}\BFill[loweractive]{s14}\Cell{s14}{\texttt{f}}\BFill[loweractive]{s15}\Cell{s15}{\texttt{3}}} % state (after subcells)
+              {\BFill[loweractive]{s0}\Cell{s0}{\texttt{6}}\BFill[loweractive]{s1}\Cell{s1}{\texttt{7}}\BFill[loweractive]{s2}\Cell{s2}{\texttt{5}}\BFill[loweractive]{s3}\Cell{s3}{\texttt{5}}\BFill[loweractive]{s4}\Cell{s4}{\texttt{a}}\BFill[loweractive]{s5}\Cell{s5}{\texttt{5}}\BFill[loweractive]{s6}\Cell{s6}{\texttt{c}}\BFill[loweractive]{s7}\Cell{s7}{\texttt{c}}\BFill[loweractive]{s8}\Cell{s8}{\texttt{6}}\BFill[loweractive]{s9}\Cell{s9}{\texttt{6}}\BFill[loweractive]{s10}\Cell{s10}{\texttt{0}}\BFill[loweractive]{s11}\Cell{s11}{\texttt{8}}\BFill[loweractive]{s12}\Cell{s12}{\texttt{d}}\BFill[loweractive]{s13}\Cell{s13}{\texttt{0}}\BFill[loweractive]{s14}\Cell{s14}{\texttt{f}}\BFill[loweractive]{s15}\Cell{s15}{\texttt{3}}} % state (after addtweakey)
+              {\BFill[loweractive]{s0}\Cell{s0}{\texttt{6}}\BFill[loweractive]{s1}\Cell{s1}{\texttt{7}}\BFill[loweractive]{s2}\Cell{s2}{\texttt{5}}\BFill[loweractive]{s3}\Cell{s3}{\texttt{5}}\BFill[loweractive]{s5}\Cell{s5}{\texttt{a}}\BFill[loweractive]{s6}\Cell{s6}{\texttt{5}}\BFill[loweractive]{s7}\Cell{s7}{\texttt{c}}\BFill[loweractive]{s4}\Cell{s4}{\texttt{c}}\BFill[loweractive]{s10}\Cell{s10}{\texttt{6}}\BFill[loweractive]{s11}\Cell{s11}{\texttt{6}}\BFill[loweractive]{s8}\Cell{s8}{\texttt{0}}\BFill[loweractive]{s9}\Cell{s9}{\texttt{8}}\BFill[loweractive]{s15}\Cell{s15}{\texttt{d}}\BFill[loweractive]{s12}\Cell{s12}{\texttt{0}}\BFill[loweractive]{s13}\Cell{s13}{\texttt{f}}\BFill[loweractive]{s14}\Cell{s14}{\texttt{3}}} % state (after shiftrows)
+
+\SkinnyNewLine[2]{\BFill[loweractive]{s0}\Cell{s0}{\texttt{6}}\BFill[loweractive]{s1}\Cell{s1}{\texttt{0}}\BFill[loweractive]{s3}\Cell{s3}{\texttt{e}}\BFill[loweractive]{s4}\Cell{s4}{\texttt{6}}\BFill[loweractive]{s5}\Cell{s5}{\texttt{7}}\BFill[loweractive]{s6}\Cell{s6}{\texttt{5}}\BFill[loweractive]{s7}\Cell{s7}{\texttt{5}}\BFill[loweractive]{s8}\Cell{s8}{\texttt{c}}\BFill[loweractive]{s9}\Cell{s9}{\texttt{2}}\BFill[loweractive]{s10}\Cell{s10}{\texttt{3}}\BFill[loweractive]{s11}\Cell{s11}{\texttt{a}}\BFill[loweractive]{s12}\Cell{s12}{\texttt{6}}\BFill[loweractive]{s13}\Cell{s13}{\texttt{f}}\BFill[loweractive]{s14}\Cell{s14}{\texttt{3}}\BFill[loweractive]{s15}\Cell{s15}{\texttt{3}}} % state (after mixcols)
+\SkinnyRoundTK[2]
+              {\BFill[loweractive]{s0}\Cell{s0}{\texttt{6}}\BFill[loweractive]{s1}\Cell{s1}{\texttt{0}}\BFill[loweractive]{s3}\Cell{s3}{\texttt{e}}\BFill[loweractive]{s4}\Cell{s4}{\texttt{6}}\BFill[loweractive]{s5}\Cell{s5}{\texttt{7}}\BFill[loweractive]{s6}\Cell{s6}{\texttt{5}}\BFill[loweractive]{s7}\Cell{s7}{\texttt{5}}\BFill[loweractive]{s8}\Cell{s8}{\texttt{c}}\BFill[loweractive]{s9}\Cell{s9}{\texttt{2}}\BFill[loweractive]{s10}\Cell{s10}{\texttt{3}}\BFill[loweractive]{s11}\Cell{s11}{\texttt{a}}\BFill[loweractive]{s12}\Cell{s12}{\texttt{6}}\BFill[loweractive]{s13}\Cell{s13}{\texttt{f}}\BFill[loweractive]{s14}\Cell{s14}{\texttt{3}}\BFill[loweractive]{s15}\Cell{s15}{\texttt{3}}} % state (input)
+              {\BFill[loweractive]{s0}\Cell{s0}{\texttt{9}}\BFill[loweractive]{s1}\Cell{s1}{\texttt{5}}} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {\BFill[loweractive]{s0}\Cell{s0}{\texttt{a}}\BFill[loweractive]{s1}\Cell{s1}{\texttt{0}}\BFill[loweractive]{s3}\Cell{s3}{\texttt{b}}\BFill[loweractive]{s4}\Cell{s4}{\texttt{8}}\BFill[loweractive]{s5}\Cell{s5}{\texttt{9}}\BFill[loweractive]{s6}\Cell{s6}{\texttt{6}}\BFill[loweractive]{s7}\Cell{s7}{\texttt{a}}\BFill[loweractive]{s8}\Cell{s8}{\texttt{2}}\BFill[loweractive]{s9}\Cell{s9}{\texttt{6}}\BFill[loweractive]{s10}\Cell{s10}{\texttt{f}}\BFill[loweractive]{s11}\Cell{s11}{\texttt{8}}\BFill[loweractive]{s12}\Cell{s12}{\texttt{d}}\BFill[loweractive]{s13}\Cell{s13}{\texttt{c}}\BFill[loweractive]{s14}\Cell{s14}{\texttt{b}}\BFill[loweractive]{s15}\Cell{s15}{\texttt{8}}} % state (after subcells)
+              {\BFill[loweractive]{s0}\Cell{s0}{\texttt{3}}\BFill[loweractive]{s1}\Cell{s1}{\texttt{5}}\BFill[loweractive]{s3}\Cell{s3}{\texttt{b}}\BFill[loweractive]{s4}\Cell{s4}{\texttt{8}}\BFill[loweractive]{s5}\Cell{s5}{\texttt{9}}\BFill[loweractive]{s6}\Cell{s6}{\texttt{6}}\BFill[loweractive]{s7}\Cell{s7}{\texttt{a}}\BFill[loweractive]{s8}\Cell{s8}{\texttt{2}}\BFill[loweractive]{s9}\Cell{s9}{\texttt{6}}\BFill[loweractive]{s10}\Cell{s10}{\texttt{f}}\BFill[loweractive]{s11}\Cell{s11}{\texttt{8}}\BFill[loweractive]{s12}\Cell{s12}{\texttt{d}}\BFill[loweractive]{s13}\Cell{s13}{\texttt{c}}\BFill[loweractive]{s14}\Cell{s14}{\texttt{b}}\BFill[loweractive]{s15}\Cell{s15}{\texttt{8}}} % state (after addtweakey)
+              {\BFill[loweractive]{s0}\Cell{s0}{\texttt{3}}\BFill[loweractive]{s1}\Cell{s1}{\texttt{5}}\BFill[loweractive]{s3}\Cell{s3}{\texttt{b}}\BFill[loweractive]{s5}\Cell{s5}{\texttt{8}}\BFill[loweractive]{s6}\Cell{s6}{\texttt{9}}\BFill[loweractive]{s7}\Cell{s7}{\texttt{6}}\BFill[loweractive]{s4}\Cell{s4}{\texttt{a}}\BFill[loweractive]{s10}\Cell{s10}{\texttt{2}}\BFill[loweractive]{s11}\Cell{s11}{\texttt{6}}\BFill[loweractive]{s8}\Cell{s8}{\texttt{f}}\BFill[loweractive]{s9}\Cell{s9}{\texttt{8}}\BFill[loweractive]{s15}\Cell{s15}{\texttt{d}}\BFill[loweractive]{s12}\Cell{s12}{\texttt{c}}\BFill[loweractive]{s13}\Cell{s13}{\texttt{b}}\BFill[loweractive]{s14}\Cell{s14}{\texttt{8}}} % state (after shiftrows)
+
+\SkinnyRoundTK[3]
+              {\BFill[loweractive]{s1}\Cell{s1}{\texttt{6}}\BFill[loweractive]{s2}\Cell{s2}{\texttt{a}}\BFill[loweractive]{s4}\Cell{s4}{\texttt{3}}\BFill[loweractive]{s5}\Cell{s5}{\texttt{5}}\BFill[loweractive]{s7}\Cell{s7}{\texttt{b}}\BFill[loweractive]{s8}\Cell{s8}{\texttt{5}}\BFill[loweractive]{s10}\Cell{s10}{\texttt{b}}\BFill[loweractive]{s11}\Cell{s11}{\texttt{0}}\BFill[loweractive]{s12}\Cell{s12}{\texttt{c}}\BFill[loweractive]{s13}\Cell{s13}{\texttt{d}}\BFill[loweractive]{s14}\Cell{s14}{\texttt{2}}\BFill[loweractive]{s15}\Cell{s15}{\texttt{d}}} % state (input)
+              {} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {\BFill[loweractive]{s1}\Cell{s1}{\texttt{3}}\BFill[loweractive]{s2}\Cell{s2}{\texttt{a}}\BFill[loweractive]{s4}\Cell{s4}{\texttt{a}}\BFill[loweractive]{s5}\Cell{s5}{\texttt{a}}\BFill[loweractive]{s7}\Cell{s7}{\texttt{f}}\BFill[loweractive]{s8}\Cell{s8}{\texttt{a}}\BFill[loweractive]{s10}\Cell{s10}{\texttt{f}}\BFill[loweractive]{s11}\Cell{s11}{\texttt{0}}\BFill[loweractive]{s12}\Cell{s12}{\texttt{f}}\BFill[loweractive]{s13}\Cell{s13}{\texttt{e}}\BFill[loweractive]{s14}\Cell{s14}{\texttt{3}}\BFill[loweractive]{s15}\Cell{s15}{\texttt{7}}} % state (after subcells)
+              {\BFill[loweractive]{s1}\Cell{s1}{\texttt{3}}\BFill[loweractive]{s2}\Cell{s2}{\texttt{a}}\BFill[loweractive]{s4}\Cell{s4}{\texttt{a}}\BFill[loweractive]{s5}\Cell{s5}{\texttt{a}}\BFill[loweractive]{s7}\Cell{s7}{\texttt{f}}\BFill[loweractive]{s8}\Cell{s8}{\texttt{a}}\BFill[loweractive]{s10}\Cell{s10}{\texttt{f}}\BFill[loweractive]{s11}\Cell{s11}{\texttt{0}}\BFill[loweractive]{s12}\Cell{s12}{\texttt{f}}\BFill[loweractive]{s13}\Cell{s13}{\texttt{e}}\BFill[loweractive]{s14}\Cell{s14}{\texttt{3}}\BFill[loweractive]{s15}\Cell{s15}{\texttt{7}}} % state (after addtweakey)
+              {\BFill[loweractive]{s1}\Cell{s1}{\texttt{3}}\BFill[loweractive]{s2}\Cell{s2}{\texttt{a}}\BFill[loweractive]{s5}\Cell{s5}{\texttt{a}}\BFill[loweractive]{s6}\Cell{s6}{\texttt{a}}\BFill[loweractive]{s4}\Cell{s4}{\texttt{f}}\BFill[loweractive]{s10}\Cell{s10}{\texttt{a}}\BFill[loweractive]{s8}\Cell{s8}{\texttt{f}}\BFill[loweractive]{s9}\Cell{s9}{\texttt{0}}\BFill[loweractive]{s15}\Cell{s15}{\texttt{f}}\BFill[loweractive]{s12}\Cell{s12}{\texttt{e}}\BFill[loweractive]{s13}\Cell{s13}{\texttt{3}}\BFill[loweractive]{s14}\Cell{s14}{\texttt{7}}} % state (after shiftrows)
+
+\SkinnyNewLine[4]{\BFill[loweractive]{s0}\Cell{s0}{\texttt{1}}\BFill[loweractive]{s2}\Cell{s2}{\texttt{7}}\BFill[loweractive]{s3}\Cell{s3}{\texttt{f}}\BFill[loweractive]{s5}\Cell{s5}{\texttt{3}}\BFill[loweractive]{s6}\Cell{s6}{\texttt{a}}\BFill[loweractive]{s9}\Cell{s9}{\texttt{a}}\BFill[loweractive]{s12}\Cell{s12}{\texttt{f}}\BFill[loweractive]{s13}\Cell{s13}{\texttt{3}}} % state (after mixcols)
+\SkinnyRoundTK[4]
+              {\BFill[loweractive]{s0}\Cell{s0}{\texttt{1}}\BFill[loweractive]{s2}\Cell{s2}{\texttt{7}}\BFill[loweractive]{s3}\Cell{s3}{\texttt{f}}\BFill[loweractive]{s5}\Cell{s5}{\texttt{3}}\BFill[loweractive]{s6}\Cell{s6}{\texttt{a}}\BFill[loweractive]{s9}\Cell{s9}{\texttt{a}}\BFill[loweractive]{s12}\Cell{s12}{\texttt{f}}\BFill[loweractive]{s13}\Cell{s13}{\texttt{3}}} % state (input)
+              {\BFill[loweractive]{s0}\Cell{s0}{\texttt{9}}\BFill[loweractive]{s2}\Cell{s2}{\texttt{c}}} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {\BFill[loweractive]{s0}\Cell{s0}{\texttt{9}}\BFill[loweractive]{s2}\Cell{s2}{\texttt{c}}\BFill[loweractive]{s3}\Cell{s3}{\texttt{8}}\BFill[loweractive]{s5}\Cell{s5}{\texttt{9}}\BFill[loweractive]{s6}\Cell{s6}{\texttt{9}}\BFill[loweractive]{s9}\Cell{s9}{\texttt{9}}\BFill[loweractive]{s12}\Cell{s12}{\texttt{1}}\BFill[loweractive]{s13}\Cell{s13}{\texttt{b}}} % state (after subcells)
+              {\BFill[loweractive]{s3}\Cell{s3}{\texttt{8}}\BFill[loweractive]{s5}\Cell{s5}{\texttt{9}}\BFill[loweractive]{s6}\Cell{s6}{\texttt{9}}\BFill[loweractive]{s9}\Cell{s9}{\texttt{9}}\BFill[loweractive]{s12}\Cell{s12}{\texttt{1}}\BFill[loweractive]{s13}\Cell{s13}{\texttt{b}}} % state (after addtweakey)
+              {\BFill[loweractive]{s3}\Cell{s3}{\texttt{8}}\BFill[loweractive]{s6}\Cell{s6}{\texttt{9}}\BFill[loweractive]{s7}\Cell{s7}{\texttt{9}}\BFill[loweractive]{s11}\Cell{s11}{\texttt{9}}\BFill[loweractive]{s15}\Cell{s15}{\texttt{1}}\BFill[loweractive]{s12}\Cell{s12}{\texttt{b}}} % state (after shiftrows)
+
+\SkinnyRoundTK[5]
+              {\BFill[loweractive]{s0}\Cell{s0}{\texttt{b}}\BFill[loweractive]{s7}\Cell{s7}{\texttt{8}}\BFill[loweractive]{s10}\Cell{s10}{\texttt{9}}\BFill[loweractive]{s15}\Cell{s15}{\texttt{1}}} % state (input)
+              {} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {\BFill[loweractive]{s0}\Cell{s0}{\texttt{e}}\BFill[loweractive]{s7}\Cell{s7}{\texttt{e}}\BFill[loweractive]{s10}\Cell{s10}{\texttt{e}}\BFill[loweractive]{s15}\Cell{s15}{\texttt{b}}} % state (after subcells)
+              {\BFill[loweractive]{s0}\Cell{s0}{\texttt{e}}\BFill[loweractive]{s7}\Cell{s7}{\texttt{e}}\BFill[loweractive]{s10}\Cell{s10}{\texttt{e}}\BFill[loweractive]{s15}\Cell{s15}{\texttt{b}}} % state (after addtweakey)
+              {\BFill[loweractive]{s0}\Cell{s0}{\texttt{e}}\BFill[loweractive]{s4}\Cell{s4}{\texttt{e}}\BFill[loweractive]{s8}\Cell{s8}{\texttt{e}}\BFill[loweractive]{s14}\Cell{s14}{\texttt{b}}} % state (after shiftrows)
+
+\SkinnyNewLine[6]{\BFill[loweractive]{s2}\Cell{s2}{\texttt{b}}\BFill[loweractive]{s4}\Cell{s4}{\texttt{e}}} % state (after mixcols)
+\SkinnyRoundTK[6]
+              {\BFill[loweractive]{s2}\Cell{s2}{\texttt{b}}\BFill[loweractive]{s4}\Cell{s4}{\texttt{e}}} % state (input)
+              {\BFill[loweractive]{s2}\Cell{s2}{\texttt{1}}\BFill[loweractive]{s4}\Cell{s4}{\texttt{7}}} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {\BFill[loweractive]{s2}\Cell{s2}{\texttt{1}}\BFill[loweractive]{s4}\Cell{s4}{\texttt{7}}} % state (after subcells)
+              {} % state (after addtweakey)
+              {} % state (after shiftrows)
+
+\SkinnyRoundTK[7]
+              {} % state (input)
+              {} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {} % state (after subcells)
+              {} % state (after addtweakey)
+              {} % state (after shiftrows)
+
+\SkinnyNewLine[8]{} % state (after mixcols)
+\SkinnyRoundTK[8]
+              {} % state (input)
+              {} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {} % state (after subcells)
+              {} % state (after addtweakey)
+              {} % state (after shiftrows)
+
+\SkinnyRoundTK[9]
+              {} % state (input)
+              {} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {} % state (after subcells)
+              {} % state (after addtweakey)
+              {} % state (after shiftrows)
+
+\SkinnyNewLine[10]{} % state (after mixcols)
+\SkinnyRoundTK[10]
+              {} % state (input)
+              {\BFill[loweractive]{s5}\Cell{s5}{\texttt{f}}\BFill[loweractive]{s6}\Cell{s6}{\texttt{2}}} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {} % state (after subcells)
+              {\BFill[loweractive]{s5}\Cell{s5}{\texttt{f}}\BFill[loweractive]{s6}\Cell{s6}{\texttt{2}}} % state (after addtweakey)
+              {\BFill[loweractive]{s6}\Cell{s6}{\texttt{f}}\BFill[loweractive]{s7}\Cell{s7}{\texttt{2}}} % state (after shiftrows)
+
+\SkinnyFin[11]{\BFill[loweractive]{s10}\Cell{s10}{\texttt{f}}\BFill[loweractive]{s11}\Cell{s11}{\texttt{2}}} % state (after mixcols)
+\end{tikzpicture}
+\end{document}
