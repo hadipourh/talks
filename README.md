@@ -3,7 +3,8 @@
 The LaTeX sources for my talks. Feel free to reuse these sources for your own talks.
 
 - [My Talks](#my-talks)
-  - [FSE 2023 - Boomerang](#fse-2023---boomerang)
+  - [FSE 2023 - Second Talk](#fse-2023---second-talk)
+  - [FSE 2023 - First Talk](#fse-2023---first-talk)
   - [ISC 2022](#isc-2022)
   - [CHES 2022](#ches-2022)
   - [ACNS 2022](#acns-2022)
@@ -11,7 +12,16 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
   - [FSE 2020](#fse-2020)
 - [Credits](#credits)
 
-## FSE 2023 - Boomerang
+## FSE 2023 - Second Talk 
+***Integral Cryptanalysis of WARP based on Monomial Prediction***
+
+- [Paper](https://ia.cr/2022/729)
+- [Slides](20230323-FSE-2023)
+- [Video](https://www.youtube.com/watch?v=dhLCiznBa-s&list=PLeeS-3Ml-rpod9ZTUNxz-zc2vF-JdTjXr&index=19)
+- Venue: [Kobe, Japan](https://fse.iacr.org/2023/japanEvent.php)
+
+
+## FSE 2023 - First Talk
 
 ***Throwing Boomerangs into Feistel Structures:***
 *Application to CLEFIA, WARP, LBlock, LBlock-s and TWINE*
@@ -19,7 +29,7 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
 - [Paper](https://eprint.iacr.org/2022/745)
 - [Slides](20230321-FSE-2023)
 - [Video](https://youtu.be/7ABCANs2dMM?t=1084)
-- Venue: [Kobe, Japan](https://fse.iacr.org/2023/)
+- Venue: [Kobe, Japan](https://fse.iacr.org/2023/japanEvent.php)
 
 
 
