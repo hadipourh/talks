@@ -24,8 +24,6 @@ local/*
 *.cb
 *.cb2
 
-main.pdf
-
 ## Intermediate documents:
 *.dvi
 *-converted-to.*

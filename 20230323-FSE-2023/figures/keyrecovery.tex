@@ -1,0 +1,137 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage{warp}
+\usetikzlibrary{graphs,graphdrawing,quotes}
+\usegdlibrary{trees}
+
+\colorlet{KEY}{blue}
+\colorlet{OUT}{green!50!black}
+\newcommand{\markoutputsnew}[2][col]{%
+  \foreach \z in {#2} {
+    \node[markpath,#1,fill,fill opacity=.2,below] at (\z,-3) {\phantom{$\Cs{26}{\z}$}};
+    \node[markpath,#1,                     below] at (\z,-3) {\color{black}$\Cs{26}{\z}$};
+  }
+}
+
+\usetikzlibrary{external}
+%\tikzexternalize[onlynamed=true]
+
+\begin{document}
+
+\begin{frame}{Example: 3-Round Key Recovery}
+  \alt<2>{\color{white}}{\null}
+
+  \warpround{24}{%
+    \markbranches{5/12}
+    \marksboxes{2/4/1}
+  }
+
+  \warpround{25}{%
+    \markbranches{12/25,1/6}
+    \marksboxes{0/0/31}
+  }
+
+  \warproundfinal{26}{%
+    \markbranches{25/25,6/6,31/31}
+    \marksboxes{12/24/24,15/30/30}
+    \markoutputsnew[OUT]{25,6,31,24,30}
+  }
+  \pause
+\end{frame}
+
+\begin{frame}{Example: Dependency Graph}
+  \only<1>{%
+  \tikzsetnextfilename{img1}
+  \begin{tikzpicture}[tree layout,
+                      grow=right,
+                      >=latex,
+                      sibling distance=.5cm, level distance=2cm,
+                      every edge quotes/.style={fill=white,draw,circle,inner sep=1pt},
+                      every label/.append style={gray,font=\footnotesize,below left},
+                      SBX/.style={>"S"},
+                      dup/.style={draw=red,dashed,thick},
+                      XOR/.style={circle,draw,inner sep=0pt}]
+    \graph {
+    X23i5/+ [XOR,label=$\X{23}{5}$] -> {
+             X24i1/+ [SBX,XOR,label=$\X{24}{1}$] -> {
+                      X25i31/+ [SBX,XOR,label=$\X{25}{31}$] -> {
+                               Xout1/+ [XOR,label=$~$] -> {
+                                 SY26i30/$\Y{26}{30}$ [SBX,OUT],
+                                 Y26i31/$\Y{26}{31}$ [OUT],
+                               },
+                               K1i15/$\K{1}{15}$ [KEY],
+                      },
+                      Y26i6/$\Y{26}{6}$ [OUT],
+                      K0i0/$\K{0}{0}$ [KEY],
+             },
+             X25i25/+ [XOR,label=$\X{25}{25}$] -> {
+                      Xout2/+ [XOR,label=$~$] -> {
+                               SY26i24/$\Y{26}{24}$ [SBX,OUT],
+                               Y26i25/$\Y{26}{25}$ [OUT],
+                      },
+                      K1i12/$\K{1}{12}$ [KEY],
+             },
+             K1i2/$\K{1}{2}$ [KEY],
+    }
+    };
+  \end{tikzpicture}%
+  }
+  \only<2>{%
+  \tikzsetnextfilename{img2}
+  \begin{tikzpicture}[tree layout,
+                      grow=right,
+                      >=latex,
+                      sibling distance=.5cm, level distance=2cm,
+                      every edge quotes/.style={fill=white,draw,circle,inner sep=1pt},
+                      every label/.append style={gray,font=\footnotesize,below left},
+                      SBX/.style={>"S"},
+                      dup/.style={draw=red,dashed,thick},
+                      XOR/.style={circle,draw,inner sep=0pt}]
+    \graph {
+    X23i5/+ [XOR,label=$\X{23}{5}$] -> {
+             X24i1/+ [SBX,XOR,label=$\X{24}{1}$] -> {
+                      X25i31/+ [SBX,XOR,label=$\X{25}{31}$] -> {
+                               SY26i30oplusY26i31/$S(\Y{26}{30})\oplus\Y{26}{31}$ [OUT],
+                               K1i15/$\K{1}{15}$ [KEY],
+                      },
+                      Y26i6/$\Y{26}{6}$ [OUT],
+                      K0i0/$\K{0}{0}$ [KEY],
+             },
+             X25i25/+ [XOR,label=$\X{25}{25}$] -> {
+                      SY26i24oplusY26i25/$S(\Y{26}{24})\oplus\Y{26}{25}$ [OUT],
+                      K1i12/$\K{1}{12}$ [KEY],
+             },
+             K1i2/$\K{1}{2}$ [KEY],
+    }
+    };
+  \end{tikzpicture}%
+  }
+  \only<3>{%
+  \tikzsetnextfilename{img3}
+  \begin{tikzpicture}[tree layout,
+                      grow=right,
+                      >=latex,
+                      sibling distance=.5cm, level distance=2cm,
+                      every edge quotes/.style={fill=white,draw,circle,inner sep=1pt},
+                      every label/.append style={gray,font=\footnotesize,below left},
+                      SBX/.style={>"S"},
+                      dup/.style={draw=red,dashed,thick},
+                      XOR/.style={circle,draw,inner sep=0pt}]
+    \graph {
+    X23i5/+ [XOR,label=$\X{23}{5}$] -> {
+             X24i1/+ [SBX,XOR,label=$\X{24}{1}$] -> {
+                      X25i31/+ [SBX,XOR,label=$\X{25}{31}$] -> {
+                               SY26i30oplusY26i31/$S(\Y{26}{30})\oplus\Y{26}{31}$ [OUT],
+                               K1i15/$\K{1}{15}$ [KEY],
+                      },
+                      Y26i6/$\Y{26}{6}$ [OUT],
+                      K0i0/$\K{0}{0}$ [KEY],
+             },
+             K1i2oplusK1i12/$\K{1}{2}\oplus\K{1}{12}$ [KEY],
+             SY26i24oplusY26i25/$S(\Y{26}{24})\oplus\Y{26}{25}$ [OUT],
+    }
+    };
+  \end{tikzpicture}%
+  }
+\end{frame}
+
+\end{document}

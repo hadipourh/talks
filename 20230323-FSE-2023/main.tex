@@ -52,11 +52,13 @@
 \usepackage{ulem}
 \usepackage{makecell}
 \usepackage{wasysym}
-\usepackage{minted}
+% \usepackage{minted}
 \usepackage{graphicx}
 \usepackage{arydshln}
 \usepackage{warp}
 \usepackage[inline]{enumitem}
+\usetikzlibrary{graphs,graphdrawing,quotes}
+\usegdlibrary{trees}
 
 
 \usetikzlibrary{calc,patterns, arrows.meta, shapes.geometric, positioning, decorations.markings}
@@ -83,6 +85,19 @@
 %% Macros
 
 \newcommand{\sparen}{\vspace*{-.3cm}}
+\newcommand{\z}{$\cdot$}
+\newcommand{\es}{}
+\renewcommand{\tabcolsep}{6pt}
+
+\colorlet{KEY}{blue}
+\colorlet{OUT}{green!50!black}
+\newcommand{\markoutputsnew}[2][col]{%
+	\foreach \z in {#2} {
+		\node[markpath,#1,fill,fill opacity=.2,below] at (\z,-3) {\phantom{$\Cs{26}{\z}$}};
+		\node[markpath,#1,                     below] at (\z,-3) {\color{black}$\Cs{26}{\z}$};
+	}
+}
+
 
 \makeatletter
 \def\rowcolor{\noalign{\ifnum0=`}\fi\bmr@rowcolor}
@@ -107,11 +122,28 @@
   \maketitle
 \end{frame}
 
+\begin{frame}{Motivation and Our Contributions}
+\begin{itemize}
+	\footnotesize
+	\item<1->[\faBinoculars] Motivation
+	\begin{itemize}
+		\item[\faCheckCircleO] Integral analysis of \cipher{WARP}
+	\end{itemize}
+	\item<2->[\faDiamond] Contributions
+	\begin{itemize}
+		\item<2->[\faCheckCircle] Providing a generic SAT model for integral analysis based on monomial prediction
+		\item<2->[\faCheckCircle] Our model takes the key schedule into account
+		\item<2->[\faCheckCircle] We proposed a tool for key-recovery taking the FFT technique into account
+		\item<2->[\faCheckCircle] Thanks to our tools, we improved the integral attack of \cipher{WARP} by \textcolor{tugred}{\textbf{11}} rounds
+	\end{itemize}
+\end{itemize}
+\end{frame}
 
 \section*{}
 \begin{frame}{Outline}
   \tableofcontents
 \end{frame}
+
 
 % \section{Notations}
 % \sectionheader[\huge\color{tug}\faPencil]{Notations}
@@ -134,99 +166,90 @@
 % \end{itemize}
 % \end{frame}
 
-\begin{frame}{Our Contributions}
-\begin{itemize}
-	\item[\faCheckCircle] We provided a SAT model for monomial prediction
-	\item[\faCheckCircle] Our model takes the key schedule into account 
-	\item[\faCheckCircle] Using our model we improved the integral distinguisher of \cipher{WARP} by 4 rounds
-	\item[\faCheckCircle] We provided a graph-based model for key recovery of integral attack
-	\item[\faCheckCircle] Overall, we improved the integral attack of \cipher{WARP} by \textbf{11} rounds   
-\end{itemize}
-\end{frame}
 
 \section{Boolean Functions and Integral Analysis}
 \sectionheader[\huge\color{tug}\faBook]{Boolean Functions and Integral Analysis}
 
-\begin{frame}{Integral Analysis \cite{hod_discrete_derivatives_lai1994higher, square_fse_DaemenKR97}}
-\vspace{-0.5cm}
-\begin{block}{Core Idea of Integral Analaysis}
-	Finding a set of inputs such that sum of the resulting outputs is key-independent in some output positions
-\end{block}
-\pause
-\begin{itemize}
-	\item[\faCheckCircle] 3-round Integral Distinguisher for AES
-\end{itemize}
-\centering
-\vskip10pt
-\footnotesize
-\quad\begin{tikzpicture}[scale=.35, every node/.style={inner sep=1pt}]
-\foreach \S in {0,...,3} {
-	\draw[fill=white] (\S*5,0) rectangle +(4,-4);
-	\foreach \c in {1,2,3} {
-		\draw (\S*5+\c,0) -- +(0,-4);
-		\draw (\S*5,-\c) -- +(4,0);
-	}
-}
-% State 1
-\foreach \x in {0,1,2,3} { \foreach \y in {0,1,2,3} { \node at (0*5+\x+.5,-\y-.5) {C}; }}
-\node[fill=white] at (0*5+0+.5,-.5) {A}; 
-\draw (0*5+4.5,-2) node[font=\fontsize{5}{5}\selectfont,align=center] {AK\\SB\\SR\\MC\\AK};
-% State 2
-\foreach \x in {1,2,3}   { \foreach \y in {0,1,2,3} { \node at (1*5+\x+.5,-\y-.5) {C}; }}
-\foreach \x in {0}       { \foreach \y in {0,1,2,3} { \node at (1*5+\x+.5,-\y-.5) {A}; }}
-\draw (1*5+4.5,-2) node[font=\fontsize{5}{5}\selectfont,align=center] {SB\\SR\\MC\\AK};
-% State 3
-\foreach \x in {0,1,2,3} { \foreach \y in {0,1,2,3} { \node at (2*5+\x+.5,-\y-.5) {A}; }}
-\draw (2*5+4.5,-2) node[font=\fontsize{5}{5}\selectfont,align=center] {SB\\SR\\MC\\AK};
-% State 4
-\draw[fill=tug!30] (3*5+0,-0) rectangle +(1,-1);
-\foreach \x in {0,1,2,3} { \foreach \y in {0,1,2,3} { \node at (3*5+\x+.5,-\y-.5) {B}; }}
-%\draw (3*5+4.5,-2) node[font=\fontsize{5}{5}\selectfont,align=center] {SB\\SR\\AK};
-% State 5
-%\visible<3>{
-%\fill[tug] (4*5+0,-0) rectangle +(1,-1);
-%}
-\end{tikzpicture}
-\end{frame}
+% \begin{frame}{Integral Analysis \cite{hod_discrete_derivatives_lai1994higher, square_fse_DaemenKR97}}
+% \vspace{-0.5cm}
+% \begin{block}{Core Idea of Integral Analaysis}
+% 	Finding a set of inputs such that sum of the resulting outputs is key-independent in some output positions
+% \end{block}
+% \pause
+% \begin{itemize}
+% 	\item[\faCheckCircle] 3-round Integral Distinguisher for AES
+% \end{itemize}
+% \centering
+% \vskip10pt
+% \footnotesize
+% \quad\begin{tikzpicture}[scale=.35, every node/.style={inner sep=1pt}]
+% \foreach \S in {0,...,3} {
+% 	\draw[fill=white] (\S*5,0) rectangle +(4,-4);
+% 	\foreach \c in {1,2,3} {
+% 		\draw (\S*5+\c,0) -- +(0,-4);
+% 		\draw (\S*5,-\c) -- +(4,0);
+% 	}
+% }
+% % State 1
+% \foreach \x in {0,1,2,3} { \foreach \y in {0,1,2,3} { \node at (0*5+\x+.5,-\y-.5) {C}; }}
+% \node[fill=white] at (0*5+0+.5,-.5) {A}; 
+% \draw (0*5+4.5,-2) node[font=\fontsize{5}{5}\selectfont,align=center] {AK\\SB\\SR\\MC\\AK};
+% % State 2
+% \foreach \x in {1,2,3}   { \foreach \y in {0,1,2,3} { \node at (1*5+\x+.5,-\y-.5) {C}; }}
+% \foreach \x in {0}       { \foreach \y in {0,1,2,3} { \node at (1*5+\x+.5,-\y-.5) {A}; }}
+% \draw (1*5+4.5,-2) node[font=\fontsize{5}{5}\selectfont,align=center] {SB\\SR\\MC\\AK};
+% % State 3
+% \foreach \x in {0,1,2,3} { \foreach \y in {0,1,2,3} { \node at (2*5+\x+.5,-\y-.5) {A}; }}
+% \draw (2*5+4.5,-2) node[font=\fontsize{5}{5}\selectfont,align=center] {SB\\SR\\MC\\AK};
+% % State 4
+% \draw[fill=tug!30] (3*5+0,-0) rectangle +(1,-1);
+% \foreach \x in {0,1,2,3} { \foreach \y in {0,1,2,3} { \node at (3*5+\x+.5,-\y-.5) {B}; }}
+% %\draw (3*5+4.5,-2) node[font=\fontsize{5}{5}\selectfont,align=center] {SB\\SR\\AK};
+% % State 5
+% %\visible<3>{
+% %\fill[tug] (4*5+0,-0) rectangle +(1,-1);
+% %}
+% \end{tikzpicture}
+% \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Algebraic Normal Form (ANF)}
-\vspace{-0.5cm}
-\begin{block}{ANF}
-A Boolean function $f:\mathbb{F}_{2}^{n}\rightarrow \mathbb{F}_{2}$ 
-can be uniquely represented by a polynomial in 
-$\frac{\mathbb{F}_{2}[x_{0}, \ldots, x_{n - 1}]}{\langle x_{0}^{2} + x_{0}, \ldots, x_{n - 1}^{2} + x_{n - 1}\rangle}$:
-\[
-	f(\bm{x}) = \sum_{\bm{u}\in \mathbb{F}_{2}^{n}} a_{\bm{u}} \cdot \bm{x}^{\bm{u}}, \quad \text{where} \quad a_{\bm{u}}\in \mathbb{F}_{2},\, \text{and}\;\bm{x}^{\bm{u}} = x_{0}^{u_{0}}\cdots x_{n - 1}^{u_{n - 1}}.
-\]
-\vspace{-0.5cm}
-\end{block}
-\vspace{-0.3cm}
-\begin{itemize}
-\item[\faCheckCircle] If $f(\bm{x}) = \sum_{\bm{u}\in \mathbb{F}_{2}^{n}} a_{\bm{u}}\cdot \bm{x}^{\bm{u}}$, and $\bm{x} \leq \bm{u}$ iff $x_{i} \leq u_{i}$ for all $i$, then for all $\bm{u} \in \mathbb{F}_{2}^{n}$:
-\begin{itemize}
-	\item[\faCheckCircleO] \colorbox{tug!30}{$a_{\bm{u}} = \sum_{\bm{x} \leq \bm{u}} f(\bm{x})$}
-	\item[\faCheckCircleO] $f(\bm{u}) = \sum_{\bm{x} \leq \bm{u}} a_{\bm{x}}$
-\end{itemize}
-\end{itemize}
-% \vspace{-0.15cm}
-% \begin{overprint}
-% \onslide<2>
-% \begin{minted}[linenos,highlightlines={4}]{python}
-% from sage.crypto.boolean_function import BooleanFunction as BF            
-% f = BF([0, 0, 0, 1])
-% g = f.algebraic_normal_form(); g #x0: LSB                                  
-% x0*x1 
-% \end{minted}
-% \onslide<3>
-% \begin{minted}[linenos,highlightlines={4}]{python}
-% from sage.crypto.boolean_function import BooleanFunction as BF            
-% f = BF([0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1])
-% g = f.algebraic_normal_form(); g
-% x0*x2*x3 + x0*x2 + x0*x3 + x1*x2*x3 + x1*x2 + x1*x3 + x1
-% \end{minted}
-% \end{overprint}
-\end{frame}
+% \begin{frame}[fragile]
+% \frametitle{Algebraic Normal Form (ANF)}
+% \vspace{-0.5cm}
+% \begin{block}{ANF}
+% A Boolean function $f:\mathbb{F}_{2}^{n}\rightarrow \mathbb{F}_{2}$ 
+% can be uniquely represented by a polynomial in 
+% $\frac{\mathbb{F}_{2}[x_{0}, \ldots, x_{n - 1}]}{\langle x_{0}^{2} + x_{0}, \ldots, x_{n - 1}^{2} + x_{n - 1}\rangle}$:
+% \[
+% 	f(\bm{x}) = \sum_{\bm{u}\in \mathbb{F}_{2}^{n}} a_{\bm{u}} \cdot \bm{x}^{\bm{u}}, \quad \text{where} \quad a_{\bm{u}}\in \mathbb{F}_{2},\, \text{and}\;\bm{x}^{\bm{u}} = x_{0}^{u_{0}}\cdots x_{n - 1}^{u_{n - 1}}.
+% \]
+% \vspace{-0.5cm}
+% \end{block}
+% \vspace{-0.3cm}
+% \begin{itemize}
+% \item[\faCheckCircle] If $f(\bm{x}) = \sum_{\bm{u}\in \mathbb{F}_{2}^{n}} a_{\bm{u}}\cdot \bm{x}^{\bm{u}}$, and $\bm{x} \leq \bm{u}$ iff $x_{i} \leq u_{i}$ for all $i$, then for all $\bm{u} \in \mathbb{F}_{2}^{n}$:
+% \begin{itemize}
+% 	\item[\faCheckCircleO] \colorbox{tug!30}{$a_{\bm{u}} = \sum_{\bm{x} \leq \bm{u}} f(\bm{x})$}
+% 	\item[\faCheckCircleO] $f(\bm{u}) = \sum_{\bm{x} \leq \bm{u}} a_{\bm{x}}$
+% \end{itemize}
+% \end{itemize}
+% % \vspace{-0.15cm}
+% % \begin{overprint}
+% % \onslide<2>
+% % \begin{minted}[linenos,highlightlines={4}]{python}
+% % from sage.crypto.boolean_function import BooleanFunction as BF            
+% % f = BF([0, 0, 0, 1])
+% % g = f.algebraic_normal_form(); g #x0: LSB                                  
+% % x0*x1 
+% % \end{minted}
+% % \onslide<3>
+% % \begin{minted}[linenos,highlightlines={4}]{python}
+% % from sage.crypto.boolean_function import BooleanFunction as BF            
+% % f = BF([0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1])
+% % g = f.algebraic_normal_form(); g
+% % x0*x2*x3 + x0*x2 + x0*x3 + x1*x2*x3 + x1*x2 + x1*x3 + x1
+% % \end{minted}
+% % \end{overprint}
+% \end{frame}
 
 % \begin{frame}[fragile]{Relations Between Coefficients and (Sum of the ) Outputs}
 % \vspace{-0.5cm}
@@ -264,44 +287,44 @@ $\frac{\mathbb{F}_{2}[x_{0}, \ldots, x_{n - 1}]}{\langle x_{0}^{2} + x_{0}, \ldo
 % }
 % \end{frame}
 
-\begin{frame}{Boolean Function of Block Ciphers}
-\begin{center}
-\vspace{-0.7cm}
-\begin{tikzpicture}
-\pgfmathsetmacro{\basicstep}{2}
-\node[box, key north, minimum size=30pt, fill=tugred!50] (E) {$E$};
-\draw[next] (E) ++(-\basicstep, 0) node[left] {$\bm{x}$\,\faFileTextO} -- (E) node[midway, above]{$n$} node[pos=0.55]{$\slash$};
-\draw[prev] (E) ++(\basicstep, 0) node[right] {$\bm{y}$\,\faEnvelopeO} -- (E) node [midway, above]{$n$} node[pos=0.46]{$\slash$};
-\draw[next, rounded corners=2pt] (E) ++(-\basicstep, \basicstep/2) node[left] {$\bm{k}$\,\faKey} -| (E) node[pos=0.2, above]{$k$} node[pos=0.22]{$\slash$};
-\end{tikzpicture}
-\end{center}
-\vspace{-0.55cm}
-\onslide<2->{
-\begin{block}{ANF of Ciphertext Bits}
-\onslide<2->{
-Any product of ciphertext bits $\bm{y}^{\bm{v}}$ can be expressed as a Boolean function 
-$f(\bm{k}, \bm{x})$:
-\begin{equation*}
-\sum_{\bm{u}\in \mathbb{F}_{2}^{n}} \sum_{\bm{v}\in \mathbb{F}_{2}^{k}} a_{\bm{u},\bm{v}}\bm{k}^{\bm{v}} \bm{x}^{\bm{u}} = \sum_{\bm{u}\in \mathbb{F}_{2}^{n}} a_{\bm{u}}(\bm{k})\cdot \bm{x}^{\bm{u}}
-\end{equation*}
-}
-\onslide<3->{
-For a fixed key $\bm{k}$ and for any $\bm{u}\in \mathbb{F}_{2}^{n}$:
-$a_{\bm{u}}(\bm{k}) = \sum_{\bm{x} \leq \bm{u}} f(\bm{k}, \bm{x})$
-}
-\end{block}
-}
-\end{frame}
+% \begin{frame}{Boolean Function of Block Ciphers}
+% \begin{center}
+% \vspace{-0.7cm}
+% \begin{tikzpicture}
+% \pgfmathsetmacro{\basicstep}{2}
+% \node[box, key north, minimum size=30pt, fill=tugred!50] (E) {$E$};
+% \draw[next] (E) ++(-\basicstep, 0) node[left] {$\bm{x}$\,\faFileTextO} -- (E) node[midway, above]{$n$} node[pos=0.55]{$\slash$};
+% \draw[prev] (E) ++(\basicstep, 0) node[right] {$\bm{y}$\,\faEnvelopeO} -- (E) node [midway, above]{$n$} node[pos=0.46]{$\slash$};
+% \draw[next, rounded corners=2pt] (E) ++(-\basicstep, \basicstep/2) node[left] {$\bm{k}$\,\faKey} -| (E) node[pos=0.2, above]{$k$} node[pos=0.22]{$\slash$};
+% \end{tikzpicture}
+% \end{center}
+% \vspace{-0.55cm}
+% \onslide<2->{
+% \begin{block}{ANF of Ciphertext Bits}
+% \onslide<2->{
+% Any product of ciphertext bits $\bm{y}^{\bm{v}}$ can be expressed as a Boolean function 
+% $f(\bm{k}, \bm{x})$:
+% \begin{equation*}
+% \sum_{\bm{u}\in \mathbb{F}_{2}^{n}} \sum_{\bm{v}\in \mathbb{F}_{2}^{k}} a_{\bm{u},\bm{v}}\bm{k}^{\bm{v}} \bm{x}^{\bm{u}} = \sum_{\bm{u}\in \mathbb{F}_{2}^{n}} a_{\bm{u}}(\bm{k})\cdot \bm{x}^{\bm{u}}
+% \end{equation*}
+% }
+% \onslide<3->{
+% For a fixed key $\bm{k}$ and for any $\bm{u}\in \mathbb{F}_{2}^{n}$:
+% $a_{\bm{u}}(\bm{k}) = \sum_{\bm{x} \leq \bm{u}} f(\bm{k}, \bm{x})$
+% }
+% \end{block}
+% }
+% \end{frame}
 
 \begin{frame}[fragile]{Integral Distinguisher and The Coefficients of ANF}
 \vspace{-0.5cm}
 \begin{columns}
 \column[c]{0.7\textwidth}
 \begin{itemize}
-\item<1->[\faConnectdevelop] $y=f(\bm{k}, \bm{x}) = \sum_{\bm{u}\in \mathbb{F}_{2}^{n}} \textcolor{tugred}{a_{\bm{u}}(\bm{k})}\cdot \bm{x}^{\bm{u}}$
-\item<2->[\faCube] $\bm{C}_{\bm{u}} = \{x \in \mathbb{F}_{2}^{n}\,|\, \bm{x} \leq \bm{u}\}$
-\item<3->[\faCheckCircleO] $\textcolor{tugred}{a_{\bm{u}}(\bm{k}) = \sum_{\bm{x} \leq \bm{u}} f(\bm{k},\bm{x})}$
-\item<4->[\faBell]
+\item<1->[\faConnectdevelop] $y=f(\bm{k}, \bm{x}) \only<1>{= \sum_{\bm{u}\in \mathbb{F}_{2}^{n}} \sum_{\bm{v}\in \mathbb{F}_{2}^{k}} a_{\bm{u},\bm{v}}\bm{k}^{\bm{v}} \bm{x}^{\bm{u}}} \only<2->{= \sum_{\bm{u}\in \mathbb{F}_{2}^{n}} \textcolor{tugred}{a_{\bm{u}}(\bm{k})}\cdot \bm{x}^{\bm{u}}}$
+\item<3->[\faCube] $\mathbb{C}_{\bm{u}} = \{x \in \mathbb{F}_{2}^{n}\,|\, \bm{x} \leq \bm{u}\}$
+\item<4->[\faCheckCircleO] $\textcolor{tugred}{a_{\bm{u}}(\bm{k}) = \sum_{\bm{x} \leq \bm{u}} f(\bm{k},\bm{x})}$
+\item<5->[\faBell]
 Which monomial is key-independent in the ANF?
 \begin{itemize}
 \item[\faDiamond] zero-sum: $\exists\, u,\, s.t.\, \forall \bm{k}:\, a_{\bm{u}}(\bm{k}) = 0$
@@ -319,7 +342,7 @@ caption/.style={gray, below=1.75cm, align=center}]
 \pgfmathsetmacro{\cubex}{1.5}
 \pgfmathsetmacro{\cubey}{1.5}
 \pgfmathsetmacro{\cubez}{1.5}
-\visible<2->{
+\visible<3->{
 \draw[tuggray,fill=tugblue!50,opacity=0.5] (0.5,+2.5,0) -- ++(-\cubex,0,0) -- ++(0,-\cubey,0) -- ++(\cubex,0,0) -- cycle;
 \draw[tuggray,fill=tugblue!50,opacity=0.5] (0.5,+2.5,0) -- ++(0,0,-\cubez) -- ++(0,-\cubey,0) -- ++(0,0,\cubez) -- cycle;
 \draw[tuggray,fill=tugblue!50] (0.5,+2.5,0) -- ++(-\cubex,0,0) -- ++(0,0,-\cubez) -- ++(\cubex,0,0) -- cycle;}
@@ -327,9 +350,9 @@ caption/.style={gray, below=1.75cm, align=center}]
 \draw[next]  (E) ++(0,1.5) node[above] {$\bm{x}$\,\faFileTextO} -- (E);
 \draw[next]  (E) ++(-1,0) node[above] {$\bm{k}$\,\faKey} -- (E);
 \draw[prev]  (E) ++(0,-1.5) node[below] {
-	\only<1>{
+	\only<1-3>{
 	$y$\,\faEnvelopeO}
-    \only<2->{
+    \only<4->{
     \textcolor{tugred}{$\textcolor{tugred}{\sum_{\bm{x} \leq \bm{u}} f(\bm{k},\bm{x})}$}}
 } -- (E);
 %\pause
@@ -480,21 +503,23 @@ tracking the propagation of the given monomial through the building blocks of co
 	\[\textcolor{tugred}{\bm{k}^{\bm{w}} \bm{x}^{\bm{u}} \not\rightsquigarrow \bm{y}^{\bm{v}}} \Rightarrow \bm{k}^{\bm{w}} \bm{x}^{\bm{u}} \not\rightarrow \bm{y}^{\bm{v}}\]
 }
 \visible<6->{
-\[\bm{y}^{\bm{e_{i}}} = \sum_{\bm{u}\in \mathbb{F}_{2}^{n}} \sum_{\bm{v}\in \mathbb{F}_{2}^{k}} a_{\bm{u},\bm{v}}\bm{k}^{\bm{v}} \bm{x}^{\bm{u}} = \sum_{\bm{u}\in \mathbb{F}_{2}^{n}} \textcolor{tugred}{a_{\bm{u}}(\bm{k})} \cdot \bm{x}^{\bm{u}}\]
+\[\bm{y}^{\bm{v}} = \sum_{\bm{u}\in \mathbb{F}_{2}^{n}} \sum_{\bm{v}\in \mathbb{F}_{2}^{k}} a_{\bm{u},\bm{v}}\bm{k}^{\bm{v}} \bm{x}^{\bm{u}} = \sum_{\bm{u}\in \mathbb{F}_{2}^{n}} \textcolor{tugred}{a_{\bm{u}}(\bm{k})} \cdot \bm{x}^{\bm{u}}\]
 \vspace{-0.3cm}
 \begin{block}{From Monomial Trails to Integral Distinguisher}
 \begin{itemize}
-	\item<7->[\faBomb] If $\exists \bm{u}$ s.t. $\bm{k}^{\bm{w}} \bm{x}^{\bm{u}}\not\rightsquigarrow \bm{y}^{\bm{e_{i}}}$ for all $\bm{w} \in \mathbb{F}_{2}^{k}$ then \textcolor{tugred}{$a_{\bm{u}}(\bm{k}) = 0$} (zero-sum)
-	\item<8->[\faBomb] If $\exists \bm{u}$ s.t. $\bm{k}^{\bm{w}} \bm{x}^{\bm{u}}\not\rightsquigarrow \bm{y}^{\bm{e_{i}}}$ for all $\bm{w} \in \mathbb{F}_{2}^{k}\setminus \{\bm{0}\}$ then \textcolor{tugred}{$a_{\bm{u}}(\bm{k}) = \texttt{constant}$} (zer/one-sum)
+	\item<7->[\faBomb] If $\exists \bm{u}$ s.t. $\bm{k}^{\bm{w}} \bm{x}^{\bm{u}}\not\rightsquigarrow \bm{y}^{\bm{v}}$ for all $\bm{w} \in \mathbb{F}_{2}^{k}$ then \textcolor{tugred}{$a_{\bm{u}}(\bm{k}) = 0$} (zero-sum)
+	\item<8->[\faBomb] If $\exists \bm{u}$ s.t. $\bm{k}^{\bm{w}} \bm{x}^{\bm{u}}\not\rightsquigarrow \bm{y}^{\bm{v}}$ for all $\bm{w} \in \mathbb{F}_{2}^{k}\setminus \{\bm{0}\}$ then \textcolor{tugred}{$a_{\bm{u}}(\bm{k}) = \texttt{constant}$} (zero/one-sum)
 \end{itemize}
 \end{block}
 }
 \end{overprint}
 \end{frame}
 
-\begin{frame}{From Monomial Prediction to a CP or SAT Problem}
-\begin{center}
-\vspace{-0.7cm}
+\begin{frame}{From Monomial Prediction to SAT Problem}
+\vspace{-0.6cm}
+\begin{columns}[T]
+\column{0.5\textwidth}
+\centering
 \begin{tikzpicture}
 \pgfmathsetmacro{\basicstep}{2}
 \node[box, key north, minimum size=30pt, fill=tugred!50] (E) {$E$};
@@ -502,14 +527,18 @@ tracking the propagation of the given monomial through the building blocks of co
 \draw[prev] (E) ++(\basicstep, 0) node[right] {$\bm{y}^{\bm{v}}$} -- (E) node [midway, above]{$n$} node[pos=0.46]{$\slash$};
 \draw[next, rounded corners=2pt] (E) ++(-\basicstep, \basicstep/2) node[left] {$\bm{k}^{\bm{w}}$} -| (E) node[pos=0.2, above]{$k$} node[pos=0.22]{$\slash$};
 \end{tikzpicture}
-\end{center}
+\column{0.5\textwidth}
+\centering
+\null
+\[\bm{y}^{\bm{v}} = \sum_{\bm{u}\in \mathbb{F}_{2}^{n}} \sum_{\bm{v}\in \mathbb{F}_{2}^{k}} a_{\bm{u},\bm{v}}\bm{k}^{\bm{v}} \bm{x}^{\bm{u}} = \sum_{\bm{u}\in \mathbb{F}_{2}^{n}} \textcolor{tugred}{a_{\bm{u}}(\bm{k})} \cdot \bm{x}^{\bm{u}}\]
+\end{columns}
 \begin{itemize}
 \footnotesize
-\item[\faCodeFork] Model the propagation of monomial trails through the building blocks by a \texttt{CNF} clause
-\item[\faBullhorn] Main variables are the monomial exponents, i.e., $\bm{u}, \bm{w}, \bm{v}, \ldots$ not $\bm{x}, \bm{k}, \bm{y}, \ldots$
-\item[\faAnchor] Fix $\bm{u}$ to a certain vector and set $\bm{v}$ to $\bm{e}_{i}$ ($\bm{w}$ should be a free variable)
-\item[\faRoad] Any possible solution of the model is a monomial trail from $\bm{k}^{\bm{w}}\bm{x}^{\bm{u}}$ to  $\bm{y}^{\bm{e}_{i}}$
-\item[\faFlag] \textcolor{tugred}{If the model is impossible, then $\bm{k}^{\bm{w}} \bm{x}^{\bm{u}}\not\rightsquigarrow \bm{y}^{\bm{e_{i}}}$ for all $\bm{w}$ and we have a distinguisher}
+\item<1->[\faCodeFork] \only<6>{\textcolor{blue}}{Model the propagation of monomial trails through the building blocks by a \texttt{CNF} clause}
+\item<2->[\faBullhorn] Main variables are the monomial exponents, i.e., $\bm{u}, \bm{w}, \bm{v}, \ldots$ not $\bm{x}, \bm{k}, \bm{y}, \ldots$
+\item<3->[\faAnchor] Fix $\bm{u}$ to a certain vector and set $\bm{v}$ to $\bm{e}_{i}$ ($\bm{w}$ should be a free variable but non-zero)
+\item<4->[\faRoad] Any possible solution of the model is a monomial trail from $\bm{k}^{\bm{w}}\bm{x}^{\bm{u}}$ to  $\bm{y}^{\bm{v}}$
+\item<5->[\faFlag] If the model is impossible, then $\bm{k}^{\bm{w}} \bm{x}^{\bm{u}}\not\rightsquigarrow \bm{y}^{\bm{v}}$ for all $\bm{w} \in \mathbb{F}_{2}^{k}$, and \textcolor{tug}{$a_{\bm{u}}(\bm{k}) = \texttt{constant}$}
 \end{itemize}
 \end{frame}
 
@@ -522,9 +551,31 @@ Let $\bm{y} = \bm{f}(\bm{x})$ be an $m$-bit to $n$-bit vectorial Boolean functio
 \vspace{-0.2cm}
 \begin{columns}
 \scriptsize
-\newcommand{\z}{$\cdot$}
-\newcommand{\es}{}
-\renewcommand{\tabcolsep}{6pt}
+\column[c]{0.2\textwidth}
+\centering
+\only<2->{
+\resizebox{0.45\textwidth}{!}{
+\begin{tabular}{c|l}
+$x$ &\!$S(x)$\\
+\toprule
+\texttt{0} & \texttt{c}\\
+\texttt{1} & \texttt{a}\\
+\texttt{2} & \texttt{d}\\
+\texttt{3} & \texttt{3}\\
+\texttt{4} & \texttt{e}\\
+\texttt{5} & \texttt{b}\\
+\texttt{6} & \texttt{f}\\
+\texttt{7} & \texttt{7}\\
+\texttt{8} & \texttt{8}\\
+\texttt{9} & \texttt{9}\\
+\texttt{a} & \texttt{1}\\
+\texttt{b} & \texttt{5}\\
+\texttt{c} & \texttt{0}\\
+\texttt{d} & \texttt{2}\\
+\texttt{e} & \texttt{4}\\
+\texttt{f} & \texttt{6}\\
+\end{tabular}}
+}
 \column[c]{0.8\textwidth}
 \centering
 \only<3>{
@@ -568,31 +619,6 @@ Let $\bm{y} = \bm{f}(\bm{x})$ be an $m$-bit to $n$-bit vectorial Boolean functio
 & \wedge (\neg u_2 \vee \neg v_0 \vee \neg v_1 \vee v_3)\!\!\!& & \wedge (\neg u_1 \vee u_3 \vee \neg v_1 \vee v_2 \vee \neg v_3).\!\!\!
 \end{align*}
 }
-}
-\column[c]{0.2\textwidth}
-\centering
-\only<2->{
-\resizebox{0.45\textwidth}{!}{
-\begin{tabular}{c|l}
-$x$ &\!$S(x)$\\
-\toprule
-\texttt{0} & \texttt{c}\\
-\texttt{1} & \texttt{a}\\
-\texttt{2} & \texttt{d}\\
-\texttt{3} & \texttt{3}\\
-\texttt{4} & \texttt{e}\\
-\texttt{5} & \texttt{b}\\
-\texttt{6} & \texttt{f}\\
-\texttt{7} & \texttt{7}\\
-\texttt{8} & \texttt{8}\\
-\texttt{9} & \texttt{9}\\
-\texttt{a} & \texttt{1}\\
-\texttt{b} & \texttt{5}\\
-\texttt{c} & \texttt{0}\\
-\texttt{d} & \texttt{2}\\
-\texttt{e} & \texttt{4}\\
-\texttt{f} & \texttt{6}\\
-\end{tabular}}
 }
 \end{columns}
 \end{frame}
@@ -713,66 +739,288 @@ $x$ &\!$S(x)$\\
 }
 \end{center}
 \begin{itemize}
-	\item<2->[\faBed] $\sum_{\mathbf{C}}\X{22}{4} = \textcolor{blue}{\sum_{\mathbf{C}}\X{23}{1}}$ 
-	\item<3->[\faAngellist] $\sum_{\mathbf{C}}\X{22}{11} = \textcolor{blue}{\sum_{\mathbf{C}} \left( S(\X{23}{4}) \oplus \X{23}{0} \right)} \oplus \textcolor{purple}{\sum_{\mathbb{C}}\K{b}{i}}$
+	\item<2>[\faBed] $\sum_{\mathbb{C}}\X{22}{4} = \textcolor{blue}{\sum_{\mathbb{C}}\X{23}{1}}$
+	\item<3->[\faAngellist] $\sum_{\mathbb{C}}\X{22}{11} = \textcolor{blue}{\sum_{\mathbb{C}} \left( S(\X{23}{4}) \oplus \X{23}{0} \right)} \oplus \textcolor{purple}{\sum_{\mathbb{C}}\K{b}{i}}$
 \end{itemize}
 \end{frame}
 
-\begin{frame}{24-round Integral Distinguisher for \cipher{WARP}}
-\vspace{-0.5cm}
+%\begin{frame}{24-round Integral Distinguisher for \cipher{WARP}}
+%\vspace{-0.5cm}
+%\begin{itemize}
+%\item[\faCheckCircle] Our 23-round distinguisher can be extended to 24 rounds
+%\end{itemize}
+%\vspace{-0.2cm}
+%\begin{figure}
+%\begin{tikzpicture}[warpfig]
+%	\foreach \z in {0,...,39} { \draw[colS] (.25*\z,.75) node {*}; }
+%	\foreach \z in {48,...,127} { \draw[colS] (.25*\z,.75) node {*}; }
+%	\foreach \z in {40,...,43} { \draw[colI] (.25*\z,.75) node {s}; }
+%	\foreach \z in {44,...,47} { \draw[colI] (.25*\z,.75) node {s}; }
+%	\foreach \z[evaluate=\z as \zf using int(4*\z)] in {0,...,31} {
+%	\draw[gray] (\z,0) node[above] {\tiny\zf};
+%	\foreach \zb in {0,...,3} { \draw[gray] (\z+.25*\zb,0) -- +(0,-3pt); }
+%	}
+%\end{tikzpicture}
+%
+%\warpround{1}{%
+%	\foreach \s/\z in {5/10} {
+%	\draw[markpath,colI] (s\s) -- (xor\s);
+%	\node[markpath,colI,box,minimum size=1pt,rounded corners=1pt] at (s\s) {$S$};
+%	\draw[markpath,colI] (t\z) |- (s\s);
+%	\draw[markpath,colI] (xor\s)       coordinate[xor,scale=0.5];
+%	\node[markpath,colI,fill,fill opacity=.2,above] at (\z,0) {\phantom{$\Xs{0}{00}$}};
+%	}
+%	\markbranches[colI]{11/0}
+%}
+%\vskip-7pt
+%
+%\begin{tikzpicture}[warpfig]
+%	\foreach \z in {0,1,3,4,...,127} { \draw[colS] (.25*\z,.75) node {*}; }% circle[radius=3pt]; }
+%	\foreach \z in {2} { \draw[colI] (.25*\z,.75) node {c}; }
+%\end{tikzpicture}
+%\vskip-3pt
+%
+%\begin{tikzpicture}[warpfig]
+%	\draw[dashed,rounded corners=2pt] (-.5,-.75) coordinate (top) rectangle node[font=\normalsize] {23-round distinguisher} (31.5,-3.25) coordinate (bot);
+%	\foreach \z[evaluate=\z as \zf using int(4*\z)] in {0,...,31} {
+%	\draw (\z,0)   node[above] (X\z) {$\Xs{1}{\z}$};
+%	\draw (\z,-4)  node[below] (Y\z) {$\Xs{4}{\z}$};
+%	\draw[->] (X\z) -- (X\z|-top);
+%	\draw[<-] (Y\z) -- (Y\z|-bot);
+%	}
+%\end{tikzpicture}
+%\vskip-2pt
+%
+%\begin{tikzpicture}[warpfig]
+%	\foreach \z in {20,21,22,23,118,60,61,62,63} { \fill[colI] (.25*\z,-.75) circle[radius=3pt]; }
+%	\foreach \z[evaluate=\z as \zf using int(4*\z)] in {0,...,31} {
+%	\draw[gray] (\z,0) node[below] {\tiny\zf};
+%	\foreach \zb in {0,...,3} { \draw[gray] (\z+.25*\zb,0) -- +(0,3pt); }
+%	}
+%\end{tikzpicture}
+%\end{figure}
+%\end{frame}
+
+\section{Key-Recovery}
+\sectionheader[\huge\color{tug}\faClockO]{Key-Recovery}
+
+\begin{frame}{Naive Approach v.s. FFT Technique \cite{cansTodoA14}}
+\begin{columns}
+\column[c]{.6\textwidth}
 \begin{itemize}
-\item[\faCheckCircle] Our 23-round distinguisher can be extended to 24 rounds
+\item[\faCab] Naive approach:
+\begin{itemize}
+\item[\faCheckCircleO] \textcolor{blue}{$\sum \bm{x} = \sum_{c\in \mathbb{C}} f(\bm{k}, \bm{c})$}
+\item[\faCheckCircleO] $T_{tot} = 2^{|\bf{k}|} |\mathbb{C}|$, where $\bf{\mathbb{C}} = 2^{|\bm{k}|}$
+\item[\faCheckCircleO] $T_{tot} = 2^{2|\bm{k}|}$ 
 \end{itemize}
-\vspace{-0.2cm}
-\begin{figure}
-\begin{tikzpicture}[warpfig]
-	\foreach \z in {0,...,39} { \draw[colS] (.25*\z,.75) node {*}; }
-	\foreach \z in {48,...,127} { \draw[colS] (.25*\z,.75) node {*}; }
-	\foreach \z in {40,...,43} { \draw[colI] (.25*\z,.75) node {s}; }
-	\foreach \z in {44,...,47} { \draw[colI] (.25*\z,.75) node {s}; }
-	\foreach \z[evaluate=\z as \zf using int(4*\z)] in {0,...,31} {
-	\draw[gray] (\z,0) node[above] {\tiny\zf};
-	\foreach \zb in {0,...,3} { \draw[gray] (\z+.25*\zb,0) -- +(0,-3pt); }
-	}
-\end{tikzpicture}
-
-\warpround{1}{%
-	\foreach \s/\z in {5/10} {
-	\draw[markpath,colI] (s\s) -- (xor\s);
-	\node[markpath,colI,box,minimum size=1pt,rounded corners=1pt] at (s\s) {$S$};
-	\draw[markpath,colI] (t\z) |- (s\s);
-	\draw[markpath,colI] (xor\s)       coordinate[xor,scale=0.5];
-	\node[markpath,colI,fill,fill opacity=.2,above] at (\z,0) {\phantom{$\Xs{0}{00}$}};
-	}
-	\markbranches[colI]{11/0}
+\item<2->[\faFighterJet] FFT technique:
+\begin{itemize}
+\item<2->[\faCheckCircle] \textcolor{tug}{$\sum \bm{x} = \sum_{c\in\mathbb{C}}F(\bm{k}\oplus \bm{c})$}
+\item<2->[\faCheckCircle] $T_{tot} = 4\cdot |\bm{k}|\cdot 2^{|\bm{k}|}$
+\end{itemize}
+\end{itemize}
+\column[c]{0.4\textwidth}
+\begin{overprint}
+\begin{tikzpicture}[yscale=1, xscale=1, thick, >=latex,
+every node/.style={inner sep=6pt},
+next/.append style={rounded corners=3pt},
+primi/.append style={fill=tugred!50, draw=black, rounded corners=2pt, minimum size=30pt},
+caption/.style={gray, below=1.75cm, align=center}]
+\node[primi, key north, fill=tugblue] (E) {\textcolor{white}{$E$}};
+\draw[prev]  (E) ++(-1.5,0) node[left] {$\bm{x}$} -- (E);
+\draw[next]  (E) ++(0,1) node[above]{$\bm{k}$\,\faKey} -- (E);
+\draw[next]  (E) ++(1.5,0) node[right]{$\bm{c}$} -- (E);
+\visible<2>{
+\node[primi, below=1.8cm of E] (E) {$E$};
+\draw[prev]  (E) ++(-1.5,0) node[left] {$\bm{x}$} -- (E);
+\node[xor] (KX) at ($(E) + (1.2, 0)$) {};
+\draw[<-] (E) -- (KX);
+\draw[next] (KX) ++(0,0.7) node[above]{$\bm{k}$\,\faKey} -- (KX);
+\draw[next] (KX) ++(0.7,0) node[right]{$\bm{c}$} -- (KX);
 }
-\vskip-7pt
-
-\begin{tikzpicture}[warpfig]
-	\foreach \z in {0,1,3,4,...,127} { \draw[colS] (.25*\z,.75) node {*}; }% circle[radius=3pt]; }
-	\foreach \z in {2} { \draw[colI] (.25*\z,.75) node {c}; }
 \end{tikzpicture}
-\vskip-3pt
+\end{overprint}
+\end{columns}
+\end{frame}
 
-\begin{tikzpicture}[warpfig]
-	\draw[dashed,rounded corners=2pt] (-.5,-.75) coordinate (top) rectangle node[font=\normalsize] {23-round distinguisher} (31.5,-3.25) coordinate (bot);
-	\foreach \z[evaluate=\z as \zf using int(4*\z)] in {0,...,31} {
-	\draw (\z,0)   node[above] (X\z) {$\Xs{1}{\z}$};
-	\draw (\z,-4)  node[below] (Y\z) {$\Xs{4}{\z}$};
-	\draw[->] (X\z) -- (X\z|-top);
-	\draw[<-] (Y\z) -- (Y\z|-bot);
+\begin{frame}{MitM \cite{sacryptSasaki012}}
+\begin{columns}
+\column[c]{.6\textwidth}
+\begin{itemize}
+\item[\faCab] Naive approach:
+\begin{itemize}
+	\item[\faCheckCircleO] $\bm{x} = F(\bm{k}_{1}, \bm{k}_{2}, \bm{c})$ 
+	\item[\faCheckCircleO] $T = 2^{|\bm{k}_{1} \cup \bm{k}_{2}|}$
+\end{itemize}
+\item<2->[\faFighterJet] MitM:
+\begin{itemize}
+	\item <2->[\faCheckCircle] $\bm{y} = F(\bm{k}_{1}, \bm{c}),\, \bm{z} = g(\bm{k}_{2}, \bm{c})$
+	\item <2->[\faCheckCircle] $T = 2^{|\bm{k}_{1}|} + 2^{|\bm{k}_{2}|}$
+\end{itemize}
+\end{itemize}
+\column[c]{0.4\textwidth}
+\centering
+\null
+\vspace{0.5cm}
+\includegraphics[width=0.9\textwidth]{./figures/mitm.pdf}
+\[\visible<1->{\sum \bm{x} = 0} \visible<2->{\iff \sum \bm{y} = \sum \bm{z}}\]
+\end{columns}
+\end{frame}
+
+\begin{frame}{Overall View of Our Key-Recovery Tool}
+\begin{itemize}
+	\item[1-] Assume that $\bm{x} = \bm{y} \oplus \bm{z}$ and $\sum \bm{x} = 0$
+	\item[2-] For each path, i.e., $\bm{y}$, and $\bm{z}$:
+	\begin{itemize}
+	\item[-] Build the graph of dependencies: $\bm{y} = f(\bm{k}, \bm{c})$
+	\item[-] Simplify the dependency graph: reform $f(\bm{k}, \bm{c})$ to $F(\bm{\tilde{k}} \oplus \bm{\tilde{c}})$
+	\item[-] Use FFT to compute the list $[\sum \bm{y}\,|\, \bm{\tilde{k}} = 0, \ldots, 2^{|\bm{k}| - 1}]$
+	\end{itemize}
+	\item[3-] Compare the two lists to find candidates for the involved key bits
+	\item[4-] Brute force the remaining keys to find the correct key
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example: 3-Round Key Recovery}
+	\centering
+	\vspace{-0.4cm}
+	\alt<2>{\color{white}}{\null\vspace{-0.65cm}}
+	\warpround{24}{%
+		\markbranches{5/12}
+		\marksboxes{2/4/1}
 	}
-\end{tikzpicture}
-\vskip-2pt
-
-\begin{tikzpicture}[warpfig]
-	\foreach \z in {20,21,22,23,118,60,61,62,63} { \fill[colI] (.25*\z,-.75) circle[radius=3pt]; }
-	\foreach \z[evaluate=\z as \zf using int(4*\z)] in {0,...,31} {
-	\draw[gray] (\z,0) node[below] {\tiny\zf};
-	\foreach \zb in {0,...,3} { \draw[gray] (\z+.25*\zb,0) -- +(0,3pt); }
+	
+	\warpround{25}{%
+		\markbranches{12/25,1/6}
+		\marksboxes{0/0/31}
 	}
-\end{tikzpicture}
-\end{figure}
+	
+	\warproundfinal{26}{%
+		\markbranches{25/25,6/6,31/31}
+		\marksboxes{12/24/24,15/30/30}
+		\markoutputsnew[OUT]{25,6,31,24,30}
+	}
+	\pause
+\end{frame}
+
+\begin{frame}{Example: Dependency Graph}
+	\centering
+	\sparen
+	\only<1>{%
+		\begin{tikzpicture}[tree layout,
+		grow=right,
+		>=latex,
+		sibling distance=.5cm, level distance=2cm,
+		every edge quotes/.style={fill=white,draw,circle,inner sep=1pt},
+		every label/.append style={gray,font=\footnotesize,below left},
+		SBX/.style={>"S"},
+		dup/.style={draw=red,dashed,thick},
+		XOR/.style={circle,draw,inner sep=0pt}]
+		\graph {
+			X23i5/+ [XOR,label=$\X{23}{5}$] -> {
+				X24i1/+ [SBX,XOR,label=$\X{24}{1}$] -> {
+					X25i31/+ [SBX,XOR,label=$\X{25}{31}$] -> {
+						Xout1/+ [XOR,label=$~$] -> {
+							SY26i30/$\Y{26}{30}$ [SBX,OUT],
+							Y26i31/$\Y{26}{31}$ [OUT],
+						},
+						K1i15/$\K{1}{15}$ [KEY],
+					},
+					Y26i6/$\Y{26}{6}$ [OUT],
+					K0i0/$\K{0}{0}$ [KEY],
+				},
+				X25i25/+ [XOR,label=$\X{25}{25}$] -> {
+					Xout2/+ [XOR,label=$~$] -> {
+						SY26i24/$\Y{26}{24}$ [SBX,OUT],
+						Y26i25/$\Y{26}{25}$ [OUT],
+					},
+					K1i12/$\K{1}{12}$ [KEY],
+				},
+				K1i2/$\K{1}{2}$ [KEY],
+			}
+		};
+		\end{tikzpicture}%
+	}
+	\only<2>{%
+		\begin{tikzpicture}[tree layout,
+		grow=right,
+		>=latex,
+		sibling distance=.5cm, level distance=2cm,
+		every edge quotes/.style={fill=white,draw,circle,inner sep=1pt},
+		every label/.append style={gray,font=\footnotesize,below left},
+		SBX/.style={>"S"},
+		dup/.style={draw=red,dashed,thick},
+		XOR/.style={circle,draw,inner sep=0pt}]
+		\graph {
+			X23i5/+ [XOR,label=$\X{23}{5}$] -> {
+				X24i1/+ [SBX,XOR,label=$\X{24}{1}$] -> {
+					X25i31/+ [SBX,XOR,label=$\X{25}{31}$] -> {
+						SY26i30oplusY26i31/$S(\Y{26}{30})\oplus\Y{26}{31}$ [OUT],
+						K1i15/$\K{1}{15}$ [KEY],
+					},
+					Y26i6/$\Y{26}{6}$ [OUT],
+					K0i0/$\K{0}{0}$ [KEY],
+				},
+				X25i25/+ [XOR,label=$\X{25}{25}$] -> {
+					SY26i24oplusY26i25/$S(\Y{26}{24})\oplus\Y{26}{25}$ [OUT],
+					K1i12/$\K{1}{12}$ [KEY],
+				},
+				K1i2/$\K{1}{2}$ [KEY],
+			}
+		};
+		\end{tikzpicture}%
+	}
+	\only<3>{%
+		\begin{tikzpicture}[tree layout,
+		grow=right,
+		>=latex,
+		sibling distance=.5cm, level distance=2cm,
+		every edge quotes/.style={fill=white,draw,circle,inner sep=1pt},
+		every label/.append style={gray,font=\footnotesize,below left},
+		SBX/.style={>"S"},
+		dup/.style={draw=red,dashed,thick},
+		XOR/.style={circle,draw,inner sep=0pt}]
+		\graph {
+			X23i5/+ [XOR,label=$\X{23}{5}$] -> {
+				X24i1/+ [SBX,XOR,label=$\X{24}{1}$] -> {
+					X25i31/+ [SBX,XOR,label=$\X{25}{31}$] -> {
+						SY26i30oplusY26i31/$S(\Y{26}{30})\oplus\Y{26}{31}$ [OUT],
+						K1i15/$\K{1}{15}$ [KEY],
+					},
+					Y26i6/$\Y{26}{6}$ [OUT],
+					K0i0/$\K{0}{0}$ [KEY],
+				},
+				K1i2oplusK1i12/$\K{1}{2}\oplus\K{1}{12}$ [KEY],
+				SY26i24oplusY26i25/$S(\Y{26}{24})\oplus\Y{26}{25}$ [OUT],
+			}
+		};
+	\end{tikzpicture}%
+	}
+\end{frame}
+
+\begin{frame}{Summary of Our Result}
+\begin{table}[h!]
+	\centering
+	\label{tab:summary_keyrecovery}
+	\newcommand{\ph}{\phantom{.00}}
+	\resizebox{0.8\textwidth}{!}{
+	\begin{tabular}{@{}lccclrl@{}}
+		\toprule
+		\#R    & Data             & Time         & Memory             & Attack           & Reference\\
+		\midrule
+		\bf 32 &     $2^{127\ph}$ & $2^{127\ph}$ & $2^{108\ph}$       & Integral         & This paper\\
+		21 &     $2^{124\ph}$ & -            & -                      & Integral         & \cite{sacrypt_BanikBIKLMSSS20}\\
+		\midrule
+        18 &     $2^{104.62}$ & -            & -                      & Differential     & \cite{journals_istr_TehB22}\\
+		21 &     -            & -            & -                      & Impossible diff. &  \cite{sacrypt_BanikBIKLMSSS20}\\
+		21 &     $2^{113\ph}$ & $2^{113\ph}$ & $2^{72\phantom{0.00}}$ & Differential     & \cite{conf_space_KumarY21}\\
+		23 &     $2^{106.62}$ & $2^{106.62}$ & $2^{106.62}$           & Differential     &  \cite{journals_istr_TehB22}\\
+		%\midrule
+		24 &     $2^{126.06}$ & $2^{125.18}$ & $2^{127.06}$           &  Rectangle       & \cite{journals_istr_TehB22}\\
+		\bottomrule
+	\end{tabular}}
+\end{table}
 \end{frame}
 
 \section{Conclusion}
@@ -780,11 +1028,10 @@ $x$ &\!$S(x)$\\
 \begin{frame}{Contributions}
 \begin{itemize}
 \small
-\item[\faDiamond] We provided a CP/SAT model for integral analysis based on Monomial prediction
-\item[\faDiamond] Applying it to \cipher{WARP} we improved its integral distinguisher by 4 (2) rounds
-\item[\faDiamond] Our modeling is generic and can be applied to other (binary field) block ciphers
-\item[\faDiamond] We proposed a tool for key-recovery taking the FFT technique into account
-\item[\faDiamond] Overall, we improved the integral attack of \cipher{WARP} by 11 rounds
+\item[\faCheckCircle] We provided a SAT model for integral analysis based on Monomial prediction
+\item[\faCheckCircle] Our modeling is generic and can be applied to other (binary field) block ciphers
+\item[\faCheckCircle] We proposed a tool for key-recovery taking the FFT technique into account
+\item[\faDiamond] Overall, we improved the integral attack of \cipher{WARP} by \textbf{\textcolor{red}{11}} rounds
 \end{itemize}
 \begin{center}
 
@@ -878,7 +1125,57 @@ $x$ &\!$S(x)$\\
   doi       = {10.1007/BFb0052343},
 }
 
+@inproceedings{cansTodoA14,
+  author    = {Yosuke Todo and
+               Kazumaro Aoki},
+  title     = {{FFT} Key Recovery for Integral Attack},
+  booktitle = {{CANS} 2014},
+  series    = {LNCS},
+  volume    = {8813},
+  pages     = {64--81},
+  publisher = {Springer},
+  year      = {2014},
+  doi       = {10.1007/978-3-319-12280-9_5},
+}
 
+@inproceedings{sacryptSasaki012,
+  author    = {Yu Sasaki and
+               Lei Wang},
+  title     = {Meet-in-the-Middle Technique for Integral Attacks against {Feistel}
+               Ciphers},
+  booktitle = {SAC 2012},
+  series    = {LNCS},
+  volume    = {7707},
+  pages     = {234--251},
+  publisher = {Springer},
+  year      = {2012},
+  doi       = {10.1007/978-3-642-35999-6_16},
+}
+
+@article{journals_istr_TehB22,
+	author    = {Je Sen Teh and
+		Alex Biryukov},
+	title     = {Differential cryptanalysis of {WARP}},
+	journal   = {J. Inf. Secur. Appl.},
+	volume    = {70},
+	pages     = {103316},
+	year      = {2022},
+	url       = {https://doi.org/10.1016/j.jisa.2022.103316},
+	doi       = {10.1016/j.jisa.2022.103316}
+}
+
+@inproceedings{conf_space_KumarY21,
+	author    = {Manoj Kumar and
+		Tarun Yadav},
+	title     = {{MILP} Based Differential Attack on Round Reduced {WARP}},
+	booktitle = {{SPACE} 2021},
+	series    = {LNCS},
+	volume    = {13162},
+	pages     = {42--59},
+	publisher = {Springer},
+	year      = {2021},
+	doi       = {10.1007/978-3-030-95085-9_3},
+}
 \end{filecontents*}
 
 \end{document}
