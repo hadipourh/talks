@@ -1,0 +1,211 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{warp}[2022/01/21 Utils for illustrating the WARP block cipher]
+
+%%% PREREQUISITES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage{amsmath,amsfonts,amssymb,xspace}
+\RequirePackage{etoolbox,ifthen}
+
+\RequirePackage{tikz}
+\usetikzlibrary{positioning,calc,cipher}
+
+
+%%% TUG COLORS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{tug}{HTML}{F70146}
+
+%%% Faculties
+\definecolor{arch}{HTML}{0A98A2} % Architektur
+\definecolor{bauw}{HTML}{D68E23} % Bauingenieurwissenschaften
+\definecolor{etec}{HTML}{68242C} % Elektrotechnik und Informationstechnik
+\definecolor{mach}{HTML}{3066BA} % Maschinenbau und Wirtschaftswissenschaften
+\definecolor{chem}{HTML}{5E60A8} % Technische Chemie, Verfahrenstechnik und Biotechnologie
+\definecolor{info}{HTML}{19B4E3} % Informatik und Biomedizinische Technik
+\definecolor{math}{HTML}{1E6934} % Mathematik, Physik und Geodäsie
+
+%%% Powerpoint palette
+\definecolor{fore}{HTML}{0F0F0F} % Text/Hintergrund - dunkel 1
+\definecolor{back}{HTML}{FFFFFF} % Text/Hintergrund - hell 1
+\definecolor{dark}{HTML}{3B5A70} % Text/Hintergrund - dunkel 2
+\definecolor{lite}{HTML}{EEECE1} % Text/Hintergrund - hell 2
+\definecolor{head}{HTML}{245B78} % Web blocks - head/dark
+\definecolor{body}{HTML}{E2E9ED} % Web blocks - body/lite
+\definecolor{urlA}{HTML}{0066D8} % Link
+\definecolor{urlB}{HTML}{6C2F91} % Besuchter Link
+\colorlet   {colA}{tug}          % Akzent 1
+\definecolor{colB}{HTML}{5191C1} % Akzent 2
+\definecolor{colC}{HTML}{A5A5A5} % Akzent 3
+\definecolor{colD}{HTML}{285F82} % Akzent 4
+\definecolor{colE}{HTML}{78B473} % Akzent 5
+\definecolor{colF}{HTML}{E59352} % Akzent 6
+\definecolor{colEold}{HTML}{77BABF} % Akzent 5 OLD
+
+%%% TUG named palette
+\colorlet{tugred}{colA}
+\colorlet{tuggreen}{colE}
+\colorlet{tugblue}{colD}
+\colorlet{tugyellow}{colF}
+\colorlet{tugcyan}{colEold}
+\colorlet{tugpurple}{urlB}
+\colorlet{tugviolet}{chem}
+\colorlet{tugmagenta}{tugpurple}
+\colorlet{tugturquoise}{arch}
+\colorlet{tugbrown}{etec}
+\colorlet{tugteal}{info}
+\colorlet{tugblack}{fore}
+\colorlet{tugwhite}{back}
+\colorlet{tuggray}{colC}
+\colorlet{tuggrey}{tuggray}
+\colorlet{tugdark}{dark}
+\colorlet{tugmid}{colB}
+\colorlet{tuglite}{lite}
+
+\definecolor{IAIKcrypto}{HTML}{A6C947}
+\definecolor{IAIKsystem}{HTML}{1171A8}
+\definecolor{IAIKformal}{HTML}{F7931E}
+\definecolor{IAIKapplied}{HTML}{7D219E}
+\definecolor{IAIKdefault}{HTML}{707070}
+
+
+%%% WARP ATTACK COLORS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\colorlet{colL}{IAIKsystem} % left branch
+\colorlet{colR}{IAIKcrypto} % right branch
+\colorlet{colS}{colF} % initial structure / distinguisher - or etec
+\colorlet{colI}{tug} % initial structure
+%\colorlet{colC}{tuggray} % cancels out in distinguisher
+\colorlet{colK}{tug} % key
+\colorlet{colW}{IAIKapplied} % whitening key
+\colorlet{colP}{IAIKformal} % precomputed new ciphertexts
+
+\newcommand{\lbox}[1]{\textcolor{#1}{\scriptsize$\blacksquare$}}
+
+
+%%% GENERAL CRYPTO UTILS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\providecommand{\cipher}[1]{\texttt{#1}}
+
+
+%%% WARP MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\providecommand{\x}[2]{\ensuremath{x^{(#1)}_{#2}}} %x^{round number}_{bit number}, starting from zero we count the bit number from left to right (0 ... 127)
+\providecommand{\X}[2]{\ensuremath{X^{(#1)}_{#2}}} %X^{round number}_{nibble number}
+\providecommand{\K}[2]{\ensuremath{K^{(#1)}_{#2}}} %K^{b}_{nibble number}, where b takes a value in {0, 1}.
+\providecommand{\Y}[2]{\ensuremath{C^{(#1)}_{#2}}}
+
+\providecommand{\Xs}[2]{\ensuremath{X^{\!(\!#1\!)}_{\!#2}}} %X^{round number}_{nibble number}
+\providecommand{\Ks}[2]{\ensuremath{K^{\!(\!#1\!)}_{\!#2}}} %K^{b}_{nibble number}
+\providecommand{\Cs}[2]{\ensuremath{C^{\!(\!#1\!)}_{\!#2}}} %C^{round number}_{nibble number}
+
+%%% WARP TIKZ STYLES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\colorlet{col}{blue}
+\tikzset{warpfig/.style={warpscale,
+                         very thin,>=latex,
+                         every node/.style={font=\tiny,inner sep=1pt}},
+         warpscale/.style={warpscaletosc},
+         warpscaleprint/.style={xscale=.5,yscale=.4},
+         warpscalelncs/.style={xscale=.38,yscale=.38},
+         warpscaletosc/.style={xscale=.42,yscale=.36},
+         markpath/.style={col,very thick,inner sep=.5pt},
+}
+
+%%% WARP TIKZ MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\warpround}[2]{%
+  % #1 = round number (1..41)
+  % #2 = additional commands
+  \begin{tikzpicture}[warpfig]
+    \coordinate (ptop) at (0,-3);
+    \coordinate (pbot) at (0,-5.5);
+    \pgfmathsetmacro{\keyidx}{int(mod(#1-1,2))}
+    \pgfmathsetmacro{\varidx}{int(#1-1)}
+    \foreach \z [evaluate=\z as \zz using int(2*\z), evaluate=\z as \zzz using int(2*\z+1)] in {0,...,15} {
+      \draw (\zz,0)   node[above] {$\Xs{\varidx}{\zz}$}   ++(-.25,0) coordinate (t\zz);
+      \draw (\zzz,0)  node[above] {$\Xs{\varidx}{\zzz}$}  ++( .25,0) coordinate (t\zzz);
+      \draw (\zz,-6)  %node[below] {$X'_{\!\zz}$} 
+                                                  ++(-.25,0) coordinate (b\zz);
+      \draw (\zzz,-6) %node[below] {$X'_{\!\zzz}$}
+                                                  ++( .25,0) coordinate (b\zzz);
+      \node[box,minimum size=1pt,rounded corners=1pt] (s\z) at (\z*2+.5,-1) {$S$};
+      \coordinate[tee, scale=0.5]               (tee\zz)  at (s\z-|t\zz) ;
+      \coordinate[xor, scale=0.5]               (xor\z)   at (s\z-|t\zzz) ;
+      \coordinate[xor, scale=0.5, yshift=-.75cm] (tee\zzz) at (xor\z);
+      \node (rk\z) at (s\z|-tee\zzz) {$\Ks{\keyidx}{\z}$\!\!\null};
+      \draw[-]  (s\z) -- (xor\z);
+      \draw[->] (t\zz) |- (s\z);
+      \draw[->] (t\zzz) -- (xor\z);
+      \draw[->] (xor\z) -- (tee\zzz);
+      \draw[-]  (rk\z) -- (tee\zzz);
+    }
+    \foreach \z [evaluate=\z as \zzz using int(2*\z+1)] in {0,1} {
+      \coordinate[xor, scale=0.5, yshift=-.5cm] (tec\zzz) at (tee\zzz);
+      \node (rc\z) at (s\z|-tec\zzz) {$\text{rc}_{\z}$\!\!\null};
+      \draw[-] (rc\z) -- (tec\zzz);
+    }
+    \foreach \z/\pz in {0/31, 1/6, 2/29, 3/14, 4/1, 5/12, 6/21, 7/8, 8/27, 9/2, 10/3, 11/0, 12/25, 13/4, 14/23, 15/10, 16/15, 17/22, 18/13, 19/30, 20/17, 21/28, 22/5, 23/24, 24/11, 25/18, 26/19, 27/16, 28/9, 29/20, 30/7, 31/26} {
+      \draw[->,rounded corners=2pt] (tee\z) -- (tee\z|-ptop) -- (b\pz|-pbot) -- (b\pz);
+    }
+    #2
+  \end{tikzpicture}%
+}
+
+\newcommand{\warproundfinal}[2]{%
+  % #1 = round number (1..41)
+  % #2 = additional commands
+  \begin{tikzpicture}[warpfig]
+    \coordinate (ptop) at (0,-3);
+    \coordinate (pbot) at (0,-3);
+    \pgfmathsetmacro{\keyidx}{int(mod(#1-1,2))}
+    \pgfmathsetmacro{\varidx}{int(#1-1)}
+    \foreach \z [evaluate=\z as \zz using int(2*\z), evaluate=\z as \zzz using int(2*\z+1)] in {0,...,15} {
+      \draw (\zz,0)   node[above] {$\Xs{\varidx}{\zz}$}   ++(-.25,0) coordinate (t\zz);
+      \draw (\zzz,0)  node[above] {$\Xs{\varidx}{\zzz}$}  ++( .25,0) coordinate (t\zzz);
+      \draw (\zz,-3)  node[below] {$\Cs{#1}{\zz}$}  ++(-.25,0) coordinate (b\zz);
+      \draw (\zzz,-3) node[below] {$\Cs{#1}{\zzz}$} ++( .25,0) coordinate (b\zzz);
+      \node[box,minimum size=1pt,rounded corners=1pt] (s\z) at (\z*2+.5,-1) {$S$};
+      \coordinate[tee, scale=0.5]               (tee\zz)  at (s\z-|t\zz) ;
+      \coordinate[xor, scale=0.5]               (xor\z)   at (s\z-|t\zzz) ;
+      \coordinate[xor, scale=0.5, yshift=-.75cm] (tee\zzz) at (xor\z);
+      \node (rk\z) at (s\z|-tee\zzz) {$\Ks{\keyidx}{\z}$\!\!\null};
+      \draw[-]  (s\z) -- (xor\z);
+      \draw[->] (t\zz) |- (s\z);
+      \draw[->] (t\zzz) -- (xor\z);
+      \draw[->] (xor\z) -- (tee\zzz);
+      \draw[-]  (rk\z) -- (tee\zzz);
+    }
+    \foreach \z [evaluate=\z as \zzz using int(2*\z+1)] in {0,1} {
+      \coordinate[xor, scale=0.5, yshift=-.5cm] (tec\zzz) at (tee\zzz);
+      \node (rc\z) at (s\z|-tec\zzz) {$\text{rc}_{\z}$\!\!\null};
+      \draw[-] (rc\z) -- (tec\zzz);
+    }
+    \foreach \z/\pz in {0/31, 1/6, 2/29, 3/14, 4/1, 5/12, 6/21, 7/8, 8/27, 9/2, 10/3, 11/0, 12/25, 13/4, 14/23, 15/10, 16/15, 17/22, 18/13, 19/30, 20/17, 21/28, 22/5, 23/24, 24/11, 25/18, 26/19, 27/16, 28/9, 29/20, 30/7, 31/26} {
+      \draw[->,rounded corners=2pt] (tee\z) -- (b\z);
+    }
+    #2
+  \end{tikzpicture}
+}
+
+\newcommand{\markbranches}[2][col]{%
+  \foreach \z/\pz in {#2} {
+    \draw[markpath,#1,->,rounded corners=2pt] (t\z) -- (tee\z|-ptop) -- (b\pz|-pbot) -- (b\pz);
+    \node[markpath,#1,fill,fill opacity=.2,above] at (\z,0) {\phantom{$\Xs{0}{00}$}};
+  }
+}
+
+\newcommand{\marksboxes}[2][col]{%
+  \foreach \s/\z/\pz in {#2} {
+    \draw[markpath,#1] (s\s) -- (xor\s);
+    \node[markpath,#1,box,minimum size=1pt,rounded corners=1pt] at (s\s) {$S$};
+    \draw[markpath,#1,->,rounded corners=2pt] (s\s) -- (tee\z) coordinate[tee, scale=.5] -- (tee\z|-ptop) -- (b\pz|-pbot) -- (b\pz);
+    \node[markpath,#1,circle,draw,draw opacity=.5] at (rk\s) {$\Ks{\phantom{0}}{\s}$\!\!\null}; % TODO
+    \draw[markpath,#1] (xor\s)       coordinate[xor,scale=0.5];
+    \draw[markpath,#1] (xor\s|-rk\s) coordinate[xor,scale=0.5] -- (rk\s);
+  }
+}
+
+\newcommand{\markoutputs}[2][col]{%
+  \foreach \z in {#2} {
+    \node[markpath,#1,fill,fill opacity=.2,below] at (\z,-3) {\phantom{$\Cs{0}{00}$}};
+  }
+}
+

@@ -1,0 +1,1561 @@
+\documentclass[table,aspectratio=169]{beamer}
+%% Choose aspect ratio:
+% [aspectratio=43]  % 4:3 (default)
+% [aspectratio=169] % 16:9, wide
+
+\usetheme[minimal, nofont, noheadline]{tugraz2018}
+% \usetheme[iaik,]{tugraz2018}
+%% Choose main theme variant:
+% [standard]        % standard (default)
+% [iaik]       % with institute's graphical acronym on the left
+% [minimal]         % with reduced visuals
+
+%% Choose your font style:
+%                   % Helvetica (default for Corporate Design)
+% [webfont]         % Source Sans Pro (as used on tugraz.at)
+% [nofont]          % no font loaded - Computer Modern Sans
+
+%% Choose your department's color instead of TU Graz tugred (optional):
+% [arch]            % 
+% [bau]             %
+% [etit]            %
+% [mbww]            %
+% [tcvp]            %
+% [mpug]            %
+% [infbio]          %
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+%% Choose your language:
+% [ngerman]   % German
+% [english]   % English
+
+
+%% Add your own packages, macros, etc.
+\usepackage{xcolor,colortbl}
+\usepackage{mathtools}
+\usepackage{booktabs,nicematrix}
+\usepackage{rotating}
+\usepackage[style=alphabetic,backend=biber]{biblatex} % Bibliography
+\addbibresource{\jobname.bib}                         % Bibliography
+\usepackage{fontawesome}
+\usepackage{filecontents}
+\usepackage{setspace}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{bm}
+\usepackage{pgfplots}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{framed, color}
+\usepackage{tikz}
+\usetikzlibrary{calc,patterns, arrows.meta, shapes.geometric, positioning, decorations.markings, decorations.pathmorphing}
+\usetikzlibrary{cipher}
+\usepackage{skinny}
+\usepackage{tugcolors}
+\usepackage{skinnyzero} % definitions for figures: colors, etc
+\setbeamersize
+{
+	text margin left=0.4cm,
+	text margin right=0.4cm
+}
+
+%% Enter presentation metadata
+\title{Finding the Impossible:\\
+{Automated Search for Full Impossible-Differential, Zero-Correlation, and Integral Attacks}}
+\author{\underline{\textbf{Hosein Hadipour}} \and Sadegh Sadeghi \and Maria Eichlseder}
+\date{EUROCRYPT 2023 - Lyon, France}
+%\institute{IAIK}
+\instituteurl{hossein.hadipour@iaik.tugraz.at}
+
+%% Logos
+%\institutelogo{beamerthemetugraz/institute/IAIK}  % graphical acronym for [] theme (left margin)
+% \additionallogo{figures/logo}  % additional institute/department logo (footline; optional)
+% \logobar{Supported by: ...}  % sponsors (titlepage; optional)
+
+%% Macros
+%%% commands to represent CSP/COP variables/constraints%%%
+\newcommand{\ax}{\texttt{AX}\xspace} %AX
+\newcommand{\ay}{\texttt{AY}\xspace} %AY
+\newcommand{\az}{\texttt{AZ}\xspace} %AZ
+\newcommand{\aw}{\texttt{AW}\xspace} %AW
+\newcommand{\dx}{\texttt{DX}\xspace} %DX
+\newcommand{\lx}{\texttt{LX}\xspace} %LX
+\newcommand{\dy}{\texttt{DY}\xspace} %DY
+\newcommand{\ly}{\texttt{LY}\xspace} %LY
+\newcommand{\dz}{\texttt{DZ}\xspace} %DZ
+\newcommand{\lz}{\texttt{LZ}\xspace} %LZ
+\newcommand{\dw}{\texttt{DW}\xspace} %DW
+\newcommand{\lw}{\texttt{LW}\xspace} %LW
+\newcommand{\kx}{\texttt{KX}\xspace} %KX
+\newcommand{\ky}{\texttt{KY}\xspace} %KY
+\newcommand{\dtk}{\texttt{DTK}\xspace} %DTK
+\newcommand{\dstk}{\texttt{DSTK}\xspace} %DSTK
+
+\newcommand{\axu}{\texttt{AXU}\xspace} %AXU
+\newcommand{\ayu}{\texttt{AYU}\xspace} %AYU
+\newcommand{\azu}{\texttt{AZU}\xspace} %AZU
+\newcommand{\dxu}{\texttt{DXU}\xspace} %DXU
+\newcommand{\dyu}{\texttt{DYU}\xspace} %DYU
+\newcommand{\dzu}{\texttt{DZU}\xspace} %DZU
+\newcommand{\lxu}{\texttt{LXU}\xspace} %LXU
+\newcommand{\axl}{\texttt{AXL}\xspace} %AXL
+\newcommand{\ayl}{\texttt{AYL}\xspace} %AYL
+\newcommand{\azl}{\texttt{AZL}\xspace} %AZL
+\newcommand{\dxl}{\texttt{DXL}\xspace} %DXL
+\newcommand{\dyl}{\texttt{DYL}\xspace} %DYL
+\newcommand{\dzl}{\texttt{DZL}\xspace} %DZL
+\newcommand{\lxl}{\texttt{LXL}\xspace} %LXL
+\newcommand{\astk}{\texttt{ASTK}\xspace} %ASTK
+
+\newcommand{\axb}{\texttt{AXB}\xspace} %AXB
+\newcommand{\azb}{\texttt{AZB}\xspace} %AZB
+\newcommand{\kxb}{\texttt{KXB}\xspace} %KXB
+\newcommand{\kyb}{\texttt{KYB}\xspace} %KYB
+\newcommand{\kdx}{\texttt{KDX}\xspace} %KDX
+\newcommand{\kdy}{\texttt{KDY}\xspace} %KDY
+\newcommand{\kdxb}{\texttt{KDXB}\xspace} %KDXB
+\newcommand{\kdzb}{\texttt{KDZB}\xspace} %KDZB
+\newcommand{\cb}{\texttt{CB}\xspace} %CB
+\newcommand{\ikb}{\texttt{IKB}\xspace} %IKB
+
+\newcommand{\axf}{\texttt{AXF}\xspace} %AXF
+\newcommand{\azf}{\texttt{AZF}\xspace} %AZB
+\newcommand{\kxf}{\texttt{KXF}\xspace} %KXF
+\newcommand{\kyf}{\texttt{KYF}\xspace} %KYF
+\newcommand{\kdxf}{\texttt{KDXF}\xspace} %KDXF
+\newcommand{\kdzf}{\texttt{KDZF}\xspace} %KDZF
+\newcommand{\cf}{\texttt{CF}\xspace} %CF
+\newcommand{\ikf}{\texttt{IKF}\xspace} %IKF
+
+\newcommand{\ik}{\texttt{IK}\xspace} %IK
+\newcommand{\ke}{\texttt{KE}\xspace} %KE
+\newcommand{\ks}{\texttt{KS}\xspace} %KS
+
+\newcommand{\D}{\texttt{D}\xspace} %Data complexity D[0], D[1]
+\newcommand{\T}{\texttt{T}\xspace} %Time complexity T[0], T[1], T[2], T[3]
+\newcommand{\W}{\texttt{W}\xspace} %hamming weight of IO differences
+\newcommand{\gp}{\texttt{g}\xspace} %g parameter
+\newcommand{\C}{\texttt{C}\xspace} %c parameters c\In, c\Out
+\newcommand{\s}{\texttt{c}\xspace} %s: cell size in our CP formulas
+\newcommand{\z}{\texttt{z}\xspace} %z: number of tweakey paths in SKINNY
+\newcommand{\blocksize}{\texttt{n}\xspace} %block size in our CP models
+\newcommand{\ksize}{\texttt{k}\xspace} %key size in our CP models
+
+\newcommand{\cp}[1]{\textit{\texttt{#1}}\xspace} % CP x
+\newcommand{\csp}{\textit{\texttt{CSP}}\xspace} % CSP problem
+\newcommand{\cop}{\textit{\texttt{COP}}\xspace} % COP problem
+\newcommand{\cpmodel}{\mathcal{M}\xspace} % CP model M
+\newcommand{\cpvars}{\mathcal{M}.\texttt{var}\xspace} % CP variables
+\newcommand{\cpcons}{\mathcal{M}.\texttt{con}\xspace} % CP constraints
+\newcommand{\cpobj}{\mathcal{M}.\texttt{obj}\xspace} % CP objective
+\newcommand{\booltoint}{\textit{\texttt{bool2int}}\xspace} % CP bool2int operator
+\newcommand{\cpif}{\textit{\texttt{if}}\xspace} % CP If
+\newcommand{\cpthen}{\textit{\texttt{then}}\xspace} % CP Then
+\newcommand{\cpelse}{\textit{\texttt{else}}\xspace} % CP Else
+\newcommand{\cpelseif}{\textit{\texttt{elseif}}\xspace} % CP Elseif
+\newcommand{\cpendif}{\textit{\texttt{endif}}\xspace} % CP Endif
+
+\newcommand{\cplink}{\textit{\texttt{Link}}\xspace} % CP Link
+\newcommand{\cpxor}{\textit{\texttt{XOR}}\xspace} % CP XOR
+\newcommand{\cpsbox}{\textit{\texttt{S-box}}\xspace} % CP S-box
+\newcommand{\cpmds}{\textit{\texttt{MDS}}\xspace} % CP MDS
+\newcommand{\cpbranch}{\textit{\texttt{Branch}}\xspace} % CP Branching
+\newcommand{\cptrue}{\textit{\texttt{True}}\xspace} % CP True
+\newcommand{\cpfalse}{\textit{\texttt{False}}\xspace} % CP False
+\newcommand{\cplog}{\textit{\texttt{LG}}\xspace} % CP Log(g) - 0.53
+\newcommand{\cpmax}{\textit{\texttt{max}}\xspace} % CP Max
+\newcommand{\cpmin}{\textit{\texttt{min}}\xspace} % CP Min
+\newcommand{\cpmdiff}{\textit{\texttt{Mdiff}}\xspace} % CP Mdiff
+\newcommand{\cpminvdiff}{\textit{\texttt{Minvdiff}}\xspace} % CP Minvdiff
+\newcommand{\cpmlin}{\textit{\texttt{Mlin}}\xspace} % CP Mlin
+\newcommand{\cpminvlin}{\textit{\texttt{Minvlin}}\xspace} % CP Minvlin
+\newcommand{\cpmdata}{\textit{\texttt{Mdata}}\xspace} % CP Mdata
+\newcommand{\cpminvdata}{\textit{\texttt{Minvdata}}\xspace} % CP Minvdata
+
+
+% notation for ID and figures
+\newcommand{\In}{_{\textsc{b}}} % input difference of Ei (initial key-recovery rounds)
+\newcommand{\Out}{_{\textsc{f}}} % output difference of Eo (final key-recovery rounds)
+\newcommand{\Up}{_{\textsc{u}}} % input difference of Eu (initial distinguisher rounds)
+\newcommand{\Low}{_{\textsc{l}}} % output difference of El (final distinguisher rounds)
+\newcommand{\Dist}{_{\textsc{d}}} % distinguisher rounds Eu, El (middle)
+\newcommand{\KB}{_{\textsc{KB}}} % Key-Bridging
+\newcommand{\GD}{_{\textsc{GD}}} % Guess-and-Determine
+\newcommand{\DP}{_{\textsc{DP}}} % Difference Propagation
+\newcommand{\Off}{_{\text{off}}} % offset for round counter in Eu, El, and Ef
+\newcommand{\Tot}{_\textit{Tot}}
+\newcommand{\STK}{\textit{STK}}
+\newcommand{\ETK}{\textit{ETK}}
+\newcommand{\TK}{\textit{TK}}
+\newcommand{\lane}{\textit{Lane}}
+\newcommand{\cs}{c} % indicates the cell size in the main body
+\newcommand{\as}{m} % indicates the state array size in the main body
+
+\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
+
+\makeatletter
+\NewDocumentCommand{\DrawBox}{s O{}}{%
+    \tikz[overlay,remember picture]{
+    \IfBooleanTF{#1}{%
+        \coordinate (RightPoint) at ($(left |- right)+(\linewidth-\labelsep-\labelwidth,0.0)$);
+    }{%
+        \coordinate (RightPoint) at (right.east);
+    }%
+    \draw[red,#2]
+      ($(left)+(-0.2em,0.9em)$) rectangle
+      ($(RightPoint)+(0.2em,-0.3em)$);}
+}
+
+\NewDocumentCommand{\DrawBoxWide}{s O{}}{%
+    \tikz[overlay,remember picture]{
+    \IfBooleanTF{#1}{%
+        \coordinate (RightPoint) at ($(left |- right)+(\linewidth-\labelsep-\labelwidth,0.0)$);
+    }{%
+        \coordinate (RightPoint) at (right.east);
+    }%
+    \draw[red,#2]
+      ($(left)+(-\labelwidth,0.9em)$) rectangle
+      ($(RightPoint)+(0.2em,-0.3em)$);}
+}
+
+\newcommand{\sparen}{\vspace*{-.3cm}}
+
+\makeatother
+
+\begin{document}
+
+\begin{frame}[plain]
+  \maketitle
+\end{frame}
+
+\begin{frame}{Research Gap and Our Contributions}
+\begin{itemize}
+	\item<1->[\faBinoculars] Research gap
+	\begin{itemize}
+		\item[\faCheckCircleO] Lack of automatic tool to find full ID/ZC, and integral attacks
+	\end{itemize}
+	\item<2->[\faDiamond] Contributions
+	\begin{itemize}
+		\item<2->[\faCheckCircle] Introduced a new CP-based method to find ID/ZC, and integral distinguishers
+		\item<2->[\faCheckCircle] Our CP model can be extended to an efficient unified model for key recovery
+		\item<2->[\faCheckCircle] Found improved attacks for \cipher{SKINNY}, \cipher{CRAFT}, \cipher{SKINNYee}, and \cipher{SKINNYe-v2}
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Part of Our Result}
+\vspace{-0.6cm}
+\begin{table}
+  \centering
+  \newcommand{\ph}{\phantom{.00}}
+  \resizebox{0.8\textwidth}{!}{%
+  \begin{tabular}{@{}lcccclr@{~/~}ll@{}}
+      \toprule
+      Cipher                                     & \#R            & Time             & Data         & Mem.            & Attack               & Setting & Model & Ref.\\
+      %sample
+      %\multirow{4}{*}{cipher}                   % \bf 32         & $2^{127\ph}$     & $2^{127\ph}$ & $2^{108\ph}$    & Integral             & STK      & CP    & \ref{}\\
+      \midrule
+      \multirow{2}{*}{\cipher{SKINNY}-64-192}
+                                                  & 23 & $2^{155.60}$     & $2^{73.20}$  & $2^{138\ph}$    & Int       & 180,SK   & CP,CT & \cite{tosc_AnkeleDGLGY2019}\\                                                                                                 
+                                                  & \bf 26         & $2^{172\ph}$     & $2^{61\ph}$  & $2^{172\ph}$    & Int                  & 180,SK   & CP,CT & This paper\\
+      % \midrule
+      % \multirow{2}{*}{\cipher{SKINNY}-128-384}   
+      %                                             & 27             & $2^{378\ph}$     & $2^{126.03}$ & $2^{368\ph}$    & ID                   & RTK      & CP    & \cite{journals_tosc_LiuGL17}\\
+      %                                             & 27             & $\bf 2^{362.61}$ & $2^{124.99}$ & $2^{344\ph}$    & ID                   & RTK      & CP    & This paper\\
+      \midrule
+      \multirow{4}{*}{\cipher{SKINNY}-64-128}   
+                                                  & 18             & $2^{126\ph}$     & $2^{62.68}$  & $2^{64\ph}$     & ZC                   & STK      & KP    & \cite{tosc_SadeghiMB18}\\
+                                                  & \bf 19         & $2^{119.12}$     & $2^{62.89}$  & $2^{49\ph}$     & ZC                   & STK      & KP    & This paper\\
+                                                  & 20             & $2^{97.50}$      & $2^{68.40}$  & $2^{82\ph}$     & Int                  & 120,SK   & CP,CT & \cite{tosc_AnkeleDGLGY2019}\\                                                                                                 
+                                                  & \bf 22         & $2^{110\ph}$     & $2^{57.58}$  & $2^{108\ph}$    & Int                  & 120,SK   & CP,CT & This paper\\
+      \midrule
+      \multirow{2}{*}{\cipher{SKINNY}-128-256}
+                                                  & 19             & $2^{241.80}$     & $2^{123\ph}$ & $2^{221\ph}$    & ID                   & STK      & CP    & \cite{iet_YangQC17}\\
+                                                  & 19             & \textbf{$2^{219.23}$} & $2^{117.86}$ & $2^{208\ph}$    & ID                   & STK      & CP    & This paper\\
+      \midrule
+      \multirow{2}{*}{\cipher{SKINNY}-64-64}    
+                                                  & 14             & $2^{62\ph}$      & $2^{62.58}$  & $2^{64\ph}$     & ZC                   & STK      & KP    & \cite{tosc_SadeghiMB18}\\
+                                                  & \bf 16         & $2^{62.71}$      & $2^{61.35}$  & $2^{37.80}$     & ZC                   & STK      & KP    & This paper\\
+      \midrule
+      \multirow{2}{*}{\cipher{CRAFT}}
+                                                  & \bf 20         & $2^{120.43}$          & $2^{62.89}$      & $2^{49\ph}$         & ZC                   & STK      & KP & This paper\\
+                                                  & \bf 21         & $2^{106.53}$          & $2^{60.99}$      & $2^{100\ph}$         & ID                   & STK      & CP & This paper\\
+      % \midrule
+      % \multirow{2}{*}{\cipher{SKINNYee}}
+      %                                             & \bf 26         & $2^{113\ph}$      & $2^{66\ph}$  & $2^{108\ph}$    & Int                  & SK       & CP,CT & This paper\\
+      %                                             \cmidrule{2-9}
+      %                                             & \bf 27         & $2^{123.04}$          & $2^{62.79}$      & $2^{108\ph}$         & ID                   & RTK      & CP & This paper\\
+                                                  
+      % \midrule
+      % \multirow{1}{*}{\cipher{SKINNYe-v2}}
+      %                                             & \bf 30         & $2^{232\ph}$     & $2^{65\ph}$  & $2^{228\ph}$    & Int                  & 240,SK  & CP,CT & \ref{subsubsec:skinny_int_4n}\\
+      \bottomrule
+  \end{tabular}}
+\end{table}
+\end{frame}
+
+\section*{}
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+
+\section{Background and the Research Gap}
+\sectionheader[\huge\color{tug}\faBook]{Background and the Research Gap}
+
+\begin{frame}{\cipher{SKINNY} Family of Tweakable Block Ciphers \cite{skinny}}
+\begin{figure}
+\centering
+\begin{tikzpicture}[cellopts/.append style={font=\scriptsize}, xscale=1.05, yscale=1.1]
+  \SkinnyInit{}{}{}{}
+  \SkinnyRoundTK[r] % round number
+                {\Cell{s0} {\ttfamily 0}\Cell{s1} {\ttfamily 1}\Cell{s2} {\ttfamily 2}\Cell{s3} {\ttfamily 3}
+                  \Cell{s4} {\ttfamily 4}\Cell{s5} {\ttfamily 5}\Cell{s6} {\ttfamily 6}\Cell{s7} {\ttfamily 7}
+                  \Cell{s8} {\ttfamily 8}\Cell{s9} {\ttfamily 9}\Cell{s10}{\ttfamily a}\Cell{s11}{\ttfamily b}
+                  \Cell{s12}{\ttfamily c}\Cell{s13}{\ttfamily d}\Cell{s14}{\ttfamily e}\Cell{s15}{\ttfamily f}}
+                {\fill[gray!15] (ss00) ++(-.5,.5) rectangle +(4,-2);}{}{} % tk[1,2,3]
+                {\fill[gray!15] (ss00) ++(-.5,.5) rectangle +(4,-2);} % states (after subcells)
+                {\fill[gray!15] (ss00) ++(-.5,.5) rectangle +(4,-2);}{} % states (after addtweakey, shiftrows)
+
+  \SkinnyFin[r+1]{}
+\end{tikzpicture}
+\end{figure}
+\begin{itemize}
+  \small
+  \item Introduced in CRYPTO~2016 \cite{skinny}
+  \item It has 6 main variants: \cipher{SKINNY}-$n$-$z\cdot\!n$, where $n\in \{64, 128\}$, and $z\in \{1, 2, 3\}$
+  \item ISO/IEC 18033-7: \cipher{SKINNY}-64-192, \cipher{SKINNY}-128-256, \cipher{SKINNY}-128-384
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Impossible Differential Attack \cite{eurocrypt_BihamBS99, knudsen1998deal}}
+\begin{columns}[onlytextwidth]
+\column[c]{0.6\textwidth}
+\sparen
+\begin{itemize}
+\small
+\item Find an impossible-differential \textcolor{tugred}{$\Delta\Up \not\to \Delta\Low$}
+\item Build a key-recovery attack
+\begin{itemize}
+\item Create a pool of pairs satisfying $(\Delta\In, \Delta\Out)$
+\item For all $k \in \textcolor{tugred}{k\In \cup k\Out}$:
+\begin{itemize}
+\item If a pair suggests $(\Delta\Up, \Delta\Low)$, discard $k$ 
+\end{itemize}
+\item Brute force the remaining key candidates
+\end{itemize}
+\end{itemize}
+\column[c]{0.4\textwidth}
+\centering
+\begin{tikzpicture}[xscale=1.1, yscale=1.1]  
+\draw   (0,2.5)    coordinate (M)
+    (0,1.4)   coordinate (X1)
+		(0,1.3)   coordinate (X)
+		(0,-1.3)  coordinate (Y)
+    (0, -1.4) coordinate (Y1)
+		(0,-2.5)   coordinate (C)
+		(-1.4,0) coordinate (w)
+		(1.4,0)  coordinate (e)
+	(w)+(.1,0)   coordinate (a) % round arrows
+  (e)+(-0.1,0) coordinate (b);
+\draw[rounded corners=2pt] (w|-X) rectangle (e|-Y) node[pos=0.5] {\textcolor{tugred}{$\Delta\Up \not\to \Delta\Low$}};
+\draw[rounded corners=2pt] (w|-M) rectangle (e|-X1);
+\draw[rounded corners=2pt] (w|-Y1) rectangle (e|-C);
+% \draw[dashed] (w|-X) -- (e|-X)
+% 				(w|-Y) -- (e|-Y);
+\draw (M) node[above] {$\Delta\In$}
+		(X) node[below] {$\Delta\Up$}
+		(Y) node[above] {$\Delta\Low$}
+		(C) node[below] {$\Delta\Out$};
+\begin{scope}[>=latex, ->, shorten <=2pt, shorten >=2pt, font=\footnotesize]
+	\draw[fill=tuggray, overlay, opacity=0.6] ($(X) - (0.1, 0)$) -- ($(X) + (0.1, 0)$) -- ($(X1) + (0.1, 0)$) -- ($(M) + (1.2, 0)$) -- ($(M) - (1, 0)$) -- ($(X1) - (0.1, 0)$) -- cycle;
+	\draw[fill=tuggray, overlay, opacity=0.6] ($(Y) - (0.05, 0)$) -- ($(Y) + (0.15, 0)$) -- ($(Y1) + (0.15, 0)$) -- ($(C) + (1.1, 0)$) -- ($(C) - (1.1, 0)$) -- ($(Y1) - (0.05, 0)$) -- cycle;
+	% \draw[] (a|-M) -- node[right] {\!$\textcolor{black}{2^{-c\In}}$} (a|-X1);
+	% \draw[] (a|-C) -- node[right] {\!$\textcolor{black}{2^{-c\Out}}$}  (a|-Y1);
+  % \draw[tugblue] (b|-X1) -- node[left] {\!$1$} (b|-M);
+  % \draw[tugblue] (b|-Y1) -- node[left] {\!$1$} (b|-C);
+\end{scope}
+\draw[font=\footnotesize] (X) node[above=0.5cm] {\textcolor{tugred}{$k\In$}}
+							(Y) node[below=0.5cm] {\textcolor{tugred}{$k\Out$}};
+\begin{scope}[decoration={brace, amplitude=4pt, raise=2pt}]
+	\draw[decorate] (e|-X) -- node[right=8pt] {$r\Dist$} (e|-Y);
+	\draw[decorate] (e|-M) -- node[right=8pt] {$r\In$} (e|-X1);
+	\draw[decorate] (e|-Y1) -- node[right=8pt] {$r\Out$} (e|-C);
+\end{scope}
+\end{tikzpicture}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Miss-in-the-Middle Technique \cite{eurocrypt_BihamBS99}}
+\vspace{-0.6cm}
+% \begin{itemize}
+% \small
+% \item Find two differences (linear masks) that propagate forward and backward with probability one and contradict each other in the middle
+% \end{itemize}
+
+\begin{figure}
+% \vspace{-0.5cm}
+\centering
+\resizebox{0.9\linewidth}{!}{
+\begin{tikzpicture}
+\SkinnyInit{}{}{}{} % init coordinates, print labels
+
+\SkinnyRoundTK[0]
+        {\visible<2->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[nonzeroany]{s2}\FillCell[nonzeroany]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[nonzeroany]{s12}\FillCell[white]{s13}\FillCell[white]{s14}\FillCell[nonzeroany]{s15}}} % state (input)
+        {\Cell{s0}{\texttt{0}}\Cell{s1}{\texttt{1}}\Cell{s2}{\texttt{2}}\Cell{s3}{\texttt{3}}\Cell{s4}{\texttt{4}}\Cell{s5}{\texttt{5}}\Cell{s6}{\texttt{6}}\Cell{s7}{\texttt{7}}} % tk[1]
+        {} % tk[2]
+        {} % tk[3]
+        {\visible<3->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[nonzeroany]{s2}\FillCell[nonzeroany]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[nonzeroany]{s12}\FillCell[white]{s13}\FillCell[white]{s14}\FillCell[nonzeroany]{s15}}} % state (after subcells)
+        {\visible<4->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[nonzeroany]{s2}\FillCell[nonzeroany]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[nonzeroany]{s12}\FillCell[white]{s13}\FillCell[white]{s14}\FillCell[nonzeroany]{s15}}} % state (after addtweakey)
+        {\visible<5->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[nonzeroany]{s2}\FillCell[nonzeroany]{s3}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[white]{s4}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[nonzeroany]{s15}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[nonzeroany]{s14}}} % state (after shiftrows)
+
+\SkinnyRoundTK[1]
+        {\visible<6->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[nonzeroany]{s6}\FillCell[nonzeroany]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[nonzeroany]{s14}\FillCell[nonzeroany]{s15}}} % state (input)
+        {\Cell{s0}{\texttt{9}}\Cell{s1}{\texttt{f}}\Cell{s2}{\texttt{8}}\Cell{s3}{\texttt{d}}\Cell{s4}{\texttt{a}}\Cell{s5}{\texttt{e}}\Cell{s6}{\texttt{c}}\Cell{s7}{\texttt{b}}} % tk[1]
+        {} % tk[2]
+        {} % tk[3]
+        {\visible<7->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[nonzeroany]{s6}\FillCell[nonzeroany]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[nonzeroany]{s14}\FillCell[nonzeroany]{s15}}} % state (after subcells)
+        {\visible<8->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[nonzeroany]{s6}\FillCell[nonzeroany]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[nonzeroany]{s14}\FillCell[nonzeroany]{s15}}} % state (after addtweakey)
+        {\visible<9->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[nonzeroany]{s7}\FillCell[nonzeroany]{s4}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s15}\FillCell[white]{s12}\FillCell[nonzeroany]{s13}\FillCell[nonzeroany]{s14}}} % state (after shiftrows)
+
+\SkinnyNewLine[2]{\visible<10->{\FillCell[white]{s0}\FillCell[nonzeroany]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[nonzeroany]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[nonzeroany]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after mixcols)
+\SkinnyRoundTK[2]
+        {\visible<11->{\FillCell[white]{s0}\FillCell[nonzeroany]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[nonzeroany]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[nonzeroany]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (input)
+        {\Cell{s0}{\texttt{1}}\Cell{s1}{\texttt{7}}\Cell{s2}{\texttt{0}}\Cell{s3}{\texttt{5}}\Cell{s4}{\texttt{2}}\Cell{s5}{\texttt{6}}\Cell{s6}{\texttt{4}}\Cell{s7}{\texttt{3}}} % tk[1]
+        {} % tk[2]
+        {} % tk[3]
+        {\visible<12->{\FillCell[white]{s0}\FillCell[nonzeroany]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[nonzeroany]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[nonzeroany]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after subcells)
+        {\visible<13->{\FillCell[white]{s0}\FillCell[nonzeroany]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[nonzeroany]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[nonzeroany]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after addtweakey)
+        {\visible<14->{\FillCell[white]{s0}\FillCell[nonzeroany]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s4}\FillCell[nonzeroany]{s10}\FillCell[white]{s11}\FillCell[white]{s8}\FillCell[nonzeroany]{s9}\FillCell[white]{s15}\FillCell[white]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}}} % state (after shiftrows)
+
+\SkinnyMismatchAligned[3]{\visible<14->{\FillCell[white]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[nonzeroany]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[nonzeroany]{s9}\FillCell[nonzeroany]{s10}\FillCell[unknown]{s11}\FillCell[white]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after mixcols)
+\SkinnyRoundTK[3]
+        {\visible<14->{\FillCell[nonzeroany]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (input)
+        {\Cell{s0}{\texttt{f}}\Cell{s1}{\texttt{b}}\Cell{s2}{\texttt{9}}\Cell{s3}{\texttt{e}}\Cell{s4}{\texttt{8}}\Cell{s5}{\texttt{c}}\Cell{s6}{\texttt{a}}\Cell{s7}{\texttt{d}}} % tk[1]
+        {} % tk[2]
+        {} % tk[3]
+        {\visible<13->{\FillCell[nonzeroany]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after subcells)
+        {\visible<12->{\FillCell[nonzeroany]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after addtweakey)
+        {\visible<11->{\FillCell[nonzeroany]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s4}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s15}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}}} % state (after shiftrows)
+
+\SkinnyNewLine[3]{\visible<11->{\FillCell[unknown]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[nonzeroany]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[nonzeroany]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after mixcols)
+\SkinnyRoundTK[3]
+        {\visible<10->{\FillCell[unknown]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[nonzeroany]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[nonzeroany]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (input)
+        {\Cell{s0}{\texttt{7}}\Cell{s1}{\texttt{3}}\Cell{s2}{\texttt{1}}\Cell{s3}{\texttt{6}}\Cell{s4}{\texttt{0}}\Cell{s5}{\texttt{4}}\Cell{s6}{\texttt{2}}\Cell{s7}{\texttt{5}}} % tk[1]
+        {} % tk[2]
+        {} % tk[3]
+        {\visible<9->{\FillCell[unknown]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[nonzeroany]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[nonzeroany]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after subcells)
+        {\visible<8->{\FillCell[unknown]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[nonzeroany]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[nonzeroany]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after addtweakey)
+        {\visible<7->{\FillCell[unknown]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[nonzeroany]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s4}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s8}\FillCell[nonzeroany]{s9}\FillCell[unknown]{s15}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}}} % state (after shiftrows)
+
+\SkinnyRoundTK[5]
+        {\visible<6->{\FillCell[unknown]{s0}\FillCell[unknown]{s1}\FillCell[white]{s2}\FillCell[white]{s3}\FillCell[unknown]{s4}\FillCell[white]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[nonzeroany]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (input)
+        {\Cell{s0}{\texttt{b}}\Cell{s1}{\texttt{d}}\Cell{s2}{\texttt{f}}\Cell{s3}{\texttt{c}}\Cell{s4}{\texttt{9}}\Cell{s5}{\texttt{a}}\Cell{s6}{\texttt{8}}\Cell{s7}{\texttt{e}}} % tk[1]
+        {} % tk[2]
+        {} % tk[3]
+        {\visible<5->{\FillCell[unknown]{s0}\FillCell[unknown]{s1}\FillCell[white]{s2}\FillCell[white]{s3}\FillCell[unknown]{s4}\FillCell[white]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[nonzeroany]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after subcells)
+        {\visible<4->{\FillCell[unknown]{s0}\FillCell[unknown]{s1}\FillCell[white]{s2}\FillCell[white]{s3}\FillCell[unknown]{s4}\FillCell[white]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[nonzeroany]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after addtweakey)
+        {\visible<3->{\FillCell[unknown]{s0}\FillCell[unknown]{s1}\FillCell[white]{s2}\FillCell[white]{s3}\FillCell[unknown]{s5}\FillCell[white]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s4}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s15}\FillCell[nonzeroany]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}}} % state (after shiftrows)
+
+\SkinnyFin[6]{\visible<2->{\FillCell[white]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s4}\FillCell[unknown]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[white]{s10}\FillCell[unknown]{s11}\FillCell[nonzeroany]{s12}\FillCell[unknown]{s13}\FillCell[white]{s14}\FillCell[white]{s15}}} % state (after mixcols)
+\ZeroLegend{\ZLfill{white}{zero}
+\ZLfill{nonzeroany}{nonzero}
+\ZLfill{unknown}{any}}
+\end{tikzpicture}
+}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Previous Tools for ID/ZC, and Integral Attacks}
+\vspace{-1cm}
+\begin{columns}[onlytextwidth]
+\column{0.65\textwidth}
+\begin{itemize}
+\item Tools based on dedicated algorithms:
+\begin{itemize}
+\item CRYPTO~2016 ($\mathcal{DC}$-MITM, ID) \cite{crypto_DerbezF16}
+\end{itemize}
+\item Tools based on general purpose solvers:
+\begin{itemize}
+\item Eprint~2016 (ID) \cite{eprint_Cui}
+\item ASIACRYPT~2016 (Integral) \cite{asiacrypt_XiangZBL16}
+\item EUROCRYPT~2017 (ID, ZC) \cite{eurocrypt_SasakiTodo2017}
+\item ToSC~2017 (ID, ZC) \cite{tosc_SunGLYTQH2017}
+\item ToSC~2020 (ID, ZC) \cite{tosc_SunGWW2020}
+\end{itemize}
+\end{itemize}
+\column{0.35\textwidth}
+\begin{figure}
+\centering
+\begin{tikzpicture}[xscale=1.1, yscale=1.1]
+\draw
+  (0,2.3) coordinate (T)
+  (0,2.2)   coordinate (X1)
+  (0,2)   coordinate (X)
+  (0,1.5) coordinate (X2)
+  (0,-1.5) coordinate (Y2)
+  (0,-2)  coordinate (Y)
+  (0, -2.2) coordinate (Y1)
+  (-1.4,0) coordinate (w)
+  (1.4,0)  coordinate (e)
+(w)+(.1,0)   coordinate (a) % round arrows
+(e)+(-0.1,0) coordinate (b);
+\draw[rounded corners=2pt] (w|-X1) rectangle (e|-Y1) node[pos=0.5] {};
+\draw[rounded corners=2pt] (w|-X1) rectangle (e|-X) node[pos=0.5] {};
+\draw[rounded corners=2pt] (w|-Y) rectangle (e|-Y1) node[pos=0.5] {};
+\begin{scope}[>=latex, ->, font=\footnotesize]
+\draw[<->, dashed] (w.west|-T) -- node[above] {$n$} (e.east|-T);
+\end{scope}
+\begin{scope}[>=latex, ->, decorate,decoration={snake,amplitude=.4mm,segment length=2mm,post length=1mm}]
+\draw[->,decorate,decoration=snake] (X2) -- node[right] {\faQuestionCircleO} (Y2);
+\end{scope}
+\draw[fill=tugred] ($(X1) + (-0.7, 0)$) rectangle ($(X) + (0.2, 0)$) {};
+\draw[fill=tugred] ($(Y) + (-0.2, 0)$) rectangle ($(Y1) + (0.7, 0)$) {};
+\draw (X) node[below] {\textcolor{tugred}{$\Delta\Up$}}
+		(Y) node[above] {\textcolor{tugred}{$\Delta\Low$}};
+\end{tikzpicture}
+\end{figure}
+\end{columns}
+\end{frame}
+
+\section{Our Method to Search For Distinguisher}
+\sectionheader[\huge\color{tug}\faLightbulbO]{Our Method to Search for Distinguishers}
+
+\begin{frame}{Our Method to Search for ID/ZC and Integral Distinguishers}
+\begin{columns}
+\column[c]{0.25\textwidth}
+\begin{itemize}
+\large
+\vspace{0.7cm}
+\item<3->[\faCheckCircle] \tikzmark{left}$\csp\Up(\Delta\Up, \Delta'\Up)$
+\item<4->[\faCheckCircle] $\csp\Low(\Delta\Low, \Delta'\Low)$
+\item<5->[\faCheckCircle] \textcolor{tugred}{$\csp_{\texttt{M}}(\Delta'\Up, \Delta'\Low)$}\tikzmark{right}
+\end{itemize}
+\visible<6>{\DrawBox[blue, fill=yellow, fill opacity=0.2, rounded corners=2pt]}
+\column[c]{0.75\textwidth}
+\vspace{-0.5cm}
+\begin{figure}
+\centering
+\begin{tikzpicture}[yscale=1,xscale=1,baseline=0, decoration={
+	markings,
+	mark=at position 0.5 with {\arrow{>>}}}]
+\pgfmathsetmacro{\hstep}{3}
+\pgfmathsetmacro{\vstep}{1.5}
+\pgfmathsetmacro{\halfvstep}{\vstep/2}
+\pgfmathsetmacro{\quartervstep}{\vstep/4}
+\pgfmathsetmacro{\halfhstep}{\hstep/2}
+\pgfmathsetmacro{\quarterhstep}{\hstep/4}
+\pgfmathsetmacro{\mwidth}{0.07}
+
+
+\visible<1->{
+	\node[overlay] (c1) at (0, 0) {};
+	\node[overlay, right=\hstep + \halfhstep of c1] (meetingpoint) {};
+	\node[overlay, left=\mwidth of meetingpoint.center] (c2) {};
+	\node[overlay, right=\mwidth of meetingpoint.center] (c3) {};
+	\node[overlay, right=\hstep + \halfhstep of meetingpoint] (c4) {};
+	\draw[rounded corners=2pt] ($(c1) + (0, -\halfvstep)$) rectangle ($(c4) + (0, \halfvstep)$) node[pos=0.5] {\only<1>{$E$}};
+}
+\visible<2->{
+	\draw[rounded corners=2pt] ($(c1) + (0, -\halfvstep)$) rectangle ($(c4) + (0, \halfvstep)$);
+	\draw[] ($(meetingpoint) + (0, -\halfvstep)$) -- ($(meetingpoint) + (0, \halfvstep + 0.2)$);
+	\draw[<->, dashed] ($(c1) + (0, \halfvstep + 0.1)$) -- node[above] {$r\Up$} ($(meetingpoint) + (0,
+	\halfvstep + 0.1)$);
+	\draw[<->, dashed] ($(meetingpoint) + (0, \halfvstep + 0.1)$) -- node[above] {$r\Low$} ($(c4) + (0,
+	\halfvstep + 0.1)$);
+	\node[] (e0) at ($0.5*(c1) + 0.5*(c2)$) {$E\Up$};
+	\node[] (e1) at ($0.5*(c3) + 0.5*(c4)$) {$E\Low$};
+}
+\visible<3->{%
+	\node[below=\vstep+0.3 of c1] (c1) {};
+	\node[overlay, right=\hstep + \halfhstep of c1] (meetingpoint) {};
+	\node[overlay, left=\mwidth of meetingpoint.center] (c2) {};
+	\node[overlay, right=\mwidth of meetingpoint.center] (c3) {};
+	\node[overlay, right=\hstep + \halfhstep of meetingpoint] (c4) {};
+	\node[left=0.1 of c1.east] () {$\Delta\Up$};
+	\node[right=0.1 of c3.west] () {$\Delta'\Up$};
+	\draw[fill=tuggray, overlay] ($(c1) - (0, 0)$) -- ($(c1) + (0, 0.1)$) -- ($(c3) + (0, 0.6)$) -- ($(c3) - (0, 0.5)$) -- cycle;
+	\draw[] ($(c2) + (0, -\halfvstep)$) -- ($(c2) + (0, \halfvstep)$);
+	\draw[rounded corners=2pt] ($(c1) + (0, -\halfvstep)$) rectangle ($(c3) + (0, \halfvstep)$) node[pos=0.5] {\textcolor{black}{$E\Up$}};
+	\draw[|-|, postaction={decorate}, thick, dashed] ($(c1) + (0, \halfvstep + 0.2)$) -- ($(c3) + (0,
+	\halfvstep + 0.2)$);
+	\visible<5->{\draw[rounded corners=1pt, fill=tugred, opacity=0.6] ($(c2) + (0, -\halfvstep)$) rectangle ($(c3) + (0, \halfvstep)$);}
+}
+\visible<4->{
+	\node[below=\vstep of c1] (c1) {};
+	\node[overlay, right=\hstep + \halfhstep of c1] (meetingpoint) {};
+	\node[overlay, left=\mwidth of meetingpoint.center] (c2) {};
+	\node[overlay, right=\mwidth of meetingpoint.center] (c3) {};
+	\node[overlay, right=\hstep + \halfhstep of meetingpoint] (c4) {};
+	\node[left=0.1 of c2.east] () {$\Delta'\Low$};
+	\node[right=0.1 of c4.west] () {$\Delta\Low$};
+	\draw[fill=tuggray, overlay] ($(c4) - (0, 0.2)$) -- ($(c4) - (0, 0.1)$) -- ($(c2) + (0, 0.6)$) -- ($(c2) - (0, 0.7)$) -- cycle;
+	\draw[] ($(c3) + (0, -\halfvstep)$) -- ($(c3) + (0, \halfvstep)$);
+	\draw[rounded corners=2pt] ($(c2) + (0, -\halfvstep)$) rectangle ($(c4) + (0, \halfvstep)$) node[pos=0.5] {\textcolor{black}{$E\Low$}};
+	\draw[|-|, postaction={decorate}, thick, dashed] ($(c4) - (0, \halfvstep + 0.2)$) -- ($(c2) - (0, \halfvstep + 0.2)$);
+	\visible<5->{\draw[rounded corners=1pt, fill=tugred, opacity=0.6] ($(c2) + (0, -\halfvstep)$) rectangle ($(c3) + (0, \halfvstep)$);}
+}
+\end{tikzpicture}
+\end{figure}
+\end{columns}
+\end{frame}
+
+\begin{frame}{A Basic Example}
+\begin{figure}
+\vspace{-0.6cm}
+\centering
+\resizebox{\linewidth}{!}{
+\begin{tikzpicture}
+\SkinnyInit{}{}{}{} % init coordinates, print labels
+
+\SkinnyRoundTK[0]
+				{\visible<2->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[nonzeroany]{s2}\FillCell[nonzeroany]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[nonzeroany]{s12}\FillCell[white]{s13}\FillCell[white]{s14}\FillCell[nonzeroany]{s15}}} % state (input)
+				{\visible<2->{\Cell{s0}{\texttt{0}}\Cell{s1}{\texttt{1}}\Cell{s2}{\texttt{2}}\Cell{s3}{\texttt{3}}\Cell{s4}{\texttt{4}}\Cell{s5}{\texttt{5}}\Cell{s6}{\texttt{6}}\Cell{s7}{\texttt{7}}}} % tk[1]
+				{} % tk[2]
+				{} % tk[3]
+				{\visible<2->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[nonzeroany]{s2}\FillCell[nonzeroany]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[nonzeroany]{s12}\FillCell[white]{s13}\FillCell[white]{s14}\FillCell[nonzeroany]{s15}}} % state (after subcells)
+				{\visible<2->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[nonzeroany]{s2}\FillCell[nonzeroany]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[nonzeroany]{s12}\FillCell[white]{s13}\FillCell[white]{s14}\FillCell[nonzeroany]{s15}}} % state (after addtweakey)
+				{\visible<2->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[nonzeroany]{s2}\FillCell[nonzeroany]{s3}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[white]{s4}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[nonzeroany]{s15}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[nonzeroany]{s14}}} % state (after shiftrows)
+
+\SkinnyRoundTK[1]
+				{\visible<2->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[nonzeroany]{s6}\FillCell[nonzeroany]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[nonzeroany]{s14}\FillCell[nonzeroany]{s15}}} % state (input)
+				{\visible<2->{\Cell{s0}{\texttt{9}}\Cell{s1}{\texttt{f}}\Cell{s2}{\texttt{8}}\Cell{s3}{\texttt{d}}\Cell{s4}{\texttt{a}}\Cell{s5}{\texttt{e}}\Cell{s6}{\texttt{c}}\Cell{s7}{\texttt{b}}}} % tk[1]
+				{} % tk[2]
+				{} % tk[3]
+				{\visible<2->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[nonzeroany]{s6}\FillCell[nonzeroany]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[nonzeroany]{s14}\FillCell[nonzeroany]{s15}}} % state (after subcells)
+				{\visible<2->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[nonzeroany]{s6}\FillCell[nonzeroany]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[nonzeroany]{s14}\FillCell[nonzeroany]{s15}}} % state (after addtweakey)
+				{\visible<2->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[nonzeroany]{s7}\FillCell[nonzeroany]{s4}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s15}\FillCell[white]{s12}\FillCell[nonzeroany]{s13}\FillCell[nonzeroany]{s14}}} % state (after shiftrows)
+
+\SkinnyNewLine[2]{\visible<2->{\FillCell[white]{s0}\FillCell[nonzeroany]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[nonzeroany]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[nonzeroany]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after mixcols)
+\SkinnyRoundTK[2]
+				{\visible<2->{\FillCell[white]{s0}\FillCell[nonzeroany]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[nonzeroany]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[nonzeroany]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (input)
+				{\visible<2->{\Cell{s0}{\texttt{1}}\Cell{s1}{\texttt{7}}\Cell{s2}{\texttt{0}}\Cell{s3}{\texttt{5}}\Cell{s4}{\texttt{2}}\Cell{s5}{\texttt{6}}\Cell{s6}{\texttt{4}}\Cell{s7}{\texttt{3}}}} % tk[1]
+				{} % tk[2]
+				{} % tk[3]
+				{\visible<2->{\FillCell[white]{s0}\FillCell[nonzeroany]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[nonzeroany]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[nonzeroany]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after subcells)
+				{\visible<2->{\FillCell[white]{s0}\FillCell[nonzeroany]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[nonzeroany]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[nonzeroany]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after addtweakey)
+				{\visible<2->{\FillCell[white]{s0}\FillCell[nonzeroany]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s4}\FillCell[nonzeroany]{s10}\FillCell[white]{s11}\FillCell[white]{s8}\FillCell[nonzeroany]{s9}\FillCell[white]{s15}\FillCell[white]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}}} % state (after shiftrows)
+
+\SkinnyMismatchAligned[3]{\visible<2->{\FillCell[white]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[nonzeroany]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[nonzeroany]{s9}\FillCell[nonzeroany]{s10}\FillCell[unknown]{s11}\FillCell[white]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after mixcols)
+\SkinnyRoundTK[3]
+				{\visible<2->{\FillCell[nonzeroany]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (input)
+				{\visible<2->{\Cell{s0}{\texttt{f}}\Cell{s1}{\texttt{b}}\Cell{s2}{\texttt{9}}\Cell{s3}{\texttt{e}}\Cell{s4}{\texttt{8}}\Cell{s5}{\texttt{c}}\Cell{s6}{\texttt{a}}\Cell{s7}{\texttt{d}}}} % tk[1]
+				{} % tk[2]
+				{} % tk[3]
+				{\visible<2->{\FillCell[nonzeroany]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after subcells)
+				{\visible<2->{\FillCell[nonzeroany]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after addtweakey)
+				{\visible<2->{\FillCell[nonzeroany]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s4}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s15}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}}} % state (after shiftrows)
+
+\SkinnyNewLine[4]{\visible<2->{\FillCell[unknown]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[nonzeroany]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[nonzeroany]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after mixcols)
+\SkinnyRoundTK[4]
+				{\visible<2->{\FillCell[unknown]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[nonzeroany]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[nonzeroany]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (input)
+				{\visible<2->{\Cell{s0}{\texttt{7}}\Cell{s1}{\texttt{3}}\Cell{s2}{\texttt{1}}\Cell{s3}{\texttt{6}}\Cell{s4}{\texttt{0}}\Cell{s5}{\texttt{4}}\Cell{s6}{\texttt{2}}\Cell{s7}{\texttt{5}}}} % tk[1]
+				{} % tk[2]
+				{} % tk[3]
+				{\visible<2->{\FillCell[unknown]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[nonzeroany]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[nonzeroany]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after subcells)
+				{\visible<2->{\FillCell[unknown]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[nonzeroany]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[nonzeroany]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after addtweakey)
+				{\visible<2->{\FillCell[unknown]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[nonzeroany]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s4}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s8}\FillCell[nonzeroany]{s9}\FillCell[unknown]{s15}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}}} % state (after shiftrows)
+
+\SkinnyRoundTK[5]
+				{\visible<2->{\FillCell[unknown]{s0}\FillCell[unknown]{s1}\FillCell[white]{s2}\FillCell[white]{s3}\FillCell[unknown]{s4}\FillCell[white]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[nonzeroany]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (input)
+				{\visible<2->{\Cell{s0}{\texttt{b}}\Cell{s1}{\texttt{d}}\Cell{s2}{\texttt{f}}\Cell{s3}{\texttt{c}}\Cell{s4}{\texttt{9}}\Cell{s5}{\texttt{a}}\Cell{s6}{\texttt{8}}\Cell{s7}{\texttt{e}}}} % tk[1]
+				{} % tk[2]
+				{} % tk[3]
+				{\visible<2->{\FillCell[unknown]{s0}\FillCell[unknown]{s1}\FillCell[white]{s2}\FillCell[white]{s3}\FillCell[unknown]{s4}\FillCell[white]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[nonzeroany]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after subcells)
+				{\visible<2->{\FillCell[unknown]{s0}\FillCell[unknown]{s1}\FillCell[white]{s2}\FillCell[white]{s3}\FillCell[unknown]{s4}\FillCell[white]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[nonzeroany]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after addtweakey)
+				{\visible<2->{\FillCell[unknown]{s0}\FillCell[unknown]{s1}\FillCell[white]{s2}\FillCell[white]{s3}\FillCell[unknown]{s5}\FillCell[white]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s4}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s15}\FillCell[nonzeroany]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}}} % state (after shiftrows)
+
+\SkinnyFin[6]{\visible<2->{\FillCell[white]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s4}\FillCell[unknown]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[white]{s10}\FillCell[unknown]{s11}\FillCell[nonzeroany]{s12}\FillCell[unknown]{s13}\FillCell[white]{s14}\FillCell[white]{s15}}} % state (after mixcols)
+\ZeroLegend{\ZLfill{white}{zero}
+\ZLfill{nonzeroany}{nonzero}
+\ZLfill{unknown}{any}}
+\end{tikzpicture}
+}
+\end{figure}
+\end{frame}
+
+\begin{frame}{The Advantages of Our Method to Search for Distinguishers}
+\begin{itemize}
+  \item Based on satisfiability of the CP model
+  \item Any feasible solutions of our CP model is a distinguisher
+  \item We do not fix the input/output of distinguisher
+  \item Extendable to a unified model for key-recovery
+  \begin{itemize}
+    \item Find a distinguisher optimized for key-recovery
+    \item Taking some key-recovery techniques into account, e.g., MitM, and key bridging
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Our Unified CP Model for Key-Recovery}
+\sectionheader[\huge\color{tug}\faKey]{Our Unified CP Model for Key-Recovery}
+
+\begin{frame}{Complexity Analysis of ID Attack \cite{joc_BouraLNS2018, asiacrypt_BouraNS2014}}
+\vspace{-0.7cm}
+\begin{columns}[onlytextwidth]
+\column[c]{0.6\textwidth}
+\begin{itemize}
+  \item Number of required pairs: $N$
+  \item Pair generation: $T_{0} = N2^{n + 1 - |\Delta\In| - |\Delta\Out|}$
+  \item Guess-and-filter:
+  \begin{itemize}
+    \item $T_{1} + T_{2} = N + 2^{|k\In \cup k\Out|} \frac{N}{2^{c\In + c\Out}}$
+    \item $P = \left(1 - 2^{-(c\In + c\Out)}\right)^{N}$
+  \end{itemize}
+  \item Exhaustive search: $T_{3} = P2^{k}$
+  \item $T_{tot} = (T_{0} + (T_{1} + T_{2})C_{E'} + T_{3})C_{E}$
+\end{itemize}
+\column[c]{0.4\textwidth}
+\centering
+\begin{figure}
+\begin{tikzpicture}[xscale=1.1, yscale=1.1]  
+\draw   (0,2.5)    coordinate (M)
+    (0,1.4)   coordinate (X1)
+    (0,1.3)   coordinate (X)
+    (0,-1.3)  coordinate (Y)
+    (0, -1.4) coordinate (Y1)
+    (0,-2.5)   coordinate (C)
+    (-1.4,0) coordinate (w)
+    (1.4,0)  coordinate (e)
+  (w)+(.1,0)   coordinate (a) % round arrows
+  (e)+(-0.1,0) coordinate (b);
+\draw[rounded corners=2pt] (w|-X) rectangle (e|-Y) node[pos=0.5] {\textcolor{tugred}{$\Delta\Up \not\to \Delta\Low$}};
+\draw[rounded corners=2pt] (w|-M) rectangle (e|-X1);
+\draw[rounded corners=2pt] (w|-Y1) rectangle (e|-C);
+% \draw[dashed] (w|-X) -- (e|-X)
+% 				(w|-Y) -- (e|-Y);
+\draw (M) node[above] {$\Delta\In$}
+    (X) node[below] {$\Delta\Up$}
+    (Y) node[above] {$\Delta\Low$}
+    (C) node[below] {$\Delta\Out$};
+\begin{scope}[>=latex, ->, shorten <=2pt, shorten >=2pt, font=\footnotesize]
+  \draw[fill=tuggray, overlay, opacity=0.6] ($(X) - (0.1, 0)$) -- ($(X) + (0.1, 0)$) -- ($(X1) + (0.1, 0)$) -- ($(M) + (1.2, 0)$) -- ($(M) - (1, 0)$) -- ($(X1) - (0.1, 0)$) -- cycle;
+  \draw[fill=tuggray, overlay, opacity=0.6] ($(Y) - (0.05, 0)$) -- ($(Y) + (0.15, 0)$) -- ($(Y1) + (0.15, 0)$) -- ($(C) + (1.1, 0)$) -- ($(C) - (1.1, 0)$) -- ($(Y1) - (0.05, 0)$) -- cycle;
+  \draw[] (a|-M) -- node[right] {\!$\textcolor{black}{2^{-c\In}}$} (a|-X1);
+  \draw[] (a|-C) -- node[right] {\!$\textcolor{black}{2^{-c\Out}}$}  (a|-Y1);
+  % \draw[tugblue] (b|-X1) -- node[left] {\!$1$} (b|-M);
+  % \draw[tugblue] (b|-Y1) -- node[left] {\!$1$} (b|-C);
+\end{scope}
+\draw[font=\footnotesize] (X) node[above=0.5cm] {\textcolor{tugred}{$k\In, c\In$}}
+              (Y) node[below=0.5cm] {\textcolor{tugred}{$k\Out, c\Out$}};
+\begin{scope}[decoration={brace, amplitude=4pt, raise=2pt}]
+  \draw[decorate] (e|-X) -- node[right=8pt] {$r\Dist$} (e|-Y);
+  \draw[decorate] (e|-M) -- node[right=8pt] {$r\In$} (e|-X1);
+  \draw[decorate] (e|-Y1) -- node[right=8pt] {$r\Out$} (e|-C);
+\end{scope}
+\end{tikzpicture}
+\end{figure}
+\end{columns}
+\end{frame}
+  
+\begin{frame}{Overall View of Our CP Model for Key-Recovery}
+\vspace{-0.7cm}
+\begin{columns}[onlytextwidth]
+\column[c]{0.6\textwidth}
+\begin{itemize}
+  \setlength\itemsep{0.1mm}
+  \item<1->[\faCheckCircle] Model the distinguisher for $E\Dist$ (\textcolor{tugred}{$\Delta\Up, \Delta\Out$})
+  \item<2->[\faCheckCircle] Model the filters in $E\In$, and $E\Out$ (\textcolor{tugred}{$c\In, c\Out, \Delta\In, \Delta\Out$})
+  \item<3->[\faCheckCircle] Model the guess-and-determine in $E\In$, and $E\Out$
+  \item<4->[\faCheckCircle] Model the key bridging
+  \begin{itemize}
+     \item Encode \textcolor{tugred}{$|k\In \cup k\Out|$}
+  \end{itemize}
+  \item<5->[\faCheckCircle] Model the complexity formulas
+\end{itemize}
+\column[c]{0.45\textwidth}
+\begin{figure}
+\centering
+\begin{tikzpicture}[xscale=1.1, yscale=1.1]  
+\draw   (0,2.5)    coordinate (M)
+    (0,1.4)   coordinate (X1)
+    (0,1.3)   coordinate (X)
+    (0,-1.3)  coordinate (Y)
+    (0, -1.4) coordinate (Y1)
+    (0,-2.5)   coordinate (C)
+    (-1.4,0) coordinate (w)
+    (1.4,0)  coordinate (e)
+  (w)+(.1,0)   coordinate (a) % round arrows
+  (e)+(-0.1,0) coordinate (b)
+  (e)+(0.6,2.25) coordinate (k1)
+  (e)+(0.6,1.65) coordinate (k2)
+  (e)+(0.32,1.95) coordinate (kb)
+  (e)+(0.6,-1.65) coordinate (k3)
+  (e)+(0.6,-2.25) coordinate (k4)
+  (e)+(0.32,-1.95) coordinate (kf)
+  (e)+(0.6,2.5) coordinate (s1)
+  (e)+(1.2,2) coordinate (s2)
+  (e)+(1.2,-2) coordinate (s3)
+  (e)+(0.6,-2.5) coordinate (s4);
+\draw[rounded corners=2pt] (w|-X) rectangle (e|-Y) node[pos=0.5] {$E\Dist$};
+% \draw[dashed] (w|-X) -- (e|-X)
+% 				(w|-Y) -- (e|-Y);
+\draw (X) node[below] {$\Delta\Up$}
+    (Y) node[above] {$\Delta\Low$};
+
+\visible<2->{
+\begin{scope}[>=latex, ->, shorten <=2pt, shorten >=2pt, font=\large]
+  \draw[fill=tuggray, overlay, opacity=0.6] ($(X) - (0.1, 0)$) -- ($(X) + (0.1, 0)$) -- ($(X1) + (0.1, 0)$) -- ($(M) + (1.2, 0)$) -- ($(M) - (1, 0)$) -- ($(X1) - (0.1, 0)$) -- cycle;
+  \draw[fill=tuggray, overlay, opacity=0.6] ($(Y) - (0.05, 0)$) -- ($(Y) + (0.15, 0)$) -- ($(Y1) + (0.15, 0)$) -- ($(C) + (1.1, 0)$) -- ($(C) - (1.1, 0)$) -- ($(Y1) - (0.05, 0)$) -- cycle;
+  \draw[] (a|-M) -- node[right] {\!$\textcolor{tugred}{2^{-c\In}}$} (a|-X1);
+  \draw[] (a|-C) -- node[right] {\!$\textcolor{tugred}{2^{-c\Out}}$}  (a|-Y1);
+  \draw[tugblue] (b|-X1) -- node[left] {\!$1$} (b|-M);
+  \draw[tugblue] (b|-Y1) -- node[left] {\!$1$} (b|-C);
+\end{scope}
+\draw[rounded corners=2pt] (w|-M) rectangle (e|-X1);
+\draw[rounded corners=2pt] (w|-Y1) rectangle (e|-C);
+\draw (M) node[above] {$\Delta\In$}
+      (C) node[below] {$\Delta\Out$};
+\draw[font=\footnotesize] (X) node[above=0.5cm] {$E\In$}
+(Y) node[below=0.5cm] {$E\Out$};
+}
+\visible<3->{
+\draw[->] (k1) -- (e|-k1);
+\draw[->] (k2) -- (e|-k2);
+\draw[->] (k3) -- (e|-k3);
+\draw[->] (k4) -- (e|-k4);
+\node[ellipse,align=center, opacity=1] at (kb) {\textcolor{tugred}{$k\In$}};
+\node[ellipse,align=center, opacity=1] at (kf) {\textcolor{tugred}{$k\In$}};
+}
+\visible<4->{
+\draw[rounded corners=2pt] (s1) -- (s2) -- node[left] {\rotatebox{-90}{Key-Schedule}} (s3) -- (s4) -- cycle;
+}
+\end{tikzpicture}
+\end{figure}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Usage of Our Tool}
+\begin{center}
+\vspace{0.2cm}
+{\large \texttt{python3 attack.py -RB \textcolor{tugred}{4} -RU \textcolor{tugred}{10} -RL \textcolor{tugred}{6} -RF \textcolor{tugred}{7}}}
+\end{center}
+\begin{figure}
+\centering
+\begin{tikzpicture}[yscale=1,xscale=1,baseline=0, decoration={
+  markings,
+  mark=at position 0.5 with {\arrow{>>}}}]
+\pgfmathsetmacro{\hstep}{4}
+\pgfmathsetmacro{\vstep}{1.4}
+\pgfmathsetmacro{\halfvstep}{\vstep/2}
+\pgfmathsetmacro{\quartervstep}{\vstep/4}
+\pgfmathsetmacro{\halfhstep}{\hstep/2}
+\pgfmathsetmacro{\quarterhstep}{\hstep/4}
+\node[overlay] (c1) at (0, 0) {};
+\node[overlay, right=\halfhstep of c1] (c2) {};
+\node[overlay, right=\hstep of c2] (c3) {};
+\node[overlay, right=\hstep of c3] (c4) {};
+\node[overlay, right=\halfhstep of c4] (c5) {};	
+% \draw[rounded corners=2pt] ($(c1) + (0, -\halfvstep)$) rectangle ($(c2) + (0, \halfvstep)$) node[pos=0.5] {$E_{m}$};
+\draw[rounded corners=2pt] ($(c1) + (0, -\halfvstep)$) rectangle ($(c5) + (0, \halfvstep)$);
+\draw[] ($(c2) + (0, -\halfvstep)$) -- ($(c2) + (0, \halfvstep + 0.2)$);
+\draw[] ($(c3) + (0, -\halfvstep)$) -- ($(c3) + (0, \halfvstep + 0.2)$);
+\draw[] ($(c4) + (0, -\halfvstep)$) -- ($(c4) + (0, \halfvstep + 0.2)$);
+\draw[<->, dashed] ($(c1) + (0, \halfvstep + 0.1)$) -- node[above] {$R\In$} ($(c2) + (0,\halfvstep + 0.1)$);
+\draw[<->, dashed] ($(c2) + (0, \halfvstep + 0.1)$) -- node[above] {$R\Up$} ($(c3) + (0,\halfvstep + 0.1)$);
+\draw[<->, dashed] ($(c3) + (0, \halfvstep + 0.1)$) -- node[above] {$R\Low$} ($(c4) + (0,\halfvstep + 0.1)$);
+\draw[<->, dashed] ($(c4) + (0, \halfvstep + 0.1)$) -- node[above] {$R\Out$} ($(c5) + (0,\halfvstep + 0.1)$);
+\node[] (e0) at ($0.5*(c1) + 0.5*(c2)$) {$E\In$};
+\node[] (e1) at ($0.5*(c2) + 0.5*(c3)$) {$E\Up$};
+\node[] (e1) at ($0.5*(c3) + 0.5*(c4)$) {$E\Low$};
+\node[] (e2) at ($0.5*(c4) + 0.5*(c5)$) {$E\Out$};
+\end{tikzpicture}
+\end{figure}
+\begin{itemize}
+  \item[\faCheckCircle] We use MiniZinc \cite{cp_NethercoteSBBDT07} to create our CP models
+  \item[\faCheckCircle] We use Gurobi \cite{gurobi} and OrTools \cite{ortools} as the CP solvers
+  \item[\faCheckCircle] Our tool can find the results in a few seconds running on a regular laptop
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example: 19-round ID Attack on SKINNY-$n$-$2n$}
+\vspace{-0.6cm}
+\begin{columns}
+\column{0.25\textwidth}
+\begin{itemize}
+  \small
+  \item $|k\In \cup k\Out| = 26\cdot \cs$
+  \item $c\In = 6\cdot \cs$
+  \item $c\Out = 15\cdot \cs$
+  \item $\Delta\In = 7\cdot \cs$
+  \item $\Delta\Out = 16\cdot \cs$
+  \item $\cs \in \{4, 8\}$
+\end{itemize}
+\column{0.75\textwidth}
+\begin{figure}
+\centering
+\resizebox{0.95\textwidth}{!}{
+\begin{tikzpicture}
+
+\SkinnyInit{}{}{}{} % init coordinates, print labels
+
+\SkinnyRoundEK[0]
+            {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss03}\Fill[active]{ss10}\Fill[active]{ss11}\Fill[active]{ss12}\Fill[active]{ss13}\Fill[active]{ss21}\Fill[active]{ss22}\Fill[active]{ss23}\Fill[active]{ss32}\Fill[active]{ss33}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss03}\PattCell[black]{ss10}\PattCell[black]{ss11}\PattCell[black]{ss12}\PattCell[black]{ss13}\PattCell[black]{ss21}\PattCell[black]{ss22}\PattCell[black]{ss23}\PattCell[black]{ss32}\PattCell[black]{ss33}\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss10}\MarkCell{ss11}\MarkCell{ss12}\MarkCell{ss13}\MarkCell{ss20}\MarkCell{ss21}\MarkCell{ss22}\MarkCell{ss23}\MarkCell{ss31}\MarkCell{ss32}\MarkCell{ss33}} % state (input)
+            {\MarkCell{ss00}\MarkCell{ss02}\MarkCell{ss10}\MarkCell{ss11}\MarkCell{ss13}\MarkCell{ss20}\MarkCell{ss22}\MarkCell{ss23}\MarkCell{ss31}\Cell{ss00}{\texttt{0}}\Cell{ss01}{\texttt{1}}\Cell{ss02}{\texttt{2}}\Cell{ss03}{\texttt{3}}
+                            \Cell{ss10}{\texttt{0}}\Cell{ss11}{\texttt{1}}\Cell{ss12}{\texttt{2}}\Cell{ss13}{\texttt{3}}
+                            \Cell{ss20}{\texttt{7}}\Cell{ss21}{\texttt{4}}\Cell{ss22}{\texttt{5}}\Cell{ss23}{\texttt{6}}
+                            \Cell{ss30}{\texttt{0}}\Cell{ss31}{\texttt{1}}\Cell{ss32}{\texttt{2}}\Cell{ss33}{\texttt{3}}} % etk[1] (xored AFTER mixcolumns)
+            {} % tk[2] (ignored)
+            {} % tk[3] (ignored)
+            {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss03}\Fill[active]{ss10}\Fill[active]{ss11}\Fill[active]{ss12}\Fill[active]{ss13}\Fill[active]{ss21}\Fill[active]{ss22}\Fill[active]{ss23}\Fill[active]{ss32}\Fill[active]{ss33}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss03}\PattCell[black]{ss10}\PattCell[black]{ss11}\PattCell[black]{ss12}\PattCell[black]{ss13}\PattCell[black]{ss21}\PattCell[black]{ss22}\PattCell[black]{ss23}\PattCell[black]{ss32}\PattCell[black]{ss33}\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss11}\MarkCell{ss12}\MarkCell{ss13}\MarkCell{ss20}\MarkCell{ss21}\MarkCell{ss22}\MarkCell{ss23}\MarkCell{ss31}\MarkCell{ss33}} % state (after subcells)
+            {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss03}\Fill[active]{ss11}\Fill[active]{ss12}\Fill[active]{ss13}\Fill[active]{ss10}\Fill[active]{ss23}\Fill[active]{ss20}\Fill[active]{ss21}\Fill[active]{ss31}\Fill[active]{ss32}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss03}\PattCell[black]{ss11}\PattCell[black]{ss12}\PattCell[black]{ss13}\PattCell[black]{ss10}\PattCell[black]{ss23}\PattCell[black]{ss20}\PattCell[black]{ss21}\PattCell[black]{ss31}\PattCell[black]{ss32}\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss12}\MarkCell{ss13}\MarkCell{ss10}\MarkCell{ss22}\MarkCell{ss23}\MarkCell{ss20}\MarkCell{ss21}\MarkCell{ss30}\MarkCell{ss32}} % state (after shiftrows)
+            {\Fill[active]{ss02}\Fill[active]{ss10}\Fill[active]{ss11}\Fill[active]{ss13}\Fill[active]{ss20}\Fill[active]{ss22}\Fill[active]{ss31}\PattCell[black]{ss02}\PattCell[black]{ss10}\PattCell[black]{ss11}\PattCell[black]{ss13}\PattCell[black]{ss20}\PattCell[black]{ss22}\PattCell[black]{ss31}\MarkCell{ss00}\MarkCell{ss02}\MarkCell{ss10}\MarkCell{ss11}\MarkCell{ss13}\MarkCell{ss20}\MarkCell{ss22}\MarkCell{ss23}\MarkCell{ss31}} % state (after mixcolumns)
+
+\SkinnyRoundTK[1]
+            {\Fill[active]{ss02}\Fill[active]{ss10}\Fill[active]{ss11}\Fill[active]{ss13}\Fill[active]{ss20}\Fill[active]{ss22}\Fill[active]{ss31}\PattCell[black]{ss02}\PattCell[black]{ss10}\PattCell[black]{ss11}\PattCell[black]{ss13}\PattCell[black]{ss20}\PattCell[black]{ss22}\PattCell[black]{ss31}\MarkCell{ss00}\MarkCell{ss02}\MarkCell{ss10}\MarkCell{ss11}\MarkCell{ss13}\MarkCell{ss20}\MarkCell{ss22}\MarkCell{ss23}\MarkCell{ss31}} % state (input)
+            {\MarkCell{ss00}\MarkCell{ss02}\MarkCell{ss10}\Cell{ss00}{\texttt{9}}\Cell{ss01}{\texttt{f}}\Cell{ss02}{\texttt{8}}\Cell{ss03}{\texttt{d}}\Cell{ss10}{\texttt{a}}\Cell{ss11}{\texttt{e}}\Cell{ss12}{\texttt{c}}\Cell{ss13}{\texttt{b}}} % tk[1]
+            {} % tk[2]
+            {} % tk[3]
+            {\Fill[active]{ss02}\Fill[active]{ss10}\Fill[active]{ss11}\Fill[active]{ss13}\Fill[active]{ss20}\Fill[active]{ss22}\Fill[active]{ss31}\PattCell[black]{ss02}\PattCell[black]{ss10}\PattCell[black]{ss11}\PattCell[black]{ss13}\PattCell[black]{ss20}\PattCell[black]{ss22}\PattCell[black]{ss31}\MarkCell{ss00}\MarkCell{ss02}\MarkCell{ss10}\MarkCell{ss22}\MarkCell{ss23}} % state (after subcells)
+            {\Fill[active]{ss02}\Fill[active]{ss10}\Fill[active]{ss11}\Fill[active]{ss13}\Fill[active]{ss20}\Fill[active]{ss22}\Fill[active]{ss31}\PattCell[black]{ss02}\PattCell[black]{ss10}\PattCell[black]{ss11}\PattCell[black]{ss13}\PattCell[black]{ss20}\PattCell[black]{ss22}\PattCell[black]{ss31}\MarkCell{ss00}\MarkCell{ss02}\MarkCell{ss10}\MarkCell{ss22}\MarkCell{ss23}} % state (after addtweakey)
+            {\Fill[active]{ss02}\Fill[active]{ss11}\Fill[active]{ss12}\Fill[active]{ss10}\Fill[active]{ss22}\Fill[active]{ss20}\Fill[active]{ss30}\PattCell[black]{ss02}\PattCell[black]{ss11}\PattCell[black]{ss12}\PattCell[black]{ss10}\PattCell[black]{ss22}\PattCell[black]{ss20}\PattCell[black]{ss30}\MarkCell{ss00}\MarkCell{ss02}\MarkCell{ss11}\MarkCell{ss20}\MarkCell{ss21}} % state (after shiftrows)
+
+\SkinnyNewLine[2]{\Fill[active]{ss12}\Fill[active]{ss21}\Fill[active]{ss30}\PattCell[black]{ss12}\PattCell[black]{ss21}\PattCell[black]{ss30}\MarkCell{ss12}\MarkCell{ss21}\MarkCell{ss30}} % state (after mixcols)
+\SkinnyRoundTK[2]
+            {\Fill[active]{ss12}\Fill[active]{ss21}\Fill[active]{ss30}\PattCell[black]{ss12}\PattCell[black]{ss21}\PattCell[black]{ss30}\MarkCell{ss12}\MarkCell{ss21}\MarkCell{ss30}} % state (input)
+            {\Cell{ss00}{\texttt{1}}\Cell{ss01}{\texttt{7}}\Cell{ss02}{\texttt{0}}\Cell{ss03}{\texttt{5}}\Cell{ss10}{\texttt{2}}\Cell{ss11}{\texttt{6}}\Cell{ss12}{\texttt{4}}\Cell{ss13}{\texttt{3}}} % tk[1]
+            {} % tk[2]
+            {} % tk[3]
+            {\Fill[active]{ss12}\Fill[active]{ss21}\Fill[active]{ss30}\PattCell[black]{ss12}\PattCell[black]{ss21}\PattCell[black]{ss30}} % state (after subcells)
+            {\Fill[active]{ss12}\Fill[active]{ss21}\Fill[active]{ss30}\PattCell[black]{ss12}\PattCell[black]{ss21}\PattCell[black]{ss30}} % state (after addtweakey)
+            {\Fill[active]{ss13}\Fill[active]{ss23}\Fill[active]{ss33}\PattCell[black]{ss13}\PattCell[black]{ss23}\PattCell[black]{ss33}} % state (after shiftrows)
+
+\SkinnyRoundTK[3]
+              {\Fill[nonzeroany]{ss33}} % state (input)
+              {\Cell{ss00}{\texttt{f}}\Cell{ss01}{\texttt{b}}\Cell{ss02}{\texttt{9}}\Cell{ss03}{\texttt{e}}\Cell{ss10}{\texttt{8}}\Cell{ss11}{\texttt{c}}\Cell{ss12}{\texttt{a}}\Cell{ss13}{\texttt{d}}} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {\Fill[nonzeroany]{ss33}} % state (after subcells)
+              {\Fill[nonzeroany]{ss33}} % state (after addtweakey)
+              {\Fill[nonzeroany]{ss32}} % state (after shiftrows)
+
+\SkinnyMismatchNewLine[4]{\Fill[nonzeroany]{ss02}} % state (after mixcols)
+
+\SkinnyRoundTK[13]
+              {\Fill[nonzeroany]{ss12}} % state (input)
+              {\Cell{ss00}{\texttt{a}}\Cell{ss01}{\texttt{8}}\Cell{ss02}{\texttt{c}}\Cell{ss03}{\texttt{f}}\Cell{ss10}{\texttt{e}}\Cell{ss11}{\texttt{b}}\Cell{ss12}{\texttt{d}}\Cell{ss13}{\texttt{9}}} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {\Fill[nonzeroany]{ss12}} % state (after subcells)
+              {\Fill[nonzeroany]{ss12}} % state (after addtweakey)
+              {\Fill[nonzeroany]{ss13}} % state (after shiftrows)
+
+\SkinnyRoundTK[14]
+              {\Fill[active]{ss23}} % state (input)
+              {\Cell{ss00}{\texttt{2}}\Cell{ss01}{\texttt{0}}\Cell{ss02}{\texttt{4}}\Cell{ss03}{\texttt{7}}\Cell{ss10}{\texttt{6}}\Cell{ss11}{\texttt{3}}\Cell{ss12}{\texttt{5}}\Cell{ss13}{\texttt{1}}} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {\Fill[active]{ss23}} % state (after subcells)
+              {\Fill[active]{ss23}} % state (after addtweakey)
+              {\Fill[active]{ss21}} % state (after shiftrows)
+
+\SkinnyNewLine[15]{\Fill[active]{ss01}\Fill[active]{ss21}\Fill[active]{ss31}\PattCell[black]{ss01}\PattCell[black]{ss21}\PattCell[black]{ss31}}
+    
+\SkinnyRoundTK[15]
+              {\Fill[active]{ss01}\Fill[active]{ss21}\Fill[active]{ss31}\PattCell[black]{ss01}\PattCell[black]{ss21}\PattCell[black]{ss31}} % state (input)
+              {\MarkCell{ss01}\Cell{ss00}{\texttt{8}}\Cell{ss01}{\texttt{9}}\Cell{ss02}{\texttt{a}}\Cell{ss03}{\texttt{b}}\Cell{ss10}{\texttt{c}}\Cell{ss11}{\texttt{d}}\Cell{ss12}{\texttt{e}}\Cell{ss13}{\texttt{f}}} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {\Fill[active]{ss01}\Fill[active]{ss21}\Fill[active]{ss31}\PattCell[black]{ss01}\PattCell[black]{ss21}\PattCell[black]{ss31}\MarkCell{ss01}\MarkCell{ss21}\MarkCell{ss31}} % state (after subcells)
+              {\Fill[active]{ss01}\Fill[active]{ss21}\Fill[active]{ss31}\PattCell[black]{ss01}\PattCell[black]{ss21}\PattCell[black]{ss31}\MarkCell{ss01}\MarkCell{ss21}\MarkCell{ss31}} % state (after addtweakey)
+              {\Fill[active]{ss01}\Fill[active]{ss23}\Fill[active]{ss30}\PattCell[black]{ss01}\PattCell[black]{ss23}\PattCell[black]{ss30}\MarkCell{ss01}\MarkCell{ss23}\MarkCell{ss30}} % state (after shiftrows)
+
+
+\SkinnyRoundTK[16]
+              {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss03}\Fill[active]{ss11}\Fill[active]{ss23}\Fill[active]{ss31}\Fill[active]{ss33}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss03}\PattCell[black]{ss11}\PattCell[black]{ss23}\PattCell[black]{ss31}\PattCell[black]{ss33}\MarkCell{ss00}\MarkCell{ss11}\MarkCell{ss13}\MarkCell{ss30}\MarkCell{ss33}} % state (input)
+              {\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss03}\MarkCell{ss11}\MarkCell{ss13}\Cell{ss00}{\texttt{0}}\Cell{ss01}{\texttt{1}}\Cell{ss02}{\texttt{2}}\Cell{ss03}{\texttt{3}}\Cell{ss10}{\texttt{4}}\Cell{ss11}{\texttt{5}}\Cell{ss12}{\texttt{6}}\Cell{ss13}{\texttt{7}}} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss03}\Fill[active]{ss11}\Fill[active]{ss23}\Fill[active]{ss31}\Fill[active]{ss33}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss03}\PattCell[black]{ss11}\PattCell[black]{ss23}\PattCell[black]{ss31}\PattCell[black]{ss33}\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss03}\MarkCell{ss11}\MarkCell{ss13}\MarkCell{ss23}\MarkCell{ss30}\MarkCell{ss31}\MarkCell{ss33}} % state (after subcells)
+              {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss03}\Fill[active]{ss11}\Fill[active]{ss23}\Fill[active]{ss31}\Fill[active]{ss33}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss03}\PattCell[black]{ss11}\PattCell[black]{ss23}\PattCell[black]{ss31}\PattCell[black]{ss33}\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss03}\MarkCell{ss11}\MarkCell{ss13}\MarkCell{ss23}\MarkCell{ss30}\MarkCell{ss31}\MarkCell{ss33}} % state (after addtweakey)
+              {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss03}\Fill[active]{ss12}\Fill[active]{ss21}\Fill[active]{ss30}\Fill[active]{ss32}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss03}\PattCell[black]{ss12}\PattCell[black]{ss21}\PattCell[black]{ss30}\PattCell[black]{ss32}\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss03}\MarkCell{ss12}\MarkCell{ss10}\MarkCell{ss21}\MarkCell{ss33}\MarkCell{ss30}\MarkCell{ss32}} % state (after shiftrows)
+
+\SkinnyNewLine[17]{\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss02}\Fill[active]{ss03}\Fill[active]{ss10}\Fill[active]{ss11}\Fill[active]{ss13}\Fill[active]{ss21}\Fill[active]{ss22}\Fill[active]{ss30}\Fill[active]{ss31}\Fill[active]{ss33}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss02}\PattCell[black]{ss03}\PattCell[black]{ss10}\PattCell[black]{ss11}\PattCell[black]{ss13}\PattCell[black]{ss21}\PattCell[black]{ss22}\PattCell[black]{ss30}\PattCell[black]{ss31}\PattCell[black]{ss33}\MarkCell{ss00}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss10}\MarkCell{ss11}\MarkCell{ss12}\MarkCell{ss13}\MarkCell{ss20}\MarkCell{ss22}\MarkCell{ss30}\MarkCell{ss31}\MarkCell{ss32}\MarkCell{ss33}}
+
+\SkinnyRoundTK[17]
+              {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss02}\Fill[active]{ss03}\Fill[active]{ss10}\Fill[active]{ss11}\Fill[active]{ss13}\Fill[active]{ss21}\Fill[active]{ss22}\Fill[active]{ss30}\Fill[active]{ss31}\Fill[active]{ss33}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss02}\PattCell[black]{ss03}\PattCell[black]{ss10}\PattCell[black]{ss11}\PattCell[black]{ss13}\PattCell[black]{ss21}\PattCell[black]{ss22}\PattCell[black]{ss30}\PattCell[black]{ss31}\PattCell[black]{ss33}\MarkCell{ss00}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss10}\MarkCell{ss11}\MarkCell{ss12}\MarkCell{ss13}\MarkCell{ss20}\MarkCell{ss22}\MarkCell{ss30}\MarkCell{ss31}\MarkCell{ss32}\MarkCell{ss33}} % state (input)
+              {\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss10}\MarkCell{ss11}\MarkCell{ss12}\MarkCell{ss13}\Cell{ss00}{\texttt{9}}\Cell{ss01}{\texttt{f}}\Cell{ss02}{\texttt{8}}\Cell{ss03}{\texttt{d}}\Cell{ss10}{\texttt{a}}\Cell{ss11}{\texttt{e}}\Cell{ss12}{\texttt{c}}\Cell{ss13}{\texttt{b}}} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss02}\Fill[active]{ss03}\Fill[active]{ss10}\Fill[active]{ss11}\Fill[active]{ss13}\Fill[active]{ss21}\Fill[active]{ss22}\Fill[active]{ss30}\Fill[active]{ss31}\Fill[active]{ss33}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss02}\PattCell[black]{ss03}\PattCell[black]{ss10}\PattCell[black]{ss11}\PattCell[black]{ss13}\PattCell[black]{ss21}\PattCell[black]{ss22}\PattCell[black]{ss30}\PattCell[black]{ss31}\PattCell[black]{ss33}\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss10}\MarkCell{ss11}\MarkCell{ss12}\MarkCell{ss13}\MarkCell{ss20}\MarkCell{ss21}\MarkCell{ss22}\MarkCell{ss30}\MarkCell{ss31}\MarkCell{ss32}\MarkCell{ss33}} % state (after subcells)
+              {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss02}\Fill[active]{ss03}\Fill[active]{ss10}\Fill[active]{ss11}\Fill[active]{ss13}\Fill[active]{ss21}\Fill[active]{ss22}\Fill[active]{ss30}\Fill[active]{ss31}\Fill[active]{ss33}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss02}\PattCell[black]{ss03}\PattCell[black]{ss10}\PattCell[black]{ss11}\PattCell[black]{ss13}\PattCell[black]{ss21}\PattCell[black]{ss22}\PattCell[black]{ss30}\PattCell[black]{ss31}\PattCell[black]{ss33}\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss10}\MarkCell{ss11}\MarkCell{ss12}\MarkCell{ss13}\MarkCell{ss20}\MarkCell{ss21}\MarkCell{ss22}\MarkCell{ss30}\MarkCell{ss31}\MarkCell{ss32}\MarkCell{ss33}} % state (after addtweakey)
+              {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss02}\Fill[active]{ss03}\Fill[active]{ss11}\Fill[active]{ss12}\Fill[active]{ss10}\Fill[active]{ss23}\Fill[active]{ss20}\Fill[active]{ss33}\Fill[active]{ss30}\Fill[active]{ss32}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss02}\PattCell[black]{ss03}\PattCell[black]{ss11}\PattCell[black]{ss12}\PattCell[black]{ss10}\PattCell[black]{ss23}\PattCell[black]{ss20}\PattCell[black]{ss33}\PattCell[black]{ss30}\PattCell[black]{ss32}\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss11}\MarkCell{ss12}\MarkCell{ss13}\MarkCell{ss10}\MarkCell{ss22}\MarkCell{ss23}\MarkCell{ss20}\MarkCell{ss33}\MarkCell{ss30}\MarkCell{ss31}\MarkCell{ss32}} % state (after shiftrows)
+
+\SkinnyRoundTK[18]
+              {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss02}\Fill[active]{ss03}\Fill[active]{ss10}\Fill[active]{ss11}\Fill[active]{ss12}\Fill[active]{ss13}\Fill[active]{ss20}\Fill[active]{ss21}\Fill[active]{ss22}\Fill[active]{ss23}\Fill[active]{ss30}\Fill[active]{ss31}\Fill[active]{ss32}\Fill[active]{ss33}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss02}\PattCell[black]{ss03}\PattCell[black]{ss10}\PattCell[black]{ss11}\PattCell[black]{ss12}\PattCell[black]{ss13}\PattCell[black]{ss20}\PattCell[black]{ss21}\PattCell[black]{ss22}\PattCell[black]{ss23}\PattCell[black]{ss30}\PattCell[black]{ss31}\PattCell[black]{ss32}\PattCell[black]{ss33}\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss10}\MarkCell{ss11}\MarkCell{ss12}\MarkCell{ss13}\MarkCell{ss20}\MarkCell{ss21}\MarkCell{ss22}\MarkCell{ss23}\MarkCell{ss30}\MarkCell{ss31}\MarkCell{ss32}\MarkCell{ss33}} % state (input)
+              {\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss10}\MarkCell{ss11}\MarkCell{ss12}\MarkCell{ss13}\Cell{ss00}{\texttt{1}}\Cell{ss01}{\texttt{7}}\Cell{ss02}{\texttt{0}}\Cell{ss03}{\texttt{5}}\Cell{ss10}{\texttt{2}}\Cell{ss11}{\texttt{6}}\Cell{ss12}{\texttt{4}}\Cell{ss13}{\texttt{3}}} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss02}\Fill[active]{ss03}\Fill[active]{ss10}\Fill[active]{ss11}\Fill[active]{ss12}\Fill[active]{ss13}\Fill[active]{ss20}\Fill[active]{ss21}\Fill[active]{ss22}\Fill[active]{ss23}\Fill[active]{ss30}\Fill[active]{ss31}\Fill[active]{ss32}\Fill[active]{ss33}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss02}\PattCell[black]{ss03}\PattCell[black]{ss10}\PattCell[black]{ss11}\PattCell[black]{ss12}\PattCell[black]{ss13}\PattCell[black]{ss20}\PattCell[black]{ss21}\PattCell[black]{ss22}\PattCell[black]{ss23}\PattCell[black]{ss30}\PattCell[black]{ss31}\PattCell[black]{ss32}\PattCell[black]{ss33}\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss10}\MarkCell{ss11}\MarkCell{ss12}\MarkCell{ss13}\MarkCell{ss20}\MarkCell{ss21}\MarkCell{ss22}\MarkCell{ss23}\MarkCell{ss30}\MarkCell{ss31}\MarkCell{ss32}\MarkCell{ss33}} % state (after subcells)
+              {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss02}\Fill[active]{ss03}\Fill[active]{ss10}\Fill[active]{ss11}\Fill[active]{ss12}\Fill[active]{ss13}\Fill[active]{ss20}\Fill[active]{ss21}\Fill[active]{ss22}\Fill[active]{ss23}\Fill[active]{ss30}\Fill[active]{ss31}\Fill[active]{ss32}\Fill[active]{ss33}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss02}\PattCell[black]{ss03}\PattCell[black]{ss10}\PattCell[black]{ss11}\PattCell[black]{ss12}\PattCell[black]{ss13}\PattCell[black]{ss20}\PattCell[black]{ss21}\PattCell[black]{ss22}\PattCell[black]{ss23}\PattCell[black]{ss30}\PattCell[black]{ss31}\PattCell[black]{ss32}\PattCell[black]{ss33}\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss10}\MarkCell{ss11}\MarkCell{ss12}\MarkCell{ss13}\MarkCell{ss20}\MarkCell{ss21}\MarkCell{ss22}\MarkCell{ss23}\MarkCell{ss30}\MarkCell{ss31}\MarkCell{ss32}\MarkCell{ss33}} % state (after addtweakey)
+              {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss02}\Fill[active]{ss03}\Fill[active]{ss11}\Fill[active]{ss12}\Fill[active]{ss13}\Fill[active]{ss10}\Fill[active]{ss22}\Fill[active]{ss23}\Fill[active]{ss20}\Fill[active]{ss21}\Fill[active]{ss33}\Fill[active]{ss30}\Fill[active]{ss31}\Fill[active]{ss32}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss02}\PattCell[black]{ss03}\PattCell[black]{ss11}\PattCell[black]{ss12}\PattCell[black]{ss13}\PattCell[black]{ss10}\PattCell[black]{ss22}\PattCell[black]{ss23}\PattCell[black]{ss20}\PattCell[black]{ss21}\PattCell[black]{ss33}\PattCell[black]{ss30}\PattCell[black]{ss31}\PattCell[black]{ss32}\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss11}\MarkCell{ss12}\MarkCell{ss13}\MarkCell{ss10}\MarkCell{ss22}\MarkCell{ss23}\MarkCell{ss20}\MarkCell{ss21}\MarkCell{ss33}\MarkCell{ss30}\MarkCell{ss31}\MarkCell{ss32}} % state (after shiftrows)
+
+\SkinnyFin[19]{\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss02}\Fill[active]{ss03}\Fill[active]{ss10}\Fill[active]{ss11}\Fill[active]{ss12}\Fill[active]{ss13}\Fill[active]{ss20}\Fill[active]{ss21}\Fill[active]{ss22}\Fill[active]{ss23}\Fill[active]{ss30}\Fill[active]{ss31}\Fill[active]{ss32}\Fill[active]{ss33}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss02}\PattCell[black]{ss03}\PattCell[black]{ss10}\PattCell[black]{ss11}\PattCell[black]{ss12}\PattCell[black]{ss13}\PattCell[black]{ss20}\PattCell[black]{ss21}\PattCell[black]{ss22}\PattCell[black]{ss23}\PattCell[black]{ss30}\PattCell[black]{ss31}\PattCell[black]{ss32}\PattCell[black]{ss33}\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss10}\MarkCell{ss11}\MarkCell{ss12}\MarkCell{ss13}\MarkCell{ss20}\MarkCell{ss21}\MarkCell{ss22}\MarkCell{ss23}\MarkCell{ss30}\MarkCell{ss31}\MarkCell{ss32}\MarkCell{ss33}} % state (after mixcols)
+
+\ZeroIDSTLegend
+\end{tikzpicture}}
+\end{figure}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Part of Our Improved Results for \cipher{SKINNY}}
+\vspace{-0.6cm}
+\begin{table}
+  \centering
+  \newcommand{\ph}{\phantom{.00}}
+  \resizebox{0.8\textwidth}{!}{%
+  \begin{tabular}{@{}lcccclr@{~/~}ll@{}}
+      \toprule
+      Cipher                                     & \#R            & Time             & Data         & Mem.            & Attack               & Setting & Model & Ref.\\
+      %sample
+      %\multirow{4}{*}{cipher}                   % \bf 32         & $2^{127\ph}$     & $2^{127\ph}$ & $2^{108\ph}$    & Integral             & STK      & CP    & \ref{}\\
+      \midrule
+      \multirow{2}{*}{\cipher{SKINNY}-64-192}
+                                                  & 23 & $2^{155.60}$     & $2^{73.20}$  & $2^{138\ph}$    & Int      & 180,SK   & CP,CT & \cite{tosc_AnkeleDGLGY2019}\\                                                                                                 
+                                                  & \bf 26         & $2^{172\ph}$     & $2^{61\ph}$  & $2^{172\ph}$    & Int                  & 180,SK   & CP,CT & This paper\\
+      \midrule
+      \multirow{2}{*}{\cipher{SKINNY}-128-384}   
+                                                  & 27             & $2^{378\ph}$     & $2^{126.03}$ & $2^{368\ph}$    & ID                   & RTK      & CP    & \cite{journals_tosc_LiuGL17}\\
+                                                  & 27             & $\bf 2^{362.61}$ & $2^{124.99}$ & $2^{344\ph}$    & ID                   & RTK      & CP    & This paper\\
+      \midrule
+      \multirow{4}{*}{\cipher{SKINNY}-64-128}   
+                                                  & 18             & $2^{126\ph}$     & $2^{62.68}$  & $2^{64\ph}$     & ZC                   & STK      & KP    & \cite{tosc_SadeghiMB18}\\
+                                                  & \bf 19         & $2^{119.12}$     & $2^{62.89}$  & $2^{49\ph}$     & ZC                   & STK      & KP    & This paper\\
+                                                  & 20 & $2^{97.50}$      & $2^{68.40}$  & $2^{82\ph}$     & Int     & 120,SK   & CP,CT & \cite{tosc_AnkeleDGLGY2019}\\                                                                                                 
+                                                  & \bf 22         & $2^{110\ph}$     & $2^{57.58}$  & $2^{108\ph}$    & Int                  & 120,SK   & CP,CT & This paper\\
+      \midrule
+      \multirow{2}{*}{\cipher{SKINNY}-128-256}
+                                                  & 19             & $2^{241.80}$     & $2^{123\ph}$ & $2^{221\ph}$    & ID                   & STK      & CP    & \cite{iet_YangQC17}\\
+                                                  & 19             & $\bf 2^{219.23}$ & $2^{117.86}$ & $2^{208\ph}$    & ID                   & STK      & CP    & This paper\\
+      \midrule
+      \multirow{2}{*}{\cipher{SKINNY}-64-64}    
+                                                  & 14             & $2^{62\ph}$      & $2^{62.58}$  & $2^{64\ph}$     & ZC                   & STK      & KP    & \cite{tosc_SadeghiMB18}\\
+                                                  & \bf 16         & $2^{62.71}$      & $2^{61.35}$  & $2^{37.80}$     & ZC                   & STK      & KP    & This paper\\
+      % \midrule
+      % \multirow{2}{*}{\cipher{CRAFT}}
+      %                                             & \bf 20         & $2^{120.43}$          & $2^{62.89}$      & $2^{49\ph}$         & ZC                   & STK      & KP & This paper\\
+      %                                             & \bf 21         & $2^{106.53}$          & $2^{60.99}$      & $2^{100\ph}$         & ID                   & STK      & CP & This paper\\
+      % \midrule
+      % \multirow{2}{*}{\cipher{SKINNYee}}
+      %                                             & \bf 26         & $2^{113\ph}$      & $2^{66\ph}$  & $2^{108\ph}$    & Int                  & SK       & CP,CT & This paper\\
+      %                                             \cmidrule{2-9}
+      %                                             & \bf 27         & $2^{123.04}$          & $2^{62.79}$      & $2^{108\ph}$         & ID                   & RTK      & CP & This paper\\
+                                                  
+      % \midrule
+      % \multirow{1}{*}{\cipher{SKINNYe-v2}}
+      %                                             & \bf 30         & $2^{232\ph}$     & $2^{65\ph}$  & $2^{228\ph}$    & Int                  & 240,SK  & CP,CT & \ref{subsubsec:skinny_int_4n}\\
+      \bottomrule
+  \end{tabular}}
+\end{table}
+\end{frame}
+
+\begin{frame}{Detecting Flaws in The Previous Attacks \textcolor{red}{Using our Automatic Tools}}
+\centering
+\begin{table}
+\caption*{Invalid Attacks on \cipher{SKINNY}}
+\resizebox{0.8\textwidth}{!}{
+\begin{tabular}{@{}lllr@{~/~}lll@{}}
+  \toprule
+  Cipher                  & Attack              & \#R & Setting & Model  & Ref.                         & Flaw\\
+  \midrule
+  \cipher{SKINNY}-$n$-$n$ & ID                  & 18  & STK     & CP     & \cite{africacrypt_Tolba0Y17} & KR\\
+  \midrule
+  \multirow{2}{*}{\cipher{SKINNY}-$n$-$2n$}
+                          & ID                  & 20  & STK     & CP     & \cite{africacrypt_Tolba0Y17} & KR\\
+                          & ZC/Int $^{\dagger}$ & 22  & SK      & CP, CT & \cite{Zhang2022}             & Dist\\
+  \midrule
+  \multirow{2}{*}{\cipher{SKINNY}-$n$-$3n$}
+                          & ID                  & 22  & STK     & CP     & \cite{africacrypt_Tolba0Y17} & KR\\
+                          & ZC/Int $^{\dagger}$ & 26  & SK      & CP, CT & \cite{Zhang2022}             & Dist\\
+  \bottomrule
+\end{tabular}}
+\end{table}
+\end{frame}
+
+\section{Future Works}
+\sectionheader[\huge\color{tug}\faHourglassEnd]{Conclusion}
+
+\begin{frame}{Contributions and Future Works}
+\vspace{-0.5cm}
+\begin{itemize}
+\item Contributions
+\begin{itemize}
+\small
+\item[\textcolor{tugblue}{\faChevronCircleRight}] Introduced efficient unified model for finding full ID/ZC/integral attacks
+\item[\textcolor{tugblue}{\faChevronCircleRight}] Found improved attacks for \cipher{SKINNY}, \cipher{CRAFT}, \cipher{SKINNYee}, and \cipher{SKINNYe-v2}
+\end{itemize}
+\item Future works
+\begin{itemize}
+\small
+\item[\faRoad] Applying our method to other ciphers, e.g., \cipher{AES}, \cipher{MANTIS}, \cipher{QARMA}, etc
+\item[\faRoad] Creating the bit-oriented version of our method
+\item[\faRoad] Applying our approach in other CP models, e.g., division property
+\item[\faRoad] Improving the key-recovery part of our CP models for ZC and integral attacks
+\end{itemize} 
+\end{itemize}
+\begin{center}
+\vspace{0.12cm}
+
+% {\large Thanks for your attention!}
+
+% \vspace{0.3cm}
+\faGithub: \url{https://github.com/hadipourh/zero}\\
+\vspace{0.1cm}
+\faArchive: \url{https://ia.cr/2022/1147}
+\end{center}
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[allowframebreaks]{Bibliography}
+  \printbibliography
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Zero-Correlation Attack and Its Relation to Integral Attack}
+\begin{itemize}
+\item ZC is the dual of ID in the context of linear cryptanalysis \cite{dcc_BogdanovR14}
+\item Multidimensional ZC attack (ASIACRYPT~2012 \cite{asiacrypt_BogdanovLNW12})
+\end{itemize}
+\begin{block}{Link Between ZC and Integral Attack \textcolor{white}{\cite{crypto_SunLRLCWAL15}}}
+Let $F:\mathbb{F}_{2}^{n}\rightarrow \mathbb{F}_{2}^{n}$ be a vectorial Boolean function. 
+Assume $A$ is a subspace of $\mathbb{F}_{2}^{n}$ and $\beta\in \mathbb{F}_{2}^{n}\setminus \{0\}$
+such that $(\alpha, \beta)$ is a ZC approximation for any $\alpha \in A$. 
+Then, for any $\lambda \in \mathbb{F}_{2}^{n}$, $\left\langle \beta, F(x + \lambda)\right\rangle$ is balanced over the set
+\[A^{\bot} = \{x \in \mathbb{F}_{2}^{n}~|~ \forall ~ \alpha \in A:\left\langle \alpha, x \right\rangle = 0\}.\]
+\end{block}
+\end{frame}
+
+\begin{frame}{Example: Conversion of ZC Distinguisher to Integral Distinguisher}
+\begin{center}
+\vspace{-1cm}
+\resizebox{\textwidth}{!}{
+\begin{tikzpicture}
+  \SkinnyInit{}{}{}{} % init coordinates, print labels
+  
+  \SkinnyRoundTK[0]
+                {\FillCell[unknown]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[white]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[white]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[white]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}} % state (input)
+                {\Cell{s0}{\texttt{0}}\Cell{s1}{\texttt{1}}\Cell{s2}{\texttt{2}}\Cell{s3}{\texttt{3}}\Cell{s4}{\texttt{4}}\Cell{s5}{\texttt{5}}\Cell{s6}{\texttt{6}}\Cell{s7}{\texttt{7}}} % tk[1]
+                {} % tk[2]
+                {} % tk[3]
+                {\FillCell[unknown]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[white]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[white]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[white]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}} % state (after subcells)
+                {\FillCell[unknown]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[white]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[white]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[white]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}} % state (after addtweakey)
+                {\FillCell[unknown]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[white]{s4}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[white]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s15}\FillCell[white]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}} % state (after shiftrows)
+  
+  \SkinnyRoundTK[1]
+                {\FillCell[white]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[white]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[white]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}} % state (input)
+                {\Cell{s0}{\texttt{9}}\Cell{s1}{\texttt{f}}\Cell{s2}{\texttt{8}}\Cell{s3}{\texttt{d}}\Cell{s4}{\texttt{a}}\Cell{s5}{\texttt{e}}\Cell{s6}{\texttt{c}}\Cell{s7}{\texttt{b}}} % tk[1]
+                {} % tk[2]
+                {} % tk[3]
+                {\FillCell[white]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[white]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[white]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}} % state (after subcells)
+                {\FillCell[white]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[white]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[white]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}} % state (after addtweakey)
+                {\FillCell[white]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s4}\FillCell[white]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[white]{s15}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}} % state (after shiftrows)
+  
+  \SkinnyMismatchNewLine[2]{\FillCell[unknown]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[white]{s3}\FillCell[unknown]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}} % state (after mixcols)
+  \SkinnyRoundTK[2]
+                {\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[nonzeroany]{s2}\FillCell[nonzeroany]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[nonzeroany]{s7}\FillCell[nonzeroany]{s8}\FillCell[nonzeroany]{s9}\FillCell[nonzeroany]{s10}\FillCell[white]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[white]{s14}\FillCell[nonzeroany]{s15}} % state (input)
+                {\Cell{s0}{\texttt{1}}\Cell{s1}{\texttt{7}}\Cell{s2}{\texttt{0}}\Cell{s3}{\texttt{5}}\Cell{s4}{\texttt{2}}\Cell{s5}{\texttt{6}}\Cell{s6}{\texttt{4}}\Cell{s7}{\texttt{3}}} % tk[1]
+                {} % tk[2]
+                {} % tk[3]
+                {\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[nonzeroany]{s2}\FillCell[nonzeroany]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[nonzeroany]{s7}\FillCell[nonzeroany]{s8}\FillCell[nonzeroany]{s9}\FillCell[nonzeroany]{s10}\FillCell[white]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[white]{s14}\FillCell[nonzeroany]{s15}} % state (after subcells)
+                {\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[nonzeroany]{s2}\FillCell[nonzeroany]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[nonzeroany]{s7}\FillCell[nonzeroany]{s8}\FillCell[nonzeroany]{s9}\FillCell[nonzeroany]{s10}\FillCell[white]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[white]{s14}\FillCell[nonzeroany]{s15}} % state (after addtweakey)
+                {\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[nonzeroany]{s2}\FillCell[nonzeroany]{s3}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[nonzeroany]{s4}\FillCell[nonzeroany]{s10}\FillCell[nonzeroany]{s11}\FillCell[nonzeroany]{s8}\FillCell[white]{s9}\FillCell[white]{s15}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[nonzeroany]{s14}} % state (after shiftrows)
+  
+  \SkinnyRoundTK[3]
+                {\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[nonzeroany]{s2}\FillCell[white]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[nonzeroany]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[white]{s14}\FillCell[nonzeroany]{s15}} % state (input)
+                {\Cell{s0}{\texttt{f}}\Cell{s1}{\texttt{b}}\Cell{s2}{\texttt{9}}\Cell{s3}{\texttt{e}}\Cell{s4}{\texttt{8}}\Cell{s5}{\texttt{c}}\Cell{s6}{\texttt{a}}\Cell{s7}{\texttt{d}}} % tk[1]
+                {} % tk[2]
+                {} % tk[3]
+                {\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[nonzeroany]{s2}\FillCell[white]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[nonzeroany]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[white]{s14}\FillCell[nonzeroany]{s15}} % state (after subcells)
+                {\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[nonzeroany]{s2}\FillCell[white]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[nonzeroany]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[white]{s14}\FillCell[nonzeroany]{s15}} % state (after addtweakey)
+                {\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[nonzeroany]{s2}\FillCell[white]{s3}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[white]{s4}\FillCell[nonzeroany]{s10}\FillCell[white]{s11}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s15}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[nonzeroany]{s14}} % state (after shiftrows)
+  
+  \SkinnyNewLine[4]{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[nonzeroany]{s2}\FillCell[white]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[white]{s14}\FillCell[white]{s15}} % state (after mixcols)
+  \SkinnyRoundTK[4]
+                {\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[nonzeroany]{s2}\FillCell[white]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[white]{s14}\FillCell[white]{s15}} % state (input)
+                {\Cell{s0}{\texttt{7}}\Cell{s1}{\texttt{3}}\Cell{s2}{\texttt{1}}\Cell{s3}{\texttt{6}}\Cell{s4}{\texttt{0}}\Cell{s5}{\texttt{4}}\Cell{s6}{\texttt{2}}\Cell{s7}{\texttt{5}}} % tk[1]
+                {} % tk[2]
+                {} % tk[3]
+                {\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[nonzeroany]{s2}\FillCell[white]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[white]{s14}\FillCell[white]{s15}} % state (after subcells)
+                {\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[nonzeroany]{s2}\FillCell[white]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[white]{s14}\FillCell[white]{s15}} % state (after addtweakey)
+                {\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[nonzeroany]{s2}\FillCell[white]{s3}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[white]{s4}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s15}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[white]{s14}} % state (after shiftrows)
+  
+  \SkinnyRoundTK[5]
+                {\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[white]{s2}\FillCell[white]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[nonzeroany]{s6}\FillCell[white]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[white]{s14}\FillCell[white]{s15}} % state (input)
+                {\Cell{s0}{\texttt{b}}\Cell{s1}{\texttt{d}}\Cell{s2}{\texttt{f}}\Cell{s3}{\texttt{c}}\Cell{s4}{\texttt{9}}\Cell{s5}{\texttt{a}}\Cell{s6}{\texttt{8}}\Cell{s7}{\texttt{e}}} % tk[1]
+                {} % tk[2]
+                {} % tk[3]
+                {\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[white]{s2}\FillCell[white]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[nonzerofixed]{s6}\FillCell[white]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[white]{s14}\FillCell[white]{s15}} % state (after subcells)
+                {\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[white]{s2}\FillCell[white]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[nonzerofixed]{s6}\FillCell[white]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[white]{s14}\FillCell[white]{s15}} % state (after addtweakey)
+                {\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[white]{s2}\FillCell[white]{s3}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[nonzerofixed]{s7}\FillCell[white]{s4}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s15}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[white]{s14}} % state (after shiftrows)
+  
+  \SkinnyFin[6]{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[white]{s2}\FillCell[white]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[nonzerofixed]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[nonzerofixed]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[white]{s14}\FillCell[nonzerofixed]{s15}} % state (after mixcols)
+  \ZeroZILegendDist
+  \end{tikzpicture}
+}
+\end{center}
+\sparen
+\begin{itemize}
+  \small
+  \item $X_0[7, 10, 13]$ takes all possible values and the remaining cells take a fixed value
+  \item $X_6[7] \oplus X_6[11] \oplus X_6[15]$ is balanced
+\end{itemize}
+\end{frame}
+
+\begin{filecontents*}[overwrite]{\jobname.bib}
+% impossible differential Biham (miss-in-the-middle technique)
+@inproceedings{eurocrypt_BihamBS99,
+  author    = {Eli Biham and
+               Alex Biryukov and
+               Adi Shamir},
+  title     = {Cryptanalysis of Skipjack Reduced to 31 Rounds Using Impossible Differentials},
+  booktitle = {{EUROCRYPT} 1999},
+  series    = {LNCS},
+  volume    = {1592},
+  pages     = {12--23},
+  publisher = {Springer},
+  year      = {1999},
+  doi       = {10.1007/3-540-48910-X_2}
+}
+
+% impossible differential Knudesen
+@article{knudsen1998deal,
+  title     = {DEAL-a 128-bit block cipher},
+  author    = {Knudsen, Lars},
+  journal   = {complexity},
+  volume    = {258},
+  number    = {2},
+  pages     = {216},
+  year      = {1998},
+  publisher = {Citeseer}
+}
+
+% milp-based method to search for ID attacks - works for ARX and SPN
+@misc{eprint_Cui,
+  author    = {Tingting Cui and 
+            Shiyao Chen and 
+            Keting Jia and 
+            Kai Fu and 
+            Meiqin Wang},
+  title     = {New Automatic Search Tool for Impossible Differentials and Zero-Correlation Linear Approximations},
+  howpublished = {IACR Cryptology ePrint Archive, Report 2016/689},
+  year      = {2016},
+  url       = {https://eprint.iacr.org/2016/689}
+}
+
+% milp-based method to search for ID attacks - works for SPN
+@inproceedings{eurocrypt_SasakiTodo2017,
+  author    = {Sasaki, Yu and 
+               Todo, Yosuke},              
+  Xeditor    = {Coron, Jean-S{\'e}bastien
+                and 
+                Nielsen, Jesper Buus},
+  title     = {New Impossible Differential Search Tool from Design and Cryptanalysis Aspects},
+  Xbooktitle = {Advances in Cryptology -- EUROCRYPT 2017},
+  booktitle = {{EUROCRYPT} 2017},
+  year      = {2017},
+  publisher = {Springer International Publishing},
+  address   = {Cham},
+  pages     = {185--215},
+  doi       = {10.1007/978-3-319-56617-7_7}
+}
+
+% cp-based method by sun and gerault
+@article{tosc_SunGLYTQH2017,
+author      = {Sun, Siwei and 
+            Gerault, David and 
+            Lafourcade, Pascal and 
+            Yang, Qianqian and 
+            Todo, Yosuke and 
+            Qiao, Kexin and 
+            Hu, Lei}, 
+  title     = {Analysis of {AES}, {SKINNY}, and Others with Constraint Programming}, 
+  volume    = {2017}, 
+  doi       = {10.13154/tosc.v2017.i1.281-306}, 
+  number    = {1}, 
+  journal   = {IACR Transactions on Symmetric Cryptology}, 
+  year      = {2017}, 
+  month     = {Mar.}, 
+  pages     = {281–306} 
+}
+
+% patrick's tool for mitm and id attacks
+@inproceedings{crypto_DerbezF16,
+  author    = {Patrick Derbez and
+               Pierre-Alain Fouque},
+  title     = {Automatic Search of Meet-in-the-Middle and Impossible Differential
+               Attacks},
+  booktitle = {{CRYPTO} 2016},
+  series    = {LNCS},
+  volume    = {9815},
+  pages     = {157--184},
+  publisher = {Springer},
+  year      = {2016}
+}
+
+% milp model of division 
+@inproceedings{asiacrypt_XiangZBL16,
+  author    = {Zejun Xiang and
+               Wentao Zhang and
+               Zhenzhen Bao and
+               Dongdai Lin},
+  title     = {Applying {MILP} Method to Searching Integral Distinguishers Based
+               on Division Property for 6 Lightweight Block Ciphers},
+  booktitle = {{ASIACRYPT} 2016},
+  series    = {LNCS},
+  volume    = {10031},
+  pages     = {648--678},
+  year      = {2016},
+  doi       = {10.1007/978-3-662-53887-6_24}
+}
+
+% cp model to encode the deterministic truncated trails
+@article{tosc_SunGWW2020, 
+  author    = {Sun, Ling and Gerault, David and Wang, Wei and Wang, Meiqin},
+  title     = {On the Usage of Deterministic (Related-Key) Truncated Differentials and Multidimensional Linear Approximations for SPN Ciphers}, 
+  volume    = {2020},   
+  doi       = {10.13154/tosc.v2020.i3.262-287}, 
+  number    = {3}, 
+  journal   = {IACR Transactions on Symmetric Cryptology}, 
+  year      = {2020}, 
+  month     = {Sep.}, 
+  pages     = {262–287}
+}
+
+% blns2018
+@article{joc_BouraLNS2018,
+  author    = {Boura, Christina and 
+               Lallemand, Virginie and 
+               Naya-Plasencia, Mar{\'\i}a and 
+               Suder, Valentin},
+  title     = {Making the impossible possible},
+  journal   = {Journal of Cryptology},
+  volume    = {31},
+  number    = {1},
+  pages     = {101--133},
+  year      = {2018},
+  publisher = {Springer},
+  doi       = {10.1007/s00145-016-9251-7}
+}
+
+% bns2014
+@inproceedings{asiacrypt_BouraNS2014,
+  author    = {Boura, Christina and 
+               Naya-Plasencia, Maria and 
+               Suder, Valentin},
+  title     = {Scrutinizing and improving impossible differential attacks: applications to CLEFIA, Camellia, LBlock and Simon},
+  booktitle = {International Conference on the Theory and Application of Cryptology and Information Security},
+  pages     = {179--199},
+  year      = {2014},
+  organization = {Springer},
+  doi       = {10.1007/978-3-662-45611-8_10}
+}
+
+% MiniZinc
+@inproceedings{cp_NethercoteSBBDT07,
+  author    = {Nicholas Nethercote and
+               Peter J. Stuckey and
+               Ralph Becket and
+               Sebastian Brand and
+               Gregory J. Duck and
+               Guido Tack},
+  title     = {MiniZinc: Towards a Standard {CP} Modelling Language},
+  booktitle = {{CP} 2007},
+  series    = {LNCS},
+  volume    = {4741},
+  pages     = {529--543},
+  publisher = {Springer},
+  year      = {2007}
+}
+
+@misc{gurobi,
+  author    = {{Gurobi Optimization, LLC}},
+  title     = {{Gurobi Optimizer Reference Manual}},
+  year      = {2022},
+  url       = {https://www.gurobi.com}
+}
+
+% Or-Tools
+@software{ortools,
+  author    = {Laurent Perron and Vincent Furnon},
+  title     = {{OR-Tools}},
+  version   = {9.3},
+  organization = {Google},
+  url       = {https://developers.google.com/optimization/},
+  date      = {2022-3-15}
+}
+
+% seminal paper of ZC attack
+@article{dcc_BogdanovR14,
+  author    = {Andrey Bogdanov and
+               Vincent Rijmen},
+  title     = {Linear hulls with correlation zero and linear cryptanalysis of block
+               ciphers},
+  journal   = {Des. Codes Cryptogr.},
+  volume    = {70},
+  number    = {3},
+  pages     = {369--383},
+  year      = {2014},
+  doi       = {10.1007/s10623-012-9697-z}
+}
+
+% multidimensional zc and link between zc and integral attacks
+@inproceedings{asiacrypt_BogdanovLNW12,
+  author    = {Andrey Bogdanov and
+               Gregor Leander and
+               Kaisa Nyberg and
+               Meiqin Wang},
+  title     = {Integral and Multidimensional Linear Distinguishers with Correlation
+               Zero},
+  booktitle = {{ASIACRYPT} 2012},
+  series    = {LNCS},
+  volume    = {7658},
+  pages     = {244--261},
+  publisher = {Springer},
+  year      = {2012},
+  doi       = {10.1007/978-3-642-34961-4_16}
+}
+
+% link between ZC, ID and Integral attacks
+@inproceedings{crypto_SunLRLCWAL15,
+  author    = {Bing Sun and
+               Zhiqiang Liu and
+               Vincent Rijmen and
+               Ruilin Li and
+               Lei Cheng and
+               Qingju Wang and
+               Hoda AlKhzaimi and
+               Chao Li},
+  title     = {Links Among Impossible Differential, Integral and Zero Correlation
+               Linear Cryptanalysis},
+  booktitle = {{CRYPTO} 2015},
+  series    = {LNCS},
+  volume    = {9215},
+  pages     = {95--115},
+  publisher = {Springer},
+  year      = {2015},
+  doi       = {10.1007/978-3-662-47989-6_5}
+}
+
+% zc-integral attack
+@article{tosc_AnkeleDGLGY2019, 
+  author    = {Ankele, Ralph and Dobraunig, Christoph and Guo, Jian and Lambooij, Eran and Leander, Gregor and Todo, Yosuke}, 
+  title     = {Zero-Correlation Attacks on Tweakable Block Ciphers with Linear Tweakey Expansion}, 
+  volume    = {2019},
+  doi       = {10.13154/tosc.v2019.i1.192-235}, 
+  number    = {1}, 
+  journal   = {IACR Transactions on Symmetric Cryptology}, 
+  year      = {2019},
+  month     = {Mar.}, 
+  pages     = {192–235},
+}
+
+% ID-RT and ZC-ST attacks on SKINNY (Sadeghi et al.)
+@article{tosc_SadeghiMB18,
+  author    = {Sadegh Sadeghi and
+               Tahereh Mohammadi and
+               Nasour Bagheri},
+  title     = {Cryptanalysis of Reduced round {SKINNY} Block Cipher},
+  journal   = {{IACR} Trans. Symmetric Cryptol.},
+  volume    = {2018},
+  number    = {3},
+  pages     = {124--162},
+  year      = {2018},
+  doi       = {10.13154/tosc.v2018.i3.124-162}
+}
+
+% ID attacks on SKINNY in the ST setting (IET)
+@article{iet_YangQC17,
+  author    = {Dong Yang and
+               Wen{-}Feng Qi and
+               Hua{-}Jin Chen},
+  title     = {Impossible differential attacks on the {SKINNY} family of block ciphers},
+  journal   = {{IET} Inf. Secur.},
+  volume    = {11},
+  number    = {6},
+  pages     = {377--385},
+  year      = {2017},
+  doi       = {10.1049/iet-ifs.2016.0488}
+}
+
+% ID attack on SKINNY in the RT setting (ToSC)
+@article{journals_tosc_LiuGL17,
+  author    = {Guozhen Liu and
+               Mohona Ghosh and
+               Ling Song},
+  title     = {Security Analysis of {SKINNY} under Related-Tweakey Settings},
+  journal   = {{IACR} Trans. Symmetric Cryptol.},
+  volume    = {2017},
+  number    = {3},
+  pages     = {37--72},
+  year      = {2017},
+  doi       = {10.13154/tosc.v2017.i3.37-72}
+}
+
+% ID attack on SKINNY (Tolba) WRONG RESULTS!
+@inproceedings{africacrypt_Tolba0Y17,
+  author    = {Mohamed Tolba and
+               Ahmed Abdelkhalek and
+               Amr M. Youssef},
+  title     = {Impossible Differential Cryptanalysis of Reduced-Round {SKINNY}},
+  booktitle = {{AFRICACRYPT} 2017},
+  series    = {LNCS},
+  volume    = {10239},
+  pages     = {117--134},
+  year      = {2017},
+  doi       = {10.1007/978-3-319-57339-7_7}
+}
+
+@article{Zhang2022,
+  author    = {Zhang, Yi and
+               Cui, Ting and
+               Wang, Congjun},
+  title     = {{Zero-correlation} linear attack on reduced-round {SKINNY}},
+  journal   = {Frontiers of Computer Science},
+  volume    = {17},
+  number    = {174808 (2023)},
+  pages     = {377--385},
+  year      = {2022},
+  doi       = {10.1007/s11704-022-2206-2}
+}
+
+% skinny specification
+@inproceedings{skinny,  
+  author    = {Beierle, Christof and 
+              Jean, J{\'e}r{\'e}my and 
+              K{\"o}lbl, Stefan and 
+              Leander, Gregor and 
+              Moradi, Amir and 
+              Peyrin, Thomas and 
+              Sasaki, Yu and 
+              Sasdrich, Pascal and 
+              Sim, Siang Meng},
+  title     = {{The SKINNY family of block ciphers and its low-latency variant MANTIS}},
+  Xbooktitle= {Advances in Cryptology -- CRYPTO 2016},
+  booktitle = {{CRYPTO} 2016},
+  pages     = {123--153},
+  year      = {2016},
+  organization= {Springer},
+  doi       = {10.1007/978-3-662-53008-5_5},
+}
+
+\end{filecontents*}
+
+\end{document}
