@@ -3,6 +3,7 @@
 The LaTeX sources for my talks. Feel free to reuse these sources for your own talks.
 
 - [My Talks](#my-talks)
+  - [EUROCRYPT 2023](#eurocrypt-2023)
   - [FSE 2023 - Second Talk](#fse-2023---second-talk)
   - [FSE 2023 - First Talk](#fse-2023---first-talk)
   - [ISC 2022](#isc-2022)
@@ -12,6 +13,14 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
   - [FSE 2020](#fse-2020)
 - [Credits](#credits)
 
+## EUROCRYPT 2023
+***Finding the Impossible: Automated Search for Full Impossible-Differential, Zero-Correlation, and Integral Attacks***
+
+- [Paper](https://ia.cr/2022/1147)
+- [Slides](20230424-EUROCRYPT-2023)
+- [Video](https://youtu.be/_DajyWvK_qU?list=PLeeS-3Ml-rpoPvbe9Kwmtubt-d7bQrl_c&t=1351)
+- Venue: [Lyon, France](https://eurocrypt.iacr.org/2023/)
+
 ## FSE 2023 - Second Talk 
 ***Integral Cryptanalysis of WARP based on Monomial Prediction***
 
@@ -19,7 +28,6 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
 - [Slides](20230323-FSE-2023)
 - [Video](https://www.youtube.com/watch?v=dhLCiznBa-s&list=PLeeS-3Ml-rpod9ZTUNxz-zc2vF-JdTjXr&index=19)
 - Venue: [Kobe, Japan](https://fse.iacr.org/2023/japanEvent.php)
-
 
 ## FSE 2023 - First Talk
 
@@ -30,8 +38,6 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
 - [Slides](20230321-FSE-2023)
 - [Video](https://youtu.be/7ABCANs2dMM?t=1084)
 - Venue: [Kobe, Japan](https://fse.iacr.org/2023/japanEvent.php)
-
-
 
 ## ISC 2022
 

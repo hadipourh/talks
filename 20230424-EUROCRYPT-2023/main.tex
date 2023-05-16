@@ -49,6 +49,7 @@
 \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
 \usepackage{framed, color}
 \usepackage{tikz}
+\usetikzlibrary{external}
 \usetikzlibrary{calc,patterns, arrows.meta, shapes.geometric, positioning, decorations.markings, decorations.pathmorphing}
 \usetikzlibrary{cipher}
 \usepackage{skinny}
@@ -428,15 +429,15 @@
         {\visible<13->{\FillCell[white]{s0}\FillCell[nonzeroany]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[nonzeroany]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[nonzeroany]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after addtweakey)
         {\visible<14->{\FillCell[white]{s0}\FillCell[nonzeroany]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s4}\FillCell[nonzeroany]{s10}\FillCell[white]{s11}\FillCell[white]{s8}\FillCell[nonzeroany]{s9}\FillCell[white]{s15}\FillCell[white]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}}} % state (after shiftrows)
 
-\SkinnyMismatchAligned[3]{\visible<14->{\FillCell[white]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[nonzeroany]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[nonzeroany]{s9}\FillCell[nonzeroany]{s10}\FillCell[unknown]{s11}\FillCell[white]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after mixcols)
+\SkinnyMismatchAligned[3]{\visible<15->{\FillCell[white]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[nonzeroany]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[nonzeroany]{s9}\FillCell[nonzeroany]{s10}\FillCell[unknown]{s11}\FillCell[white]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after mixcols)
 \SkinnyRoundTK[3]
-        {\visible<14->{\FillCell[nonzeroany]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (input)
+        {\visible<15->{\FillCell[nonzeroany]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (input)
         {\Cell{s0}{\texttt{f}}\Cell{s1}{\texttt{b}}\Cell{s2}{\texttt{9}}\Cell{s3}{\texttt{e}}\Cell{s4}{\texttt{8}}\Cell{s5}{\texttt{c}}\Cell{s6}{\texttt{a}}\Cell{s7}{\texttt{d}}} % tk[1]
         {} % tk[2]
         {} % tk[3]
-        {\visible<13->{\FillCell[nonzeroany]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after subcells)
-        {\visible<12->{\FillCell[nonzeroany]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after addtweakey)
-        {\visible<11->{\FillCell[nonzeroany]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s4}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s15}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}}} % state (after shiftrows)
+        {\visible<14->{\FillCell[nonzeroany]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after subcells)
+        {\visible<13->{\FillCell[nonzeroany]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after addtweakey)
+        {\visible<12->{\FillCell[nonzeroany]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s4}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s15}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}}} % state (after shiftrows)
 
 \SkinnyNewLine[3]{\visible<11->{\FillCell[unknown]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[nonzeroany]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[nonzeroany]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after mixcols)
 \SkinnyRoundTK[3]
@@ -559,9 +560,9 @@
 \visible<2->{
 	\draw[rounded corners=2pt] ($(c1) + (0, -\halfvstep)$) rectangle ($(c4) + (0, \halfvstep)$);
 	\draw[] ($(meetingpoint) + (0, -\halfvstep)$) -- ($(meetingpoint) + (0, \halfvstep + 0.2)$);
-	\draw[<->, dashed] ($(c1) + (0, \halfvstep + 0.1)$) -- node[above] {$r\Up$} ($(meetingpoint) + (0,
+	\draw[<->, dashed] ($(c1) + (0, \halfvstep + 0.1)$) -- node[above] {$R\Up$} ($(meetingpoint) + (0,
 	\halfvstep + 0.1)$);
-	\draw[<->, dashed] ($(meetingpoint) + (0, \halfvstep + 0.1)$) -- node[above] {$r\Low$} ($(c4) + (0,
+	\draw[<->, dashed] ($(meetingpoint) + (0, \halfvstep + 0.1)$) -- node[above] {$R\Low$} ($(c4) + (0,
 	\halfvstep + 0.1)$);
 	\node[] (e0) at ($0.5*(c1) + 0.5*(c2)$) {$E\Up$};
 	\node[] (e1) at ($0.5*(c3) + 0.5*(c4)$) {$E\Low$};
@@ -600,79 +601,79 @@
 \end{columns}
 \end{frame}
 
-\begin{frame}{A Basic Example}
-\begin{figure}
-\vspace{-0.6cm}
-\centering
-\resizebox{\linewidth}{!}{
-\begin{tikzpicture}
-\SkinnyInit{}{}{}{} % init coordinates, print labels
+% \begin{frame}{A Basic Example}
+% \begin{figure}
+% \vspace{-0.6cm}
+% \centering
+% \resizebox{\linewidth}{!}{
+% \begin{tikzpicture}
+% \SkinnyInit{}{}{}{} % init coordinates, print labels
 
-\SkinnyRoundTK[0]
-				{\visible<2->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[nonzeroany]{s2}\FillCell[nonzeroany]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[nonzeroany]{s12}\FillCell[white]{s13}\FillCell[white]{s14}\FillCell[nonzeroany]{s15}}} % state (input)
-				{\visible<2->{\Cell{s0}{\texttt{0}}\Cell{s1}{\texttt{1}}\Cell{s2}{\texttt{2}}\Cell{s3}{\texttt{3}}\Cell{s4}{\texttt{4}}\Cell{s5}{\texttt{5}}\Cell{s6}{\texttt{6}}\Cell{s7}{\texttt{7}}}} % tk[1]
-				{} % tk[2]
-				{} % tk[3]
-				{\visible<2->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[nonzeroany]{s2}\FillCell[nonzeroany]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[nonzeroany]{s12}\FillCell[white]{s13}\FillCell[white]{s14}\FillCell[nonzeroany]{s15}}} % state (after subcells)
-				{\visible<2->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[nonzeroany]{s2}\FillCell[nonzeroany]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[nonzeroany]{s12}\FillCell[white]{s13}\FillCell[white]{s14}\FillCell[nonzeroany]{s15}}} % state (after addtweakey)
-				{\visible<2->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[nonzeroany]{s2}\FillCell[nonzeroany]{s3}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[white]{s4}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[nonzeroany]{s15}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[nonzeroany]{s14}}} % state (after shiftrows)
+% \SkinnyRoundTK[0]
+% 				{\visible<2->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[nonzeroany]{s2}\FillCell[nonzeroany]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[nonzeroany]{s12}\FillCell[white]{s13}\FillCell[white]{s14}\FillCell[nonzeroany]{s15}}} % state (input)
+% 				{\visible<2->{\Cell{s0}{\texttt{0}}\Cell{s1}{\texttt{1}}\Cell{s2}{\texttt{2}}\Cell{s3}{\texttt{3}}\Cell{s4}{\texttt{4}}\Cell{s5}{\texttt{5}}\Cell{s6}{\texttt{6}}\Cell{s7}{\texttt{7}}}} % tk[1]
+% 				{} % tk[2]
+% 				{} % tk[3]
+% 				{\visible<2->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[nonzeroany]{s2}\FillCell[nonzeroany]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[nonzeroany]{s12}\FillCell[white]{s13}\FillCell[white]{s14}\FillCell[nonzeroany]{s15}}} % state (after subcells)
+% 				{\visible<2->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[nonzeroany]{s2}\FillCell[nonzeroany]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[nonzeroany]{s12}\FillCell[white]{s13}\FillCell[white]{s14}\FillCell[nonzeroany]{s15}}} % state (after addtweakey)
+% 				{\visible<2->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[nonzeroany]{s2}\FillCell[nonzeroany]{s3}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[white]{s4}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[nonzeroany]{s15}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[nonzeroany]{s14}}} % state (after shiftrows)
 
-\SkinnyRoundTK[1]
-				{\visible<2->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[nonzeroany]{s6}\FillCell[nonzeroany]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[nonzeroany]{s14}\FillCell[nonzeroany]{s15}}} % state (input)
-				{\visible<2->{\Cell{s0}{\texttt{9}}\Cell{s1}{\texttt{f}}\Cell{s2}{\texttt{8}}\Cell{s3}{\texttt{d}}\Cell{s4}{\texttt{a}}\Cell{s5}{\texttt{e}}\Cell{s6}{\texttt{c}}\Cell{s7}{\texttt{b}}}} % tk[1]
-				{} % tk[2]
-				{} % tk[3]
-				{\visible<2->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[nonzeroany]{s6}\FillCell[nonzeroany]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[nonzeroany]{s14}\FillCell[nonzeroany]{s15}}} % state (after subcells)
-				{\visible<2->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[nonzeroany]{s6}\FillCell[nonzeroany]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[nonzeroany]{s14}\FillCell[nonzeroany]{s15}}} % state (after addtweakey)
-				{\visible<2->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[nonzeroany]{s7}\FillCell[nonzeroany]{s4}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s15}\FillCell[white]{s12}\FillCell[nonzeroany]{s13}\FillCell[nonzeroany]{s14}}} % state (after shiftrows)
+% \SkinnyRoundTK[1]
+% 				{\visible<2->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[nonzeroany]{s6}\FillCell[nonzeroany]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[nonzeroany]{s14}\FillCell[nonzeroany]{s15}}} % state (input)
+% 				{\visible<2->{\Cell{s0}{\texttt{9}}\Cell{s1}{\texttt{f}}\Cell{s2}{\texttt{8}}\Cell{s3}{\texttt{d}}\Cell{s4}{\texttt{a}}\Cell{s5}{\texttt{e}}\Cell{s6}{\texttt{c}}\Cell{s7}{\texttt{b}}}} % tk[1]
+% 				{} % tk[2]
+% 				{} % tk[3]
+% 				{\visible<2->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[nonzeroany]{s6}\FillCell[nonzeroany]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[nonzeroany]{s14}\FillCell[nonzeroany]{s15}}} % state (after subcells)
+% 				{\visible<2->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[nonzeroany]{s6}\FillCell[nonzeroany]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[nonzeroany]{s14}\FillCell[nonzeroany]{s15}}} % state (after addtweakey)
+% 				{\visible<2->{\FillCell[white]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[nonzeroany]{s7}\FillCell[nonzeroany]{s4}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[white]{s15}\FillCell[white]{s12}\FillCell[nonzeroany]{s13}\FillCell[nonzeroany]{s14}}} % state (after shiftrows)
 
-\SkinnyNewLine[2]{\visible<2->{\FillCell[white]{s0}\FillCell[nonzeroany]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[nonzeroany]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[nonzeroany]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after mixcols)
-\SkinnyRoundTK[2]
-				{\visible<2->{\FillCell[white]{s0}\FillCell[nonzeroany]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[nonzeroany]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[nonzeroany]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (input)
-				{\visible<2->{\Cell{s0}{\texttt{1}}\Cell{s1}{\texttt{7}}\Cell{s2}{\texttt{0}}\Cell{s3}{\texttt{5}}\Cell{s4}{\texttt{2}}\Cell{s5}{\texttt{6}}\Cell{s6}{\texttt{4}}\Cell{s7}{\texttt{3}}}} % tk[1]
-				{} % tk[2]
-				{} % tk[3]
-				{\visible<2->{\FillCell[white]{s0}\FillCell[nonzeroany]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[nonzeroany]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[nonzeroany]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after subcells)
-				{\visible<2->{\FillCell[white]{s0}\FillCell[nonzeroany]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[nonzeroany]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[nonzeroany]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after addtweakey)
-				{\visible<2->{\FillCell[white]{s0}\FillCell[nonzeroany]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s4}\FillCell[nonzeroany]{s10}\FillCell[white]{s11}\FillCell[white]{s8}\FillCell[nonzeroany]{s9}\FillCell[white]{s15}\FillCell[white]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}}} % state (after shiftrows)
+% \SkinnyNewLine[2]{\visible<2->{\FillCell[white]{s0}\FillCell[nonzeroany]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[nonzeroany]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[nonzeroany]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after mixcols)
+% \SkinnyRoundTK[2]
+% 				{\visible<2->{\FillCell[white]{s0}\FillCell[nonzeroany]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[nonzeroany]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[nonzeroany]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (input)
+% 				{\visible<2->{\Cell{s0}{\texttt{1}}\Cell{s1}{\texttt{7}}\Cell{s2}{\texttt{0}}\Cell{s3}{\texttt{5}}\Cell{s4}{\texttt{2}}\Cell{s5}{\texttt{6}}\Cell{s6}{\texttt{4}}\Cell{s7}{\texttt{3}}}} % tk[1]
+% 				{} % tk[2]
+% 				{} % tk[3]
+% 				{\visible<2->{\FillCell[white]{s0}\FillCell[nonzeroany]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[nonzeroany]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[nonzeroany]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after subcells)
+% 				{\visible<2->{\FillCell[white]{s0}\FillCell[nonzeroany]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[white]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[nonzeroany]{s8}\FillCell[white]{s9}\FillCell[white]{s10}\FillCell[nonzeroany]{s11}\FillCell[white]{s12}\FillCell[white]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after addtweakey)
+% 				{\visible<2->{\FillCell[white]{s0}\FillCell[nonzeroany]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s5}\FillCell[white]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s4}\FillCell[nonzeroany]{s10}\FillCell[white]{s11}\FillCell[white]{s8}\FillCell[nonzeroany]{s9}\FillCell[white]{s15}\FillCell[white]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}}} % state (after shiftrows)
 
-\SkinnyMismatchAligned[3]{\visible<2->{\FillCell[white]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[nonzeroany]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[nonzeroany]{s9}\FillCell[nonzeroany]{s10}\FillCell[unknown]{s11}\FillCell[white]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after mixcols)
-\SkinnyRoundTK[3]
-				{\visible<2->{\FillCell[nonzeroany]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (input)
-				{\visible<2->{\Cell{s0}{\texttt{f}}\Cell{s1}{\texttt{b}}\Cell{s2}{\texttt{9}}\Cell{s3}{\texttt{e}}\Cell{s4}{\texttt{8}}\Cell{s5}{\texttt{c}}\Cell{s6}{\texttt{a}}\Cell{s7}{\texttt{d}}}} % tk[1]
-				{} % tk[2]
-				{} % tk[3]
-				{\visible<2->{\FillCell[nonzeroany]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after subcells)
-				{\visible<2->{\FillCell[nonzeroany]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after addtweakey)
-				{\visible<2->{\FillCell[nonzeroany]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s4}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s15}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}}} % state (after shiftrows)
+% \SkinnyMismatchAligned[3]{\visible<2->{\FillCell[white]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[white]{s4}\FillCell[nonzeroany]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[nonzeroany]{s9}\FillCell[nonzeroany]{s10}\FillCell[unknown]{s11}\FillCell[white]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after mixcols)
+% \SkinnyRoundTK[3]
+% 				{\visible<2->{\FillCell[nonzeroany]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (input)
+% 				{\visible<2->{\Cell{s0}{\texttt{f}}\Cell{s1}{\texttt{b}}\Cell{s2}{\texttt{9}}\Cell{s3}{\texttt{e}}\Cell{s4}{\texttt{8}}\Cell{s5}{\texttt{c}}\Cell{s6}{\texttt{a}}\Cell{s7}{\texttt{d}}}} % tk[1]
+% 				{} % tk[2]
+% 				{} % tk[3]
+% 				{\visible<2->{\FillCell[nonzeroany]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after subcells)
+% 				{\visible<2->{\FillCell[nonzeroany]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after addtweakey)
+% 				{\visible<2->{\FillCell[nonzeroany]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s4}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s15}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}}} % state (after shiftrows)
 
-\SkinnyNewLine[4]{\visible<2->{\FillCell[unknown]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[nonzeroany]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[nonzeroany]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after mixcols)
-\SkinnyRoundTK[4]
-				{\visible<2->{\FillCell[unknown]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[nonzeroany]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[nonzeroany]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (input)
-				{\visible<2->{\Cell{s0}{\texttt{7}}\Cell{s1}{\texttt{3}}\Cell{s2}{\texttt{1}}\Cell{s3}{\texttt{6}}\Cell{s4}{\texttt{0}}\Cell{s5}{\texttt{4}}\Cell{s6}{\texttt{2}}\Cell{s7}{\texttt{5}}}} % tk[1]
-				{} % tk[2]
-				{} % tk[3]
-				{\visible<2->{\FillCell[unknown]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[nonzeroany]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[nonzeroany]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after subcells)
-				{\visible<2->{\FillCell[unknown]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[nonzeroany]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[nonzeroany]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after addtweakey)
-				{\visible<2->{\FillCell[unknown]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[nonzeroany]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s4}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s8}\FillCell[nonzeroany]{s9}\FillCell[unknown]{s15}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}}} % state (after shiftrows)
+% \SkinnyNewLine[4]{\visible<2->{\FillCell[unknown]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[nonzeroany]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[nonzeroany]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after mixcols)
+% \SkinnyRoundTK[4]
+% 				{\visible<2->{\FillCell[unknown]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[nonzeroany]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[nonzeroany]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (input)
+% 				{\visible<2->{\Cell{s0}{\texttt{7}}\Cell{s1}{\texttt{3}}\Cell{s2}{\texttt{1}}\Cell{s3}{\texttt{6}}\Cell{s4}{\texttt{0}}\Cell{s5}{\texttt{4}}\Cell{s6}{\texttt{2}}\Cell{s7}{\texttt{5}}}} % tk[1]
+% 				{} % tk[2]
+% 				{} % tk[3]
+% 				{\visible<2->{\FillCell[unknown]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[nonzeroany]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[nonzeroany]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after subcells)
+% 				{\visible<2->{\FillCell[unknown]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[nonzeroany]{s4}\FillCell[unknown]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s10}\FillCell[nonzeroany]{s11}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after addtweakey)
+% 				{\visible<2->{\FillCell[unknown]{s0}\FillCell[white]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[nonzeroany]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s4}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s8}\FillCell[nonzeroany]{s9}\FillCell[unknown]{s15}\FillCell[unknown]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}}} % state (after shiftrows)
 
-\SkinnyRoundTK[5]
-				{\visible<2->{\FillCell[unknown]{s0}\FillCell[unknown]{s1}\FillCell[white]{s2}\FillCell[white]{s3}\FillCell[unknown]{s4}\FillCell[white]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[nonzeroany]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (input)
-				{\visible<2->{\Cell{s0}{\texttt{b}}\Cell{s1}{\texttt{d}}\Cell{s2}{\texttt{f}}\Cell{s3}{\texttt{c}}\Cell{s4}{\texttt{9}}\Cell{s5}{\texttt{a}}\Cell{s6}{\texttt{8}}\Cell{s7}{\texttt{e}}}} % tk[1]
-				{} % tk[2]
-				{} % tk[3]
-				{\visible<2->{\FillCell[unknown]{s0}\FillCell[unknown]{s1}\FillCell[white]{s2}\FillCell[white]{s3}\FillCell[unknown]{s4}\FillCell[white]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[nonzeroany]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after subcells)
-				{\visible<2->{\FillCell[unknown]{s0}\FillCell[unknown]{s1}\FillCell[white]{s2}\FillCell[white]{s3}\FillCell[unknown]{s4}\FillCell[white]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[nonzeroany]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after addtweakey)
-				{\visible<2->{\FillCell[unknown]{s0}\FillCell[unknown]{s1}\FillCell[white]{s2}\FillCell[white]{s3}\FillCell[unknown]{s5}\FillCell[white]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s4}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s15}\FillCell[nonzeroany]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}}} % state (after shiftrows)
+% \SkinnyRoundTK[5]
+% 				{\visible<2->{\FillCell[unknown]{s0}\FillCell[unknown]{s1}\FillCell[white]{s2}\FillCell[white]{s3}\FillCell[unknown]{s4}\FillCell[white]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[nonzeroany]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (input)
+% 				{\visible<2->{\Cell{s0}{\texttt{b}}\Cell{s1}{\texttt{d}}\Cell{s2}{\texttt{f}}\Cell{s3}{\texttt{c}}\Cell{s4}{\texttt{9}}\Cell{s5}{\texttt{a}}\Cell{s6}{\texttt{8}}\Cell{s7}{\texttt{e}}}} % tk[1]
+% 				{} % tk[2]
+% 				{} % tk[3]
+% 				{\visible<2->{\FillCell[unknown]{s0}\FillCell[unknown]{s1}\FillCell[white]{s2}\FillCell[white]{s3}\FillCell[unknown]{s4}\FillCell[white]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[nonzeroany]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after subcells)
+% 				{\visible<2->{\FillCell[unknown]{s0}\FillCell[unknown]{s1}\FillCell[white]{s2}\FillCell[white]{s3}\FillCell[unknown]{s4}\FillCell[white]{s5}\FillCell[unknown]{s6}\FillCell[unknown]{s7}\FillCell[white]{s8}\FillCell[white]{s9}\FillCell[unknown]{s10}\FillCell[unknown]{s11}\FillCell[unknown]{s12}\FillCell[nonzeroany]{s13}\FillCell[unknown]{s14}\FillCell[unknown]{s15}}} % state (after addtweakey)
+% 				{\visible<2->{\FillCell[unknown]{s0}\FillCell[unknown]{s1}\FillCell[white]{s2}\FillCell[white]{s3}\FillCell[unknown]{s5}\FillCell[white]{s6}\FillCell[unknown]{s7}\FillCell[unknown]{s4}\FillCell[white]{s10}\FillCell[white]{s11}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[unknown]{s15}\FillCell[nonzeroany]{s12}\FillCell[unknown]{s13}\FillCell[unknown]{s14}}} % state (after shiftrows)
 
-\SkinnyFin[6]{\visible<2->{\FillCell[white]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s4}\FillCell[unknown]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[white]{s10}\FillCell[unknown]{s11}\FillCell[nonzeroany]{s12}\FillCell[unknown]{s13}\FillCell[white]{s14}\FillCell[white]{s15}}} % state (after mixcols)
-\ZeroLegend{\ZLfill{white}{zero}
-\ZLfill{nonzeroany}{nonzero}
-\ZLfill{unknown}{any}}
-\end{tikzpicture}
-}
-\end{figure}
-\end{frame}
+% \SkinnyFin[6]{\visible<2->{\FillCell[white]{s0}\FillCell[unknown]{s1}\FillCell[unknown]{s2}\FillCell[unknown]{s3}\FillCell[unknown]{s4}\FillCell[unknown]{s5}\FillCell[white]{s6}\FillCell[white]{s7}\FillCell[unknown]{s8}\FillCell[unknown]{s9}\FillCell[white]{s10}\FillCell[unknown]{s11}\FillCell[nonzeroany]{s12}\FillCell[unknown]{s13}\FillCell[white]{s14}\FillCell[white]{s15}}} % state (after mixcols)
+% \ZeroLegend{\ZLfill{white}{zero}
+% \ZLfill{nonzeroany}{nonzero}
+% \ZLfill{unknown}{any}}
+% \end{tikzpicture}
+% }
+% \end{figure}
+% \end{frame}
 
 \begin{frame}{The Advantages of Our Method to Search for Distinguishers}
 \begin{itemize}
@@ -762,6 +763,7 @@
      \item Encode \textcolor{tugred}{$|k\In \cup k\Out|$}
   \end{itemize}
   \item<5->[\faCheckCircle] Model the complexity formulas
+  \item<6->[\faCheckCircle] Objective: \texttt{Minimize} the total time complexity
 \end{itemize}
 \column[c]{0.45\textwidth}
 \begin{figure}
@@ -815,7 +817,7 @@
 \draw[->] (k3) -- (e|-k3);
 \draw[->] (k4) -- (e|-k4);
 \node[ellipse,align=center, opacity=1] at (kb) {\textcolor{tugred}{$k\In$}};
-\node[ellipse,align=center, opacity=1] at (kf) {\textcolor{tugred}{$k\In$}};
+\node[ellipse,align=center, opacity=1] at (kf) {\textcolor{tugred}{$k\Out$}};
 }
 \visible<4->{
 \draw[rounded corners=2pt] (s1) -- (s2) -- node[left] {\rotatebox{-90}{Key-Schedule}} (s3) -- (s4) -- cycle;
@@ -872,6 +874,7 @@
 \vspace{-0.6cm}
 \begin{columns}
 \column{0.25\textwidth}
+\vspace{0.3cm}
 \begin{itemize}
   \small
   \item $|k\In \cup k\Out| = 26\cdot \cs$
@@ -1089,12 +1092,12 @@
 \small
 \item[\faRoad] Applying our method to other ciphers, e.g., \cipher{AES}, \cipher{MANTIS}, \cipher{QARMA}, etc
 \item[\faRoad] Creating the bit-oriented version of our method
-\item[\faRoad] Applying our approach in other CP models, e.g., division property
+% \item[\faRoad] Applying our approach in other CP models, e.g., division property
 \item[\faRoad] Improving the key-recovery part of our CP models for ZC and integral attacks
 \end{itemize} 
 \end{itemize}
 \begin{center}
-\vspace{0.12cm}
+\vspace{0.10cm}
 
 % {\large Thanks for your attention!}
 
@@ -1147,6 +1150,7 @@ Then, for any $\lambda \in \mathbb{F}_{2}^{n}$, $\left\langle \beta, F(x + \lamb
 \begin{center}
 \vspace{-1cm}
 \resizebox{\textwidth}{!}{
+\tikzsetnextfilename{zc_int_relation}
 \begin{tikzpicture}
   \SkinnyInit{}{}{}{} % init coordinates, print labels
   
