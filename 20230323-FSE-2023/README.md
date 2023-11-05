@@ -7,4 +7,5 @@ Use the following command to compile the latex file:
 
 ```sh
 latexmk -pdf main.tex
+latexmk -pdf main.tex
 ```
