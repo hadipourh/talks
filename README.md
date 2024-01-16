@@ -4,8 +4,8 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
 
 - [My Talks](#my-talks)
   - [EUROCRYPT 2023 - Finding the Impossible](#eurocrypt-2023---finding-the-impossible)
-  - [FSE 2023 - Integral Cryptanalysis of WARP based on Monomial Prediction](#fse-2023---integral-cryptanalysis-of-warp-based-on-monomial-prediction)
   - [FSE 2023 - Throwing Boomerangs into Feistel Structures](#fse-2023---throwing-boomerangs-into-feistel-structures)
+  - [FSE 2023 - Integral Cryptanalysis of WARP based on Monomial Prediction](#fse-2023---integral-cryptanalysis-of-warp-based-on-monomial-prediction)
   - [ISC 2022 - Feeding Three Dragons With One Scone](#isc-2022---feeding-three-dragons-with-one-scone)
   - [CHES 2022 - Practical Multiple Persistent Fault Attacks](#ches-2022---practical-multiple-persistent-fault-attacks)
   - [ACNS 2022 - Autoguess](#acns-2022---autoguess)
@@ -21,14 +21,6 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
 - [Video](https://youtu.be/_DajyWvK_qU?list=PLeeS-3Ml-rpoPvbe9Kwmtubt-d7bQrl_c&t=1351)
 - Venue: [Lyon, France](https://eurocrypt.iacr.org/2023/)
 
-## FSE 2023 - Integral Cryptanalysis of WARP based on Monomial Prediction
-***Integral Cryptanalysis of WARP based on Monomial Prediction***
-
-- [Paper](https://ia.cr/2022/729)
-- [Slides](20230323-FSE-2023)
-- [Video](https://www.youtube.com/watch?v=dhLCiznBa-s&list=PLeeS-3Ml-rpod9ZTUNxz-zc2vF-JdTjXr&index=19)
-- Venue: [Kobe, Japan](https://fse.iacr.org/2023/japanEvent.php)
-
 ## FSE 2023 - Throwing Boomerangs into Feistel Structures
 
 ***Throwing Boomerangs into Feistel Structures:***
@@ -37,6 +29,14 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
 - [Paper](https://eprint.iacr.org/2022/745)
 - [Slides](20230321-FSE-2023)
 - [Video](https://youtu.be/7ABCANs2dMM?t=1084)
+- Venue: [Kobe, Japan](https://fse.iacr.org/2023/japanEvent.php)
+
+## FSE 2023 - Integral Cryptanalysis of WARP based on Monomial Prediction
+***Integral Cryptanalysis of WARP based on Monomial Prediction***
+
+- [Paper](https://ia.cr/2022/729)
+- [Slides](20230323-FSE-2023)
+- [Video](https://www.youtube.com/watch?v=dhLCiznBa-s&list=PLeeS-3Ml-rpod9ZTUNxz-zc2vF-JdTjXr&index=19)
 - Venue: [Kobe, Japan](https://fse.iacr.org/2023/japanEvent.php)
 
 ## ISC 2022 - Feeding Three Dragons With One Scone
