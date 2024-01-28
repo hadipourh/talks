@@ -79,14 +79,31 @@
 % \logobar{Supported by: ...}  % sponsors (titlepage; optional)
 
 %% Macros
-\definecolor{gold}{HTML}{F0AB00}
-\definecolor{bound}{HTML}{78b473}
-\definecolor{best}{HTML}{e59352}
-\definecolor{lin}{HTML}{285f82}
-\definecolor{sub}{HTML}{78b473}
-\definecolor{lightred}{rgb}{0.9, 0.2, 0.2}
-\definecolor{lightblue}{rgb}{0, 0.5, 0.9}
+\colorlet{upper}{tugred}
+\colorlet{upperfix}{tugyellow}
+\colorlet{upperunknown}{upper}
+\colorlet{lower}{tugblue}
+%\colorlet{lower}{mach} % alternative, brighter blue
+\colorlet{lowerfix}{tugmid}
+\colorlet{lowerunknown}{lower}
+\colorlet{common}{tuggreen}
 
+\newcommand{\dllegupper}[1][black]{\legendwrap{\TFill[#1]{0,0}}}
+\newcommand{\dlleglower}[1][black]{\legendwrap{\BFill[#1]{0,0}}}
+\newcommand{\dllegend}{%
+  \dllegupper[upperfix] active difference
+  \dllegupper[upperunknown] unknown difference
+  \dlleglower[lowerfix] active mask
+  \dlleglower[lowerunknown] unknown mask%
+}
+\newcommand{\dlshortlegend}{%
+  \dllegupper[upper] difference
+  \dlleglower[lower] linear mask%
+}
+\newcommand{\dlfeistellegend}{%
+  \tikz[stateopts,baseline=(base)]{\draw[upper,very thick] (0,0) -- (.7,0) ++(0,-.3) coordinate (base);} differential
+  \tikz[stateopts,baseline=(base)]{\draw[lower,very thick] (0,0) -- (.7,0) ++(0,-.3) coordinate (base);} linear%
+}
 \newcommand{\sparen}{\vspace*{-.3cm}}
 \newcommand{\cipher}[1]{\textsc{#1}}
 

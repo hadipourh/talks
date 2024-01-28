@@ -1,0 +1,86 @@
+\documentclass{standalone}
+\usepackage{aes}
+\usepackage{comment}
+\begin{document}
+%\begin{figure}
+%\centering
+\begin{tikzpicture}
+\AesInit
+
+\AesRound[0]
+{\TFill[upperactive]{ss01}\TFill[upperactive]{ss12}\TFill[upperactive]{ss23}\TFill[upperactive]{ss30}} % state input
+{} % round key
+{\TFill[upperactive]{ss01}\TFill[upperactive]{ss12}\TFill[upperactive]{ss23}\TFill[upperactive]{ss30}} % state after AK
+{\TFill[upperactive]{ss01}\TFill[upperactive]{ss12}\TFill[upperactive]{ss23}\TFill[upperactive]{ss30}} % state after SB
+{\TFill[upperactive]{ss01}\TFill[upperactive]{ss11}\TFill[upperactive]{ss21}\TFill[upperactive]{ss31}} % state after SR
+
+\AesRound[1]
+{\BFill[loweractive]{ss00}\BFill[loweractive]{ss01}\BFill[loweractive]{ss02}\BFill[loweractive]{ss03}\BFill[loweractive]{ss10}\BFill[loweractive]{ss11}\BFill[loweractive]{ss12}\BFill[loweractive]{ss13}\BFill[loweractive]{ss20}\TFill[upperactive]{ss21}\BFill[loweractive]{ss21}\BFill[loweractive]{ss22}\BFill[loweractive]{ss23}\BFill[loweractive]{ss30}\BFill[loweractive]{ss31}\BFill[loweractive]{ss32}\BFill[loweractive]{ss33}} % state input
+{} % round key
+{\BFill[loweractive]{ss00}\BFill[loweractive]{ss01}\BFill[loweractive]{ss02}\BFill[loweractive]{ss03}\BFill[loweractive]{ss10}\BFill[loweractive]{ss11}\BFill[loweractive]{ss12}\BFill[loweractive]{ss13}\BFill[loweractive]{ss20}\TFill[upperactive]{ss21}\BFill[loweractive]{ss21}\BFill[loweractive]{ss22}\BFill[loweractive]{ss23}\BFill[loweractive]{ss30}\BFill[loweractive]{ss31}\BFill[loweractive]{ss32}\BFill[loweractive]{ss33}} % state after AK
+{\BFill[loweractive]{ss00}\BFill[loweractive]{ss01}\BFill[loweractive]{ss02}\BFill[loweractive]{ss03}\BFill[loweractive]{ss10}\BFill[loweractive]{ss11}\BFill[loweractive]{ss12}\BFill[loweractive]{ss13}\BFill[loweractive]{ss20}\TFill[upperactive]{ss21}\BFill[loweractive]{ss21}\BFill[loweractive]{ss22}\BFill[loweractive]{ss23}\BFill[loweractive]{ss30}\BFill[loweractive]{ss31}\BFill[loweractive]{ss32}\BFill[loweractive]{ss33}} % state after SB
+{\BFill[loweractive]{ss00}\BFill[loweractive]{ss01}\BFill[loweractive]{ss02}\BFill[loweractive]{ss03}\BFill[loweractive]{ss10}\BFill[loweractive]{ss11}\BFill[loweractive]{ss12}\BFill[loweractive]{ss13}\BFill[loweractive]{ss20}\BFill[loweractive]{ss21}\BFill[loweractive]{ss22}\TFill[upperactive]{ss23}\BFill[loweractive]{ss23}\BFill[loweractive]{ss30}\BFill[loweractive]{ss31}\BFill[loweractive]{ss32}\BFill[loweractive]{ss33}} % state after SR
+
+\AesNewLine[2]{\BFill[loweractive]{ss00}\TFill[upperactive]{ss03}\BFill[loweractive]{ss11}\TFill[upperactive]{ss13}\BFill[loweractive]{ss22}\TFill[upperactive]{ss23}\TFill[upperactive]{ss33}\BFill[loweractive]{ss33}}
+\AesRound[2]
+{\BFill[loweractive]{ss00}\TFill[upperactive]{ss03}\BFill[loweractive]{ss11}\TFill[upperactive]{ss13}\BFill[loweractive]{ss22}\TFill[upperactive]{ss23}\TFill[upperactive]{ss33}\BFill[loweractive]{ss33}} % state input
+{} % round key
+{\BFill[loweractive]{ss00}\TFill[upperactive]{ss03}\BFill[loweractive]{ss11}\TFill[upperactive]{ss13}\BFill[loweractive]{ss22}\TFill[upperactive]{ss23}\TFill[upperactive]{ss33}\BFill[loweractive]{ss33}} % state after AK
+{\BFill[loweractive]{ss00}\TFill[upperactive]{ss03}\BFill[loweractive]{ss11}\TFill[upperactive]{ss13}\BFill[loweractive]{ss22}\TFill[upperactive]{ss23}\TFill[upperactive]{ss33}\BFill[loweractive]{ss33}} % state after SB
+{\BFill[loweractive]{ss00}\TFill[upperactive]{ss03}\BFill[loweractive]{ss10}\TFill[upperactive]{ss12}\BFill[loweractive]{ss20}\TFill[upperactive]{ss21}\TFill[upperactive]{ss30}\BFill[loweractive]{ss30}} % state after SR
+
+\AesRound[3]
+{\TFill[upperactive]{ss00}\TFill[upperactive]{ss01}\TFill[upperactive]{ss02}\TFill[upperactive]{ss03}\TFill[upperactive]{ss10}\TFill[upperactive]{ss11}\TFill[upperactive]{ss12}\TFill[upperactive]{ss13}\TFill[upperactive]{ss20}\BFill[loweractive]{ss20}\TFill[upperactive]{ss21}\TFill[upperactive]{ss22}\TFill[upperactive]{ss23}\TFill[upperactive]{ss30}\TFill[upperactive]{ss31}\TFill[upperactive]{ss32}\TFill[upperactive]{ss33}} % state input
+{} % round key
+{\TFill[upperactive]{ss00}\TFill[upperactive]{ss01}\TFill[upperactive]{ss02}\TFill[upperactive]{ss03}\TFill[upperactive]{ss10}\TFill[upperactive]{ss11}\TFill[upperactive]{ss12}\TFill[upperactive]{ss13}\TFill[upperactive]{ss20}\BFill[loweractive]{ss20}\TFill[upperactive]{ss21}\TFill[upperactive]{ss22}\TFill[upperactive]{ss23}\TFill[upperactive]{ss30}\TFill[upperactive]{ss31}\TFill[upperactive]{ss32}\TFill[upperactive]{ss33}} % state after AK
+{\TFill[upperactive]{ss00}\TFill[upperactive]{ss01}\TFill[upperactive]{ss02}\TFill[upperactive]{ss03}\TFill[upperactive]{ss10}\TFill[upperactive]{ss11}\TFill[upperactive]{ss12}\TFill[upperactive]{ss13}\TFill[upperactive]{ss20}\BFill[loweractive]{ss20}\TFill[upperactive]{ss21}\TFill[upperactive]{ss22}\TFill[upperactive]{ss23}\TFill[upperactive]{ss30}\TFill[upperactive]{ss31}\TFill[upperactive]{ss32}\TFill[upperactive]{ss33}} % state after SB
+{\TFill[upperactive]{ss00}\TFill[upperactive]{ss01}\TFill[upperactive]{ss02}\TFill[upperactive]{ss03}\TFill[upperactive]{ss10}\TFill[upperactive]{ss11}\TFill[upperactive]{ss12}\TFill[upperactive]{ss13}\TFill[upperactive]{ss20}\TFill[upperactive]{ss21}\TFill[upperactive]{ss22}\BFill[loweractive]{ss22}\TFill[upperactive]{ss23}\TFill[upperactive]{ss30}\TFill[upperactive]{ss31}\TFill[upperactive]{ss32}\TFill[upperactive]{ss33}} % state after SR
+
+\AesNewLine[4]{\TFill[upperactive]{ss00}\TFill[upperactive]{ss01}\TFill[upperactive]{ss02}\BFill[loweractive]{ss02}\TFill[upperactive]{ss03}\TFill[upperactive]{ss10}\TFill[upperactive]{ss11}\TFill[upperactive]{ss12}\BFill[loweractive]{ss12}\TFill[upperactive]{ss13}\TFill[upperactive]{ss20}\TFill[upperactive]{ss21}\TFill[upperactive]{ss22}\BFill[loweractive]{ss22}\TFill[upperactive]{ss23}\TFill[upperactive]{ss30}\TFill[upperactive]{ss31}\TFill[upperactive]{ss32}\BFill[loweractive]{ss32}\TFill[upperactive]{ss33}}
+\AesRound[4]
+{\BFill[loweractive]{ss02}\BFill[loweractive]{ss12}\BFill[loweractive]{ss22}\BFill[loweractive]{ss32}} % state input
+{} % round key
+{\BFill[loweractive]{ss02}\BFill[loweractive]{ss12}\BFill[loweractive]{ss22}\BFill[loweractive]{ss32}} % state after AK
+{\BFill[loweractive]{ss02}\BFill[loweractive]{ss12}\BFill[loweractive]{ss22}\BFill[loweractive]{ss32}} % state after SB
+{\BFill[loweractive]{ss02}\BFill[loweractive]{ss11}\BFill[loweractive]{ss20}\BFill[loweractive]{ss33}} % state after SR
+
+\AesFin[5]{\BFill[loweractive]{ss00}\BFill[loweractive]{ss01}\BFill[loweractive]{ss02}\BFill[loweractive]{ss03}\BFill[loweractive]{ss10}\BFill[loweractive]{ss11}\BFill[loweractive]{ss12}\BFill[loweractive]{ss13}\BFill[loweractive]{ss20}\BFill[loweractive]{ss21}\BFill[loweractive]{ss22}\BFill[loweractive]{ss23}\BFill[loweractive]{ss30}\BFill[loweractive]{ss31}\BFill[loweractive]{ss32}\BFill[loweractive]{ss33}}
+\end{tikzpicture}
+%\end{figure}
+\begin{comment}
+Attack summary:
+Setting: RU: 1, RM: 3, RL: 1, RMU: 0, RML: 1
+##################################################
+PU:  4
+CM:  3
+Q^2: 4
+##################################################
+##################################################
+Upper trail:
+Rounds	x                                 s                                 y                                 z                                 k                                 pr     
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0	001c00000000e200000000dfb3000000  00ff00000000fb00000000fd0e000000  00ff000000fb000000fd0000000e0000  000000000000000000f7000000000000  00000000000000000000000000000000  -24.0                             
+1	000000000000000000f7000000000000  none                              none                              none                              none                              none                              
+
+Weight: -24.00
+##################################################
+Sandwich 3 rounds in the middle
+char DP_STR[] = "000000000000f7000000000000000000";
+char LC_STR[] = "00000000000000006121e0a100000000";
+##################################################
+Lower trail:
+Rounds	x                                 s                                 y                                 pr     
+--------------------------------------------------------------------------------------------------------------------
+0	00000000000000006700000000000000  00000000000000000100000000000000  00000000000000000000010000000000  -6.0                              
+1	00006100000021000000e0000000a100  0000d800000083000000ca0000009500  0000d80000830000ca00000000000095  -24.0                             
+2	21d3814d93b1ef228e923507f67383fd  none                              none                              none                              
+
+Weight: -30.00
+##################################################
+Differential effect of the upper differential trail: 2^(-24.0)
+Number of common active S-boxes in the middle      : 3
+Squared correaltion of the lower linear trail      : 2^(-24.0)
+Expected correlation for the 3 middle rounds: 2^(-7.8372)
+Expected correlation for 5 rounds: 2^(-55.84)
+\end{comment}
+\end{document}
