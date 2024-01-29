@@ -256,61 +256,6 @@
 \sectionheader[\huge\color{tug}\faBook]{Background}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Constraint Programming (CP)}
-% \sectionheader[\huge\color{tug}\faBook]{Constraint Programming}
-
-\begin{frame}{Constraint Programming (CP)}
-\begin{itemize}
-% \item Programming in CP refers to the arrangement of a plan
-% \item For example the \href{https://developers.google.com/optimization/scheduling/employee_scheduling}{employee scheduling problem}
-\item Constraint Satisfaction/Optimization Problem (CSP/COP):
-\begin{itemize}
-\item We define a set of variables: $\mathcal{X} = \{\mathcal{X}_{1}, \ldots, \mathcal{X}_{n}\}$
-\item We specify the domain of each variable: $\mathbb{F}_{2}, \mathbb{Z}, \mathbb{R}, \ldots$
-\item We define a set of constraints: $\mathcal{C} = \{\mathcal{C}_{1}, \ldots, \mathcal{C}_{2}\}$
-\item We define an objective function (if it is required)
-\end{itemize}
-\item Constraint Programming (CP): Searching for a solution for a CSP/COP
-\item \textcolor{tugred}{MILP} and \textcolor{tugblue}{SAT} are special cases of CP
-\end{itemize}
-\end{frame}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[fragile]
-\frametitle{Constraint Programming -- Example}
-\begin{columns}
-\column[c]{0.45\textwidth}
-\begin{center}
-\only<1>{\includegraphics[width=0.9\textwidth]{./figures/austria.pdf}}
-\only<2>{\includegraphics[width=0.9\textwidth]{./figures/austria_legend.pdf}}
-\only<3>{\includegraphics[width=0.9\textwidth]{./figures/austria3colored.pdf}}
-\end{center}
-\column[c]{0.55\textwidth}
-\pause
-{\scriptsize
-\begin{verbatim}
-int: nc = 3;
-array[1..9] of var 1..nc: r;
-constraint r[1] != r[3]; constraint r[1] != r[6];
-constraint r[2] != r[5]; constraint r[2] != r[6]; 
-constraint r[2] != r[7]; constraint r[3] != r[9]; 
-constraint r[3] != r[6]; constraint r[3] != r[4];
-constraint r[4] != r[6]; constraint r[4] != r[5];
-constraint r[5] != r[6]; constraint r[5] != r[7];
-constraint r[7] != r[8];
-solve satisfy;
-\end{verbatim}}
-\pause
-\vspace{-0.4cm}
-{\scriptsize
-\begin{verbatim}
-r = [3, 3, 2, 3, 2, 1, 1, 2, 1];
-\end{verbatim}}
-\end{columns}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Cryptanalysis}
 % \sectionheader[\huge\color{tug}\faBook]{Cryptanalysis}
 
@@ -364,165 +309,60 @@ Getting the help or using of machines to \textcolor{tugred}{find}, \textcolor{tu
 \end{itemize}
 \end{frame}
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \subsection{A Basic Example}
-% % \sectionheader[\huge\color{tug}\faBook]{Differential Analysis Using Constraint Programming}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Constraint Programming (CP)}
+% \sectionheader[\huge\color{tug}\faBook]{Constraint Programming}
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \begin{frame}{Differential Attack \cite{crypto_BihamS90}}
-%   \vspace{-10pt}
-%   \begin{columns}[onlytextwidth]
-%     \column[c]{0.3\textwidth}
-%     \scalebox{0.75}{
-%       \begin{tikzpicture}[scale=0.5]
-%         \foreach \i in {0,1,2,3}
-%         \draw (0,-\i*4) rectangle ++(6,-2);
-%         \foreach \i in {1,2,3}
-%         \node[right] at (6,-\i*4+3) {$p_\i$};
-%         \foreach \i in {0,1,2,3,4} {
-%           \draw[->] (3,-\i*4+2) -- ++(0,-0.75);
-%           \draw[<-] (3,-\i*4) -- ++(0,0.75);
-%           \draw[<-] (3-0.25,-\i*4+1) -- ++(-1.25,0);
-%           \node[left] at (1.5,-\i*4+1) {$K_\i$};          
-%           \node[xor] at (3, -\i*4+1) {};
-%         }
-%         \node[right] at (4,1) {$\Delta_0$};
-%         \node[right] at (4,-3) {$\Delta_1$};
-%         \node[right] at (4,-7) {$\Delta_2$};
-%         \node[right] at (4,-11) {$\Delta_3$};
-%         \node[right] at (4,-15) {$\Delta_4$};
-%         % \draw[->,very thick,tug] (6,1) -- ++(0,-12);
-%         \path[->,tug,very thick,>=stealth] (6.5,1) edge[bend left]
-%           node[rotate=270,above] {$\pr(\Delta_0 \rightarrow \Delta_3)$} ++(0,-12);
-%         \path[->,tugblue,very thick,>=stealth] (6.5,-15) edge[bend right] 
-%           node[font=\small,rotate=270,above] {guess $K_4$} ++(0,4);
-%       \end{tikzpicture}
-%     }
-%     \column[c]{0.7\textwidth}    
-%     \begin{enumerate}
-%       \item Find ``good'' differential characteristic 
-%         \[
-%           \textcolor{tugred}{\Delta\In} = \Delta_0 \rightarrow \Delta_1 \rightarrow \Delta_2 \rightarrow \textcolor{tugred}{\Delta\Out} = \Delta_3
-%         \]
-%       \item Guess final key $K_4'$ and determine $\Delta_3'$
-%         \medskip
-%       \item The right key satisfies $\Delta_3' = \Delta_3$ with probability $\pr(\Delta_0 \rightarrow \Delta_3) = p_{1} \cdot p_{2} \cdot p_{3}$, while a wrong key satisfies $\Delta_3' = \Delta_3$ with probability $2^{-n}$
-%         \medskip
-%       \item \textit{Necessary condition} for the attack: $\pr \gg 2^{-n}$.
-%         %, the attack will be faster than exhaustive key search
-%     \end{enumerate}
-%   \end{columns}
-% \end{frame}
+\begin{frame}{Constraint Programming (CP)}
+\begin{itemize}
+% \item Programming in CP refers to the arrangement of a plan
+% \item For example the \href{https://developers.google.com/optimization/scheduling/employee_scheduling}{employee scheduling problem}
+\item Constraint Satisfaction/Optimization Problem (CSP/COP):
+\begin{itemize}
+\item We define a set of variables: $\mathcal{X} = \{\mathcal{X}_{1}, \ldots, \mathcal{X}_{n}\}$
+\item We specify the domain of each variable: $\mathbb{F}_{2}, \mathbb{Z}, \mathbb{R}, \ldots$
+\item We define a set of constraints: $\mathcal{C} = \{\mathcal{C}_{1}, \ldots, \mathcal{C}_{2}\}$
+\item We define an objective function (if it is required)
+\end{itemize}
+\item Constraint Programming (CP): Searching for a solution for a CSP/COP
+\item \textcolor{tugred}{MILP} and \textcolor{tugblue}{SAT} are special cases of CP
+\end{itemize}
+\end{frame}
 
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \begin{frame}{A Simple Toy Block Cipher}
-%   The block cipher $E_{k_0\|k_1}(m)$ encrypts 4 bits of plaintext using two 4-bit
-%   keys:
-%   \begin{align*}
-%     c = E_{k_0\|k_1}(m) = \mathcal S(m \oplus k_0) \oplus k_1
-%   \end{align*}
-
-%   \begin{center}
-%     \begin{tikzpicture}
-%       \draw(0,0) node {$m$};
-%       \draw[->](0.25,0) -- ++(0.5,0);
-%       \node[xor] at (1, 0) (xor1) {};
-%       \node[box, fill=tugblue] at (3, 0) (S) {\textcolor{white}{$S$}};
-%       \draw[->](1.25,0) -- node[above] {$u$} (S);
-%       \draw[->](S) -- node[above] {$v$} (4.75,0);
-%       \node[xor] at (5, 0) (xor2) {};
-%       \draw[->](5.25,0) -- ++(0.5,0);
-%       \draw(6,0) node {$c$};
-%       \draw[tug](1,1) node {$k_0$};
-%       \draw[->](1,0.75) -- ++(0,-0.5);
-%       \draw[tug](5,1) node {$k_1$};
-%       \draw[->](5,0.75) -- ++(0,-0.5);
-%     \end{tikzpicture}
-%     \medskip
-
-%     \setlength\extrarowheight{0.2ex} 
-%     \scalebox{0.8}{
-%       \begin{tabular}{@{}l*{16}{r}@{}}
-%         \toprule
-%         $x$                & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & a & b & c & d & e & f \\
-%         \midrule
-%         $\mathcal{S}  (x)$ & 4 & 0 & a & 7 & b & e & 1 & d & 9 & f & 6 & 8 & 5 & 2 & c & 3 \\
-%         \bottomrule
-%       \end{tabular}
-%     }
-%   \end{center}
-%   \pause
-
-%   Given $(m_0,c_0) = (\mathtt a,\mathtt 9)$ and $(m_1,c_1) = (\mathtt 5,\mathtt 6)$, what is the key?
-%   \bigskip\pause
-
-%   Brute force (exhaustive search): try all $2^4\cdot2^4=256$ keys.
-% \end{frame}
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \begin{frame}{Differential Attack}
-%   \vspace{-25pt}
-%   \begin{center}
-%     \scalebox{0.9}{
-%     \begin{tikzpicture}
-%       \draw(0,0) node {$m_0$};
-%       \draw[->](0.25,0) -- ++(0.5,0);
-%       % \draw(1,0) \xor{0.25};
-%       \node[xor] at (1, 0) (xor1) {};
-%       % \draw(3,0) node[primi, name=S] {$\mathcal S$} ++(-0.25,-0.25) rectangle ++(0.5,0.5);
-%       \node[box, fill=tugblue] at (3, 0) (S) {\textcolor{white}{$S$}};
-%       \draw[->](1.25,0) -- node[above] {$u_0$} (S);
-%       \draw[->](S) -- node[above] {$v_0$} (4.75,0);
-%       % \draw(5,0) \xor{0.25};
-%       \node[xor] at (5, 0) (xor2) {};
-%       \draw[->](5.25,0) -- ++(0.5,0);
-%       \draw(6,0) node {$c_0$};
-
-%       \draw[tug](1,0.75) node {$k_0$};
-%       \draw[->](1,0.5) -- ++(0,-0.25);
-%       \draw[tug](5,0.75) node {$k_1$};
-%       \draw[->](5,0.5) -- ++(0,-0.25);
-
-%       \begin{scope}[shift={++(0,-1.25)}]
-%         \draw(0,0) node {$m_1$};
-%         \draw[->](0.25,0) -- ++(0.5,0);
-%         % \draw(1,0) \xor{0.25};
-%         \node[xor] at (1, 0) (xor1) {};
-%         % \draw(3,0) node[primi, name=S] {$\mathcal S$} ++(-0.25,-0.25) rectangle ++(0.5,0.5);
-%         \node[box, fill=tugblue] at (3, 0) (S) {\textcolor{white}{$S$}};
-%         \draw[->](1.25,0) -- node[above] {$u_1$} (S);
-%         \draw[->](S) -- node[above] {$v_1$} (4.75,0);
-%         % \draw(5,0) \xor{0.25};
-%         \node[xor] at (5, 0) (xor2) {};
-%         \draw[->](5.25,0) -- ++(0.5,0);
-%         \draw(6,0) node {$c_1$};
-
-%         \draw[tug](1,0.75) node {$k_0$};
-%         \draw[->](1,0.5) -- ++(0,-0.25);
-%         \draw[tug](5,0.75) node {$k_1$};
-%         \draw[->](5,0.5) -- ++(0,-0.25);
-%       \end{scope}
-%       \draw[tugblue,thick](2,-2) node {?};
-%       \draw[tugblue,thick,->](0,-2) -- (1.8,-2);
-%       \draw[tugblue,thick,->](6,-2) -- (2.2,-2);
-%     \end{tikzpicture}
-%     }
-%   \end{center}
-%   \vspace{-0.5cm}
-%   %\begin{block}
-%   \emph{Strategy:}
-%   \begin{enumerate}
-%     \small
-%     \item compute $\Delta\In = u_0 \oplus u_1$
-%     \item guess $k_1$ (iterate over all values)
-%       %\item compute $v_0' = c_0 \oplus k_1'$ and $v_1' = c_1 \oplus k_1'$
-%     \item compute $u_0' = \mathcal S^{-1}(c_0 \oplus k_1')$ and $u_1' = \mathcal S^{-1}(c_1 \oplus k_1')$
-%     \item check if $u_0 \oplus u_1 = u_0' \oplus u_1'$
-%     \item if not: key guess was definitely wrong! (filtering)
-%   \end{enumerate}
-%   %\end{block}
-% \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{Constraint Programming -- Example}
+\begin{columns}
+\column[c]{0.45\textwidth}
+\begin{center}
+\only<1>{\includegraphics[width=0.9\textwidth]{./figures/austria.pdf}}
+\only<2>{\includegraphics[width=0.9\textwidth]{./figures/austria_legend.pdf}}
+\only<3>{\includegraphics[width=0.9\textwidth]{./figures/austria3colored.pdf}}
+\end{center}
+\column[c]{0.55\textwidth}
+\pause
+{\scriptsize
+\begin{verbatim}
+int: nc = 3;
+array[1..9] of var 1..nc: r;
+constraint r[1] != r[3]; constraint r[1] != r[6];
+constraint r[2] != r[5]; constraint r[2] != r[6]; 
+constraint r[2] != r[7]; constraint r[3] != r[9]; 
+constraint r[3] != r[6]; constraint r[3] != r[4];
+constraint r[4] != r[6]; constraint r[4] != r[5];
+constraint r[5] != r[6]; constraint r[5] != r[7];
+constraint r[7] != r[8];
+solve satisfy;
+\end{verbatim}}
+\pause
+\vspace{-0.4cm}
+{\scriptsize
+\begin{verbatim}
+r = [3, 3, 2, 3, 2, 1, 1, 2, 1];
+\end{verbatim}}
+\end{columns}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1169,6 +1009,373 @@ s.t.& ~\text{all constraints in} ~ \mathcal{C} ~ \text{are satisfied}
           (S8.east) node[right] {\faEllipsisH};
   \end{tikzpicture}
 \end{frame}%}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsection{A Basic Example}
+% \sectionheader[\huge\color{tug}\faBook]{Differential Analysis Using Constraint Programming}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Differential Attack \cite{crypto_BihamS90}}
+  \vspace{-10pt}
+  \begin{columns}[onlytextwidth]
+    \column[c]{0.3\textwidth}
+    \scalebox{0.75}{
+      \begin{tikzpicture}[scale=0.5]
+        \foreach \i in {0,1,2,3}
+        \draw (0,-\i*4) rectangle ++(6,-2);
+        \foreach \i in {1,2,3}
+        \node[right] at (6,-\i*4+3) {$p_\i$};
+        \foreach \i in {0,1,2,3,4} {
+          \draw[->] (3,-\i*4+2) -- ++(0,-0.75);
+          \draw[<-] (3,-\i*4) -- ++(0,0.75);
+          \draw[<-] (3-0.25,-\i*4+1) -- ++(-1.25,0);
+          \node[left] at (1.5,-\i*4+1) {$K_\i$};          
+          \node[xor] at (3, -\i*4+1) {};
+        }
+        \node[right] at (4,1) {$\Delta_0$};
+        \node[right] at (4,-3) {$\Delta_1$};
+        \node[right] at (4,-7) {$\Delta_2$};
+        \node[right] at (4,-11) {$\Delta_3$};
+        \node[right] at (4,-15) {$\Delta_4$};
+        % \draw[->,very thick,tug] (6,1) -- ++(0,-12);
+        \path[->,tug,very thick,>=stealth] (6.5,1) edge[bend left]
+          node[rotate=270,above] {$\pr(\Delta_0 \rightarrow \Delta_3)$} ++(0,-12);
+        \path[->,tugblue,very thick,>=stealth] (6.5,-15) edge[bend right] 
+          node[font=\small,rotate=270,above] {guess $K_4$} ++(0,4);
+      \end{tikzpicture}
+    }
+    \column[c]{0.7\textwidth}    
+    \begin{enumerate}
+      \item Find ``good'' differential characteristic 
+        \[
+          \textcolor{tugred}{\Delta\In} = \Delta_0 \rightarrow \Delta_1 \rightarrow \Delta_2 \rightarrow \textcolor{tugred}{\Delta\Out} = \Delta_3
+        \]
+      \item Guess final key $K_4'$ and determine $\Delta_3'$
+        \medskip
+      \item The right key satisfies $\Delta_3' = \Delta_3$ with probability $\pr(\Delta_0 \rightarrow \Delta_3) = p_{1} \cdot p_{2} \cdot p_{3}$, while a wrong key satisfies $\Delta_3' = \Delta_3$ with probability $2^{-n}$
+        \medskip
+      \item \textit{Necessary condition} for the attack: $\pr \gg 2^{-n}$.
+        %, the attack will be faster than exhaustive key search
+    \end{enumerate}
+  \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{A Simple Toy Block Cipher}
+  The block cipher $E_{k_0\|k_1}(m)$ encrypts 4 bits of plaintext using two 4-bit
+  keys:
+  \begin{align*}
+    c = E_{k_0\|k_1}(m) = \mathcal S(m \oplus k_0) \oplus k_1
+  \end{align*}
+
+  \begin{center}
+    \begin{tikzpicture}
+      \draw(0,0) node {$m$};
+      \draw[->](0.25,0) -- ++(0.5,0);
+      \node[xor] at (1, 0) (xor1) {};
+      \node[box, fill=tugblue] at (3, 0) (S) {\textcolor{white}{$S$}};
+      \draw[->](1.25,0) -- node[above] {$u$} (S);
+      \draw[->](S) -- node[above] {$v$} (4.75,0);
+      \node[xor] at (5, 0) (xor2) {};
+      \draw[->](5.25,0) -- ++(0.5,0);
+      \draw(6,0) node {$c$};
+      \draw[tug](1,1) node {$k_0$};
+      \draw[->](1,0.75) -- ++(0,-0.5);
+      \draw[tug](5,1) node {$k_1$};
+      \draw[->](5,0.75) -- ++(0,-0.5);
+    \end{tikzpicture}
+    \medskip
+
+    \setlength\extrarowheight{0.2ex} 
+    \scalebox{0.8}{
+      \begin{tabular}{@{}l*{16}{r}@{}}
+        \toprule
+        $x$                & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & a & b & c & d & e & f \\
+        \midrule
+        $\mathcal{S}  (x)$ & 4 & 0 & a & 7 & b & e & 1 & d & 9 & f & 6 & 8 & 5 & 2 & c & 3 \\
+        \bottomrule
+      \end{tabular}
+    }
+  \end{center}
+  \pause
+
+  Given $(m_0,c_0) = (\mathtt a,\mathtt 9)$ and $(m_1,c_1) = (\mathtt 5,\mathtt 6)$, what is the key?
+  \bigskip\pause
+
+  Brute force (exhaustive search): try all $2^4\cdot2^4=256$ keys.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Differential Attack}
+  \vspace{-25pt}
+  \begin{center}
+    \scalebox{0.9}{
+    \begin{tikzpicture}
+      \draw(0,0) node {$m_0$};
+      \draw[->](0.25,0) -- ++(0.5,0);
+      % \draw(1,0) \xor{0.25};
+      \node[xor] at (1, 0) (xor1) {};
+      % \draw(3,0) node[primi, name=S] {$\mathcal S$} ++(-0.25,-0.25) rectangle ++(0.5,0.5);
+      \node[box, fill=tugblue] at (3, 0) (S) {\textcolor{white}{$S$}};
+      \draw[->](1.25,0) -- node[above] {$u_0$} (S);
+      \draw[->](S) -- node[above] {$v_0$} (4.75,0);
+      % \draw(5,0) \xor{0.25};
+      \node[xor] at (5, 0) (xor2) {};
+      \draw[->](5.25,0) -- ++(0.5,0);
+      \draw(6,0) node {$c_0$};
+
+      \draw[tug](1,0.75) node {$k_0$};
+      \draw[->](1,0.5) -- ++(0,-0.25);
+      \draw[tug](5,0.75) node {$k_1$};
+      \draw[->](5,0.5) -- ++(0,-0.25);
+
+      \begin{scope}[shift={++(0,-1.25)}]
+        \draw(0,0) node {$m_1$};
+        \draw[->](0.25,0) -- ++(0.5,0);
+        % \draw(1,0) \xor{0.25};
+        \node[xor] at (1, 0) (xor1) {};
+        % \draw(3,0) node[primi, name=S] {$\mathcal S$} ++(-0.25,-0.25) rectangle ++(0.5,0.5);
+        \node[box, fill=tugblue] at (3, 0) (S) {\textcolor{white}{$S$}};
+        \draw[->](1.25,0) -- node[above] {$u_1$} (S);
+        \draw[->](S) -- node[above] {$v_1$} (4.75,0);
+        % \draw(5,0) \xor{0.25};
+        \node[xor] at (5, 0) (xor2) {};
+        \draw[->](5.25,0) -- ++(0.5,0);
+        \draw(6,0) node {$c_1$};
+
+        \draw[tug](1,0.75) node {$k_0$};
+        \draw[->](1,0.5) -- ++(0,-0.25);
+        \draw[tug](5,0.75) node {$k_1$};
+        \draw[->](5,0.5) -- ++(0,-0.25);
+      \end{scope}
+      \draw[tugblue,thick](2,-2) node {?};
+      \draw[tugblue,thick,->](0,-2) -- (1.8,-2);
+      \draw[tugblue,thick,->](6,-2) -- (2.2,-2);
+    \end{tikzpicture}
+    }
+  \end{center}
+  \vspace{-0.5cm}
+  %\begin{block}
+  \emph{Strategy:}
+  \begin{enumerate}
+    \small
+    \item compute $\Delta\In = u_0 \oplus u_1$
+    \item guess $k_1$ (iterate over all values)
+      %\item compute $v_0' = c_0 \oplus k_1'$ and $v_1' = c_1 \oplus k_1'$
+    \item compute $u_0' = \mathcal S^{-1}(c_0 \oplus k_1')$ and $u_1' = \mathcal S^{-1}(c_1 \oplus k_1')$
+    \item check if $u_0 \oplus u_1 = u_0' \oplus u_1'$
+    \item if not: key guess was definitely wrong! (filtering)
+  \end{enumerate}
+  %\end{block}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Difference Distribution Table (\ddt) -- I}
+  We need a metric to measure the quality of a differential characteristic
+  % \begin{itemize}
+  %   \item compute all possible output differences for all input differences of an
+  %     S-box  
+  % \end{itemize}
+  % \vspace{-0.5cm}
+  \begin{block}{Differential Distribution Table (\ddt)}
+    For a vectorial Boolean function $S: \mathbb{F}_{2}^{n} \rightarrow \mathbb{F}_{2}^{m}$,
+    the \ddt is a $2^{n}\times 2^{m}$ table whose rows correspond to the input difference $\Delta\In$ to $S$ and whose columns correspond to the output difference $\Delta\Out$ of $S$.
+    The entry at index $(\Delta\In, \Delta\Out)$ is
+      \[\ddt(\Delta\In, \Delta\Out) = |\{x\in \mathbb{F}_{2}^{n}:~ S(x) \oplus S(x \oplus \Delta\In) = \Delta\Out\}|.\]
+  \end{block}
+  $\pr\left(\Delta\In,\Delta\Out\right) = 2^{-n}\cdot \ddt\left(\Delta\In,, \Delta\Out\right)$
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Difference Distribution Table (\ddt) -- II}
+  \vspace{-0.3cm}
+  \begin{columns}
+  \column[c]{0.25\textwidth}
+  \begin{center}
+    % \raisebox{-3cm}{%
+    \begin{tikzpicture}
+      \draw (0,0) node[box, name=S, minimum size=2cm] {$\mathcal{S}$};
+      \foreach \i/\a in {1/123,2/101,3/78,4/56} {
+        \draw (S.\a) node[above=2ex] (x\i) {$x_{\i}$};
+        \draw (x\i|-S.south) node[below=2ex] (y\i) {$y_{\i}$};
+        \draw[next] (x\i) -- (x\i|-S.north);
+        \draw[next] (y\i|-S.south) -- (y\i);
+      }
+
+      \draw (y3) node[tug] {$y_3$};
+      \draw (x1) node[tug] {$x_1$};
+      \draw (x4) node[tug] {$x_4$};
+
+      \draw[] (x1.south-|S.west) rectangle (x4.north-|S.east);
+      \draw[] (y1.south-|S.west) rectangle (y4.north-|S.east);
+
+      \foreach \i/\dir in {x1/above, x4/above, y3/below} {\draw (\i) node[\dir=2.5ex, tug] (m\i) {1};}
+      \foreach \i/\dir in {x2/above, x3/above, y1/below, y2/below, y4/below} {\draw (\i) node[\dir=2.5ex] (m\i) {0};}
+
+      \draw[thick] (mx1.south-|S.west) rectangle (mx4.north-|S.east);
+      \draw[thick] (my1.south-|S.west) rectangle (my4.north-|S.east);
+
+      \draw (mx4) node[right=3ex] (alpha) {$\Delta\In$};
+      \draw (x4-|alpha) node              {$x$};
+      \draw (y4-|alpha) node              {$\mathcal{S}(x)$};
+      \draw (my4-|alpha) node             {$\Delta\Out$};
+      
+    \end{tikzpicture}
+    % }
+  \end{center}
+  \column[c]{0.15\textwidth}  
+  $$\pr\left(\texttt{9}, \texttt{2}\right) = \frac{4}{16}$$
+  \column[c]{0.60\textwidth}
+  \begin{center}
+    \scalebox{0.60}{      
+      \newcommand{\es}{}
+      \begin{tabular}{@{}c|*{3}c*{13}{c}@{}}
+        \toprule
+        $\Delta\In$\,\textbackslash\,$\Delta\Out$ & \es\texttt{0}\es & \es\texttt{1}\es & \es\texttt{2}\es & \es\texttt{3}\es & \es\texttt{4}\es & \es\texttt{5}\es & \es\texttt{6}\es & \es\texttt{7}\es & \es\texttt{8}\es & \es\texttt{9}\es & \es\texttt{a}\es & \es\texttt{b}\es & \es\texttt{c}\es & \es\texttt{d}\es & \es\texttt{e}\es & \es\texttt{f}\es \\
+        \midrule
+        \texttt{0\,} & 16 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+        \texttt{1\,} & 0 & 0 & 0 & 0 & 2 & 2 & 2 & 2 & 0 & 0 & 0 & 0 & 2 & 2 & 2 & 2\\
+        \texttt{2\,} & 0 & 2 & 0 & 2 & 0 & 0 & 0 & 4 & 0 & 2 & 2 & 0 & 0 & 0 & 2 & 2\\
+        \texttt{3\,} & 0 & 2 & 0 & 2 & 0 & 0 & 4 & 0 & 0 & 2 & 2 & 0 & 0 & 0 & 2 & 2\\
+        \texttt{4\,} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 4 & 4 & 2 & 2 & 2 & 2\\
+        \texttt{5\,} & 0 & 0 & 0 & 0 & 2 & 2 & 2 & 2 & 0 & 0 & 4 & 4 & 0 & 0 & 0 & 0\\
+        \texttt{6\,} & 0 & 2 & 0 & 2 & 0 & 4 & 0 & 0 & 0 & 2 & 2 & 0 & 2 & 2 & 0 & 0\\
+        \texttt{7\,} & 0 & 2 & 0 & 2 & 4 & 0 & 0 & 0 & 0 & 2 & 2 & 0 & 2 & 2 & 0 & 0\\
+        \texttt{8\,} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 4 & 4 & 4 & 4\\
+        \texttt{9\,} & 0 & 4 & \textcolor{tugred}{\textbf{4}} & 0 & 0 & 0 & 0 & 0 & 0 & 4 & 0 & 4 & 0 & 0 & 0 & 0\\
+        \texttt{a\,} & 0 & 0 & 2 & 2 & 2 & 0 & 0 & 2 & 4 & 0 & 0 & 0 & 0 & 2 & 0 & 2\\
+        \texttt{b\,} & 0 & 0 & 2 & 2 & 0 & 2 & 2 & 0 & 4 & 0 & 0 & 0 & 2 & 0 & 2 & 0\\
+        \texttt{c\,} & 0 & 4 & 4 & 0 & 2 & 2 & 2 & 2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+        \texttt{d\,} & 0 & 0 & 0 & 0 & 2 & 2 & 2 & 2 & 0 & 4 & 0 & 4 & 0 & 0 & 0 & 0\\
+        \texttt{e\,} & 0 & 0 & 2 & 2 & 0 & 2 & 2 & 0 & 4 & 0 & 0 & 0 & 0 & 2 & 0 & 2\\
+        \texttt{f\,} & 0 & 0 & 2 & 2 & 2 & 0 & 0 & 2 & 4 & 0 & 0 & 0 & 2 & 0 & 2 & 0\\
+        \bottomrule
+      \end{tabular}
+    }
+  \end{center}
+\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{\small Truncated Differential Trail for AES with Minimum Number of Active S-boxes}
+  \vspace{-0.2cm}
+  \begin{figure}
+  \centering
+  \includegraphics[width=0.8\textwidth]{./figures/aes2rtruncdiff.pdf}
+  \end{figure}
+  \onslide<2>{%}
+  \textcolor{tugred}{Variables}:
+  \begin{itemize}
+  \footnotesize
+    \item $s_{r, i, j} \in \{0, 1\}$ is S-box in row $i$, column $j$, round $r$ active?
+    \item $m_{r, j}\in \{0, 1\}$ is Mix-columns $j$ in round $r$ active?
+  \end{itemize}
+  \textcolor{tugblue}{Objective function and constraints}:
+  \begin{itemize}
+  \footnotesize
+    \item $5 \cdot M_{r, j} \leq \sum_{i} s_{r, i, (i + j)\%4} + \sum_{i}s_{r + 1, i, j} \leq 8 \cdot M_{r, j}; \quad \sum_{i, j} s_{0, i, j} \geq 1$
+    \item $\min \sum_{r, i, j} s_{r, i, j}$
+  \end{itemize}
+  }
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tikzset{
+  % overwriting some style options:
+  stateopts/.style={scale=.20}, % default scaling, change for better readability at \normalsize
+  fillopts/.style={tugblue},
+}
+\begin{frame}{Security of \cipher{AES} Against Differential/Linear Attacks}
+\vspace{-0.25cm}
+\begin{center}
+  \tikzsetnextfilename{AES-char4R-optimal}
+  \begin{tikzpicture}[>=latex,scale=.8]
+    \pgfmathsetmacro{\opsep}{1}     % between a state and a coordinate-style operation (xor, tee, ...)
+    \pgfmathsetmacro{\cellsep}{1.5} % between two cells
+    \pgfmathsetmacro{\stepsep}{1.8} % between two cells with a labeled edge
+
+    \draw[every node/.style={state}]
+          (0,0)        node (S0) {\State{\Fill{s0} }}
+        ++(\opsep,0)   coordinate[xor] (x0)
+         +(0,\cellsep) node (K0) {\State{}}
+        ++(\opsep,0)   node (S1) {\State{\Fill[tug]{s0} }}
+        ++(\stepsep,0) node (S2) {\State{\Fill{s0} }}
+        ++(\stepsep,0) node (S3) {\State{\Fill{s0} }}
+        ++(\stepsep,0) node (S4) {\State{\Fill{s0}\Fill{s4}\Fill{s8}\Fill{s12} }}
+        ++(\opsep,0)   coordinate[xor] (x1)
+         +(0,\cellsep) node (K1) {\State{}}
+        ++(\opsep,0)   node (S5) {\State{\FillColumn[tug]{0} }}
+        ++(\stepsep,0) node (S6) {\State{\FillColumn{0} }}
+        ++(\stepsep,0) node (S7) {\State{\FillAntiDiagonal{0} }}
+        ++(\stepsep,0) node (S8) {\State{\FillState}}
+        ;
+
+    \foreach \in/\out/\label in {S0/x0/,K0/x0/,x0/S1/,S1/S2/SB,S2/S3/SR,S3/S4/MC,
+                                 S4/x1/,K1/x1/,x1/S5/,S5/S6/SB,S6/S7/SR,S7/S8/MC} {
+      \draw[->] (\in) --node[above]{\textsf{\label}} (\out);
+    }
+
+    \draw (K0.west) node[left] {$K_0$}
+          (K1.west) node[left] {$K_1$}
+          (S0.west) node[left] {$M$}
+          (S0.south) node[below] (R1L) {\emph{|}}
+          (S2.south) node[below] (R1)  {\emph{Round 1}}
+          (S4.south) node[below] (R12) {\emph{|}}
+          (S6.south) node[below] (R2)  {\emph{Round 2}}
+          (S8.south) node[below] (R2R) {\emph{|}};
+          %(S8.east) node[right] {\faEllipsisH};
+
+    \draw[every node/.style={state}]
+          (0,-4)       node (S0b) {\State{\FillState }}
+        ++(\opsep,0)   coordinate[xor] (x0b)
+         +(0,\cellsep) node (K0b) {\State{}}
+        ++(\opsep,0)   node (S1b) {\State{\FillState[tug] }}
+        ++(\stepsep,0) node (S2b) {\State{\FillState }}
+        ++(\stepsep,0) node (S3b) {\State{\FillState }}
+        ++(\stepsep,0) node (S4b) {\State{\FillDiagonal{0} }}
+        ++(\opsep,0)   coordinate[xor] (x1b)
+         +(0,\cellsep) node (K1b) {\State{}}
+        ++(\opsep,0)   node (S5b) {\State{\FillDiagonal[tug]{0} }}
+        ++(\stepsep,0) node (S6b) {\State{\FillDiagonal{0} }}
+        ++(\stepsep,0) node (S7b) {\State{\FillColumn{0} }}
+        ++(\stepsep,0) node (S8b) {\State{\Fill{s0}}}
+        ;
+
+    \foreach \in/\out/\label in {S0b/x0b/,K0b/x0b/,x0b/S1b/,S1b/S2b/SB,S2b/S3b/SR,S3b/S4b/MC,
+                                 S4b/x1b/,K1b/x1b/,x1b/S5b/,S5b/S6b/SB,S6b/S7b/SR,S7b/S8b/MC} {
+      \draw[->] (\in) --node[above]{\textsf{\label}} (\out);
+    }
+
+    \draw (K0b.west) node[left] {$K_2$}
+          (K1b.west) node[left] {$K_3$}
+          %(S0b.west) node[left] {$M$}
+          (S0b.south) node[below] (R3L) {\emph{|}}
+          (S2b.south) node[below] (R3)  {\emph{Round 3}}
+          (S4b.south) node[below] (R34) {\emph{|}}
+          (S6b.south) node[below] (R4)  {\emph{Round 4}}
+          (S8b.south) node[below] (R4R) {\emph{|}};
+          %(S0b.west) node[left] {\faEllipsisH};
+
+    \draw[->, rounded corners=3pt] (S8.east) -| ++(1,-1.5) -| ($(S0b.west)+(-1,0)$) -- (S0b.west);
+    \begin{scope}[->, main, opacity=.3, line width=3pt] 
+      \draw (R1) -- (R1-|R1L.east);
+      \draw (R1) -- (R1-|R12.west);
+      \draw (R2) -- (R1-|R12.east);
+      \draw (R2) -- (R1-|R2R.west);
+
+      \draw (R3) -- (R3-|R3L.east);
+      \draw (R3) -- (R3-|R34.west);
+      \draw (R4) -- (R3-|R34.east);
+      \draw (R4) -- (R3-|R4R.west);
+    \end{scope}
+  \end{tikzpicture}
+\end{center}
+$$\pr_{\text{4 rounds}} \leq 2^{-150}, ~ \corr_{\text{4 rounds}}^{2} \leq 2^{-150}$$
+\end{frame}
+
 
 \begin{filecontents*}[overwrite]{\jobname.bib}
 
