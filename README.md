@@ -3,6 +3,7 @@
 The LaTeX sources for my talks. Feel free to reuse these sources for your own talks.
 
 - [My Talks](#my-talks)
+  - [SpyCode 2024 - Cryptanaysis Using Constraint Programming](#spycode-2024---cryptanaysis-using-constraint-programming)
   - [EUROCRYPT 2023 - Finding the Impossible](#eurocrypt-2023---finding-the-impossible)
   - [FSE 2023 - Throwing Boomerangs into Feistel Structures](#fse-2023---throwing-boomerangs-into-feistel-structures)
   - [FSE 2023 - Integral Cryptanalysis of WARP based on Monomial Prediction](#fse-2023---integral-cryptanalysis-of-warp-based-on-monomial-prediction)
@@ -12,6 +13,12 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
   - [FSE 2022 - Improved Rectangle Attacks](#fse-2022---improved-rectangle-attacks)
   - [FSE 2020 - Comprehensive Security Analysis of CRAFT](#fse-2020---comprehensive-security-analysis-of-craft)
 - [Credits](#credits)
+
+## SpyCode 2024 - Cryptanaysis Using Constraint Programming
+***Cryptanaysis Using Constraint Programming***
+
+- [Slides](20240127-SpyCode-2024)
+- Venue: [TU Wien, Vienna, Austria](https://spycode.at/events/)
 
 ## EUROCRYPT 2023 - Finding the Impossible
 ***Finding the Impossible: Automated Search for Full Impossible-Differential, Zero-Correlation, and Integral Attacks***
