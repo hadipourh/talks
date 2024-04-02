@@ -26,7 +26,6 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
 - Venue: [Leuven, Belgium](https://fse.iacr.org/2024/)
 
 ## FSE 2024 - Improved Search for Integral, Impossible-Differential and Zero-Correlation Attacks: Application to Ascon, ForkSKINNY, SKINNY, MANTIS, PRESENT and QARMAv2 
-***Improved Search for Integral, Impossible-Differential and Zero-Correlation Attacks: Application to Ascon, ForkSKINNY, SKINNY, MANTIS, PRESENT and QARMAv2***
 
 - [Paper](https://ia.cr/2023/1701)
 - [Slides](20240326-FSE-2024)
