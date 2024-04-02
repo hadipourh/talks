@@ -4,7 +4,7 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
 
 - [My Talks](#my-talks)
   - [FSE 2024 - Cryptanalysis of QARMAv2](#fse-2024---cryptanalysis-of-qarmav2)
-  - [FSE 2024 - Improved Search for Integral, Impossible-Differential and Zero-Correlation Attacks: Application to Ascon, ForkSKINNY, SKINNY, MANTIS, PRESENT and QARMAv2](#fse-2024---improved-search-for-integral-impossible-differential-and-zero-correlation-attacks-application-to-ascon-forkskinny-skinny-mantis-present-and-qarmav2)
+  - [FSE 2024 - Improved Search for Integral, Impossible-Differential and Zero-Correlation Attacks](#fse-2024---improved-search-for-integral-impossible-differential-and-zero-correlation-attacks)
   - [SpyCode 2024 - Cryptanaysis Using Constraint Programming](#spycode-2024---cryptanaysis-using-constraint-programming)
   - [EUROCRYPT 2023 - Finding the Impossible](#eurocrypt-2023---finding-the-impossible)
   - [FSE 2023 - Throwing Boomerangs into Feistel Structures](#fse-2023---throwing-boomerangs-into-feistel-structures)
@@ -25,7 +25,8 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
 - [Code](https://github.com/hadipourh/QARMAnalysis)
 - Venue: [Leuven, Belgium](https://fse.iacr.org/2024/)
 
-## FSE 2024 - Improved Search for Integral, Impossible-Differential and Zero-Correlation Attacks: Application to Ascon, ForkSKINNY, SKINNY, MANTIS, PRESENT and QARMAv2 
+## FSE 2024 - Improved Search for Integral, Impossible-Differential and Zero-Correlation Attacks
+***Improved Search for Integral, Impossible-Differential and Zero-Correlation Attacks: Application to Ascon, ForkSKINNY, SKINNY, MANTIS, PRESENT and QARMAv2***
 
 - [Paper](https://ia.cr/2023/1701)
 - [Slides](20240326-FSE-2024)
