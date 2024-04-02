@@ -1,0 +1,118 @@
+\documentclass[varwidth=50cm]{standalone}
+\usepackage{skinnyzero}
+
+\begin{document}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+
+\SkinnyInit{}{}{}{} % init coordinates, print labels
+
+\SkinnyRoundEK[0]
+            {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss03}\Fill[active]{ss10}\Fill[active]{ss11}\Fill[active]{ss12}\Fill[active]{ss13}\Fill[active]{ss21}\Fill[active]{ss22}\Fill[active]{ss23}\Fill[active]{ss32}\Fill[active]{ss33}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss03}\PattCell[black]{ss10}\PattCell[black]{ss11}\PattCell[black]{ss12}\PattCell[black]{ss13}\PattCell[black]{ss21}\PattCell[black]{ss22}\PattCell[black]{ss23}\PattCell[black]{ss32}\PattCell[black]{ss33}\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss10}\MarkCell{ss11}\MarkCell{ss12}\MarkCell{ss13}\MarkCell{ss20}\MarkCell{ss21}\MarkCell{ss22}\MarkCell{ss23}\MarkCell{ss31}\MarkCell{ss32}\MarkCell{ss33}} % state (input)
+            {\MarkCell{ss00}\MarkCell{ss02}\MarkCell{ss10}\MarkCell{ss11}\MarkCell{ss13}\MarkCell{ss20}\MarkCell{ss22}\MarkCell{ss23}\MarkCell{ss31}\Cell{ss00}{\texttt{0}}\Cell{ss01}{\texttt{1}}\Cell{ss02}{\texttt{2}}\Cell{ss03}{\texttt{3}}
+                           \Cell{ss10}{\texttt{0}}\Cell{ss11}{\texttt{1}}\Cell{ss12}{\texttt{2}}\Cell{ss13}{\texttt{3}}
+                           \Cell{ss20}{\texttt{7}}\Cell{ss21}{\texttt{4}}\Cell{ss22}{\texttt{5}}\Cell{ss23}{\texttt{6}}
+                           \Cell{ss30}{\texttt{0}}\Cell{ss31}{\texttt{1}}\Cell{ss32}{\texttt{2}}\Cell{ss33}{\texttt{3}}} % etk[1] (xored AFTER mixcolumns)
+            {} % tk[2] (ignored)
+            {} % tk[3] (ignored)
+            {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss03}\Fill[active]{ss10}\Fill[active]{ss11}\Fill[active]{ss12}\Fill[active]{ss13}\Fill[active]{ss21}\Fill[active]{ss22}\Fill[active]{ss23}\Fill[active]{ss32}\Fill[active]{ss33}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss03}\PattCell[black]{ss10}\PattCell[black]{ss11}\PattCell[black]{ss12}\PattCell[black]{ss13}\PattCell[black]{ss21}\PattCell[black]{ss22}\PattCell[black]{ss23}\PattCell[black]{ss32}\PattCell[black]{ss33}\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss11}\MarkCell{ss12}\MarkCell{ss13}\MarkCell{ss20}\MarkCell{ss21}\MarkCell{ss22}\MarkCell{ss23}\MarkCell{ss31}\MarkCell{ss33}} % state (after subcells)
+            {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss03}\Fill[active]{ss11}\Fill[active]{ss12}\Fill[active]{ss13}\Fill[active]{ss10}\Fill[active]{ss23}\Fill[active]{ss20}\Fill[active]{ss21}\Fill[active]{ss31}\Fill[active]{ss32}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss03}\PattCell[black]{ss11}\PattCell[black]{ss12}\PattCell[black]{ss13}\PattCell[black]{ss10}\PattCell[black]{ss23}\PattCell[black]{ss20}\PattCell[black]{ss21}\PattCell[black]{ss31}\PattCell[black]{ss32}\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss12}\MarkCell{ss13}\MarkCell{ss10}\MarkCell{ss22}\MarkCell{ss23}\MarkCell{ss20}\MarkCell{ss21}\MarkCell{ss30}\MarkCell{ss32}} % state (after shiftrows)
+            {\Fill[active]{ss02}\Fill[active]{ss10}\Fill[active]{ss11}\Fill[active]{ss13}\Fill[active]{ss20}\Fill[active]{ss22}\Fill[active]{ss31}\PattCell[black]{ss02}\PattCell[black]{ss10}\PattCell[black]{ss11}\PattCell[black]{ss13}\PattCell[black]{ss20}\PattCell[black]{ss22}\PattCell[black]{ss31}\MarkCell{ss00}\MarkCell{ss02}\MarkCell{ss10}\MarkCell{ss11}\MarkCell{ss13}\MarkCell{ss20}\MarkCell{ss22}\MarkCell{ss23}\MarkCell{ss31}} % state (after mixcolumns)
+
+\SkinnyRoundTK[1]
+            {\Fill[active]{ss02}\Fill[active]{ss10}\Fill[active]{ss11}\Fill[active]{ss13}\Fill[active]{ss20}\Fill[active]{ss22}\Fill[active]{ss31}\PattCell[black]{ss02}\PattCell[black]{ss10}\PattCell[black]{ss11}\PattCell[black]{ss13}\PattCell[black]{ss20}\PattCell[black]{ss22}\PattCell[black]{ss31}\MarkCell{ss00}\MarkCell{ss02}\MarkCell{ss10}\MarkCell{ss11}\MarkCell{ss13}\MarkCell{ss20}\MarkCell{ss22}\MarkCell{ss23}\MarkCell{ss31}} % state (input)
+            {\MarkCell{ss00}\MarkCell{ss02}\MarkCell{ss10}\Cell{ss00}{\texttt{9}}\Cell{ss01}{\texttt{f}}\Cell{ss02}{\texttt{8}}\Cell{ss03}{\texttt{d}}\Cell{ss10}{\texttt{a}}\Cell{ss11}{\texttt{e}}\Cell{ss12}{\texttt{c}}\Cell{ss13}{\texttt{b}}} % tk[1]
+            {} % tk[2]
+            {} % tk[3]
+            {\Fill[active]{ss02}\Fill[active]{ss10}\Fill[active]{ss11}\Fill[active]{ss13}\Fill[active]{ss20}\Fill[active]{ss22}\Fill[active]{ss31}\PattCell[black]{ss02}\PattCell[black]{ss10}\PattCell[black]{ss11}\PattCell[black]{ss13}\PattCell[black]{ss20}\PattCell[black]{ss22}\PattCell[black]{ss31}\MarkCell{ss00}\MarkCell{ss02}\MarkCell{ss10}\MarkCell{ss22}\MarkCell{ss23}} % state (after subcells)
+            {\Fill[active]{ss02}\Fill[active]{ss10}\Fill[active]{ss11}\Fill[active]{ss13}\Fill[active]{ss20}\Fill[active]{ss22}\Fill[active]{ss31}\PattCell[black]{ss02}\PattCell[black]{ss10}\PattCell[black]{ss11}\PattCell[black]{ss13}\PattCell[black]{ss20}\PattCell[black]{ss22}\PattCell[black]{ss31}\MarkCell{ss00}\MarkCell{ss02}\MarkCell{ss10}\MarkCell{ss22}\MarkCell{ss23}} % state (after addtweakey)
+            {\Fill[active]{ss02}\Fill[active]{ss11}\Fill[active]{ss12}\Fill[active]{ss10}\Fill[active]{ss22}\Fill[active]{ss20}\Fill[active]{ss30}\PattCell[black]{ss02}\PattCell[black]{ss11}\PattCell[black]{ss12}\PattCell[black]{ss10}\PattCell[black]{ss22}\PattCell[black]{ss20}\PattCell[black]{ss30}\MarkCell{ss00}\MarkCell{ss02}\MarkCell{ss11}\MarkCell{ss20}\MarkCell{ss21}} % state (after shiftrows)
+
+\SkinnyNewLine[2]{\Fill[active]{ss12}\Fill[active]{ss21}\Fill[active]{ss30}\PattCell[black]{ss12}\PattCell[black]{ss21}\PattCell[black]{ss30}\MarkCell{ss12}\MarkCell{ss21}\MarkCell{ss30}} % state (after mixcols)
+\SkinnyRoundTK[2]
+            {\Fill[active]{ss12}\Fill[active]{ss21}\Fill[active]{ss30}\PattCell[black]{ss12}\PattCell[black]{ss21}\PattCell[black]{ss30}\MarkCell{ss12}\MarkCell{ss21}\MarkCell{ss30}} % state (input)
+            {\Cell{ss00}{\texttt{1}}\Cell{ss01}{\texttt{7}}\Cell{ss02}{\texttt{0}}\Cell{ss03}{\texttt{5}}\Cell{ss10}{\texttt{2}}\Cell{ss11}{\texttt{6}}\Cell{ss12}{\texttt{4}}\Cell{ss13}{\texttt{3}}} % tk[1]
+            {} % tk[2]
+            {} % tk[3]
+            {\Fill[active]{ss12}\Fill[active]{ss21}\Fill[active]{ss30}\PattCell[black]{ss12}\PattCell[black]{ss21}\PattCell[black]{ss30}} % state (after subcells)
+            {\Fill[active]{ss12}\Fill[active]{ss21}\Fill[active]{ss30}\PattCell[black]{ss12}\PattCell[black]{ss21}\PattCell[black]{ss30}} % state (after addtweakey)
+            {\Fill[active]{ss13}\Fill[active]{ss23}\Fill[active]{ss33}\PattCell[black]{ss13}\PattCell[black]{ss23}\PattCell[black]{ss33}} % state (after shiftrows)
+
+\SkinnyRoundTK[3]
+              {\Fill[nonzeroany]{ss33}} % state (input)
+              {\Cell{ss00}{\texttt{f}}\Cell{ss01}{\texttt{b}}\Cell{ss02}{\texttt{9}}\Cell{ss03}{\texttt{e}}\Cell{ss10}{\texttt{8}}\Cell{ss11}{\texttt{c}}\Cell{ss12}{\texttt{a}}\Cell{ss13}{\texttt{d}}} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {\Fill[nonzeroany]{ss33}} % state (after subcells)
+              {\Fill[nonzeroany]{ss33}} % state (after addtweakey)
+              {\Fill[nonzeroany]{ss32}} % state (after shiftrows)
+
+\SkinnyMismatchNewLine[4]{\Fill[nonzeroany]{ss02}} % state (after mixcols)
+
+\SkinnyRoundTK[13]
+              {\Fill[nonzeroany]{ss12}} % state (input)
+              {\Cell{ss00}{\texttt{a}}\Cell{ss01}{\texttt{8}}\Cell{ss02}{\texttt{c}}\Cell{ss03}{\texttt{f}}\Cell{ss10}{\texttt{e}}\Cell{ss11}{\texttt{b}}\Cell{ss12}{\texttt{d}}\Cell{ss13}{\texttt{9}}} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {\Fill[nonzeroany]{ss12}} % state (after subcells)
+              {\Fill[nonzeroany]{ss12}} % state (after addtweakey)
+              {\Fill[nonzeroany]{ss13}} % state (after shiftrows)
+
+\SkinnyRoundTK[14]
+              {\Fill[active]{ss23}} % state (input)
+              {\Cell{ss00}{\texttt{2}}\Cell{ss01}{\texttt{0}}\Cell{ss02}{\texttt{4}}\Cell{ss03}{\texttt{7}}\Cell{ss10}{\texttt{6}}\Cell{ss11}{\texttt{3}}\Cell{ss12}{\texttt{5}}\Cell{ss13}{\texttt{1}}} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {\Fill[active]{ss23}} % state (after subcells)
+              {\Fill[active]{ss23}} % state (after addtweakey)
+              {\Fill[active]{ss21}} % state (after shiftrows)
+
+\SkinnyNewLine[15]{\Fill[active]{ss01}\Fill[active]{ss21}\Fill[active]{ss31}\PattCell[black]{ss01}\PattCell[black]{ss21}\PattCell[black]{ss31}}
+    
+\SkinnyRoundTK[15]
+              {\Fill[active]{ss01}\Fill[active]{ss21}\Fill[active]{ss31}\PattCell[black]{ss01}\PattCell[black]{ss21}\PattCell[black]{ss31}} % state (input)
+              {\MarkCell{ss01}\Cell{ss00}{\texttt{8}}\Cell{ss01}{\texttt{9}}\Cell{ss02}{\texttt{a}}\Cell{ss03}{\texttt{b}}\Cell{ss10}{\texttt{c}}\Cell{ss11}{\texttt{d}}\Cell{ss12}{\texttt{e}}\Cell{ss13}{\texttt{f}}} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {\Fill[active]{ss01}\Fill[active]{ss21}\Fill[active]{ss31}\PattCell[black]{ss01}\PattCell[black]{ss21}\PattCell[black]{ss31}\MarkCell{ss01}\MarkCell{ss21}\MarkCell{ss31}} % state (after subcells)
+              {\Fill[active]{ss01}\Fill[active]{ss21}\Fill[active]{ss31}\PattCell[black]{ss01}\PattCell[black]{ss21}\PattCell[black]{ss31}\MarkCell{ss01}\MarkCell{ss21}\MarkCell{ss31}} % state (after addtweakey)
+              {\Fill[active]{ss01}\Fill[active]{ss23}\Fill[active]{ss30}\PattCell[black]{ss01}\PattCell[black]{ss23}\PattCell[black]{ss30}\MarkCell{ss01}\MarkCell{ss23}\MarkCell{ss30}} % state (after shiftrows)
+
+
+\SkinnyRoundTK[16]
+              {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss03}\Fill[active]{ss11}\Fill[active]{ss23}\Fill[active]{ss31}\Fill[active]{ss33}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss03}\PattCell[black]{ss11}\PattCell[black]{ss23}\PattCell[black]{ss31}\PattCell[black]{ss33}\MarkCell{ss00}\MarkCell{ss11}\MarkCell{ss13}\MarkCell{ss30}\MarkCell{ss33}} % state (input)
+              {\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss03}\MarkCell{ss11}\MarkCell{ss13}\Cell{ss00}{\texttt{0}}\Cell{ss01}{\texttt{1}}\Cell{ss02}{\texttt{2}}\Cell{ss03}{\texttt{3}}\Cell{ss10}{\texttt{4}}\Cell{ss11}{\texttt{5}}\Cell{ss12}{\texttt{6}}\Cell{ss13}{\texttt{7}}} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss03}\Fill[active]{ss11}\Fill[active]{ss23}\Fill[active]{ss31}\Fill[active]{ss33}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss03}\PattCell[black]{ss11}\PattCell[black]{ss23}\PattCell[black]{ss31}\PattCell[black]{ss33}\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss03}\MarkCell{ss11}\MarkCell{ss13}\MarkCell{ss23}\MarkCell{ss30}\MarkCell{ss31}\MarkCell{ss33}} % state (after subcells)
+              {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss03}\Fill[active]{ss11}\Fill[active]{ss23}\Fill[active]{ss31}\Fill[active]{ss33}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss03}\PattCell[black]{ss11}\PattCell[black]{ss23}\PattCell[black]{ss31}\PattCell[black]{ss33}\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss03}\MarkCell{ss11}\MarkCell{ss13}\MarkCell{ss23}\MarkCell{ss30}\MarkCell{ss31}\MarkCell{ss33}} % state (after addtweakey)
+              {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss03}\Fill[active]{ss12}\Fill[active]{ss21}\Fill[active]{ss30}\Fill[active]{ss32}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss03}\PattCell[black]{ss12}\PattCell[black]{ss21}\PattCell[black]{ss30}\PattCell[black]{ss32}\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss03}\MarkCell{ss12}\MarkCell{ss10}\MarkCell{ss21}\MarkCell{ss33}\MarkCell{ss30}\MarkCell{ss32}} % state (after shiftrows)
+
+\SkinnyNewLine[17]{\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss02}\Fill[active]{ss03}\Fill[active]{ss10}\Fill[active]{ss11}\Fill[active]{ss13}\Fill[active]{ss21}\Fill[active]{ss22}\Fill[active]{ss30}\Fill[active]{ss31}\Fill[active]{ss33}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss02}\PattCell[black]{ss03}\PattCell[black]{ss10}\PattCell[black]{ss11}\PattCell[black]{ss13}\PattCell[black]{ss21}\PattCell[black]{ss22}\PattCell[black]{ss30}\PattCell[black]{ss31}\PattCell[black]{ss33}\MarkCell{ss00}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss10}\MarkCell{ss11}\MarkCell{ss12}\MarkCell{ss13}\MarkCell{ss20}\MarkCell{ss22}\MarkCell{ss30}\MarkCell{ss31}\MarkCell{ss32}\MarkCell{ss33}}
+
+\SkinnyRoundTK[17]
+              {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss02}\Fill[active]{ss03}\Fill[active]{ss10}\Fill[active]{ss11}\Fill[active]{ss13}\Fill[active]{ss21}\Fill[active]{ss22}\Fill[active]{ss30}\Fill[active]{ss31}\Fill[active]{ss33}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss02}\PattCell[black]{ss03}\PattCell[black]{ss10}\PattCell[black]{ss11}\PattCell[black]{ss13}\PattCell[black]{ss21}\PattCell[black]{ss22}\PattCell[black]{ss30}\PattCell[black]{ss31}\PattCell[black]{ss33}\MarkCell{ss00}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss10}\MarkCell{ss11}\MarkCell{ss12}\MarkCell{ss13}\MarkCell{ss20}\MarkCell{ss22}\MarkCell{ss30}\MarkCell{ss31}\MarkCell{ss32}\MarkCell{ss33}} % state (input)
+              {\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss10}\MarkCell{ss11}\MarkCell{ss12}\MarkCell{ss13}\Cell{ss00}{\texttt{9}}\Cell{ss01}{\texttt{f}}\Cell{ss02}{\texttt{8}}\Cell{ss03}{\texttt{d}}\Cell{ss10}{\texttt{a}}\Cell{ss11}{\texttt{e}}\Cell{ss12}{\texttt{c}}\Cell{ss13}{\texttt{b}}} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss02}\Fill[active]{ss03}\Fill[active]{ss10}\Fill[active]{ss11}\Fill[active]{ss13}\Fill[active]{ss21}\Fill[active]{ss22}\Fill[active]{ss30}\Fill[active]{ss31}\Fill[active]{ss33}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss02}\PattCell[black]{ss03}\PattCell[black]{ss10}\PattCell[black]{ss11}\PattCell[black]{ss13}\PattCell[black]{ss21}\PattCell[black]{ss22}\PattCell[black]{ss30}\PattCell[black]{ss31}\PattCell[black]{ss33}\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss10}\MarkCell{ss11}\MarkCell{ss12}\MarkCell{ss13}\MarkCell{ss20}\MarkCell{ss21}\MarkCell{ss22}\MarkCell{ss30}\MarkCell{ss31}\MarkCell{ss32}\MarkCell{ss33}} % state (after subcells)
+              {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss02}\Fill[active]{ss03}\Fill[active]{ss10}\Fill[active]{ss11}\Fill[active]{ss13}\Fill[active]{ss21}\Fill[active]{ss22}\Fill[active]{ss30}\Fill[active]{ss31}\Fill[active]{ss33}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss02}\PattCell[black]{ss03}\PattCell[black]{ss10}\PattCell[black]{ss11}\PattCell[black]{ss13}\PattCell[black]{ss21}\PattCell[black]{ss22}\PattCell[black]{ss30}\PattCell[black]{ss31}\PattCell[black]{ss33}\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss10}\MarkCell{ss11}\MarkCell{ss12}\MarkCell{ss13}\MarkCell{ss20}\MarkCell{ss21}\MarkCell{ss22}\MarkCell{ss30}\MarkCell{ss31}\MarkCell{ss32}\MarkCell{ss33}} % state (after addtweakey)
+              {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss02}\Fill[active]{ss03}\Fill[active]{ss11}\Fill[active]{ss12}\Fill[active]{ss10}\Fill[active]{ss23}\Fill[active]{ss20}\Fill[active]{ss33}\Fill[active]{ss30}\Fill[active]{ss32}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss02}\PattCell[black]{ss03}\PattCell[black]{ss11}\PattCell[black]{ss12}\PattCell[black]{ss10}\PattCell[black]{ss23}\PattCell[black]{ss20}\PattCell[black]{ss33}\PattCell[black]{ss30}\PattCell[black]{ss32}\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss11}\MarkCell{ss12}\MarkCell{ss13}\MarkCell{ss10}\MarkCell{ss22}\MarkCell{ss23}\MarkCell{ss20}\MarkCell{ss33}\MarkCell{ss30}\MarkCell{ss31}\MarkCell{ss32}} % state (after shiftrows)
+
+\SkinnyRoundTK[18]
+              {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss02}\Fill[active]{ss03}\Fill[active]{ss10}\Fill[active]{ss11}\Fill[active]{ss12}\Fill[active]{ss13}\Fill[active]{ss20}\Fill[active]{ss21}\Fill[active]{ss22}\Fill[active]{ss23}\Fill[active]{ss30}\Fill[active]{ss31}\Fill[active]{ss32}\Fill[active]{ss33}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss02}\PattCell[black]{ss03}\PattCell[black]{ss10}\PattCell[black]{ss11}\PattCell[black]{ss12}\PattCell[black]{ss13}\PattCell[black]{ss20}\PattCell[black]{ss21}\PattCell[black]{ss22}\PattCell[black]{ss23}\PattCell[black]{ss30}\PattCell[black]{ss31}\PattCell[black]{ss32}\PattCell[black]{ss33}\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss10}\MarkCell{ss11}\MarkCell{ss12}\MarkCell{ss13}\MarkCell{ss20}\MarkCell{ss21}\MarkCell{ss22}\MarkCell{ss23}\MarkCell{ss30}\MarkCell{ss31}\MarkCell{ss32}\MarkCell{ss33}} % state (input)
+              {\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss10}\MarkCell{ss11}\MarkCell{ss12}\MarkCell{ss13}\Cell{ss00}{\texttt{1}}\Cell{ss01}{\texttt{7}}\Cell{ss02}{\texttt{0}}\Cell{ss03}{\texttt{5}}\Cell{ss10}{\texttt{2}}\Cell{ss11}{\texttt{6}}\Cell{ss12}{\texttt{4}}\Cell{ss13}{\texttt{3}}} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss02}\Fill[active]{ss03}\Fill[active]{ss10}\Fill[active]{ss11}\Fill[active]{ss12}\Fill[active]{ss13}\Fill[active]{ss20}\Fill[active]{ss21}\Fill[active]{ss22}\Fill[active]{ss23}\Fill[active]{ss30}\Fill[active]{ss31}\Fill[active]{ss32}\Fill[active]{ss33}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss02}\PattCell[black]{ss03}\PattCell[black]{ss10}\PattCell[black]{ss11}\PattCell[black]{ss12}\PattCell[black]{ss13}\PattCell[black]{ss20}\PattCell[black]{ss21}\PattCell[black]{ss22}\PattCell[black]{ss23}\PattCell[black]{ss30}\PattCell[black]{ss31}\PattCell[black]{ss32}\PattCell[black]{ss33}\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss10}\MarkCell{ss11}\MarkCell{ss12}\MarkCell{ss13}\MarkCell{ss20}\MarkCell{ss21}\MarkCell{ss22}\MarkCell{ss23}\MarkCell{ss30}\MarkCell{ss31}\MarkCell{ss32}\MarkCell{ss33}} % state (after subcells)
+              {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss02}\Fill[active]{ss03}\Fill[active]{ss10}\Fill[active]{ss11}\Fill[active]{ss12}\Fill[active]{ss13}\Fill[active]{ss20}\Fill[active]{ss21}\Fill[active]{ss22}\Fill[active]{ss23}\Fill[active]{ss30}\Fill[active]{ss31}\Fill[active]{ss32}\Fill[active]{ss33}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss02}\PattCell[black]{ss03}\PattCell[black]{ss10}\PattCell[black]{ss11}\PattCell[black]{ss12}\PattCell[black]{ss13}\PattCell[black]{ss20}\PattCell[black]{ss21}\PattCell[black]{ss22}\PattCell[black]{ss23}\PattCell[black]{ss30}\PattCell[black]{ss31}\PattCell[black]{ss32}\PattCell[black]{ss33}\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss10}\MarkCell{ss11}\MarkCell{ss12}\MarkCell{ss13}\MarkCell{ss20}\MarkCell{ss21}\MarkCell{ss22}\MarkCell{ss23}\MarkCell{ss30}\MarkCell{ss31}\MarkCell{ss32}\MarkCell{ss33}} % state (after addtweakey)
+              {\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss02}\Fill[active]{ss03}\Fill[active]{ss11}\Fill[active]{ss12}\Fill[active]{ss13}\Fill[active]{ss10}\Fill[active]{ss22}\Fill[active]{ss23}\Fill[active]{ss20}\Fill[active]{ss21}\Fill[active]{ss33}\Fill[active]{ss30}\Fill[active]{ss31}\Fill[active]{ss32}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss02}\PattCell[black]{ss03}\PattCell[black]{ss11}\PattCell[black]{ss12}\PattCell[black]{ss13}\PattCell[black]{ss10}\PattCell[black]{ss22}\PattCell[black]{ss23}\PattCell[black]{ss20}\PattCell[black]{ss21}\PattCell[black]{ss33}\PattCell[black]{ss30}\PattCell[black]{ss31}\PattCell[black]{ss32}\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss11}\MarkCell{ss12}\MarkCell{ss13}\MarkCell{ss10}\MarkCell{ss22}\MarkCell{ss23}\MarkCell{ss20}\MarkCell{ss21}\MarkCell{ss33}\MarkCell{ss30}\MarkCell{ss31}\MarkCell{ss32}} % state (after shiftrows)
+
+\SkinnyFin[19]{\Fill[active]{ss00}\Fill[active]{ss01}\Fill[active]{ss02}\Fill[active]{ss03}\Fill[active]{ss10}\Fill[active]{ss11}\Fill[active]{ss12}\Fill[active]{ss13}\Fill[active]{ss20}\Fill[active]{ss21}\Fill[active]{ss22}\Fill[active]{ss23}\Fill[active]{ss30}\Fill[active]{ss31}\Fill[active]{ss32}\Fill[active]{ss33}\PattCell[black]{ss00}\PattCell[black]{ss01}\PattCell[black]{ss02}\PattCell[black]{ss03}\PattCell[black]{ss10}\PattCell[black]{ss11}\PattCell[black]{ss12}\PattCell[black]{ss13}\PattCell[black]{ss20}\PattCell[black]{ss21}\PattCell[black]{ss22}\PattCell[black]{ss23}\PattCell[black]{ss30}\PattCell[black]{ss31}\PattCell[black]{ss32}\PattCell[black]{ss33}\MarkCell{ss00}\MarkCell{ss01}\MarkCell{ss02}\MarkCell{ss03}\MarkCell{ss10}\MarkCell{ss11}\MarkCell{ss12}\MarkCell{ss13}\MarkCell{ss20}\MarkCell{ss21}\MarkCell{ss22}\MarkCell{ss23}\MarkCell{ss30}\MarkCell{ss31}\MarkCell{ss32}\MarkCell{ss33}} % state (after mixcols)
+
+\ZeroIDSTLegend
+\end{tikzpicture}
+\end{figure}
+\end{document}

@@ -851,20 +851,39 @@ caption/.style={gray, below=1.75cm, align=center}]
 \item[\faCab] Naive approach:
 \begin{itemize}
 	\item[\faCheckCircleO] $\bm{x} = F(\bm{k}_{1}, \bm{k}_{2}, \bm{c})$ 
-	\item[\faCheckCircleO] $T = 2^{|\bm{k}_{1} \cup \bm{k}_{2}|}$
+	\item[\faCheckCircleO] $T = |\mathbb{C}| \cdot 2^{|\bm{k}_{1} \cup \bm{k}_{2}|}$
 \end{itemize}
 \item<2->[\faFighterJet] MitM:
 \begin{itemize}
-	\item <2->[\faCheckCircle] $\bm{y} = F(\bm{k}_{1}, \bm{c}),\, \bm{z} = g(\bm{k}_{2}, \bm{c})$
-	\item <2->[\faCheckCircle] $T = 2^{|\bm{k}_{1}|} + 2^{|\bm{k}_{2}|}$
+	\item <2->[\faCheckCircle] $\bm{x} = g(\bm{k}_{1}, \bm{c}),\, \bm{y} = h(\bm{k}_{2}, \bm{c})$
+	\item <2->[\faCheckCircle] $T = |\mathbb{C}| \cdot 2^{|\bm{k}_{1}|} + |\mathbb{C}| \cdot 2^{|\bm{k}_{2}|}$
 \end{itemize}
 \end{itemize}
 \column[c]{0.4\textwidth}
 \centering
 \null
 \vspace{0.5cm}
-\includegraphics[width=0.9\textwidth]{./figures/mitm.pdf}
-\[\visible<1->{\sum \bm{x} = 0} \visible<2->{\iff \sum \bm{y} = \sum \bm{z}}\]
+\begin{figure}
+\centering
+\begin{tikzpicture}[yscale=1, xscale=1, thick, >=latex,
+every node/.style={inner sep=6pt},
+next/.append style={rounded corners=3pt},
+primi/.append style={fill=tugred!50, draw=black, rounded corners=2pt, minimum size=30pt},
+caption/.style={gray, below=1.75cm, align=center}]
+\node[primi, key north, fill=tugblue] (E1) {\textcolor{white}{\texttt{Path 1}}};
+\draw[next]  (E1) ++(0,1) node[right]{$\bm{k}_{1}$\,\faKey} -- (E1);
+\draw[next]  (E1) ++(1.5,0) node[right]{$\bm{c}$} -- (E1);
+\node[primi, below=0.7cm of E1, key north, fill=tugred!50] (E2) {\textcolor{white}{\texttt{Path 2}}};
+\draw[next]  (E2) ++(0,1) node[right]{$\bm{k}_{2}$\,\faKey} -- (E2);
+\draw[<-] (E2) -- ++(1.5, 0) node[right]{$\bm{c}$};
+\node[xor, minimum size=0.4cm] at ($(E1)!0.5!(E2) + (-1.5, 0)$) (myxor) {};
+\draw[->, rounded corners] (E1) --node[above]{$\bm{x}$} (E1-|myxor) -- (myxor.north);
+\draw[->, rounded corners] (E2) --node[below]{$\bm{y}$} (E2-|myxor) -- (myxor.south);
+\node[left=1cm of myxor] (Z) {$\bm{z}$};
+\draw[->] (myxor) -- (Z);
+\end{tikzpicture}
+\end{figure}
+\[\visible<1->{\sum \bm{z} = 0} \visible<2->{\iff \sum \bm{x} = \sum \bm{y}}\]
 \end{columns}
 \end{frame}
 

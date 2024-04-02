@@ -1,0 +1,198 @@
+\documentclass[varwidth=50cm]{standalone}
+\usepackage{qarmavtwo128}
+\usepackage{comment}
+\begin{document}
+%\begin{figure}
+%\centering
+\begin{tikzpicture}
+\QarmaInit{\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[white]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[white]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[white]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}}{\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}}
+
+\QarmaForwardNewLineInitZero
+    {$S$} % first operation name (S or \tau')
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[white]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[white]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[white]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}} % state after first operation (S)
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[white]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[white]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[white]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}\Cell{s0}{\texttt{0}}\Cell{s1}{\texttt{1}}\Cell{s2}{\texttt{2}}\Cell{s3}{\texttt{3}}\Cell{s4}{\texttt{4}}\Cell{s5}{\texttt{5}}\Cell{s6}{\texttt{6}}\Cell{s7}{\texttt{7}}\Cell{s8}{\texttt{8}}\Cell{s9}{\texttt{9}}\Cell{s10}{\texttt{10}}\Cell{s11}{\texttt{11}}\Cell{s12}{\texttt{12}}\Cell{s13}{\texttt{13}}\Cell{s14}{\texttt{14}}\Cell{s15}{\texttt{15}}} % tweakey state
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[white]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[white]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[white]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}} % state after tweakey addition
+    {$\tau$} % second operation name (\tau or S')
+    {\Fill[unknown]{s0}\Fill[unknown]{s5}\Fill[unknown]{s15}\Fill[white]{s10}\Fill[unknown]{s13}\Fill[unknown]{s8}\Fill[unknown]{s2}\Fill[unknown]{s7}\Fill[unknown]{s11}\Fill[white]{s14}\Fill[unknown]{s4}\Fill[unknown]{s1}\Fill[white]{s6}\Fill[unknown]{s3}\Fill[unknown]{s9}\Fill[unknown]{s12}} % state after second operation (\tau)
+    {$M$} % third operation name (M or M')
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[white]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}} % state after third operation (M)
+
+\QarmaForwardNewLineInitOne
+    {$S$} % first operation name (S or \tau')
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}} % state after first operation (S)
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}\Cell{s0}{\texttt{16}}\Cell{s1}{\texttt{17}}\Cell{s2}{\texttt{18}}\Cell{s3}{\texttt{19}}\Cell{s4}{\texttt{20}}\Cell{s5}{\texttt{21}}\Cell{s6}{\texttt{22}}\Cell{s7}{\texttt{23}}\Cell{s8}{\texttt{24}}\Cell{s9}{\texttt{25}}\Cell{s10}{\texttt{26}}\Cell{s11}{\texttt{27}}\Cell{s12}{\texttt{28}}\Cell{s13}{\texttt{29}}\Cell{s14}{\texttt{30}}\Cell{s15}{\texttt{31}}} % tweakey state
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}} % state after tweakey addition
+    {$\tau$} % second operation name (\tau or S')
+    {\Fill[unknown]{s0}\Fill[unknown]{s5}\Fill[unknown]{s15}\Fill[unknown]{s10}\Fill[unknown]{s13}\Fill[unknown]{s8}\Fill[unknown]{s2}\Fill[unknown]{s7}\Fill[unknown]{s11}\Fill[unknown]{s14}\Fill[unknown]{s4}\Fill[unknown]{s1}\Fill[unknown]{s6}\Fill[unknown]{s3}\Fill[unknown]{s9}\Fill[unknown]{s12}} % state after second operation (\tau)
+    {$M$} % third operation name (M or M')
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}} % state after third operation (M)
+
+\QarmaForwardNewLineZero
+    {$S$} % first operation name (S or \tau')
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[white]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}} % state after first operation (S)
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}\Cell{s0}{\texttt{10}}\Cell{s1}{\texttt{12}}\Cell{s2}{\texttt{31}}\Cell{s3}{\texttt{13}}\Cell{s4}{\texttt{30}}\Cell{s5}{\texttt{24}}\Cell{s6}{\texttt{11}}\Cell{s7}{\texttt{9}}\Cell{s8}{\texttt{1}}\Cell{s9}{\texttt{0}}\Cell{s10}{\texttt{19}}\Cell{s11}{\texttt{18}}\Cell{s12}{\texttt{6}}\Cell{s13}{\texttt{20}}\Cell{s14}{\texttt{7}}\Cell{s15}{\texttt{5}}} % tweakey state
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}} % state after tweakey addition
+    {$\tau$} % second operation name (\tau or S')
+    {\Fill[unknown]{s0}\Fill[unknown]{s5}\Fill[white]{s15}\Fill[unknown]{s10}\Fill[unknown]{s13}\Fill[unknown]{s8}\Fill[unknown]{s2}\Fill[unknown]{s7}\Fill[unknown]{s11}\Fill[unknown]{s14}\Fill[unknown]{s4}\Fill[unknown]{s1}\Fill[unknown]{s6}\Fill[unknown]{s3}\Fill[unknown]{s9}\Fill[unknown]{s12}} % state after second operation (\tau)
+    {$M$} % third operation name (M or M')
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}} % state after third operation (M)
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}} % state after XR
+
+\QarmaForwardNewLineOne
+    {$S$} % first operation name (S or \tau')
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}} % state after first operation (S)
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[white]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}\FrameCell[filter]{s2}\Cell{s0}{\texttt{26}}\Cell{s1}{\texttt{28}}\Cell{s2}{\texttt{15}}\Cell{s3}{\texttt{29}}\Cell{s4}{\texttt{14}}\Cell{s5}{\texttt{8}}\Cell{s6}{\texttt{27}}\Cell{s7}{\texttt{25}}\Cell{s8}{\texttt{17}}\Cell{s9}{\texttt{16}}\Cell{s10}{\texttt{3}}\Cell{s11}{\texttt{2}}\Cell{s12}{\texttt{22}}\Cell{s13}{\texttt{4}}\Cell{s14}{\texttt{23}}\Cell{s15}{\texttt{21}}} % tweakey state
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[white]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}} % state after tweakey addition
+    {$\tau$} % second operation name (\tau or S')
+    {\Fill[unknown]{s0}\Fill[unknown]{s5}\Fill[unknown]{s15}\Fill[unknown]{s10}\Fill[unknown]{s13}\Fill[unknown]{s8}\Fill[unknown]{s2}\Fill[unknown]{s7}\Fill[unknown]{s11}\Fill[unknown]{s14}\Fill[unknown]{s4}\Fill[unknown]{s1}\Fill[unknown]{s6}\Fill[unknown]{s3}\Fill[unknown]{s9}\Fill[unknown]{s12}} % state after second operation (\tau)
+    {$M$} % third operation name (M or M')
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}} % state after third operation (M)
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[white]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}} % state after XR
+
+\QarmaForwardFinalZero
+    {$S$} % first operation name (S or \tau')
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}} % state after first operation (S)
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}\Cell{s0}{\texttt{1}}\Cell{s1}{\texttt{10}}\Cell{s2}{\texttt{14}}\Cell{s3}{\texttt{22}}\Cell{s4}{\texttt{18}}\Cell{s5}{\texttt{25}}\Cell{s6}{\texttt{29}}\Cell{s7}{\texttt{21}}\Cell{s8}{\texttt{0}}\Cell{s9}{\texttt{8}}\Cell{s10}{\texttt{12}}\Cell{s11}{\texttt{4}}\Cell{s12}{\texttt{19}}\Cell{s13}{\texttt{27}}\Cell{s14}{\texttt{31}}\Cell{s15}{\texttt{23}}} % tweakey state
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}} % state after tweakey addition
+    {$\tau$} % second operation name (\tau or S')
+    {\Fill[unknown]{s0}\Fill[unknown]{s5}\Fill[unknown]{s15}\Fill[unknown]{s10}\Fill[unknown]{s13}\Fill[unknown]{s8}\Fill[unknown]{s2}\Fill[unknown]{s7}\Fill[unknown]{s11}\Fill[unknown]{s14}\Fill[unknown]{s4}\Fill[unknown]{s1}\Fill[unknown]{s6}\Fill[unknown]{s3}\Fill[unknown]{s9}\Fill[unknown]{s12}} % state after second operation (\tau)
+    {$M$} % third operation name (M or M')
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}} % state after third operation (M)
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}} % state after XR
+
+\QarmaForwardFinalOne
+    {$S$} % first operation name (S or \tau')
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}} % state after first operation (S)
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}\Cell{s0}{\texttt{17}}\Cell{s1}{\texttt{26}}\Cell{s2}{\texttt{30}}\Cell{s3}{\texttt{6}}\Cell{s4}{\texttt{2}}\Cell{s5}{\texttt{9}}\Cell{s6}{\texttt{13}}\Cell{s7}{\texttt{5}}\Cell{s8}{\texttt{16}}\Cell{s9}{\texttt{24}}\Cell{s10}{\texttt{28}}\Cell{s11}{\texttt{20}}\Cell{s12}{\texttt{3}}\Cell{s13}{\texttt{11}}\Cell{s14}{\texttt{15}}\Cell{s15}{\texttt{7}}} % tweakey state
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}} % state after tweakey addition
+    {$\tau$} % second operation name (\tau or S')
+    {\Fill[unknown]{s0}\Fill[unknown]{s5}\Fill[unknown]{s15}\Fill[unknown]{s10}\Fill[unknown]{s13}\Fill[unknown]{s8}\Fill[unknown]{s2}\Fill[unknown]{s7}\Fill[unknown]{s11}\Fill[unknown]{s14}\Fill[unknown]{s4}\Fill[unknown]{s1}\Fill[unknown]{s6}\Fill[unknown]{s3}\Fill[unknown]{s9}\Fill[unknown]{s12}} % state after second operation (\tau)
+    {$M$} % third operation name (M or M')
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}} % state after third operation (M)
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}} % state after XR
+
+\QarmaBackwardNewLineZero
+    {$\bar{S}$} % S^-1
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}} % state after S^-1
+    {$\bar{M}$} % M^-1
+    {\Fill[unknown]{s0}\Fill[nonzeroany]{s5}\Fill[unknown]{s15}\Fill[nonzeroany]{s10}\Fill[unknown]{s13}\Fill[nonzeroany]{s8}\Fill[unknown]{s2}\Fill[unknown]{s7}\Fill[unknown]{s11}\Fill[unknown]{s14}\Fill[unknown]{s4}\Fill[unknown]{s1}\Fill[unknown]{s6}\Fill[unknown]{s3}\Fill[unknown]{s9}\Fill[nonzeroany]{s12}} % state after M^-1
+    {$\bar{\tau}$} % tweakey state
+    {\Fill[unknown]{s0}\Fill[nonzeroany]{s1}\Fill[unknown]{s2}\Fill[nonzeroany]{s3}\Fill[unknown]{s4}\Fill[nonzeroany]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[nonzeroany]{s15}} % state after permutation
+    {\Fill[unknown]{s0}\Fill[nonzeroany]{s1}\Fill[unknown]{s2}\Fill[nonzeroany]{s3}\Fill[unknown]{s4}\Fill[nonzeroany]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[nonzeroany]{s15}\Cell{s0}{\texttt{1}}\Cell{s1}{\texttt{10}}\Cell{s2}{\texttt{14}}\Cell{s3}{\texttt{22}}\Cell{s4}{\texttt{18}}\Cell{s5}{\texttt{25}}\Cell{s6}{\texttt{29}}\Cell{s7}{\texttt{21}}\Cell{s8}{\texttt{0}}\Cell{s9}{\texttt{8}}\Cell{s10}{\texttt{12}}\Cell{s11}{\texttt{4}}\Cell{s12}{\texttt{19}}\Cell{s13}{\texttt{27}}\Cell{s14}{\texttt{31}}\Cell{s15}{\texttt{23}}} %
+    {\Fill[unknown]{s0}\Fill[nonzeroany]{s1}\Fill[unknown]{s2}\Fill[nonzeroany]{s3}\Fill[unknown]{s4}\Fill[nonzeroany]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[nonzeroany]{s15}} % state befoe XR
+    {\Fill[unknown]{s0}\Fill[nonzeroany]{s1}\Fill[unknown]{s2}\Fill[nonzeroany]{s3}\Fill[unknown]{s4}\Fill[nonzeroany]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[nonzeroany]{s15}} % state after XR
+
+\QarmaBackwardNewLineOne
+    {$\bar{S}$} % S^-1
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[unknown]{s15}} % state after S^-1
+    {$\bar{M}$} % M^-1
+    {\Fill[unknown]{s0}\Fill[unknown]{s5}\Fill[unknown]{s15}\Fill[unknown]{s10}\Fill[unknown]{s13}\Fill[unknown]{s8}\Fill[nonzeroany]{s2}\Fill[unknown]{s7}\Fill[unknown]{s11}\Fill[unknown]{s14}\Fill[unknown]{s4}\Fill[unknown]{s1}\Fill[unknown]{s6}\Fill[unknown]{s3}\Fill[nonzeroany]{s9}\Fill[unknown]{s12}} % state after M^-1
+    {$\bar{\tau}$} % tweakey state
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[nonzeroany]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[nonzeroany]{s14}\Fill[unknown]{s15}} % state after permutation
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[nonzeroany]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[nonzeroany]{s14}\Fill[unknown]{s15}\FrameCell[filter]{s14}\Cell{s0}{\texttt{17}}\Cell{s1}{\texttt{26}}\Cell{s2}{\texttt{30}}\Cell{s3}{\texttt{6}}\Cell{s4}{\texttt{2}}\Cell{s5}{\texttt{9}}\Cell{s6}{\texttt{13}}\Cell{s7}{\texttt{5}}\Cell{s8}{\texttt{16}}\Cell{s9}{\texttt{24}}\Cell{s10}{\texttt{28}}\Cell{s11}{\texttt{20}}\Cell{s12}{\texttt{3}}\Cell{s13}{\texttt{11}}\Cell{s14}{\texttt{15}}\Cell{s15}{\texttt{7}}} %
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[nonzeroany]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[nonzeroany]{s14}\Fill[unknown]{s15}} % state befoe XR
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[nonzeroany]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[nonzeroany]{s14}\Fill[unknown]{s15}} % state after XR
+
+\QarmaBackwardNewLineZero
+    {$\bar{S}$} % S^-1
+    {\Fill[unknown]{s0}\Fill[nonzeroany]{s1}\Fill[unknown]{s2}\Fill[nonzeroany]{s3}\Fill[unknown]{s4}\Fill[nonzeroany]{s5}\Fill[unknown]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[nonzeroany]{s15}} % state after S^-1
+    {$\bar{M}$} % M^-1
+    {\Fill[nonzeroany]{s0}\Fill[nonzeroany]{s5}\Fill[nonzeroany]{s15}\Fill[nonzeroany]{s10}\Fill[white]{s13}\Fill[unknown]{s8}\Fill[unknown]{s2}\Fill[white]{s7}\Fill[white]{s11}\Fill[nonzeroany]{s14}\Fill[white]{s4}\Fill[nonzeroany]{s1}\Fill[nonzeroany]{s6}\Fill[nonzeroany]{s3}\Fill[white]{s9}\Fill[nonzeroany]{s12}} % state after M^-1
+    {$\bar{\tau}$} % tweakey state
+    {\Fill[nonzeroany]{s0}\Fill[nonzeroany]{s1}\Fill[nonzeroany]{s2}\Fill[nonzeroany]{s3}\Fill[white]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[white]{s7}\Fill[white]{s8}\Fill[nonzeroany]{s9}\Fill[white]{s10}\Fill[nonzeroany]{s11}\Fill[nonzeroany]{s12}\Fill[nonzeroany]{s13}\Fill[white]{s14}\Fill[nonzeroany]{s15}} % state after permutation
+    {\Fill[nonzeroany]{s0}\Fill[nonzeroany]{s1}\Fill[nonzeroany]{s2}\Fill[nonzeroany]{s3}\Fill[white]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[white]{s7}\Fill[white]{s8}\Fill[nonzeroany]{s9}\Fill[white]{s10}\Fill[nonzeroany]{s11}\Fill[nonzeroany]{s12}\Fill[nonzeroany]{s13}\Fill[white]{s14}\Fill[nonzeroany]{s15}\Cell{s0}{\texttt{10}}\Cell{s1}{\texttt{12}}\Cell{s2}{\texttt{31}}\Cell{s3}{\texttt{13}}\Cell{s4}{\texttt{30}}\Cell{s5}{\texttt{24}}\Cell{s6}{\texttt{11}}\Cell{s7}{\texttt{9}}\Cell{s8}{\texttt{1}}\Cell{s9}{\texttt{0}}\Cell{s10}{\texttt{19}}\Cell{s11}{\texttt{18}}\Cell{s12}{\texttt{6}}\Cell{s13}{\texttt{20}}\Cell{s14}{\texttt{7}}\Cell{s15}{\texttt{5}}} %
+    {\Fill[nonzeroany]{s0}\Fill[nonzeroany]{s1}\Fill[nonzeroany]{s2}\Fill[nonzeroany]{s3}\Fill[white]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[white]{s7}\Fill[white]{s8}\Fill[nonzeroany]{s9}\Fill[white]{s10}\Fill[nonzeroany]{s11}\Fill[nonzeroany]{s12}\Fill[nonzeroany]{s13}\Fill[white]{s14}\Fill[nonzeroany]{s15}} % state befoe XR
+    {\Fill[nonzeroany]{s0}\Fill[nonzeroany]{s1}\Fill[white]{s2}\Fill[white]{s3}\Fill[nonzeroany]{s4}\Fill[white]{s5}\Fill[white]{s6}\Fill[nonzeroany]{s7}\Fill[white]{s8}\Fill[nonzeroany]{s9}\Fill[white]{s10}\Fill[nonzeroany]{s11}\Fill[nonzeroany]{s12}\Fill[nonzeroany]{s13}\Fill[white]{s14}\Fill[nonzeroany]{s15}} % state after XR
+
+\QarmaBackwardNewLineOne
+    {$\bar{S}$} % S^-1
+    {\Fill[unknown]{s0}\Fill[unknown]{s1}\Fill[unknown]{s2}\Fill[unknown]{s3}\Fill[unknown]{s4}\Fill[unknown]{s5}\Fill[nonzeroany]{s6}\Fill[unknown]{s7}\Fill[unknown]{s8}\Fill[unknown]{s9}\Fill[unknown]{s10}\Fill[unknown]{s11}\Fill[unknown]{s12}\Fill[unknown]{s13}\Fill[nonzeroany]{s14}\Fill[unknown]{s15}} % state after S^-1
+    {$\bar{M}$} % M^-1
+    {\Fill[nonzeroany]{s0}\Fill[nonzeroany]{s5}\Fill[white]{s15}\Fill[white]{s10}\Fill[nonzeroany]{s13}\Fill[white]{s8}\Fill[white]{s2}\Fill[nonzeroany]{s7}\Fill[nonzeroany]{s11}\Fill[nonzeroany]{s14}\Fill[nonzeroany]{s4}\Fill[nonzeroany]{s1}\Fill[nonzeroany]{s6}\Fill[unknown]{s3}\Fill[unknown]{s9}\Fill[nonzeroany]{s12}} % state after M^-1
+    {$\bar{\tau}$} % tweakey state
+    {\Fill[nonzeroany]{s0}\Fill[nonzeroany]{s1}\Fill[white]{s2}\Fill[white]{s3}\Fill[nonzeroany]{s4}\Fill[white]{s5}\Fill[white]{s6}\Fill[nonzeroany]{s7}\Fill[nonzeroany]{s8}\Fill[nonzeroany]{s9}\Fill[nonzeroany]{s10}\Fill[nonzeroany]{s11}\Fill[nonzeroany]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[nonzeroany]{s15}} % state after permutation
+    {\Fill[nonzeroany]{s0}\Fill[nonzeroany]{s1}\Fill[white]{s2}\Fill[white]{s3}\Fill[nonzeroany]{s4}\Fill[white]{s5}\Fill[white]{s6}\Fill[nonzeroany]{s7}\Fill[nonzeroany]{s8}\Fill[nonzeroany]{s9}\Fill[nonzeroany]{s10}\Fill[nonzeroany]{s11}\Fill[nonzeroany]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[nonzeroany]{s15}\Cell{s0}{\texttt{26}}\Cell{s1}{\texttt{28}}\Cell{s2}{\texttt{15}}\Cell{s3}{\texttt{29}}\Cell{s4}{\texttt{14}}\Cell{s5}{\texttt{8}}\Cell{s6}{\texttt{27}}\Cell{s7}{\texttt{25}}\Cell{s8}{\texttt{17}}\Cell{s9}{\texttt{16}}\Cell{s10}{\texttt{3}}\Cell{s11}{\texttt{2}}\Cell{s12}{\texttt{22}}\Cell{s13}{\texttt{4}}\Cell{s14}{\texttt{23}}\Cell{s15}{\texttt{21}}} %
+    {\Fill[nonzeroany]{s0}\Fill[nonzeroany]{s1}\Fill[white]{s2}\Fill[white]{s3}\Fill[nonzeroany]{s4}\Fill[white]{s5}\Fill[white]{s6}\Fill[nonzeroany]{s7}\Fill[nonzeroany]{s8}\Fill[nonzeroany]{s9}\Fill[nonzeroany]{s10}\Fill[nonzeroany]{s11}\Fill[nonzeroany]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[nonzeroany]{s15}} % state befoe XR
+    {\Fill[nonzeroany]{s0}\Fill[nonzeroany]{s1}\Fill[nonzeroany]{s2}\Fill[nonzeroany]{s3}\Fill[white]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[white]{s7}\Fill[nonzeroany]{s8}\Fill[nonzeroany]{s9}\Fill[nonzeroany]{s10}\Fill[nonzeroany]{s11}\Fill[nonzeroany]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[nonzeroany]{s15}} % state after XR
+
+\QarmaBackwardNewLineZero
+    {$\bar{S}$} % S^-1
+    {\Fill[nonzeroany]{s0}\Fill[nonzeroany]{s1}\Fill[white]{s2}\Fill[white]{s3}\Fill[nonzeroany]{s4}\Fill[white]{s5}\Fill[white]{s6}\Fill[nonzeroany]{s7}\Fill[white]{s8}\Fill[nonzeroany]{s9}\Fill[white]{s10}\Fill[nonzeroany]{s11}\Fill[nonzeroany]{s12}\Fill[nonzeroany]{s13}\Fill[white]{s14}\Fill[nonzeroany]{s15}} % state after S^-1
+    {$\bar{M}$} % M^-1
+    {\Fill[white]{s0}\Fill[nonzeroany]{s5}\Fill[white]{s15}\Fill[white]{s10}\Fill[white]{s13}\Fill[nonzeroany]{s8}\Fill[white]{s2}\Fill[white]{s7}\Fill[white]{s11}\Fill[white]{s14}\Fill[white]{s4}\Fill[white]{s1}\Fill[white]{s6}\Fill[nonzeroany]{s3}\Fill[white]{s9}\Fill[white]{s12}} % state after M^-1
+    {$\bar{\tau}$} % tweakey state
+    {\Fill[white]{s0}\Fill[nonzeroany]{s1}\Fill[white]{s2}\Fill[white]{s3}\Fill[white]{s4}\Fill[nonzeroany]{s5}\Fill[white]{s6}\Fill[white]{s7}\Fill[white]{s8}\Fill[white]{s9}\Fill[white]{s10}\Fill[white]{s11}\Fill[white]{s12}\Fill[nonzeroany]{s13}\Fill[white]{s14}\Fill[white]{s15}} % state after permutation
+    {\Fill[white]{s0}\Fill[nonzeroany]{s1}\Fill[white]{s2}\Fill[white]{s3}\Fill[white]{s4}\Fill[nonzeroany]{s5}\Fill[white]{s6}\Fill[white]{s7}\Fill[white]{s8}\Fill[white]{s9}\Fill[white]{s10}\Fill[white]{s11}\Fill[white]{s12}\Fill[nonzeroany]{s13}\Fill[white]{s14}\Fill[white]{s15}\FrameCell[filter]{s15}\Cell{s0}{\texttt{0}}\Cell{s1}{\texttt{1}}\Cell{s2}{\texttt{2}}\Cell{s3}{\texttt{3}}\Cell{s4}{\texttt{4}}\Cell{s5}{\texttt{5}}\Cell{s6}{\texttt{6}}\Cell{s7}{\texttt{7}}\Cell{s8}{\texttt{8}}\Cell{s9}{\texttt{9}}\Cell{s10}{\texttt{10}}\Cell{s11}{\texttt{11}}\Cell{s12}{\texttt{12}}\Cell{s13}{\texttt{13}}\Cell{s14}{\texttt{14}}\Cell{s15}{\texttt{15}}} %
+    {\Fill[white]{s0}\Fill[nonzeroany]{s1}\Fill[white]{s2}\Fill[white]{s3}\Fill[white]{s4}\Fill[nonzeroany]{s5}\Fill[white]{s6}\Fill[white]{s7}\Fill[white]{s8}\Fill[white]{s9}\Fill[white]{s10}\Fill[white]{s11}\Fill[white]{s12}\Fill[nonzeroany]{s13}\Fill[white]{s14}\Fill[white]{s15}} % state befoe XR
+    {\Fill[white]{s0}\Fill[nonzeroany]{s1}\Fill[white]{s2}\Fill[white]{s3}\Fill[white]{s4}\Fill[nonzeroany]{s5}\Fill[white]{s6}\Fill[white]{s7}\Fill[white]{s8}\Fill[white]{s9}\Fill[white]{s10}\Fill[white]{s11}\Fill[white]{s12}\Fill[nonzeroany]{s13}\Fill[white]{s14}\Fill[white]{s15}} % state after XR
+
+\QarmaBackwardNewLineOne
+    {$\bar{S}$} % S^-1
+    {\Fill[nonzeroany]{s0}\Fill[nonzeroany]{s1}\Fill[nonzeroany]{s2}\Fill[nonzeroany]{s3}\Fill[white]{s4}\Fill[unknown]{s5}\Fill[unknown]{s6}\Fill[white]{s7}\Fill[nonzeroany]{s8}\Fill[nonzeroany]{s9}\Fill[nonzeroany]{s10}\Fill[nonzeroany]{s11}\Fill[nonzeroany]{s12}\Fill[unknown]{s13}\Fill[unknown]{s14}\Fill[nonzeroany]{s15}} % state after S^-1
+    {$\bar{M}$} % M^-1
+    {\Fill[white]{s0}\Fill[white]{s5}\Fill[white]{s15}\Fill[nonzeroany]{s10}\Fill[white]{s13}\Fill[white]{s8}\Fill[nonzeroany]{s2}\Fill[nonzeroany]{s7}\Fill[white]{s11}\Fill[white]{s14}\Fill[nonzeroany]{s4}\Fill[nonzeroany]{s1}\Fill[white]{s6}\Fill[white]{s3}\Fill[nonzeroany]{s9}\Fill[white]{s12}} % state after M^-1
+    {$\bar{\tau}$} % tweakey state
+    {\Fill[white]{s0}\Fill[white]{s1}\Fill[white]{s2}\Fill[nonzeroany]{s3}\Fill[white]{s4}\Fill[white]{s5}\Fill[nonzeroany]{s6}\Fill[nonzeroany]{s7}\Fill[white]{s8}\Fill[white]{s9}\Fill[nonzeroany]{s10}\Fill[nonzeroany]{s11}\Fill[white]{s12}\Fill[white]{s13}\Fill[nonzeroany]{s14}\Fill[white]{s15}} % state after permutation
+    {\Fill[white]{s0}\Fill[white]{s1}\Fill[white]{s2}\Fill[nonzeroany]{s3}\Fill[white]{s4}\Fill[white]{s5}\Fill[nonzeroany]{s6}\Fill[nonzeroany]{s7}\Fill[white]{s8}\Fill[white]{s9}\Fill[nonzeroany]{s10}\Fill[nonzeroany]{s11}\Fill[white]{s12}\Fill[white]{s13}\Fill[nonzeroany]{s14}\Fill[white]{s15}\Cell{s0}{\texttt{16}}\Cell{s1}{\texttt{17}}\Cell{s2}{\texttt{18}}\Cell{s3}{\texttt{19}}\Cell{s4}{\texttt{20}}\Cell{s5}{\texttt{21}}\Cell{s6}{\texttt{22}}\Cell{s7}{\texttt{23}}\Cell{s8}{\texttt{24}}\Cell{s9}{\texttt{25}}\Cell{s10}{\texttt{26}}\Cell{s11}{\texttt{27}}\Cell{s12}{\texttt{28}}\Cell{s13}{\texttt{29}}\Cell{s14}{\texttt{30}}\Cell{s15}{\texttt{31}}} %
+    {\Fill[white]{s0}\Fill[white]{s1}\Fill[white]{s2}\Fill[nonzeroany]{s3}\Fill[white]{s4}\Fill[white]{s5}\Fill[nonzeroany]{s6}\Fill[nonzeroany]{s7}\Fill[white]{s8}\Fill[white]{s9}\Fill[nonzeroany]{s10}\Fill[nonzeroany]{s11}\Fill[white]{s12}\Fill[white]{s13}\Fill[nonzeroany]{s14}\Fill[white]{s15}} % state befoe XR
+    {\Fill[white]{s0}\Fill[white]{s1}\Fill[white]{s2}\Fill[nonzeroany]{s3}\Fill[white]{s4}\Fill[white]{s5}\Fill[nonzeroany]{s6}\Fill[nonzeroany]{s7}\Fill[white]{s8}\Fill[white]{s9}\Fill[nonzeroany]{s10}\Fill[nonzeroany]{s11}\Fill[white]{s12}\Fill[white]{s13}\Fill[nonzeroany]{s14}\Fill[white]{s15}} % state after XR
+
+\QarmaBackwardNewLineZero
+    {$\bar{S}$} % S^-1
+    {\Fill[white]{s0}\Fill[nonzeroany]{s1}\Fill[white]{s2}\Fill[white]{s3}\Fill[white]{s4}\Fill[nonzeroany]{s5}\Fill[white]{s6}\Fill[white]{s7}\Fill[white]{s8}\Fill[white]{s9}\Fill[white]{s10}\Fill[white]{s11}\Fill[white]{s12}\Fill[nonzeroany]{s13}\Fill[white]{s14}\Fill[white]{s15}} % state after S^-1
+    {$\bar{M}$} % M^-1
+    {\Fill[white]{s0}\Fill[white]{s5}\Fill[white]{s15}\Fill[white]{s10}\Fill[white]{s13}\Fill[white]{s8}\Fill[white]{s2}\Fill[white]{s7}\Fill[white]{s11}\Fill[white]{s14}\Fill[white]{s4}\Fill[white]{s1}\Fill[white]{s6}\Fill[white]{s3}\Fill[nonzeroany]{s9}\Fill[white]{s12}} % state after M^-1
+    {$\bar{\tau}$} % tweakey state
+    {\Fill[white]{s0}\Fill[white]{s1}\Fill[white]{s2}\Fill[white]{s3}\Fill[white]{s4}\Fill[white]{s5}\Fill[white]{s6}\Fill[white]{s7}\Fill[white]{s8}\Fill[white]{s9}\Fill[white]{s10}\Fill[white]{s11}\Fill[white]{s12}\Fill[white]{s13}\Fill[nonzeroany]{s14}\Fill[white]{s15}} % state after permutation
+    {\Fill[white]{s0}\Fill[white]{s1}\Fill[white]{s2}\Fill[white]{s3}\Fill[white]{s4}\Fill[white]{s5}\Fill[white]{s6}\Fill[white]{s7}\Fill[white]{s8}\Fill[white]{s9}\Fill[white]{s10}\Fill[white]{s11}\Fill[white]{s12}\Fill[white]{s13}\Fill[nonzeroany]{s14}\Fill[white]{s15}\Cell{s0}{\texttt{12}}\Cell{s1}{\texttt{19}}\Cell{s2}{\texttt{7}}\Cell{s3}{\texttt{27}}\Cell{s4}{\texttt{15}}\Cell{s5}{\texttt{16}}\Cell{s6}{\texttt{4}}\Cell{s7}{\texttt{8}}\Cell{s8}{\texttt{10}}\Cell{s9}{\texttt{1}}\Cell{s10}{\texttt{6}}\Cell{s11}{\texttt{30}}\Cell{s12}{\texttt{29}}\Cell{s13}{\texttt{2}}\Cell{s14}{\texttt{21}}\Cell{s15}{\texttt{25}}} %
+    {\Fill[white]{s0}\Fill[white]{s1}\Fill[white]{s2}\Fill[white]{s3}\Fill[white]{s4}\Fill[white]{s5}\Fill[white]{s6}\Fill[white]{s7}\Fill[white]{s8}\Fill[white]{s9}\Fill[white]{s10}\Fill[white]{s11}\Fill[white]{s12}\Fill[white]{s13}\Fill[nonzeroany]{s14}\Fill[white]{s15}} % state befoe XR
+    {\Fill[white]{s0}\Fill[white]{s1}\Fill[nonzeroany]{s2}\Fill[white]{s3}\Fill[white]{s4}\Fill[white]{s5}\Fill[nonzeroany]{s6}\Fill[white]{s7}\Fill[white]{s8}\Fill[white]{s9}\Fill[white]{s10}\Fill[white]{s11}\Fill[white]{s12}\Fill[white]{s13}\Fill[nonzeroany]{s14}\Fill[white]{s15}} % state after XR
+
+\QarmaBackwardNewLineOne
+    {$\bar{S}$} % S^-1
+    {\Fill[white]{s0}\Fill[white]{s1}\Fill[white]{s2}\Fill[nonzeroany]{s3}\Fill[white]{s4}\Fill[white]{s5}\Fill[nonzeroany]{s6}\Fill[nonzeroany]{s7}\Fill[white]{s8}\Fill[white]{s9}\Fill[nonzeroany]{s10}\Fill[nonzeroany]{s11}\Fill[white]{s12}\Fill[white]{s13}\Fill[nonzeroany]{s14}\Fill[white]{s15}} % state after S^-1
+    {$\bar{M}$} % M^-1
+    {\Fill[white]{s0}\Fill[white]{s5}\Fill[nonzeroany]{s15}\Fill[white]{s10}\Fill[white]{s13}\Fill[white]{s8}\Fill[nonzeroany]{s2}\Fill[white]{s7}\Fill[white]{s11}\Fill[white]{s14}\Fill[white]{s4}\Fill[white]{s1}\Fill[white]{s6}\Fill[white]{s3}\Fill[white]{s9}\Fill[white]{s12}} % state after M^-1
+    {$\bar{\tau}$} % tweakey state
+    {\Fill[white]{s0}\Fill[white]{s1}\Fill[nonzeroany]{s2}\Fill[white]{s3}\Fill[white]{s4}\Fill[white]{s5}\Fill[nonzeroany]{s6}\Fill[white]{s7}\Fill[white]{s8}\Fill[white]{s9}\Fill[white]{s10}\Fill[white]{s11}\Fill[white]{s12}\Fill[white]{s13}\Fill[white]{s14}\Fill[white]{s15}} % state after permutation
+    {\Fill[white]{s0}\Fill[white]{s1}\Fill[nonzeroany]{s2}\Fill[white]{s3}\Fill[white]{s4}\Fill[white]{s5}\Fill[nonzeroany]{s6}\Fill[white]{s7}\Fill[white]{s8}\Fill[white]{s9}\Fill[white]{s10}\Fill[white]{s11}\Fill[white]{s12}\Fill[white]{s13}\Fill[white]{s14}\Fill[white]{s15}\Cell{s0}{\texttt{28}}\Cell{s1}{\texttt{3}}\Cell{s2}{\texttt{23}}\Cell{s3}{\texttt{11}}\Cell{s4}{\texttt{31}}\Cell{s5}{\texttt{0}}\Cell{s6}{\texttt{20}}\Cell{s7}{\texttt{24}}\Cell{s8}{\texttt{26}}\Cell{s9}{\texttt{17}}\Cell{s10}{\texttt{22}}\Cell{s11}{\texttt{14}}\Cell{s12}{\texttt{13}}\Cell{s13}{\texttt{18}}\Cell{s14}{\texttt{5}}\Cell{s15}{\texttt{9}}} %
+    {\Fill[white]{s0}\Fill[white]{s1}\Fill[nonzeroany]{s2}\Fill[white]{s3}\Fill[white]{s4}\Fill[white]{s5}\Fill[nonzeroany]{s6}\Fill[white]{s7}\Fill[white]{s8}\Fill[white]{s9}\Fill[white]{s10}\Fill[white]{s11}\Fill[white]{s12}\Fill[white]{s13}\Fill[white]{s14}\Fill[white]{s15}} % state befoe XR
+    {\Fill[white]{s0}\Fill[white]{s1}\Fill[white]{s2}\Fill[white]{s3}\Fill[white]{s4}\Fill[white]{s5}\Fill[white]{s6}\Fill[white]{s7}\Fill[white]{s8}\Fill[white]{s9}\Fill[white]{s10}\Fill[white]{s11}\Fill[white]{s12}\Fill[white]{s13}\Fill[white]{s14}\Fill[white]{s15}} % state after XR
+
+\QarmaBackwardFinalZero
+    {$\bar{S}$} % S^-1
+    {\Fill[white]{s0}\Fill[white]{s1}\Fill[nonzeroany]{s2}\Fill[white]{s3}\Fill[white]{s4}\Fill[white]{s5}\Fill[nonzeroany]{s6}\Fill[white]{s7}\Fill[white]{s8}\Fill[white]{s9}\Fill[white]{s10}\Fill[white]{s11}\Fill[white]{s12}\Fill[white]{s13}\Fill[nonzeroany]{s14}\Fill[white]{s15}} % state after S^-1
+    {$\bar{M}$} % M^-1
+    {\Fill[white]{s0}\Fill[white]{s5}\Fill[white]{s15}\Fill[nonzeroany]{s10}\Fill[white]{s13}\Fill[white]{s8}\Fill[white]{s2}\Fill[white]{s7}\Fill[white]{s11}\Fill[white]{s14}\Fill[white]{s4}\Fill[white]{s1}\Fill[white]{s6}\Fill[white]{s3}\Fill[white]{s9}\Fill[white]{s12}} % state after M^-1
+    {$\bar{\tau}$} % tweakey state
+    {\Fill[white]{s0}\Fill[white]{s1}\Fill[white]{s2}\Fill[nonzeroany]{s3}\Fill[white]{s4}\Fill[white]{s5}\Fill[white]{s6}\Fill[white]{s7}\Fill[white]{s8}\Fill[white]{s9}\Fill[white]{s10}\Fill[white]{s11}\Fill[white]{s12}\Fill[white]{s13}\Fill[white]{s14}\Fill[white]{s15}} % state after permutation
+    {\Fill[white]{s0}\Fill[white]{s1}\Fill[white]{s2}\Fill[nonzeroany]{s3}\Fill[white]{s4}\Fill[white]{s5}\Fill[white]{s6}\Fill[white]{s7}\Fill[white]{s8}\Fill[white]{s9}\Fill[white]{s10}\Fill[white]{s11}\Fill[white]{s12}\Fill[white]{s13}\Fill[white]{s14}\Fill[white]{s15}\Cell{s0}{\texttt{8}}\Cell{s1}{\texttt{0}}\Cell{s2}{\texttt{20}}\Cell{s3}{\texttt{28}}\Cell{s4}{\texttt{11}}\Cell{s5}{\texttt{23}}\Cell{s6}{\texttt{19}}\Cell{s7}{\texttt{31}}\Cell{s8}{\texttt{9}}\Cell{s9}{\texttt{21}}\Cell{s10}{\texttt{1}}\Cell{s11}{\texttt{29}}\Cell{s12}{\texttt{10}}\Cell{s13}{\texttt{22}}\Cell{s14}{\texttt{2}}\Cell{s15}{\texttt{30}}} %
+    {\Fill[white]{s0}\Fill[white]{s1}\Fill[white]{s2}\Fill[nonzeroany]{s3}\Fill[white]{s4}\Fill[white]{s5}\Fill[white]{s6}\Fill[white]{s7}\Fill[white]{s8}\Fill[white]{s9}\Fill[white]{s10}\Fill[white]{s11}\Fill[white]{s12}\Fill[white]{s13}\Fill[white]{s14}\Fill[white]{s15}} % state befoe XR
+    {\Fill[white]{s0}\Fill[white]{s1}\Fill[white]{s2}\Fill[nonzerofixed]{s3}\Fill[white]{s4}\Fill[white]{s5}\Fill[white]{s6}\Fill[white]{s7}\Fill[white]{s8}\Fill[white]{s9}\Fill[white]{s10}\Fill[white]{s11}\Fill[white]{s12}\Fill[white]{s13}\Fill[white]{s14}\Fill[white]{s15}} % state after XR
+
+\QarmaBackwardFinalOne
+    {$\bar{S}$} % S^-1
+    {\Fill[white]{s0}\Fill[white]{s1}\Fill[white]{s2}\Fill[white]{s3}\Fill[white]{s4}\Fill[white]{s5}\Fill[white]{s6}\Fill[white]{s7}\Fill[white]{s8}\Fill[white]{s9}\Fill[white]{s10}\Fill[white]{s11}\Fill[white]{s12}\Fill[white]{s13}\Fill[white]{s14}\Fill[white]{s15}} % state after S^-1
+    {$\bar{M}$} % M^-1
+    {\Fill[white]{s0}\Fill[white]{s5}\Fill[white]{s15}\Fill[white]{s10}\Fill[white]{s13}\Fill[white]{s8}\Fill[white]{s2}\Fill[white]{s7}\Fill[white]{s11}\Fill[white]{s14}\Fill[white]{s4}\Fill[white]{s1}\Fill[white]{s6}\Fill[white]{s3}\Fill[white]{s9}\Fill[white]{s12}} % state after M^-1
+    {$\bar{\tau}$} % tweakey state
+    {\Fill[white]{s0}\Fill[white]{s1}\Fill[white]{s2}\Fill[white]{s3}\Fill[white]{s4}\Fill[white]{s5}\Fill[white]{s6}\Fill[white]{s7}\Fill[white]{s8}\Fill[white]{s9}\Fill[white]{s10}\Fill[white]{s11}\Fill[white]{s12}\Fill[white]{s13}\Fill[white]{s14}\Fill[white]{s15}} % state after permutation
+    {\Fill[white]{s0}\Fill[white]{s1}\Fill[white]{s2}\Fill[white]{s3}\Fill[white]{s4}\Fill[white]{s5}\Fill[white]{s6}\Fill[white]{s7}\Fill[white]{s8}\Fill[white]{s9}\Fill[white]{s10}\Fill[white]{s11}\Fill[white]{s12}\Fill[white]{s13}\Fill[white]{s14}\Fill[white]{s15}\FrameCell[filter]{s7}\Cell{s0}{\texttt{24}}\Cell{s1}{\texttt{16}}\Cell{s2}{\texttt{4}}\Cell{s3}{\texttt{12}}\Cell{s4}{\texttt{27}}\Cell{s5}{\texttt{7}}\Cell{s6}{\texttt{3}}\Cell{s7}{\texttt{15}}\Cell{s8}{\texttt{25}}\Cell{s9}{\texttt{5}}\Cell{s10}{\texttt{17}}\Cell{s11}{\texttt{13}}\Cell{s12}{\texttt{26}}\Cell{s13}{\texttt{6}}\Cell{s14}{\texttt{18}}\Cell{s15}{\texttt{14}}} %
+    {\Fill[white]{s0}\Fill[white]{s1}\Fill[white]{s2}\Fill[white]{s3}\Fill[white]{s4}\Fill[white]{s5}\Fill[white]{s6}\Fill[white]{s7}\Fill[white]{s8}\Fill[white]{s9}\Fill[white]{s10}\Fill[white]{s11}\Fill[white]{s12}\Fill[white]{s13}\Fill[white]{s14}\Fill[white]{s15}} % state befoe XR
+    {\Fill[white]{s0}\Fill[white]{s1}\Fill[white]{s2}\Fill[white]{s3}\Fill[white]{s4}\Fill[white]{s5}\Fill[white]{s6}\Fill[white]{s7}\Fill[white]{s8}\Fill[white]{s9}\Fill[white]{s10}\Fill[white]{s11}\Fill[white]{s12}\Fill[white]{s13}\Fill[white]{s14}\Fill[white]{s15}} % state after XR
+
+%\IntegralDistinguisherLegend
+\end{tikzpicture}
+%\caption{Integral distinguisher for 8 rounds of QARMA-v2-128}
+%\end{figure}
+\begin{comment}
+#######################################################
+Distinguisher parameters:
+No of Rounds for the upper trail:       03
+No of Rounds for the lower trail:       05
+Tweak cells that are active at most 01 times:
+T1[15] 
+#######################################################
+#######################################################
+\end{comment}
+\end{document}
