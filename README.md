@@ -21,7 +21,7 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
 ***Revisiting Differential-Linear Attacks via a Boomerang Perspective***
 
 - [Paper](https://ia.cr/2024/255)
-- [Slides](20240522-LorenzCenter-2024)
+- [Slides](20240422-LorenzCenter-2024)
 - Venue: [Leiden, Netherlands](https://www.lorentzcenter.nl/beating-real-time-crypto-solutions-and-analysis.html)
 
 ## FSE 2024 - Cryptanalysis of QARMAv2

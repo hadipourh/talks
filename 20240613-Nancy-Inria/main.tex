@@ -66,7 +66,7 @@
        Boomerang Perspective\\
        {\small Applications to \cipher{AES}, \cipher{Ascon}, \cipher{CLEFIA}, \cipher{SKINNY}, \cipher{PRESENT}, \cipher{KNOT}, \cipher{TWINE}, \cipher{WARP}, \cipher{LBlock}, \cipher{Simeck}, and \cipher{SERPENT}}}
 \author{\underline{\textbf{Hosein Hadipour}} \and Patrick Derbez \and Maria Eichlseder}
-\date{Lorenz Center, 22 April, 2024 - Leiden, Netherlands}
+\date{Loria, 13 May, 2024 - Nancy, France}
 %\institute{IAIK}
 \instituteurl{hsn.hadipour@gmail.com}
 
@@ -284,6 +284,124 @@
 \section*{}
 \begin{frame}{Outline}
   \tableofcontents
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Some Motivating Examples}
+\sectionheader[\huge\color{tug}\faLightbulbO]{Some Motivating Examples}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tikzset{
+  % overwriting some style options:
+  stateopts/.style={scale=.20}, % default scaling, change for better readability at \normalsize
+  fillopts/.style={tugblue},
+}
+\begin{frame}{Security of \cipher{AES} Against Differential/Linear Attacks}
+\vspace{-0.25cm}
+\begin{center}
+  \tikzsetnextfilename{AES-char4R-optimal}
+  \begin{tikzpicture}[>=latex,scale=.8]
+    \pgfmathsetmacro{\opsep}{1}     % between a state and a coordinate-style operation (xor, tee, ...)
+    \pgfmathsetmacro{\cellsep}{1.5} % between two cells
+    \pgfmathsetmacro{\stepsep}{1.8} % between two cells with a labeled edge
+
+    \draw[every node/.style={state}]
+          (0,0)        node (S0) {\State{\Fill{s0} }}
+        ++(\opsep,0)   coordinate[xor] (x0)
+         +(0,\cellsep) node (K0) {\State{}}
+        ++(\opsep,0)   node (S1) {\State{\Fill[tug]{s0} }}
+        ++(\stepsep,0) node (S2) {\State{\Fill{s0} }}
+        ++(\stepsep,0) node (S3) {\State{\Fill{s0} }}
+        ++(\stepsep,0) node (S4) {\State{\Fill{s0}\Fill{s4}\Fill{s8}\Fill{s12} }}
+        ++(\opsep,0)   coordinate[xor] (x1)
+         +(0,\cellsep) node (K1) {\State{}}
+        ++(\opsep,0)   node (S5) {\State{\FillColumn[tug]{0} }}
+        ++(\stepsep,0) node (S6) {\State{\FillColumn{0} }}
+        ++(\stepsep,0) node (S7) {\State{\FillAntiDiagonal{0} }}
+        ++(\stepsep,0) node (S8) {\State{\FillState}}
+        ;
+
+    \foreach \in/\out/\label in {S0/x0/,K0/x0/,x0/S1/,S1/S2/SB,S2/S3/SR,S3/S4/MC,
+                                 S4/x1/,K1/x1/,x1/S5/,S5/S6/SB,S6/S7/SR,S7/S8/MC} {
+      \draw[->] (\in) --node[above]{\textsf{\label}} (\out);
+    }
+
+    \draw (K0.west) node[left] {$K_0$}
+          (K1.west) node[left] {$K_1$}
+          (S0.west) node[left] {$M$}
+          (S0.south) node[below] (R1L) {\emph{|}}
+          (S2.south) node[below] (R1)  {\emph{Round 1}}
+          (S4.south) node[below] (R12) {\emph{|}}
+          (S6.south) node[below] (R2)  {\emph{Round 2}}
+          (S8.south) node[below] (R2R) {\emph{|}};
+          %(S8.east) node[right] {\faEllipsisH};
+
+    \draw[every node/.style={state}]
+          (0,-4)       node (S0b) {\State{\FillState }}
+        ++(\opsep,0)   coordinate[xor] (x0b)
+         +(0,\cellsep) node (K0b) {\State{}}
+        ++(\opsep,0)   node (S1b) {\State{\FillState[tug] }}
+        ++(\stepsep,0) node (S2b) {\State{\FillState }}
+        ++(\stepsep,0) node (S3b) {\State{\FillState }}
+        ++(\stepsep,0) node (S4b) {\State{\FillDiagonal{0} }}
+        ++(\opsep,0)   coordinate[xor] (x1b)
+         +(0,\cellsep) node (K1b) {\State{}}
+        ++(\opsep,0)   node (S5b) {\State{\FillDiagonal[tug]{0} }}
+        ++(\stepsep,0) node (S6b) {\State{\FillDiagonal{0} }}
+        ++(\stepsep,0) node (S7b) {\State{\FillColumn{0} }}
+        ++(\stepsep,0) node (S8b) {\State{\Fill{s0}}}
+        ;
+
+    \foreach \in/\out/\label in {S0b/x0b/,K0b/x0b/,x0b/S1b/,S1b/S2b/SB,S2b/S3b/SR,S3b/S4b/MC,
+                                 S4b/x1b/,K1b/x1b/,x1b/S5b/,S5b/S6b/SB,S6b/S7b/SR,S7b/S8b/MC} {
+      \draw[->] (\in) --node[above]{\textsf{\label}} (\out);
+    }
+
+    \draw (K0b.west) node[left] {$K_2$}
+          (K1b.west) node[left] {$K_3$}
+          %(S0b.west) node[left] {$M$}
+          (S0b.south) node[below] (R3L) {\emph{|}}
+          (S2b.south) node[below] (R3)  {\emph{Round 3}}
+          (S4b.south) node[below] (R34) {\emph{|}}
+          (S6b.south) node[below] (R4)  {\emph{Round 4}}
+          (S8b.south) node[below] (R4R) {\emph{|}};
+          %(S0b.west) node[left] {\faEllipsisH};
+
+    \draw[->, rounded corners=3pt] (S8.east) -| ++(1,-1.5) -| ($(S0b.west)+(-1,0)$) -- (S0b.west);
+    \begin{scope}[->, main, opacity=.3, line width=3pt] 
+      \draw (R1) -- (R1-|R1L.east);
+      \draw (R1) -- (R1-|R12.west);
+      \draw (R2) -- (R1-|R12.east);
+      \draw (R2) -- (R1-|R2R.west);
+
+      \draw (R3) -- (R3-|R3L.east);
+      \draw (R3) -- (R3-|R34.west);
+      \draw (R4) -- (R3-|R34.east);
+      \draw (R4) -- (R3-|R4R.west);
+    \end{scope}
+  \end{tikzpicture}
+\end{center}
+$$\pr_{\text{4 rounds}} \leq 2^{-150}, ~ \corr_{\text{4 rounds}}^{2} \leq 2^{-150}$$
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{A 4-round DL Distinguisher for \cipher{AES}}
+\vspace{-0.35cm}
+\begin{center}
+\includegraphics[width=\textwidth]{./figures/aes_sk_4r_v0.pdf} % Replace with your third shape
+\end{center}
+\begin{center}
+  \resizebox{0.9\textwidth}{!}{
+\begin{tabular}{@{}cc@{}}
+  \toprule
+  \multicolumn{2}{c}{$r\Up = 1, r\Mid = 3, r\Low = 0, ~ p = 2^{-24.00}, ~ r = 2^{-7.66}, q^{2} = 1, ~ prq^{2} = \bf 2^{-31.66}$}\\
+  \midrule
+  $\Delta X_{0}$ \small\texttt{00005200000000f58f000000007b0000} & $\Delta X_{1}$ \small\texttt{0000000000000000000000000000b400}\\
+  $\Gamma X_{4}$ \small\texttt{0032000000ab00000066000000980000} & -\\
+  \bottomrule
+\end{tabular}}
+\[{\bf 2^{63.32}}~ \text{v.s.}~2^{150}\]
+\end{center}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
