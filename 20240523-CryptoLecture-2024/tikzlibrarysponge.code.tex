@@ -1,0 +1,371 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% TIKZLIBRARY SPONGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Utilities for drawing sponge and duplex constructions                      %
+%   Version: 2022-08-10                                                        %
+%   Author: Maria Eichlseder                                                   %
+%   \usetikzlibrary{sponge}                                                    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% BASICS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% CIPHER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% from tikzlibrarycipher.code.tex:
+% - [next] edge style with [ipe arrow] arrow style
+% - [wide] node shape
+% - [box]  node style
+% - [xor]  coordinate style
+\usetikzlibrary{cipher}
+
+%%% COLORS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% inherited from beamerthemetugraz2018.sty
+
+\definecolor{spongered}{HTML}{f70146}
+\definecolor{spongepurple}{HTML}{6c2f91}
+\definecolor{spongemid}{HTML}{5191c1}
+\definecolor{spongegray}{HTML}{a5a5a5}
+\definecolor{spongeblue}{HTML}{285f82}
+\definecolor{spongegreen}{HTML}{78b473}
+\definecolor{spongeyellow}{HTML}{e59352}
+\definecolor{spongecyan}{HTML}{77babf}
+\definecolor{spongehead}{HTML}{245b78}
+\definecolor{spongebody}{HTML}{e2e9ed}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% SPONGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% DEFINE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\colorlet{primcol}{spongeblue}
+\colorlet{algocol}{spongegreen}
+
+\tikzset{prim/.style={box, minimum size=.75cm},
+         perm/.style={prim, wide, minimum width=.65cm, minimum height=2cm},
+         algo/.style={prim, wide, minimum size=0cm, inner sep=4pt},
+         bigalgo/.style={algo, align=right, text width=2cm, text height=1cm},
+         %sidehash/.style={shape=trapezium,shape border rotate=270,trapezium angle=70},
+         nil/.style={inner sep=0pt},
+         var/.style={inner sep=0pt, minimum size=2.5ex},
+         phantomwide/.style={wide, minimum width=0cm, draw=none, fill=none},
+         etc/.style={dotted, line width=1pt},
+         bitwidth/.style={font=\scriptsize, inner sep=2pt, auto=left},
+         miniskip/.style={xshift=.25cm},
+         smallskip/.style={xshift=.4cm},
+         bignskip/.style={xshift=-.9cm}, % TODO del
+         bigvskip/.style={yshift=.8cm},
+         bignvskip/.style={yshift=-.8cm},
+         bigvskip/.style={yshift=.8cm},
+         smallnvskip/.style={yshift=-.8cm},
+}
+
+\tikzset{spongetheme/.is choice,
+         spongetheme/mono/.style={perm/.append style={fill=none, draw=black},
+                                  algo/.append style={fill=none, draw=black},
+                                 },
+         spongetheme/color/.style={perm/.append style={fill=primcol, draw=primcol, font=\color{white}},
+                                   algo/.append style={fill=algocol, draw=white,   font=\color{white}, line width=.5pt},
+                                   bigalgo/.append style={fill=none, draw=algocol, font=\color{algocol}, line width=1.5pt},
+                                  },
+         spongetheme=mono, % default
+}
+
+%%% UPDATE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tikzset{spongephase/.style={gray, font=\small}}
+
+\newcommand{\SpongeInit}{
+  \coordinate[name=Sc];
+  \node[left, perm, phantomwide] (P) at (Sc) {};
+  \draw (P.youter) coordinate[name=So];
+  \draw (P.yinner) coordinate[name=Si];
+}
+
+% Connecting
+
+\newcommand{\SpongeStep}{
+  \draw (Sc) coordinate[smallskip] (Sc);
+}
+
+\newcommand{\SpongeSmallSkip}{
+  \draw (Sc) coordinate[miniskip] (Sc);
+  \draw[next] (So) to (So-|Sc) coordinate (So);
+  \draw[next] (Si) to (Si-|Sc) coordinate (Si);
+}
+
+\newcommand{\SpongeSkip}{
+  \SpongeStep
+  \draw[next] (So) to (So-|Sc) coordinate (So);
+  \draw[next] (Si) to (Si-|Sc) coordinate (Si);
+}
+
+\newcommand{\SpongeEtc}{
+  \SpongeStep
+  \draw[etc] (So) to (So-|Sc) coordinate (So);
+  \draw[etc] (Si) to (Si-|Sc) coordinate (Si);
+}
+
+% Permuting
+
+\newcommand{\SpongePermuteNolink}[1]{
+  \draw (Sc) node[right, perm] (P) {#1};
+  \draw (P.east) coordinate[name=Sc];
+  \draw (P.youter) coordinate[name=So];
+  \draw (P.yinner) coordinate[name=Si];
+}
+
+\newcommand{\SpongePermute}[1]{
+  \draw (Sc) node[right, perm] (P) {#1};
+  \draw (P.east) coordinate[name=Sc];
+  \draw[next] (So) to (P.xouter);
+  \draw[next] (Si) to (P.xinner);
+  \draw (P.youter) coordinate[name=So];
+  \draw (P.yinner) coordinate[name=Si];
+}
+
+% Initializing
+
+\newcommand{\SpongeIV}[1]{
+  \SpongeInit
+  \node[var, bignvskip] (I) at (Si) {#1};
+  \draw[next, -] (I) -- (So);
+}
+
+\newcommand{\SpongeInitInner}[2]{
+  \SpongeInit
+  \node[var, bignvskip] (I) at (Si) {#1};
+  \SpongeStep
+  \SpongePermuteNolink{#2}
+  \draw[next] (I) |- (P.xouter);
+  \draw[next] (I) |- (P.xinner);
+}
+
+\newcommand{\SpongeInitOuterInner}[5]{
+  \SpongeInit
+  \node[var, bigvskip]  (O) at (So) {#1};
+  \node[var, bignvskip] (I) at (Si) {#2};
+  \SpongeStep
+  \SpongePermuteNolink{#3}
+  \draw[next] (O) |- node[bitwidth, pos=.2] {#4} (P.xouter);
+  \draw[next] (I) |- node[bitwidth, pos=.2] {#5} (P.xinner);
+}
+
+% Absorbing and Squeezing
+
+\newcommand{\SpongeAbsorb}[4]{
+  % #1 Input, #2 Permutation, #3 Rate, #4 Capacity
+  \draw (Si) coordinate[nil, name=t];
+  \SpongeStep
+  \draw (Sc|-So) coordinate[xor, name=x];
+  \node[var, bigvskip] (O) at (x) {#1};
+  \draw[next] (So) to (x);
+  \draw[next] (O) to node[bitwidth] {#3} (x);
+  \SpongeStep
+  \SpongePermuteNolink{#2}
+  \draw[next] (x) to (P.xouter);
+  \draw[next] (t) to node[bitwidth] {#4} (P.xinner);
+}
+
+\newcommand{\SpongeSqueeze}[4]{
+  % #1 Input, #2 Permutation, #3 Rate, #4 Capacity
+  \draw (Si) coordinate[nil, name=t];
+  \SpongeStep
+  \draw (Sc|-So) coordinate[tee, name=x];
+  \node[var, bigvskip] (O) at (x) {#1};
+  \draw[next, -] (So) to (x);
+  \draw[next, <-] (O) to node[bitwidth] {#3} (x);
+  \SpongeStep
+  \SpongePermuteNolink{#2}
+  \draw[next] (x) to (P.xouter);
+  \draw[next] (t) to node[bitwidth] {#4} (P.xinner);
+}
+
+\newcommand{\SpongeXorOuter}[3]{
+  % #1 Input, #2 Rate, #3 Capacity
+  \SpongeStep
+  \draw (Sc|-So) coordinate[xor, name=x];
+  \node[var, bigvskip] (O) at (x) {#1};
+  \draw[next] (So) to (x);
+  \draw[next] (O) to node[bitwidth] {#2} (x);
+  \draw (x|-Si) node[bitwidth, above] {#3};
+  \coordinate (So) at (x.east);
+}
+
+\newcommand{\SpongeXorInner}[1]{
+  % #1 Input
+  \SpongeStep
+  \draw (Sc|-Si) coordinate[xor, name=x];
+  \node[var, bignvskip] (I) at (x) {#1};
+  \draw[next] (Si) to (x);
+  \draw[next] (I) to (x);
+  \coordinate (Si) at (x.east);
+}
+
+\newcommand{\SpongeFinSqueeze}[3]{
+  \SpongeStep
+  \SpongePermute{#2}
+  \SpongeStep
+  \node[var, bigvskip] (O) at (Sc|-So) {#1};
+  \node[nil]           (I) at (Sc|-Si) {};
+  \draw[next] (So) -| node[bitwidth, near end] {#3} (O);
+  \draw[next, ->|] (Si) to (I);
+}
+
+% Encrypting and Decrypting
+
+\newcommand{\SpongeEncrypt}[5]{
+  \SpongeStep
+  \coordinate[xor] (x) at (Sc|-So);
+  \draw[next] (So) -- (x);
+  \node[var, bigvskip] (M) at (x) {#1};
+  \draw[next] (M) -- (x);
+  \coordinate (So) at (x.east);
+  \SpongeStep
+  \coordinate[tee] (t) at (Sc|-x);
+  \node[var, bigvskip] (C) at (t) {#2};
+  \draw[next] (t) -- (C);
+  \draw (x.north east) node[bitwidth, above right] {#4};
+  \draw (x|-Si) node[bitwidth, above] {#5};
+  \SpongeStep
+  \SpongePermute{#3}
+}
+
+\newcommand{\SpongeEncryptFinal}[4]{
+  \SpongeStep
+  \coordinate[xor] (x) at (Sc|-So);
+  \draw[next] (So) -- (x);
+  \coordinate (So) at (x.east);
+  \node[var, bigvskip] (M) at (x) {#1};
+  \draw[next] (M) -- (x);
+  \SpongeStep
+  \coordinate[tee] (t) at (Sc|-So);
+  \node[var, bigvskip] (C) at (t) {#2};
+  \draw[next] (t) -- (C);
+  \draw (x.north east) node[bitwidth, above right] {#3};
+  \draw (x|-Si) node[bitwidth, above] {#4};
+}
+
+\newcommand{\SpongeDecrypt}[5]{
+  \SpongeStep
+  \coordinate[xor] (x) at (Sc|-So);
+  \draw[next] (So) -- (x);
+  \node[var, bigvskip] (M) at (x) {#1};
+  \draw[next] (x) -- (M);
+  \coordinate (So) at (x.east);
+  \SpongeStep
+  \coordinate[tee] (t) at (Sc|-x);
+  \node[var, bigvskip] (C) at (t) {#2};
+  \draw[next,-] (C) -- (t);
+  \draw[next] (t) -- (So);
+  \coordinate (So) at (t);
+  \draw (x.north east) node[bitwidth, above right] {#4};
+  \draw (x|-Si) node[bitwidth, above] {#5};
+  \SpongeStep
+  \SpongePermute{#3}
+}
+
+\newcommand{\SpongeDecryptFinal}[4]{
+  \SpongeStep
+  \coordinate[xor] (x) at (Sc|-So);
+  \draw[next] (So) -- (x);
+  \coordinate (So) at (x.east);
+  \node[var, bigvskip] (M) at (x) {#1};
+  \draw[next] (x) -- (M);
+  \SpongeStep
+  \coordinate[tee] (t) at (Sc|-So);
+  \node[var, bigvskip] (C) at (t) {#2};
+  \draw[next,-] (C) -- (t);
+  \draw[next] (t) -- (So);
+  \coordinate (So) at (t);
+  \draw (x.north east) node[bitwidth, above right] {#3};
+  \draw (x|-Si) node[bitwidth, above] {#4};
+}
+
+% Stream-Encrypting
+
+\newcommand{\SpongeStreamEncrypt}[5]{
+  \SpongeStep
+  \node[var, left, bigvskip] (M) at (Sc|-So) {#1\,};
+  \SpongeStep
+  \coordinate[xor] (O) at (Sc|-M);
+  \draw (Sc|-So) coordinate[tee] (x);
+  \draw[next] (So) -| (O);
+  \draw (Sc|-So) coordinate (So);
+  \SpongeStep
+  \node[var, right] (C) at (Sc|-O) {\,#2};
+  \SpongePermute{#3}
+
+  \draw[next] (M) to (O);
+  \draw[next] (O) to (C);
+  \draw (O|-So) node[bitwidth, above left] {#4};
+  \draw (O|-Si) node[bitwidth, above] {#5};
+}
+
+\newcommand{\SpongeStreamEncryptFinal}[4]{
+  \SpongeStep
+  \node[var, left, bigvskip] (M) at (Sc|-So) {#1\,};
+  \SpongeStep
+  \coordinate[xor] (O) at (Sc|-M);
+  \draw[next] (So) -| (O);
+  \draw (Sc|-So) coordinate (So);
+  \SpongeStep
+  \node[var, right] (C) at (Sc|-O) {\,#2};
+
+  \draw[next] (M) to (O);
+  \draw[next] (O) to (C);
+  \draw (O|-So) node[bitwidth, above left] {#3};
+  \draw (O|-Si) node[bitwidth, above] {#4};
+  \draw (Si-|O) coordinate[nil] (I);
+  \draw[next, ->|] (Si) to (I);
+}
+
+\newcommand{\SpongeStreamEncryptSwapped}[5]{
+  \SpongeStep
+  \SpongePermute{#3}
+  \node[var, left, bigvskip] (M) at (Sc|-So) {#1\,};
+  \SpongeStep
+  \coordinate[xor] (O) at (Sc|-M);
+  \draw (Sc|-So) coordinate[tee] (x);
+  \draw[next] (So) -| (O);
+  \draw (Sc|-So) coordinate (So);
+  \SpongeStep
+  \node[var, right] (C) at (Sc|-O) {\,#2};
+
+  \draw[next] (M) to (O);
+  \draw[next] (O) to (C);
+  \draw (O|-So) node[bitwidth, above left] {#4};
+  \draw (O|-Si) node[bitwidth, above] {#5};
+}
+
+\newcommand{\SpongeStreamEncryptSwappedFinal}[5]{
+  \SpongeStep
+  \SpongePermute{#3}
+  \node[var, left, bigvskip] (M) at (Sc|-So) {#1\,};
+  \SpongeStep
+  \coordinate[xor] (O) at (Sc|-M);
+  \draw[next] (So) -| (O);
+  \draw (Sc|-So) coordinate (So);
+  \SpongeStep
+  \node[var, right] (C) at (Sc|-O) {\,#2};
+
+  \draw[next] (M) to (O);
+  \draw[next] (O) to (C);
+  \draw (O|-So) node[bitwidth, above right] {#4};
+  \draw (O|-Si) node[bitwidth, above] {#5};
+  \draw (Si-|O) coordinate[nil] (I);
+  \draw[next, ->|] (Si) to (I);
+}
+
+% Labelling, Layouting
+
+\newcommand{\SpongePhaseSep}{
+  \draw[dashed, very thick, spongephase] (Sc) +(0,1.5) -- +(0,-1.5);
+}
+
+\newcommand{\SpongePhantomInner}{
+  \node[var, bignvskip] (phantom) at (Si) {};
+}
+
+% vim: foldmethod=marker

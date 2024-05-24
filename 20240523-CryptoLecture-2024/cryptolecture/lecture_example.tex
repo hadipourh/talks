@@ -1,0 +1,122 @@
+%\PassOptionsToClass{handout}{beamer}
+\documentclass[biblatex]{cryptolecture}
+%\setbeamercovered{invisible}
+
+% compile with pdflatex+biber+pdflatex
+
+% this theme is maintained at https://extgit.iaik.tugraz.at/krypto/teaching/cryptolecture
+% for full documentation of parent theme "beamerthemetugraz2018.sty", see 
+% https://tu4u.tugraz.at/en/students/organisation-and-administration/corporate-design-templates/latex-presentation-template/
+
+\begin{document}
+\title{Differential Cryptanalysis}
+\author{Maria Eichlseder
+  % \\[\baselineskip]\tiny  Slide acknowledgements...
+}
+\date{Course Name -- WS 2020/21}
+\instituteurl{\url{www.iaik.tugraz.at/cryptanalysis}}
+
+\maketitle
+
+\tableofcontents
+
+%%% INTRODUCTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makesection{Introduction}{Context and Idea}{\faLightbulb[regular]}
+
+\begin{frame}[fragile]{Dependencies}
+  Minimum dependencies:
+  \begin{itemize}
+    \item \verb|cryptolecture.cls|
+    \item \verb|beamerthemetugraz2018.sty|
+  \end{itemize}
+  \bigskip
+
+  Recommended dependencies:
+  \begin{itemize}
+    \item \verb|beamerthemetugraz/background_16-9.jpg| or\\
+          \verb|beamerthemetugraz/background_4-3.jpg|
+    \item \verb|tikzlibrarycipher.code.tex|
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Differential Cryptanalysis}
+  \begin{itemize}
+    \item Proposed by \textcite{cryptoBihamS90} for \cipher{DES}
+    \item \dots
+  \end{itemize}
+\end{frame}
+
+
+%%% METHOD %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makesection{Attack Strategy}{}{\faLock}
+
+\begin{frame}{Alice and Bob}
+  \begin{columns}[onlytextwidth,T]
+    \column{.15\textwidth}
+      \begin{block}{Alice}\centering
+        %\color{tuggreen}
+        \alice[1.5cm]
+      \end{block}
+
+    \column{.15\textwidth}
+      \begin{block}{Bob}\centering
+        %\color{tugblue}
+        \bob[1.5cm]
+      \end{block}
+
+    \column{.15\textwidth}
+      \begin{block}{Caesar}\centering
+        %\color{tugviolet}
+        \caesar[1.5cm]
+      \end{block}
+
+    \column{.15\textwidth}
+      \begin{block}{Eve}\centering
+        %\color{tug}
+        \eve[1.5cm]
+      \end{block}
+
+    \column{.15\textwidth}
+      \begin{block}{Hatguy}\centering
+        \hatguy[1.5cm]
+      \end{block}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Title}
+  Content
+\end{frame}
+
+
+
+%%% QUESTIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mysectionmute{Questions}{}{\faQuestionCircle}
+
+
+%%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\unnumbered{
+\begin{frame}[allowframebreaks]{Bibliography}
+  \printbibliography
+\end{frame}
+}
+
+\begin{filecontents*}{\jobname.bib}
+
+@inproceedings{cryptoBihamS90,
+  author    = {Eli Biham and
+               Adi Shamir},
+  editor    = {Alfred Menezes and
+               Scott A. Vanstone},
+  title     = {Differential Cryptanalysis of {DES}-like Cryptosystems},
+  booktitle = {Advances in Cryptology -- {CRYPTO} 1990},
+  series    = {LNCS},
+  volume    = {537},
+  pages     = {2--21},
+  publisher = {Springer},
+  year      = {1990},
+  doi       = {10.1007/3-540-38424-3_1},
+}
+
+\end{filecontents*}
+
+\end{document}

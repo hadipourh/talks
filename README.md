@@ -3,6 +3,7 @@
 The LaTeX sources for my talks. Feel free to reuse these sources for your own talks.
 
 - [My Talks](#my-talks)
+  - [Cryptanalysis Lecture Series - TU Graz 2024](#cryptanalysis-lecture-series---tu-graz-2024)
   - [Lorentz Center 2024 - Revisiting Differential-Linear Attacks via a Boomerang Perspective](#lorentz-center-2024---revisiting-differential-linear-attacks-via-a-boomerang-perspective)
   - [FSE 2024 - Cryptanalysis of QARMAv2](#fse-2024---cryptanalysis-of-qarmav2)
   - [FSE 2024 - Improved Search for Integral, Impossible-Differential and Zero-Correlation Attacks](#fse-2024---improved-search-for-integral-impossible-differential-and-zero-correlation-attacks)
@@ -16,6 +17,11 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
   - [FSE 2022 - Improved Rectangle Attacks](#fse-2022---improved-rectangle-attacks)
   - [FSE 2020 - Comprehensive Security Analysis of CRAFT](#fse-2020---comprehensive-security-analysis-of-craft)
 - [Credits](#credits)
+
+## Cryptanalysis Lecture Series - TU Graz 2024
+***Algebraic Attacks***
+
+- [Slides](20240510-TUGraz-2024)
 
 ## Lorentz Center 2024 - Revisiting Differential-Linear Attacks via a Boomerang Perspective
 ***Revisiting Differential-Linear Attacks via a Boomerang Perspective***
