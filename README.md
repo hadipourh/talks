@@ -3,35 +3,35 @@
 The LaTeX sources for my talks. Feel free to reuse these sources for your own talks.
 
 - [My Talks](#my-talks)
-  - [Cryptanalysis Lecture Series 2024 - Algebraic Attacks](#cryptanalysis-lecture-series-2024---algebraic-attacks)
-  - [Lorentz Center 2024 - Revisiting Differential-Linear Attacks via a Boomerang Perspective](#lorentz-center-2024---revisiting-differential-linear-attacks-via-a-boomerang-perspective)
-  - [FSE 2024 - Cryptanalysis of QARMAv2](#fse-2024---cryptanalysis-of-qarmav2)
-  - [FSE 2024 - Improved Search for Integral, Impossible-Differential and Zero-Correlation Attacks](#fse-2024---improved-search-for-integral-impossible-differential-and-zero-correlation-attacks)
-  - [SpyCode 2024 - Cryptanaysis Using Constraint Programming](#spycode-2024---cryptanaysis-using-constraint-programming)
-  - [EUROCRYPT 2023 - Finding the Impossible](#eurocrypt-2023---finding-the-impossible)
-  - [FSE 2023 - Throwing Boomerangs into Feistel Structures](#fse-2023---throwing-boomerangs-into-feistel-structures)
-  - [FSE 2023 - Integral Cryptanalysis of WARP based on Monomial Prediction](#fse-2023---integral-cryptanalysis-of-warp-based-on-monomial-prediction)
-  - [ISC 2022 - Feeding Three Dragons With One Scone](#isc-2022---feeding-three-dragons-with-one-scone)
-  - [CHES 2022 - Practical Multiple Persistent Fault Attacks](#ches-2022---practical-multiple-persistent-fault-attacks)
-  - [ACNS 2022 - Autoguess](#acns-2022---autoguess)
-  - [FSE 2022 - Improved Rectangle Attacks](#fse-2022---improved-rectangle-attacks)
-  - [FSE 2020 - Comprehensive Security Analysis of CRAFT](#fse-2020---comprehensive-security-analysis-of-craft)
+  - [Algebraic Attacks - Cryptanalysis Lecture Series 2024](#algebraic-attacks---cryptanalysis-lecture-series-2024)
+  - [Revisiting Differential-Linear Attacks via a Boomerang Perspective - Lorentz Center 2024](#revisiting-differential-linear-attacks-via-a-boomerang-perspective---lorentz-center-2024)
+  - [Cryptanalysis of QARMAv2 - FSE 2024](#cryptanalysis-of-qarmav2---fse-2024)
+  - [Improved Search for Integral, Impossible-Differential and Zero-Correlation Attacks - FSE 2024](#improved-search-for-integral-impossible-differential-and-zero-correlation-attacks---fse-2024)
+  - [Cryptanaysis Using Constraint Programming - SpyCode 2024](#cryptanaysis-using-constraint-programming---spycode-2024)
+  - [Finding the Impossible - EUROCRYPT 2023](#finding-the-impossible---eurocrypt-2023)
+  - [Throwing Boomerangs into Feistel Structures - FSE 2023](#throwing-boomerangs-into-feistel-structures---fse-2023)
+  - [Integral Cryptanalysis of WARP based on Monomial Prediction - FSE 2023](#integral-cryptanalysis-of-warp-based-on-monomial-prediction---fse-2023)
+  - [Feeding Three Dragons With One Scone - ISC 2022](#feeding-three-dragons-with-one-scone---isc-2022)
+  - [Practical Multiple Persistent Fault Attacks - CHES 2022](#practical-multiple-persistent-fault-attacks---ches-2022)
+  - [Autoguess - ACNS 2022](#autoguess---acns-2022)
+  - [Improved Rectangle Attacks - FSE 2022](#improved-rectangle-attacks---fse-2022)
+  - [Comprehensive Security Analysis of CRAFT - FSE 2020](#comprehensive-security-analysis-of-craft---fse-2020)
 - [Credits](#credits)
 
-## Cryptanalysis Lecture Series 2024 - Algebraic Attacks
+## Algebraic Attacks - Cryptanalysis Lecture Series 2024
 ***Algebraic Attacks***
 
 - [Slides](20240523-CryptoLecture-2024)
 - Venue: [TU Graz, Austria](https://www.iaik.tugraz.at/teaching)
 
-## Lorentz Center 2024 - Revisiting Differential-Linear Attacks via a Boomerang Perspective
+## Revisiting Differential-Linear Attacks via a Boomerang Perspective - Lorentz Center 2024
 ***Revisiting Differential-Linear Attacks via a Boomerang Perspective***
 
 - [Paper](https://ia.cr/2024/255)
 - [Slides](20240422-LorenzCenter-2024)
 - Venue: [Leiden, Netherlands](https://www.lorentzcenter.nl/beating-real-time-crypto-solutions-and-analysis.html)
 
-## FSE 2024 - Cryptanalysis of QARMAv2
+## Cryptanalysis of QARMAv2 - FSE 2024
 ***Cryptanalysis of QARMAv2***
 
 - [Paper](https://ia.cr/2023/1833)
@@ -40,7 +40,7 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
 - [Code](https://github.com/hadipourh/QARMAnalysis)
 - Venue: [Leuven, Belgium](https://fse.iacr.org/2024/)
 
-## FSE 2024 - Improved Search for Integral, Impossible-Differential and Zero-Correlation Attacks
+## Improved Search for Integral, Impossible-Differential and Zero-Correlation Attacks - FSE 2024
 ***Improved Search for Integral, Impossible-Differential and Zero-Correlation Attacks: Application to Ascon, ForkSKINNY, SKINNY, MANTIS, PRESENT and QARMAv2***
 
 - [Paper](https://ia.cr/2023/1701)
@@ -49,13 +49,13 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
 - [Code](https://github.com/hadipourh/zeroplus)
 - Venue: [Leuven, Belgium](https://fse.iacr.org/2024/)
 
-## SpyCode 2024 - Cryptanaysis Using Constraint Programming
+## Cryptanaysis Using Constraint Programming - SpyCode 2024
 ***Cryptanaysis Using Constraint Programming***
 
 - [Slides](20240127-SpyCode-2024)
 - Venue: [TU Wien, Vienna, Austria](https://spycode.at/events/)
 
-## EUROCRYPT 2023 - Finding the Impossible
+## Finding the Impossible - EUROCRYPT 2023
 ***Finding the Impossible: Automated Search for Full Impossible-Differential, Zero-Correlation, and Integral Attacks***
 
 - [Paper](https://ia.cr/2022/1147)
@@ -64,7 +64,7 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
 - [Code](https://github.com/hadipourh/zero)
 - Venue: [Lyon, France](https://eurocrypt.iacr.org/2023/)
 
-## FSE 2023 - Throwing Boomerangs into Feistel Structures
+## Throwing Boomerangs into Feistel Structures - FSE 2023
 
 ***Throwing Boomerangs into Feistel Structures:***
 *Application to CLEFIA, WARP, LBlock, LBlock-s and TWINE*
@@ -75,7 +75,7 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
 - [Code](https://github.com/hadipourh/comeback)
 - Venue: [Kobe, Japan](https://fse.iacr.org/2023/japanEvent.php)
 
-## FSE 2023 - Integral Cryptanalysis of WARP based on Monomial Prediction
+## Integral Cryptanalysis of WARP based on Monomial Prediction - FSE 2023
 ***Integral Cryptanalysis of WARP based on Monomial Prediction***
 
 - [Paper](https://ia.cr/2022/729)
@@ -84,7 +84,7 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
 - [Code](https://github.com/hadipourh/mpt)
 - Venue: [Kobe, Japan](https://fse.iacr.org/2023/japanEvent.php)
 
-## ISC 2022 - Feeding Three Dragons With One Scone
+## Feeding Three Dragons With One Scone - ISC 2022
 
 ***Feeding Three Dragons With One Scone: Automated Search for Full Impossible Differential, Zero-Correlation, and Integral Attacks***
 
@@ -93,7 +93,7 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
 - [Video](https://www.aparat.com/v/ofAxe)
 - Venue: [Virtual](https://www.aparat.com/Irancrypt/%D8%A7%D9%86%D8%AC%D9%85%D9%86%20%D8%B1%D9%85%D8%B2%20%D8%A7%DB%8C%D8%B1%D8%A7%D9%86)
 
-## CHES 2022 - Practical Multiple Persistent Fault Attacks
+## Practical Multiple Persistent Fault Attacks - CHES 2022
 
 ***Practical Multiple Persistent Fault Attacks***
 
@@ -103,7 +103,7 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
 - [Code](https://github.com/hadipourh/faultyaes)
 - Venue: [Leuven, Belgium](https://ches.iacr.org/2022/)
 
-## ACNS 2022 - Autoguess
+## Autoguess - ACNS 2022
 
 ***Autoguess: A Tool for Finding Guess-and-Determine Attacks and Key Bridges***
 
@@ -113,7 +113,7 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
 - [Code](https://github.com/hadipourh/autoguess)
 - Venue: [Rome, Italy](https://acns22.di.uniroma1.it/)
 
-## FSE 2022 - Improved Rectangle Attacks
+## Improved Rectangle Attacks - FSE 2022
 
 ***Improved Rectangle Attacks on SKINNY and CRAFT***
 
@@ -123,7 +123,7 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
 - [Code](https://github.com/hadipourh/Boomerang)
 - Venue: [Athens, Greece](https://fse.iacr.org/2022/)
 
-## FSE 2020 - Comprehensive Security Analysis of CRAFT
+## Comprehensive Security Analysis of CRAFT - FSE 2020
 
 ***Comprehensive Security Analysis of CRAFT***
 
