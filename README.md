@@ -22,6 +22,7 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
 ***Algebraic Attacks***
 
 - [Slides](20240523-CryptoLecture-2024)
+- Venue: [TU Graz, Austria](https://www.iaik.tugraz.at/teaching)
 
 ## Lorentz Center 2024 - Revisiting Differential-Linear Attacks via a Boomerang Perspective
 ***Revisiting Differential-Linear Attacks via a Boomerang Perspective***
