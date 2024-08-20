@@ -1219,7 +1219,7 @@ r = \pr(\textcolor{red}{\Delta_{2}} \rightleftarrows \textcolor{blue}{\nabla_{3}
     For a vectorial Boolean function $S: \mathbb{F}_{2}^{n} \rightarrow \mathbb{F}_{2}^{m}$, the \ldlct of $S$ is a $2^{n} \times 2^{m} \times 2^{m}$ table.
     The entry at index $(\Delta\In, \lambda\In, \lambda_o)$ is
   \[\ldlct(\Delta\In, \lambda\In, \lambda\Out) = |\ldlct_0(\Delta\In, \lambda\In, \lambda\Out)| - |\ldlct_1(\Delta\In, \lambda\In, \lambda\Out)|,\]
-where $\ldlct_b(\Delta\In, \lambda\In, \lambda\Out) = \{x\in \mathbb{F}_{2}^{n}:~ \lambda\Out \cdot S(x) = \lambda\Out \cdot S(x \oplus \Delta\In) \text{~and~} \lambda\In \cdot \Delta\In = b \}$.
+where $\ldlct_b(\Delta\In, \lambda\In, \lambda\Out) = \{x\in \mathbb{F}_{2}^{n}:~ \lambda\In \cdot \Delta\In \oplus \lambda\Out \cdot S(x) \oplus \lambda\Out \cdot S(x \oplus \Delta\In) = b \}$.
   \end{block}
   $\corr_{\ldlct}\left(\Delta\In, \lambda\In, \lambda\Out\right) = 2^{-n}\cdot\ldlct\left(\Delta\In, \lambda\In, \lambda\Out\right)$
 \end{center}
@@ -1325,7 +1325,10 @@ where $\ldlct_b(\Delta\In, \lambda\In, \lambda\Out) = \{x\in \mathbb{F}_{2}^{n}:
   \draw[->, lower] (L2) -- (L3);
   \draw[->] (D2) -- (L3);
 \end{tikzpicture}
-\[\ddlct(\Delta\In, \lambda\Out) = \sum_{\Delta\Mid}\sum_{\lambda\Mid}  \udlct\left(\Delta\In, \Delta\Mid, \lambda\Mid\right) \cdot \ldlct\left(\Delta\Mid, \lambda\Mid, \lambda\Out\right)\]
+\begin{equation*}
+\footnotesize
+\ddlct(\Delta\In, \lambda\Out) = 2^{-n}\!\cdot\!\sum_{\Delta\Mid}\sum_{\lambda\Mid}  \udlct\left(\Delta\In, \Delta\Mid, \lambda\Mid\right) \cdot \ldlct\left(\Delta\Mid, \lambda\Mid, \lambda\Out\right)
+\end{equation*}
 \end{center}
 \column[c]{0.25\textwidth}
 \begin{tikzpicture}
