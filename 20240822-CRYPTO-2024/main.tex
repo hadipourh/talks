@@ -1844,256 +1844,256 @@ $$\pr_{\text{4 rounds}} \leq 2^{-150}, ~ \corr_{\text{4 rounds}}^{2} \leq 2^{-15
   \column[c]{0.45\textwidth}
   \begin{itemize}
     \footnotesize
-    \item<2-> Cell-wise switches: $\dlct(\Delta\In, 0) = \dlct(0, \lambda\Out) = 2^{n}$ for all $\Delta\In, \lambda\Out$
-    \item<3-> Bit-wise switches: $\dlct(\Delta\In, \lambda\Out) = \pm 2^{n}$ for $\Delta\In, \lambda\Out \neq 0$
+    \item<1-> Cell-wise switches: $\dlct(\Delta\In, 0) = \dlct(0, \lambda\Out) = 2^{n}$ for all $\Delta\In, \lambda\Out$
+    \item<1-> Bit-wise switches: $\dlct(\Delta\In, \lambda\Out) = \pm 2^{n}$ for $\Delta\In, \lambda\Out \neq 0$
     \begin{itemize}
       \footnotesize
-      \item<3-> Example: $\corr\left(\texttt{9}, \texttt{4}\right) = \frac{16}{16}$
+      \item<1-> Example: $\corr\left(\texttt{9}, \texttt{4}\right) = \frac{16}{16}$
     \end{itemize}
   \end{itemize}
 \end{columns}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{\small Deterministic Bit-Wise Differential Trails (Forward)}
-  \sparen
-  \sparen
-  \begin{center}
-  \scalebox{0.55}{
-  \begin{tabular}{@{}l*{16}{r}@{}}
-      \toprule
-      $x$                & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & a & b & c & d & e & f \\
-      \midrule
-      $\mathcal{S}  (x)$ & 4 & 0 & a & 7 & b & e & 1 & d & 9 & f & 6 & 8 & 5 & 2 & c & 3 \\
-      \bottomrule
-    \end{tabular}
-  }
-  \sparen
-  \sparen
-  \end{center}
-  \begin{columns}
-  % \column[c]{0.10\textwidth}
-  % \begin{center}
-  %   \scalebox{0.65}{%
-  %   \begin{tikzpicture}
-  %     \draw (0,0) node[box, name=S, minimum size=2cm] {$\mathcal{S}$};
-  %     \foreach \i/\a in {1/123,2/101,3/78,4/56} {
-  %       \draw (S.\a) node[above=2ex] (x\i) {$x_{\i}$};
-  %       \draw (x\i|-S.south) node[below=2ex] (y\i) {$y_{\i}$};
-  %       \draw[next] (x\i) -- (x\i|-S.north);
-  %       \draw[next] (y\i|-S.south) -- (y\i);
-  %     }
+% \begin{frame}{\small Deterministic Bit-Wise Differential Trails (Forward)}
+%   \sparen
+%   \sparen
+%   \begin{center}
+%   \scalebox{0.55}{
+%   \begin{tabular}{@{}l*{16}{r}@{}}
+%       \toprule
+%       $x$                & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & a & b & c & d & e & f \\
+%       \midrule
+%       $\mathcal{S}  (x)$ & 4 & 0 & a & 7 & b & e & 1 & d & 9 & f & 6 & 8 & 5 & 2 & c & 3 \\
+%       \bottomrule
+%     \end{tabular}
+%   }
+%   \sparen
+%   \sparen
+%   \end{center}
+%   \begin{columns}
+%   % \column[c]{0.10\textwidth}
+%   % \begin{center}
+%   %   \scalebox{0.65}{%
+%   %   \begin{tikzpicture}
+%   %     \draw (0,0) node[box, name=S, minimum size=2cm] {$\mathcal{S}$};
+%   %     \foreach \i/\a in {1/123,2/101,3/78,4/56} {
+%   %       \draw (S.\a) node[above=2ex] (x\i) {$x_{\i}$};
+%   %       \draw (x\i|-S.south) node[below=2ex] (y\i) {$y_{\i}$};
+%   %       \draw[next] (x\i) -- (x\i|-S.north);
+%   %       \draw[next] (y\i|-S.south) -- (y\i);
+%   %     }
 
-  %     % \draw (y3) node[tug] {$y_3$};
-  %     % \draw (x1) node[tug] {$x_1$};
-  %     % \draw (x4) node[tug] {$x_4$};
+%   %     % \draw (y3) node[tug] {$y_3$};
+%   %     % \draw (x1) node[tug] {$x_1$};
+%   %     % \draw (x4) node[tug] {$x_4$};
 
-  %     \draw[] (x1.south-|S.west) rectangle (x4.north-|S.east);
-  %     \draw[] (y1.south-|S.west) rectangle (y4.north-|S.east);
+%   %     \draw[] (x1.south-|S.west) rectangle (x4.north-|S.east);
+%   %     \draw[] (y1.south-|S.west) rectangle (y4.north-|S.east);
       
-  %     \visible<1>{
-  %     \foreach \i/\dir in {x1/above, x2/above, x3/above, x4/above, y1/below, y2/below, y3/below, y4/below} {\draw (\i) node[\dir=2.5ex, tug] (m\i) {\bf 0};}
-  %     \foreach \i/\dir in {} {\draw (\i) node[\dir=2.5ex] (m\i) {\bf 1};}
-  %     \foreach \i/\dir in {} {\draw (\i) node[mach, \dir=2.5ex] (m\i) {\bf ?};}
-  %     }
-  %     \visible<2>{
-  %     \foreach \i/\dir in {x1/above, x2/above, x3/above} {\draw (\i) node[\dir=2.5ex, tug] (m\i) {\bf 0};}
-  %     \foreach \i/\dir in {x4/above, y2/below} {\draw (\i) node[\dir=2.5ex] (m\i) {\bf 1};}
-  %     \foreach \i/\dir in {y1/below, y3/below, y4/below} {\draw (\i) node[mach, \dir=2.5ex] (m\i) {\bf ?};}
-  %     }
-  %     \visible<3>{
-  %     \foreach \i/\dir in {x1/above, x3/above, x4/above} {\draw (\i) node[\dir=2.5ex, tug] (m\i) {\bf 0};}
-  %     \foreach \i/\dir in {x2/above, y1/below} {\draw (\i) node[\dir=2.5ex] (m\i) {\bf 1};}
-  %     \foreach \i/\dir in {y2/below, y3/below, y4/below} {\draw (\i) node[mach, \dir=2.5ex] (m\i) {\bf ?};}
-  %     }
-  %     \visible<4>{
-  %     \foreach \i/\dir in {x2/above, x3/above, x4/above} {\draw (\i) node[\dir=2.5ex, tug] (m\i) {\bf 0};}
-  %     \foreach \i/\dir in {x1/above, y1/below, y2/below} {\draw (\i) node[\dir=2.5ex] (m\i) {\bf 1};}
-  %     \foreach \i/\dir in {y3/below, y4/below} {\draw (\i) node[mach, \dir=2.5ex] (m\i) {\bf ?};}
-  %     }
-  %     \visible<5>{
-  %     \foreach \i/\dir in {x2/above, x3/above, y2/below} {\draw (\i) node[\dir=2.5ex, tug] (m\i) {\bf 0};}
-  %     \foreach \i/\dir in {x1/above, x4/above} {\draw (\i) node[\dir=2.5ex] (m\i) {\bf 1};}
-  %     \foreach \i/\dir in {y1/below, y3/below, y4/below} {\draw (\i) node[mach, \dir=2.5ex] (m\i) {\bf ?};}
-  %     }
-  %     \visible<6>{
-  %     \foreach \i/\dir in {x3/above, x4/above, y1/below} {\draw (\i) node[\dir=2.5ex, tug] (m\i) {\bf 0};}  
-  %     \foreach \i/\dir in {x1/above, x2/above} {\draw (\i) node[\dir=2.5ex] (m\i) {\bf 1};}
-  %     \foreach \i/\dir in {y2/below, y3/below, y4/below} {\draw (\i) node[mach, \dir=2.5ex] (m\i) {\bf ?};}
-  %     }
+%   %     \visible<1>{
+%   %     \foreach \i/\dir in {x1/above, x2/above, x3/above, x4/above, y1/below, y2/below, y3/below, y4/below} {\draw (\i) node[\dir=2.5ex, tug] (m\i) {\bf 0};}
+%   %     \foreach \i/\dir in {} {\draw (\i) node[\dir=2.5ex] (m\i) {\bf 1};}
+%   %     \foreach \i/\dir in {} {\draw (\i) node[mach, \dir=2.5ex] (m\i) {\bf ?};}
+%   %     }
+%   %     \visible<2>{
+%   %     \foreach \i/\dir in {x1/above, x2/above, x3/above} {\draw (\i) node[\dir=2.5ex, tug] (m\i) {\bf 0};}
+%   %     \foreach \i/\dir in {x4/above, y2/below} {\draw (\i) node[\dir=2.5ex] (m\i) {\bf 1};}
+%   %     \foreach \i/\dir in {y1/below, y3/below, y4/below} {\draw (\i) node[mach, \dir=2.5ex] (m\i) {\bf ?};}
+%   %     }
+%   %     \visible<3>{
+%   %     \foreach \i/\dir in {x1/above, x3/above, x4/above} {\draw (\i) node[\dir=2.5ex, tug] (m\i) {\bf 0};}
+%   %     \foreach \i/\dir in {x2/above, y1/below} {\draw (\i) node[\dir=2.5ex] (m\i) {\bf 1};}
+%   %     \foreach \i/\dir in {y2/below, y3/below, y4/below} {\draw (\i) node[mach, \dir=2.5ex] (m\i) {\bf ?};}
+%   %     }
+%   %     \visible<4>{
+%   %     \foreach \i/\dir in {x2/above, x3/above, x4/above} {\draw (\i) node[\dir=2.5ex, tug] (m\i) {\bf 0};}
+%   %     \foreach \i/\dir in {x1/above, y1/below, y2/below} {\draw (\i) node[\dir=2.5ex] (m\i) {\bf 1};}
+%   %     \foreach \i/\dir in {y3/below, y4/below} {\draw (\i) node[mach, \dir=2.5ex] (m\i) {\bf ?};}
+%   %     }
+%   %     \visible<5>{
+%   %     \foreach \i/\dir in {x2/above, x3/above, y2/below} {\draw (\i) node[\dir=2.5ex, tug] (m\i) {\bf 0};}
+%   %     \foreach \i/\dir in {x1/above, x4/above} {\draw (\i) node[\dir=2.5ex] (m\i) {\bf 1};}
+%   %     \foreach \i/\dir in {y1/below, y3/below, y4/below} {\draw (\i) node[mach, \dir=2.5ex] (m\i) {\bf ?};}
+%   %     }
+%   %     \visible<6>{
+%   %     \foreach \i/\dir in {x3/above, x4/above, y1/below} {\draw (\i) node[\dir=2.5ex, tug] (m\i) {\bf 0};}  
+%   %     \foreach \i/\dir in {x1/above, x2/above} {\draw (\i) node[\dir=2.5ex] (m\i) {\bf 1};}
+%   %     \foreach \i/\dir in {y2/below, y3/below, y4/below} {\draw (\i) node[mach, \dir=2.5ex] (m\i) {\bf ?};}
+%   %     }
       
-  %     \draw[thick] (mx1.south-|S.west) rectangle (mx4.north-|S.east);
-  %     \draw[thick] (my1.south-|S.west) rectangle (my4.north-|S.east);
+%   %     \draw[thick] (mx1.south-|S.west) rectangle (mx4.north-|S.east);
+%   %     \draw[thick] (my1.south-|S.west) rectangle (my4.north-|S.east);
 
-  %     \draw (mx1) node[left=3ex] (alpha) {$\Delta_{i}$};
-  %     \draw (x1-|alpha) node            {$x$};
-  %     \draw (y1-|alpha) node            {$\mathcal{S}(x)$};
-  %     \draw (my1-|alpha) node            {$\Delta_{o}$};
+%   %     \draw (mx1) node[left=3ex] (alpha) {$\Delta_{i}$};
+%   %     \draw (x1-|alpha) node            {$x$};
+%   %     \draw (y1-|alpha) node            {$\mathcal{S}(x)$};
+%   %     \draw (my1-|alpha) node            {$\Delta_{o}$};
       
-  %   \end{tikzpicture}
-  %   }
-  % \end{center}
-  \column[c]{0.60\textwidth}
-  \begin{center}
-    \scalebox{0.55}{      
-      \newcommand{\es}{}
-      \begin{tabular}{@{}c|*{3}c*{13}{c}@{}}
-        \toprule
-        $\Delta_{i}$\,\textbackslash\,$\Delta_{o}$ & \es\texttt{0}\es & \es\texttt{1}\es & \es\texttt{2}\es & \es\texttt{3}\es & \es\texttt{4}\es & \es\texttt{5}\es & \es\texttt{6}\es & \es\texttt{7}\es & \es\texttt{8}\es & \es\texttt{9}\es & \es\texttt{a}\es & \es\texttt{b}\es & \es\texttt{c}\es & \es\texttt{d}\es & \es\texttt{e}\es & \es\texttt{f}\es \\
-        \midrule
-        \rowcolor<1->{tugred!50}
-        \texttt{0\,} & 16 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-        \rowcolor<1->{tugred!50}
-        \texttt{1\,} & 0 & 0 & 0 & 0 & 2 & 2 & 2 & 2 & 0 & 0 & 0 & 0 & 2 & 2 & 2 & 2\\
-        \texttt{2\,} & 0 & 2 & 0 & 2 & 0 & 0 & 0 & 4 & 0 & 2 & 2 & 0 & 0 & 0 & 2 & 2\\
-        \texttt{3\,} & 0 & 2 & 0 & 2 & 0 & 0 & 4 & 0 & 0 & 2 & 2 & 0 & 0 & 0 & 2 & 2\\
-        \rowcolor<1->{tugred!50}
-        \texttt{4\,} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 4 & 4 & 2 & 2 & 2 & 2\\
-        \texttt{5\,} & 0 & 0 & 0 & 0 & 2 & 2 & 2 & 2 & 0 & 0 & 4 & 4 & 0 & 0 & 0 & 0\\
-        \texttt{6\,} & 0 & 2 & 0 & 2 & 0 & 4 & 0 & 0 & 0 & 2 & 2 & 0 & 2 & 2 & 0 & 0\\
-        \texttt{7\,} & 0 & 2 & 0 & 2 & 4 & 0 & 0 & 0 & 0 & 2 & 2 & 0 & 2 & 2 & 0 & 0\\
-        \rowcolor<1->{tugred!50}
-        \texttt{8\,} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 4 & 4 & 4 & 4\\
-        \rowcolor<1->{tugred!50}
-        \texttt{9\,} & 0 & 4 & 4 & 0 & 0 & 0 & 0 & 0 & 0 & 4 & 0 & 4 & 0 & 0 & 0 & 0\\
-        \texttt{a\,} & 0 & 0 & 2 & 2 & 2 & 0 & 0 & 2 & 4 & 0 & 0 & 0 & 0 & 2 & 0 & 2\\
-        \texttt{b\,} & 0 & 0 & 2 & 2 & 0 & 2 & 2 & 0 & 4 & 0 & 0 & 0 & 2 & 0 & 2 & 0\\
-        \rowcolor<1->{tugred!50}
-        \texttt{c\,} & 0 & 4 & 4 & 0 & 2 & 2 & 2 & 2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-        \texttt{d\,} & 0 & 0 & 0 & 0 & 2 & 2 & 2 & 2 & 0 & 4 & 0 & 4 & 0 & 0 & 0 & 0\\
-        \texttt{e\,} & 0 & 0 & 2 & 2 & 0 & 2 & 2 & 0 & 4 & 0 & 0 & 0 & 0 & 2 & 0 & 2\\
-        \texttt{f\,} & 0 & 0 & 2 & 2 & 2 & 0 & 0 & 2 & 4 & 0 & 0 & 0 & 2 & 0 & 2 & 0\\
-        \bottomrule
-      \end{tabular}
-    }
-  \end{center}
-  \column[c]{0.40\textwidth}  
-  \begin{equation*}
-    {\footnotesize
-    \begin{alignedat}{3}
-      &\textcolor{tugred}{\Delta_{i} = (0, 0, 0, 0) \xrightarrow{S} \Delta_{o} = (0, 0, 0, 0)}\\
-      % &\textcolor{mach}{\Delta_{i} \neq (0, 0, 0, 0) \xrightarrow{S} \Delta_{o} \neq (0, 0, 0, 0)}\\
-      &\textcolor{tugred}{\Delta_{i} = (0, 0, 0, 1) \xrightarrow{S} \Delta_{o} = (?, 1, ?, ?)}\\
-      &\textcolor{tugred}{\Delta_{i} = (0, 1, 0, 0) \xrightarrow{S} \Delta_{o} = (1, ?, ?, ?)}\\
-      &\textcolor{tugred}{\Delta_{i} = (1, 0, 0, 0) \xrightarrow{S} \Delta_{o} = (1, 1, ?, ?)}\\
-      &\textcolor{tugred}{\Delta_{i} = (1, 0, 0, 1) \xrightarrow{S} \Delta_{o} = (?, 0, ?, ?)}\\
-      &\textcolor{tugred}{\Delta_{i} = (1, 1, 0, 0) \xrightarrow{S} \Delta_{o} = (0, ?, ?, ?)}
-      \end{alignedat}
-    }
-  \end{equation*}
-\end{columns}
-\end{frame}
+%   %   \end{tikzpicture}
+%   %   }
+%   % \end{center}
+%   \column[c]{0.60\textwidth}
+%   \begin{center}
+%     \scalebox{0.55}{      
+%       \newcommand{\es}{}
+%       \begin{tabular}{@{}c|*{3}c*{13}{c}@{}}
+%         \toprule
+%         $\Delta_{i}$\,\textbackslash\,$\Delta_{o}$ & \es\texttt{0}\es & \es\texttt{1}\es & \es\texttt{2}\es & \es\texttt{3}\es & \es\texttt{4}\es & \es\texttt{5}\es & \es\texttt{6}\es & \es\texttt{7}\es & \es\texttt{8}\es & \es\texttt{9}\es & \es\texttt{a}\es & \es\texttt{b}\es & \es\texttt{c}\es & \es\texttt{d}\es & \es\texttt{e}\es & \es\texttt{f}\es \\
+%         \midrule
+%         \rowcolor<1->{tugred!50}
+%         \texttt{0\,} & 16 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+%         \rowcolor<1->{tugred!50}
+%         \texttt{1\,} & 0 & 0 & 0 & 0 & 2 & 2 & 2 & 2 & 0 & 0 & 0 & 0 & 2 & 2 & 2 & 2\\
+%         \texttt{2\,} & 0 & 2 & 0 & 2 & 0 & 0 & 0 & 4 & 0 & 2 & 2 & 0 & 0 & 0 & 2 & 2\\
+%         \texttt{3\,} & 0 & 2 & 0 & 2 & 0 & 0 & 4 & 0 & 0 & 2 & 2 & 0 & 0 & 0 & 2 & 2\\
+%         \rowcolor<1->{tugred!50}
+%         \texttt{4\,} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 4 & 4 & 2 & 2 & 2 & 2\\
+%         \texttt{5\,} & 0 & 0 & 0 & 0 & 2 & 2 & 2 & 2 & 0 & 0 & 4 & 4 & 0 & 0 & 0 & 0\\
+%         \texttt{6\,} & 0 & 2 & 0 & 2 & 0 & 4 & 0 & 0 & 0 & 2 & 2 & 0 & 2 & 2 & 0 & 0\\
+%         \texttt{7\,} & 0 & 2 & 0 & 2 & 4 & 0 & 0 & 0 & 0 & 2 & 2 & 0 & 2 & 2 & 0 & 0\\
+%         \rowcolor<1->{tugred!50}
+%         \texttt{8\,} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 4 & 4 & 4 & 4\\
+%         \rowcolor<1->{tugred!50}
+%         \texttt{9\,} & 0 & 4 & 4 & 0 & 0 & 0 & 0 & 0 & 0 & 4 & 0 & 4 & 0 & 0 & 0 & 0\\
+%         \texttt{a\,} & 0 & 0 & 2 & 2 & 2 & 0 & 0 & 2 & 4 & 0 & 0 & 0 & 0 & 2 & 0 & 2\\
+%         \texttt{b\,} & 0 & 0 & 2 & 2 & 0 & 2 & 2 & 0 & 4 & 0 & 0 & 0 & 2 & 0 & 2 & 0\\
+%         \rowcolor<1->{tugred!50}
+%         \texttt{c\,} & 0 & 4 & 4 & 0 & 2 & 2 & 2 & 2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+%         \texttt{d\,} & 0 & 0 & 0 & 0 & 2 & 2 & 2 & 2 & 0 & 4 & 0 & 4 & 0 & 0 & 0 & 0\\
+%         \texttt{e\,} & 0 & 0 & 2 & 2 & 0 & 2 & 2 & 0 & 4 & 0 & 0 & 0 & 0 & 2 & 0 & 2\\
+%         \texttt{f\,} & 0 & 0 & 2 & 2 & 2 & 0 & 0 & 2 & 4 & 0 & 0 & 0 & 2 & 0 & 2 & 0\\
+%         \bottomrule
+%       \end{tabular}
+%     }
+%   \end{center}
+%   \column[c]{0.40\textwidth}  
+%   \begin{equation*}
+%     {\footnotesize
+%     \begin{alignedat}{3}
+%       &\textcolor{tugred}{\Delta_{i} = (0, 0, 0, 0) \xrightarrow{S} \Delta_{o} = (0, 0, 0, 0)}\\
+%       % &\textcolor{mach}{\Delta_{i} \neq (0, 0, 0, 0) \xrightarrow{S} \Delta_{o} \neq (0, 0, 0, 0)}\\
+%       &\textcolor{tugred}{\Delta_{i} = (0, 0, 0, 1) \xrightarrow{S} \Delta_{o} = (?, 1, ?, ?)}\\
+%       &\textcolor{tugred}{\Delta_{i} = (0, 1, 0, 0) \xrightarrow{S} \Delta_{o} = (1, ?, ?, ?)}\\
+%       &\textcolor{tugred}{\Delta_{i} = (1, 0, 0, 0) \xrightarrow{S} \Delta_{o} = (1, 1, ?, ?)}\\
+%       &\textcolor{tugred}{\Delta_{i} = (1, 0, 0, 1) \xrightarrow{S} \Delta_{o} = (?, 0, ?, ?)}\\
+%       &\textcolor{tugred}{\Delta_{i} = (1, 1, 0, 0) \xrightarrow{S} \Delta_{o} = (0, ?, ?, ?)}
+%       \end{alignedat}
+%     }
+%   \end{equation*}
+% \end{columns}
+% \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{\small Deterministic Bit-Wise Linear Trails (Backward)}
-  \sparen
-  \sparen
-  \begin{center}
-  \scalebox{0.55}{
-  \begin{tabular}{@{}l*{16}{r}@{}}
-      \toprule
-      $x$                & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & a & b & c & d & e & f \\
-      \midrule
-      $\mathcal{S}  (x)$ & 4 & 0 & a & 7 & b & e & 1 & d & 9 & f & 6 & 8 & 5 & 2 & c & 3 \\
-      \bottomrule
-    \end{tabular}
-  }
-  \sparen
-  \sparen
-  \end{center}
-  \begin{columns}
-  % \column[c]{0.10\textwidth}
-  % \begin{center}
-  %   \scalebox{0.65}{%
-  %   \begin{tikzpicture}
-  %     \draw (0,0) node[box, name=S, minimum size=2cm] {$\mathcal{S}$};
-  %     \foreach \i/\a in {1/123,2/101,3/78,4/56} {
-  %       \draw (S.\a) node[above=2ex] (x\i) {$x_{\i}$};
-  %       \draw (x\i|-S.south) node[below=2ex] (y\i) {$y_{\i}$};
-  %       \draw[next] (x\i) -- (x\i|-S.north);
-  %       \draw[next] (y\i|-S.south) -- (y\i);
-  %     }
+% \begin{frame}{\small Deterministic Bit-Wise Linear Trails (Backward)}
+%   \sparen
+%   \sparen
+%   \begin{center}
+%   \scalebox{0.55}{
+%   \begin{tabular}{@{}l*{16}{r}@{}}
+%       \toprule
+%       $x$                & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & a & b & c & d & e & f \\
+%       \midrule
+%       $\mathcal{S}  (x)$ & 4 & 0 & a & 7 & b & e & 1 & d & 9 & f & 6 & 8 & 5 & 2 & c & 3 \\
+%       \bottomrule
+%     \end{tabular}
+%   }
+%   \sparen
+%   \sparen
+%   \end{center}
+%   \begin{columns}
+%   % \column[c]{0.10\textwidth}
+%   % \begin{center}
+%   %   \scalebox{0.65}{%
+%   %   \begin{tikzpicture}
+%   %     \draw (0,0) node[box, name=S, minimum size=2cm] {$\mathcal{S}$};
+%   %     \foreach \i/\a in {1/123,2/101,3/78,4/56} {
+%   %       \draw (S.\a) node[above=2ex] (x\i) {$x_{\i}$};
+%   %       \draw (x\i|-S.south) node[below=2ex] (y\i) {$y_{\i}$};
+%   %       \draw[next] (x\i) -- (x\i|-S.north);
+%   %       \draw[next] (y\i|-S.south) -- (y\i);
+%   %     }
 
-  %     % \draw (y3) node[tug] {$y_3$};
-  %     % \draw (x1) node[tug] {$x_1$};
-  %     % \draw (x4) node[tug] {$x_4$};
+%   %     % \draw (y3) node[tug] {$y_3$};
+%   %     % \draw (x1) node[tug] {$x_1$};
+%   %     % \draw (x4) node[tug] {$x_4$};
 
-  %     \draw[] (x1.south-|S.west) rectangle (x4.north-|S.east);
-  %     \draw[] (y1.south-|S.west) rectangle (y4.north-|S.east);
+%   %     \draw[] (x1.south-|S.west) rectangle (x4.north-|S.east);
+%   %     \draw[] (y1.south-|S.west) rectangle (y4.north-|S.east);
       
-  %     \visible<1>{
-  %     \foreach \i/\dir in {x1/above, x2/above, x3/above, x4/above, y1/below, y2/below, y3/below, y4/below} {\draw (\i) node[\dir=2.5ex, tug] (m\i) {\bf 0};}
-  %     \foreach \i/\dir in {} {\draw (\i) node[\dir=2.5ex] (m\i) {\bf 1};}
-  %     \foreach \i/\dir in {} {\draw (\i) node[mach, \dir=2.5ex] (m\i) {\bf ?};}
-  %     }
-  %     \visible<2>{
-  %     \foreach \i/\dir in {x1/above, x2/above, x4/above} {\draw (\i) node[\dir=2.5ex, tug] (m\i) {\bf 0};}
-  %     \foreach \i/\dir in {x3/above, y1/below} {\draw (\i) node[\dir=2.5ex] (m\i) {\bf 1};}
-  %     \foreach \i/\dir in {y2/below, y3/below, y4/below} {\draw (\i) node[mach, \dir=2.5ex] (m\i) {\bf ?};}
-  %     }
-  %     \visible<3>{
-  %     \foreach \i/\dir in {x2/above, x3/above, x4/above} {\draw (\i) node[\dir=2.5ex, tug] (m\i) {\bf 0};}
-  %     \foreach \i/\dir in {x1/above, y1/below, y3/below} {\draw (\i) node[\dir=2.5ex] (m\i) {\bf 1};}
-  %     \foreach \i/\dir in {y2/below, y4/below} {\draw (\i) node[mach, \dir=2.5ex] (m\i) {\bf ?};}
-  %     }
-  %     \visible<4>{
-  %     \foreach \i/\dir in {x2/above, x4/above, y1/below} {\draw (\i) node[\dir=2.5ex, tug] (m\i) {\bf 0};}
-  %     \foreach \i/\dir in {x1/above, x3/above, y4/below} {\draw (\i) node[\dir=2.5ex] (m\i) {\bf 1};}
-  %     \foreach \i/\dir in {y2/below, y3/below} {\draw (\i) node[mach, \dir=2.5ex] (m\i) {\bf ?};}
-  %     }
+%   %     \visible<1>{
+%   %     \foreach \i/\dir in {x1/above, x2/above, x3/above, x4/above, y1/below, y2/below, y3/below, y4/below} {\draw (\i) node[\dir=2.5ex, tug] (m\i) {\bf 0};}
+%   %     \foreach \i/\dir in {} {\draw (\i) node[\dir=2.5ex] (m\i) {\bf 1};}
+%   %     \foreach \i/\dir in {} {\draw (\i) node[mach, \dir=2.5ex] (m\i) {\bf ?};}
+%   %     }
+%   %     \visible<2>{
+%   %     \foreach \i/\dir in {x1/above, x2/above, x4/above} {\draw (\i) node[\dir=2.5ex, tug] (m\i) {\bf 0};}
+%   %     \foreach \i/\dir in {x3/above, y1/below} {\draw (\i) node[\dir=2.5ex] (m\i) {\bf 1};}
+%   %     \foreach \i/\dir in {y2/below, y3/below, y4/below} {\draw (\i) node[mach, \dir=2.5ex] (m\i) {\bf ?};}
+%   %     }
+%   %     \visible<3>{
+%   %     \foreach \i/\dir in {x2/above, x3/above, x4/above} {\draw (\i) node[\dir=2.5ex, tug] (m\i) {\bf 0};}
+%   %     \foreach \i/\dir in {x1/above, y1/below, y3/below} {\draw (\i) node[\dir=2.5ex] (m\i) {\bf 1};}
+%   %     \foreach \i/\dir in {y2/below, y4/below} {\draw (\i) node[mach, \dir=2.5ex] (m\i) {\bf ?};}
+%   %     }
+%   %     \visible<4>{
+%   %     \foreach \i/\dir in {x2/above, x4/above, y1/below} {\draw (\i) node[\dir=2.5ex, tug] (m\i) {\bf 0};}
+%   %     \foreach \i/\dir in {x1/above, x3/above, y4/below} {\draw (\i) node[\dir=2.5ex] (m\i) {\bf 1};}
+%   %     \foreach \i/\dir in {y2/below, y3/below} {\draw (\i) node[mach, \dir=2.5ex] (m\i) {\bf ?};}
+%   %     }
       
-  %     \draw[thick] (mx1.south-|S.west) rectangle (mx4.north-|S.east);
-  %     \draw[thick] (my1.south-|S.west) rectangle (my4.north-|S.east);
+%   %     \draw[thick] (mx1.south-|S.west) rectangle (mx4.north-|S.east);
+%   %     \draw[thick] (my1.south-|S.west) rectangle (my4.north-|S.east);
 
-  %     \draw (mx1) node[left=3ex] (alpha) {$\lambda_{i}$};
-  %     \draw (x1-|alpha) node            {$x$};
-  %     \draw (y1-|alpha) node            {$\mathcal{S}(x)$};
-  %     \draw (my1-|alpha) node            {$\lambda_{o}$};
+%   %     \draw (mx1) node[left=3ex] (alpha) {$\lambda_{i}$};
+%   %     \draw (x1-|alpha) node            {$x$};
+%   %     \draw (y1-|alpha) node            {$\mathcal{S}(x)$};
+%   %     \draw (my1-|alpha) node            {$\lambda_{o}$};
       
-  %   \end{tikzpicture}
-  %   }
-  % \end{center}
-  \column[c]{0.60\textwidth}
-  \begin{center}
-    \scalebox{0.55}{      
-      \newcommand{\es}{}
-      \begin{tabular}{@{}c|*{3}{c}c>{\columncolor{mach!20}}c*{3}{c}>{\columncolor{mach!20}}c*{3}{c}>{\columncolor{mach!20}}c*{3}{c}@{}}
-        \toprule
-        $\lambda_{i}$\,\textbackslash\,$\lambda_{o}$ & \es\texttt{0}\es & \es\texttt{1}\es & \es\texttt{2}\es & \es\texttt{3}\es & \es\texttt{4}\es & \es\texttt{5}\es & \es\texttt{6}\es & \es\texttt{7}\es & \es\texttt{8}\es & \es\texttt{9}\es & \es\texttt{a}\es & \es\texttt{b}\es & \es\texttt{c}\es & \es\texttt{d}\es & \es\texttt{e}\es & \es\texttt{f}\es \\
-        \midrule        
-        \texttt{0\,} & 16 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-        \texttt{1\,} & 0 & 0 & 4 & -4 & 0 & -8 & -4 & -4 & 0 & 0 & 4 & -4 & -8 & 0 & 4 & 4\\
-        \texttt{2\,} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 8 & 8 & 0 & 0 & 8 & -8 & 0\\
-        \texttt{3\,} & 0 & -8 & 4 & 4 & 0 & 0 & -4 & 4 & 0 & 0 & -4 & 4 & -8 & 0 & -4 & -4\\
-        \texttt{4\,} & 0 & 4 & 0 & 4 & 0 & 4 & 8 & -4 & 0 & 4 & 0 & 4 & -8 & -4 & 0 & 4\\
-        \texttt{5\,} & 0 & 4 & -4 & -8 & 0 & -4 & -4 & 0 & 0 & 4 & -4 & 8 & 0 & -4 & -4 & 0\\
-        \texttt{6\,} & 0 & -4 & 8 & 4 & 0 & -4 & 0 & -4 & 0 & 4 & 0 & 4 & 8 & -4 & 0 & 4\\
-        \texttt{7\,} & 0 & 4 & 4 & 0 & 0 & -4 & 4 & -8 & 0 & -4 & -4 & 0 & 0 & 4 & -4 & -8\\
-        \texttt{8\,} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 8 & 8 & 0 & 0 & 8 & -8\\
-        \texttt{9\,} & 0 & 0 & -4 & 4 & 8 & 0 & -4 & -4 & 0 & 0 & 4 & -4 & 0 & -8 & -4 & -4\\
-        \texttt{a\,} & 0 & 8 & 0 & 8 & 0 & -8 & 0 & 8 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-        \texttt{b\,} & 0 & 0 & -4 & 4 & -8 & 0 & -4 & -4 & 0 & 8 & -4 & -4 & 0 & 0 & 4 & -4\\
-        \texttt{c\,} & 0 & 4 & 0 & 4 & 0 & 4 & -8 & -4 & 8 & -4 & 0 & 4 & 0 & 4 & 0 & 4\\
-        \texttt{d\,} & 0 & 4 & 4 & 0 & -8 & 4 & -4 & 0 & -8 & -4 & 4 & 0 & 0 & -4 & -4 & 0\\
-        \texttt{e\,} & 0 & 4 & 8 & -4 & 0 & 4 & 0 & 4 & 8 & 4 & 0 & -4 & 0 & -4 & 0 & -4\\
-        \texttt{f\,} & 0 & -4 & -4 & 0 & -8 & -4 & 4 & 0 & 8 & -4 & 4 & 0 & 0 & -4 & -4 & 0\\
-        \bottomrule
-      \end{tabular}
-    }
-  \end{center}
-  \column[c]{0.40\textwidth}  
-  \begin{equation*}
-    {\footnotesize
-    \begin{alignedat}{3}
-      &\textcolor{mach}{\lambda\In = (1, ?, ?, 1) \xleftarrow{S} \lambda\Out = (0, 1, 0, 0)}\\
-      % &\textcolor{mach}{\lambda_{i} \neq (0, 0, 0, 0) \xrightarrow{S} \lambda_{o} \neq (0, 0, 0, 0)}\\
-      &\textcolor{mach}{\lambda\In = (1, 1, ?, ?) \xleftarrow{S} \lambda\Out = (1, 0, 0, 0)}\\
-      &\textcolor{mach}{\lambda\In = (0, ?, ?, ?) \xleftarrow{S} \lambda\Out = (1, 1, 0, 0)}\\
-      \end{alignedat}
-    }
-  \end{equation*}
-\end{columns}
-\end{frame}
+%   %   \end{tikzpicture}
+%   %   }
+%   % \end{center}
+%   \column[c]{0.60\textwidth}
+%   \begin{center}
+%     \scalebox{0.55}{      
+%       \newcommand{\es}{}
+%       \begin{tabular}{@{}c|*{3}{c}c>{\columncolor{mach!20}}c*{3}{c}>{\columncolor{mach!20}}c*{3}{c}>{\columncolor{mach!20}}c*{3}{c}@{}}
+%         \toprule
+%         $\lambda_{i}$\,\textbackslash\,$\lambda_{o}$ & \es\texttt{0}\es & \es\texttt{1}\es & \es\texttt{2}\es & \es\texttt{3}\es & \es\texttt{4}\es & \es\texttt{5}\es & \es\texttt{6}\es & \es\texttt{7}\es & \es\texttt{8}\es & \es\texttt{9}\es & \es\texttt{a}\es & \es\texttt{b}\es & \es\texttt{c}\es & \es\texttt{d}\es & \es\texttt{e}\es & \es\texttt{f}\es \\
+%         \midrule        
+%         \texttt{0\,} & 16 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+%         \texttt{1\,} & 0 & 0 & 4 & -4 & 0 & -8 & -4 & -4 & 0 & 0 & 4 & -4 & -8 & 0 & 4 & 4\\
+%         \texttt{2\,} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 8 & 8 & 0 & 0 & 8 & -8 & 0\\
+%         \texttt{3\,} & 0 & -8 & 4 & 4 & 0 & 0 & -4 & 4 & 0 & 0 & -4 & 4 & -8 & 0 & -4 & -4\\
+%         \texttt{4\,} & 0 & 4 & 0 & 4 & 0 & 4 & 8 & -4 & 0 & 4 & 0 & 4 & -8 & -4 & 0 & 4\\
+%         \texttt{5\,} & 0 & 4 & -4 & -8 & 0 & -4 & -4 & 0 & 0 & 4 & -4 & 8 & 0 & -4 & -4 & 0\\
+%         \texttt{6\,} & 0 & -4 & 8 & 4 & 0 & -4 & 0 & -4 & 0 & 4 & 0 & 4 & 8 & -4 & 0 & 4\\
+%         \texttt{7\,} & 0 & 4 & 4 & 0 & 0 & -4 & 4 & -8 & 0 & -4 & -4 & 0 & 0 & 4 & -4 & -8\\
+%         \texttt{8\,} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 8 & 8 & 0 & 0 & 8 & -8\\
+%         \texttt{9\,} & 0 & 0 & -4 & 4 & 8 & 0 & -4 & -4 & 0 & 0 & 4 & -4 & 0 & -8 & -4 & -4\\
+%         \texttt{a\,} & 0 & 8 & 0 & 8 & 0 & -8 & 0 & 8 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+%         \texttt{b\,} & 0 & 0 & -4 & 4 & -8 & 0 & -4 & -4 & 0 & 8 & -4 & -4 & 0 & 0 & 4 & -4\\
+%         \texttt{c\,} & 0 & 4 & 0 & 4 & 0 & 4 & -8 & -4 & 8 & -4 & 0 & 4 & 0 & 4 & 0 & 4\\
+%         \texttt{d\,} & 0 & 4 & 4 & 0 & -8 & 4 & -4 & 0 & -8 & -4 & 4 & 0 & 0 & -4 & -4 & 0\\
+%         \texttt{e\,} & 0 & 4 & 8 & -4 & 0 & 4 & 0 & 4 & 8 & 4 & 0 & -4 & 0 & -4 & 0 & -4\\
+%         \texttt{f\,} & 0 & -4 & -4 & 0 & -8 & -4 & 4 & 0 & 8 & -4 & 4 & 0 & 0 & -4 & -4 & 0\\
+%         \bottomrule
+%       \end{tabular}
+%     }
+%   \end{center}
+%   \column[c]{0.40\textwidth}  
+%   \begin{equation*}
+%     {\footnotesize
+%     \begin{alignedat}{3}
+%       &\textcolor{mach}{\lambda\In = (1, ?, ?, 1) \xleftarrow{S} \lambda\Out = (0, 1, 0, 0)}\\
+%       % &\textcolor{mach}{\lambda_{i} \neq (0, 0, 0, 0) \xrightarrow{S} \lambda_{o} \neq (0, 0, 0, 0)}\\
+%       &\textcolor{mach}{\lambda\In = (1, 1, ?, ?) \xleftarrow{S} \lambda\Out = (1, 0, 0, 0)}\\
+%       &\textcolor{mach}{\lambda\In = (0, ?, ?, ?) \xleftarrow{S} \lambda\Out = (1, 1, 0, 0)}\\
+%       \end{alignedat}
+%     }
+%   \end{equation*}
+% \end{columns}
+% \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Bit-Wise Switches and Deterministic Trails}
@@ -2400,7 +2400,7 @@ $$\pr_{\text{4 rounds}} \leq 2^{-150}, ~ \corr_{\text{4 rounds}}^{2} \leq 2^{-15
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Example: A 5-round DL Distinguisher for \cipher{AES}}
+\begin{frame}{Results: A 5-round DL Distinguisher for \cipher{AES}}
 \vspace{-0.35cm}
 \begin{center}
 \includegraphics[width=\textwidth]{./figures/aes_sk_5r_v0.pdf} % Replace with your third shape
@@ -2419,7 +2419,7 @@ $$\pr_{\text{4 rounds}} \leq 2^{-150}, ~ \corr_{\text{4 rounds}}^{2} \leq 2^{-15
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Application to \cipher{Ascon-p}({\tiny\dllegend})}
+\begin{frame}{Results: Application to \cipher{Ascon-p}({\tiny\dllegend})}
 \vspace{-0.6cm}
 \begin{columns}
 \column[c]{0.5\textwidth}
@@ -2527,7 +2527,7 @@ $$\pr_{\text{4 rounds}} \leq 2^{-150}, ~ \corr_{\text{4 rounds}}^{2} \leq 2^{-15
   \end{center}
   \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Example: Distinguishers for up to 17 Rounds of \cipher{LBlock}}
+\begin{frame}{Results: Distinguishers for up to 17 Rounds of \cipher{LBlock}}
 \begin{itemize}
   \item Comparing the data complexity of best boomerang and DL distinguishers
 \end{itemize}
@@ -2549,7 +2549,7 @@ $$\pr_{\text{4 rounds}} \leq 2^{-150}, ~ \corr_{\text{4 rounds}}^{2} \leq 2^{-15
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Example: Distinguishers for up to 8 Rounds of \cipher{CLEFIA}}
+\begin{frame}{Results: Distinguishers for up to 8 Rounds of \cipher{CLEFIA}}
 \begin{itemize}
   \item Comparing the data complexity of best boomerang and DL distinguishers
 \end{itemize}
@@ -2570,7 +2570,7 @@ $$\pr_{\text{4 rounds}} \leq 2^{-150}, ~ \corr_{\text{4 rounds}}^{2} \leq 2^{-15
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Application to \cipher{SERPENT}}
+\begin{frame}{Results: Application to \cipher{SERPENT}}
 \vspace{-0.5cm}
 \begin{itemize}
   \item \faLaptop: Experimentally verified
@@ -2599,7 +2599,7 @@ $$\pr_{\text{4 rounds}} \leq 2^{-150}, ~ \corr_{\text{4 rounds}}^{2} \leq 2^{-15
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Application to \cipher{Simeck}}
+\begin{frame}{Results: Application to \cipher{Simeck}}
 \sparen
 \begin{itemize}
   \item \faLaptop: Experimentally verified
