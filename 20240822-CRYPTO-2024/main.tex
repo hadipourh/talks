@@ -1074,8 +1074,8 @@
 \column[c]{0.7\textwidth}
 \begin{itemize}
   \small
-  \item $\pr(\Delta\In \xrightarrow{E\Up}\Delta\Mid) = p$
-  \item $\corr(\lambda\Mid \xrightarrow{E\Low} \lambda\Out) = q$
+  \item $p = \pr(\Delta\In \xrightarrow{E\Up}\Delta\Mid)$
+  \item $q = \corr(\lambda\Mid \xrightarrow{E\Low} \lambda\Out) \textcolor{gray}{ = 2\cdot \pr(\lambda\Mid\cdot X \oplus \lambda\Out\cdot E\Low(X) = 0) - 1}$
   \item Assumptions ($\Delta X = X_{1} \oplus X_{2}$):
   \begin{enumerate}
     \small
@@ -1083,7 +1083,8 @@
     \item $E\Up$, and $E\Low$ are statistically independent
     \item $\pr\left(\lambda\Mid \cdot \Delta X = 0\right) = 1/2$ when $\Delta X \neq \Delta\Mid$
   \end{enumerate}
-  \item $\corr\left(\lambda\Out\cdot \Delta C\right) =  (-1)^{\lambda\Mid\cdot\Delta\Mid} \cdot p q^{2} = \pm p q^{2}$
+  \item $\mathcal{C} = \corr\left(\lambda\Out\cdot \Delta C\right) \approx (-1)^{\lambda\Mid\cdot\Delta\Mid} \cdot p q^{2} = \pm p q^{2}$
+  \item Time/Data complexity: $\mathcal{O}(\mathcal{C}^{-2})$
 \end{itemize}
 \column[c]{0.3\textwidth}
 \begin{center}

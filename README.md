@@ -24,7 +24,7 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
 
 - [Paper](https://ia.cr/2024/255)
 - [Slides](20240822-CRYPTO-2024)
-- [Video]()
+- [Video](https://youtu.be/ga2xUa8ArbM?t=13)
 - [Code](https://github.com/hadipourh/DL)
 - Venue: [Santa Barbara, USA](https://crypto.iacr.org/2024/)
 
