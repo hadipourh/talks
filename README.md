@@ -3,6 +3,7 @@
 The LaTeX sources for my talks. Feel free to reuse these sources for your own talks.
 
 - [My Talks](#my-talks)
+  - [Revisiting Differential-Linear Attacks via a Boomerang Perspective - ASK 2024](#revisiting-differential-linear-attacks-via-a-boomerang-perspective---ask-2024)
   - [Revisiting Differential-Linear Attacks via a Boomerang Perspective - CRYPTO 2024](#revisiting-differential-linear-attacks-via-a-boomerang-perspective---crypto-2024)
   - [Algebraic Attacks - Cryptanalysis Lecture Series 2024](#algebraic-attacks---cryptanalysis-lecture-series-2024)
   - [Revisiting Differential-Linear Attacks via a Boomerang Perspective - Lorentz Center 2024](#revisiting-differential-linear-attacks-via-a-boomerang-perspective---lorentz-center-2024)
@@ -18,6 +19,14 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
   - [Improved Rectangle Attacks - FSE 2022](#improved-rectangle-attacks---fse-2022)
   - [Comprehensive Security Analysis of CRAFT - FSE 2020](#comprehensive-security-analysis-of-craft---fse-2020)
 - [Credits](#credits)
+
+## Revisiting Differential-Linear Attacks via a Boomerang Perspective - ASK 2024
+***Revisiting Differential-Linear Attacks via a Boomerang Perspective***
+
+- [Paper](https://ia.cr/2024/255)
+- [Slides](20241214-ASK2024)
+- [Code](https://github.com/hadipourh/DL)
+- Venue: [Kolkata, India](https://askworkshop.github.io/ask2024/)
 
 ## Revisiting Differential-Linear Attacks via a Boomerang Perspective - CRYPTO 2024
 ***Revisiting Differential-Linear Attacks via a Boomerang Perspective***
