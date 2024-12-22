@@ -323,9 +323,9 @@
 \begin{theorem}[Data Complexity]
 \small
 Let $X_0$ and $X_1$ be two distributions.  
-Given one sample from $X_b$, the distinguisher $\mathcal{D}$ outputs $1$ with probability $p$ if $b = 1$, and outputs $1$ with probability $q$ if $b = 0$.  
+Given one sample from $X_b$, the distinguisher $\mathcal{D}$ outputs $1$ with probability $p$ if $b = 0$, and outputs $1$ with probability $q$ if $b = 1$.  
 Assume that $b$ is chosen uniformly at random from $\{0, 1\}$ and is fixed.  
-Next, we run $\mathcal{D}$ on $n$ samples, and output $1$ if the sum of the outcomes is closer to $\mu_1 = np$, and $0$ otherwise.  
+Next, we run $\mathcal{D}$ on $n$ samples, and output $1$ if the sum of the outcomes is closer to $\mu_0 = np$, and $0$ otherwise.  
 If $n$ satisfies the following inequality, then the error probability of the distinguisher is upper bounded by $\varepsilon$:  
 \begin{equation*}
 n \geq \max\left(\frac{2(3q + p)\ln\left(\frac{1}{\varepsilon}\right)}{(p - q)^2}, \; \frac{8p \ln\left(\frac{1}{\varepsilon}\right)}{(p - q)^2}\right).
@@ -732,7 +732,7 @@ caption/.style={gray, below=1.75cm, align=center}]
 \end{tikzpicture}}
 \end{center}
 \[
-\corr(\Gamma_{0}, \Gamma_{r + 1}) \approx (-1)^{\texttt{Sign}(\Gamma, K)} \prod_{i = 1}^{r} \corr_{\bm{f}_i}(\Gamma_{i - 1}, \Gamma_{i}),~ \texttt{Sign}(\Gamma, K) = (-1)^{\left(\Gamma_{0} \cdot K_{1} \oplus \cdots \oplus \Gamma_{r} \cdot K_{r + 1}\right)}.
+\corr(\Gamma_{0}, \Gamma_{r + 1}) \approx (-1)^{\left(\Gamma_{0} \cdot K_{1} \oplus \cdots \oplus \Gamma_{r} \cdot K_{r + 1}\right)} \prod_{i = 1}^{r} \corr_{\bm{f}_i}(\Gamma_{i - 1}, \Gamma_{i}).
 \]
 \end{frame}
 
