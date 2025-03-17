@@ -3,6 +3,8 @@
 The LaTeX sources for my talks. Feel free to reuse these sources for your own talks.
 
 - [My Talks](#my-talks)
+  - [Automating Cryptanalysis: Automated Reasoning and Structural Links Between Attacks - SKCAM 2025](#automating-cryptanalysis-automated-reasoning-and-structural-links-between-attacks---skcam-2025)
+  - [Automated Methods in Cryptanalysis and Design of Symmetric-Key Cryptographic Primitives - Ph.D. Defense](#automated-methods-in-cryptanalysis-and-design-of-symmetric-key-cryptographic-primitives---phd-defense)
   - [Revisiting Differential-Linear Attacks via a Boomerang Perspective - ASK 2024](#revisiting-differential-linear-attacks-via-a-boomerang-perspective---ask-2024)
   - [Revisiting Differential-Linear Attacks via a Boomerang Perspective - CRYPTO 2024](#revisiting-differential-linear-attacks-via-a-boomerang-perspective---crypto-2024)
   - [Algebraic Attacks - Cryptanalysis Lecture Series 2024](#algebraic-attacks---cryptanalysis-lecture-series-2024)
