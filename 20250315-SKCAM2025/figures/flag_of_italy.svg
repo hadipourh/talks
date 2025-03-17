@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+
+<svg
+   width="800"
+   height="577.77777"
+   viewBox="0 0 36 26"
+   aria-hidden="true"
+   role="img"
+   class="iconify iconify--twemoji"
+   preserveAspectRatio="xMidYMid meet"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="flag_of_italy.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs12" />
+  <sodipodi:namedview
+     id="namedview10"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="1.09125"
+     inkscape:cx="84.765178"
+     inkscape:cy="289.57617"
+     inkscape:window-width="3440"
+     inkscape:window-height="1403"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg8" />
+  <path
+     fill="#ce2b37"
+     d="m 36,22 a 4,4 0 0 1 -4,4 H 24 V 0 h 8 a 4,4 0 0 1 4,4 z"
+     id="path2" />
+  <path
+     fill="#009246"
+     d="M 4,0 A 4,4 0 0 0 0,4 v 18 a 4,4 0 0 0 4,4 h 8 V 0 Z"
+     id="path4" />
+  <path
+     fill="#eeeeee"
+     d="M 12,0 H 24 V 26 H 12 Z"
+     id="path6" />
+</svg>

@@ -20,6 +20,18 @@ The LaTeX sources for my talks. Feel free to reuse these sources for your own ta
   - [Comprehensive Security Analysis of CRAFT - FSE 2020](#comprehensive-security-analysis-of-craft---fse-2020)
 - [Credits](#credits)
 
+## Automating Cryptanalysis: Automated Reasoning and Structural Links Between Attacks - SKCAM 2025
+***Automating Cryptanalysis: Automated Reasoning and Structural Links Between Attacks***
+
+- [Slides](20250315-SKCAM2025)
+- Venue: [Rome, Italy](https://skcamworkshop.github.io/skcam2025/)
+
+## Automated Methods in Cryptanalysis and Design of Symmetric-Key Cryptographic Primitives - Ph.D. Defense
+***Automated Methods in Cryptanalysis and Design of Symmetric-Key Cryptographic Primitives***
+
+- [Slides](20250113-PhD-Defense)
+- Location: Graz University of Technology, Graz, Austria
+
 ## Revisiting Differential-Linear Attacks via a Boomerang Perspective - ASK 2024
 ***Revisiting Differential-Linear Attacks via a Boomerang Perspective***
 

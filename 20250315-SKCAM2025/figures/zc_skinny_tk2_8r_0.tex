@@ -1,0 +1,102 @@
+\documentclass[varwidth=50cm]{standalone}
+\usepackage{skinnyzero}
+\usepackage{comment}
+\begin{document}
+%\begin{figure}
+%\centering
+\begin{tikzpicture}
+\SkinnyInit{}{}{}{} % init coordinates, print labels
+
+\SkinnyRoundTK[0]
+              {} % state (input)
+              {\Cell{s0}{\texttt{0}}\Cell{s1}{\texttt{1}}\Cell{s2}{\texttt{2}}\Cell{s3}{\texttt{3}}\Cell{s4}{\texttt{4}}\Cell{s5}{\texttt{5}}\Cell{s6}{\texttt{6}}\Cell{s7}{\texttt{7}}} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {} % state (after subcells)
+              {} % state (after addtweakey)
+              {} % state (after shiftrows)
+
+\SkinnyRoundTK[1]
+              {} % state (input)
+              {\Cell{s0}{\texttt{9}}\Cell{s1}{\texttt{f}}\Cell{s2}{\texttt{8}}\Cell{s3}{\texttt{d}}\Cell{s4}{\texttt{a}}\Cell{s5}{\texttt{e}}\Cell{s6}{\texttt{c}}\Cell{s7}{\texttt{b}}} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {} % state (after subcells)
+              {} % state (after addtweakey)
+              {} % state (after shiftrows)
+
+\SkinnyNewLine[2]{} % state (after mixcols)
+\SkinnyRoundTK[2]
+              {} % state (input)
+              {\Cell{s0}{\texttt{1}}\Cell{s1}{\texttt{7}}\Cell{s2}{\texttt{0}}\Cell{s3}{\texttt{5}}\Cell{s4}{\texttt{2}}\Cell{s5}{\texttt{6}}\Cell{s6}{\texttt{4}}\Cell{s7}{\texttt{3}}} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {} % state (after subcells)
+              {} % state (after addtweakey)
+              {} % state (after shiftrows)
+
+\SkinnyRoundTK[3]
+              {} % state (input)
+              {\Cell{s0}{\texttt{f}}\Cell{s1}{\texttt{b}}\Cell{s2}{\texttt{9}}\Cell{s3}{\texttt{e}}\Cell{s4}{\texttt{8}}\Cell{s5}{\texttt{c}}\Cell{s6}{\texttt{a}}\Cell{s7}{\texttt{d}}} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {} % state (after subcells)
+              {} % state (after addtweakey)
+              {} % state (after shiftrows)
+
+\SkinnyNewLine[4]{} % state (after mixcols)
+\SkinnyRoundTK[4]
+              {} % state (input)
+              {\Cell{s0}{\texttt{7}}\Cell{s1}{\texttt{3}}\Cell{s2}{\texttt{1}}\Cell{s3}{\texttt{6}}\Cell{s4}{\texttt{0}}\Cell{s5}{\texttt{4}}\Cell{s6}{\texttt{2}}\Cell{s7}{\texttt{5}}} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {} % state (after subcells)
+              {} % state (after addtweakey)
+              {} % state (after shiftrows)
+
+\SkinnyRoundTK[5]
+              {} % state (input)
+              {\Cell{s0}{\texttt{b}}\Cell{s1}{\texttt{d}}\Cell{s2}{\texttt{f}}\Cell{s3}{\texttt{c}}\Cell{s4}{\texttt{9}}\Cell{s5}{\texttt{a}}\Cell{s6}{\texttt{8}}\Cell{s7}{\texttt{e}}} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {} % state (after subcells)
+              {} % state (after addtweakey)
+              {} % state (after shiftrows)
+
+\SkinnyNewLine[6]{} % state (after mixcols)
+\SkinnyRoundTK[6]
+              {} % state (input)
+              {\Cell{s0}{\texttt{3}}\Cell{s1}{\texttt{5}}\Cell{s2}{\texttt{7}}\Cell{s3}{\texttt{4}}\Cell{s4}{\texttt{1}}\Cell{s5}{\texttt{2}}\Cell{s6}{\texttt{0}}\Cell{s7}{\texttt{6}}} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {} % state (after subcells)
+              {} % state (after addtweakey)
+              {} % state (after shiftrows)
+
+\SkinnyRoundTK[7]
+              {} % state (input)
+              {\Cell{s0}{\texttt{d}}\Cell{s1}{\texttt{e}}\Cell{s2}{\texttt{b}}\Cell{s3}{\texttt{a}}\Cell{s4}{\texttt{f}}\Cell{s5}{\texttt{8}}\Cell{s6}{\texttt{9}}\Cell{s7}{\texttt{c}}} % tk[1]
+              {} % tk[2]
+              {} % tk[3]
+              {} % state (after subcells)
+              {} % state (after addtweakey)
+              {} % state (after shiftrows)
+
+\SkinnyFin[8]{} % state (after mixcols)
+\IntegralDistinguisherLegend
+\end{tikzpicture}
+%\caption{ID distinguisher for 8 rounds of ForkSKINNY-TK2}
+%\end{figure}
+\begin{comment}
+#######################################################
+Distinguisher parameters:
+Length of distinguisher: 08
+Variant:                 02
+Rzero:                    0
+Rone:                     0
+Tweakey cells that are active at most 02 times:
+TK[08] 
+#######################################################
+#######################################################
+\end{comment}
+\end{document}

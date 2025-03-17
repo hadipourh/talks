@@ -1,0 +1,56 @@
+\documentclass[varwidth=50cm]{standalone}
+\usepackage{skinnyzero}
+\usepackage{booktabs}
+
+\begin{document}
+
+\begin{tikzpicture}
+  \SkinnyInit{}{}{}{}
+
+  \SkinnyRoundTK[13] % round number should be 0-indexed
+                {\Fill{ss00}\Cell{ss00}{\ttfamily 7}} % state (input)
+                {\Fill[key]{ss00}\Cell{ss00}{\ttfamily a}}{}{} % tk[1,2,3]
+                {\Fill{ss00}\Cell{ss00}{\ttfamily 7}} % state (after subcells)
+                {\Fill{ss00}\Cell{ss00}{\ttfamily 7}} % state (after addtweakey)
+                {\Fill{ss00}\Cell{ss00}{\ttfamily 7}} % state (after shiftrows)
+
+  \SkinnyRoundTK[14] % round number should be 0-indexed
+                {\Fill{ss10}\Cell{ss10}{\ttfamily 7}} % state (input)
+                {\Fill[key]{ss10}\Cell{ss10}{\ttfamily 6}}{}{} % tk[1,2,3]
+                {\Fill{ss10}\Cell{ss10}{\ttfamily 7}} % state (after subcells)
+                {\Fill{ss10}\Cell{ss10}{\ttfamily 7}} % state (after addtweakey)
+                {\Fill{ss11}\Cell{ss11}{\ttfamily 7}} % state (after shiftrows)
+
+  \SkinnyNewLine[15]
+                {\Fill{ss11}\Fill{ss21}\Fill{ss31}\Cell{ss11}{\ttfamily 5}\Cell{ss21}{\ttfamily 6}\Cell{ss31}{\ttfamily 7}} % state (after mixcolumns)
+
+  \SkinnyRoundTK[15] % round number should be 0-indexed
+                {\Fill{ss11}\Fill{ss21}\Fill{ss31}\Cell{ss11}{\ttfamily 5}\Cell{ss21}{\ttfamily 6}\Cell{ss31}{\ttfamily 7}} % state (input)
+                {\Fill[key]{ss11}\Cell{ss11}{\ttfamily d}}{}{} % tk[1,2,3]
+                {\Fill{ss11}\Fill{ss21}\Fill{ss31}\Cell{ss11}{\ttfamily 5}\Cell{ss21}{\ttfamily 6}\Cell{ss31}{\ttfamily 7}} % state (after subcells)
+                {\Fill{ss11}\Fill{ss21}\Fill{ss31}\Cell{ss11}{\ttfamily 5}\Cell{ss21}{\ttfamily 6}\Cell{ss31}{\ttfamily 7}} % state (after addtweakey)
+                {\Fill{ss12}\Fill{ss23}\Fill{ss30}\Cell{ss12}{\ttfamily 5}\Cell{ss23}{\ttfamily 6}\Cell{ss30}{\ttfamily 7}} % state (after shiftrows)
+
+  \SkinnyRoundTK[16] % round number should be 0-indexed
+                {\Fill{ss33}\Fill{ss32}\Fill{ss30}\Fill{ss22}\Fill{ss12}\Fill{ss13}\Fill{ss00}\Cell{ss33}{\ttfamily 0}\Cell{ss32}{\ttfamily 1}\Cell{ss30}{\ttfamily 3}\Cell{ss22}{\ttfamily 4}\Cell{ss12}{\ttfamily 5}\Cell{ss13}{\ttfamily 6}\Cell{ss00}{\ttfamily 7}} % state (input)
+                {\Fill[key]{ss12}\Fill[key]{ss13}\Fill[key]{ss00}\Cell{ss12}{\ttfamily 6}\Cell{ss13}{\ttfamily 7}\Cell{ss00}{\ttfamily 0}}{}{} % tk[1,2,3]
+                {\Fill{ss33}\Fill{ss32}\Fill{ss30}\Fill{ss22}\Fill{ss12}\Fill{ss13}\Fill{ss00}\Cell{ss33}{\ttfamily 0}\Cell{ss32}{\ttfamily 1}\Cell{ss30}{\ttfamily 3}\Cell{ss22}{\ttfamily 4}\Cell{ss12}{\ttfamily 5}\Cell{ss13}{\ttfamily 6}\Cell{ss00}{\ttfamily 7}} % state (after subcells)
+                {\Fill{ss33}\Fill{ss32}\Fill{ss12}\Fill{ss30}\Fill{ss22}\Fill{ss13}\Fill{ss00}\Cell{ss33}{\ttfamily 0}\Cell{ss32}{\ttfamily 1}\Cell{ss12}{\ttfamily 2}\Cell{ss30}{\ttfamily 3}\Cell{ss22}{\ttfamily 4}\Cell{ss13}{\ttfamily 4}\Cell{ss00}{\ttfamily 4}} % state (after addtweakey)
+                {\Fill{ss32}\Fill{ss31}\Fill{ss13}\Fill{ss33}\Fill{ss20}\Fill{ss10}\Fill{ss00}\Cell{ss32}{\ttfamily 0}\Cell{ss31}{\ttfamily 1}\Cell{ss13}{\ttfamily 2}\Cell{ss33}{\ttfamily 3}\Cell{ss20}{\ttfamily 4}\Cell{ss10}{\ttfamily 4}\Cell{ss00}{\ttfamily 4}} % state (after shiftrows)
+
+  \SkinnyNewLine[17]
+                {\Fill{ss20}\Fill{ss32}\Fill{ss33}\Fill{ss23}\Fill{ss30}\Fill{ss31}\Fill{ss02}\Fill{ss01}\Fill{ss13}\Fill{ss03}\Fill{ss10}\Cell{ss20}{\ttfamily 0}\Cell{ss32}{\ttfamily 0}\Cell{ss33}{\ttfamily 0}\Cell{ss23}{\ttfamily 0}\Cell{ss30}{\ttfamily 0}\Cell{ss31}{\ttfamily 0}\Cell{ss02}{\ttfamily 0}\Cell{ss01}{\ttfamily 1}\Cell{ss13}{\ttfamily 2}\Cell{ss03}{\ttfamily 3}\Cell{ss10}{\ttfamily 4}} % state (after mixcolumns)
+
+  \SkinnyRoundTK[17] % round number should be 0-indexed
+                {\Fill{ss20}\Fill{ss32}\Fill{ss33}\Fill{ss23}\Fill{ss30}\Fill{ss31}\Fill{ss02}\Fill{ss01}\Fill{ss13}\Fill{ss03}\Fill{ss10}\Cell{ss20}{\ttfamily 0}\Cell{ss32}{\ttfamily 0}\Cell{ss33}{\ttfamily 0}\Cell{ss23}{\ttfamily 0}\Cell{ss30}{\ttfamily 0}\Cell{ss31}{\ttfamily 0}\Cell{ss02}{\ttfamily 0}\Cell{ss01}{\ttfamily 1}\Cell{ss13}{\ttfamily 2}\Cell{ss03}{\ttfamily 3}\Cell{ss10}{\ttfamily 4}} % state (input)
+                {\Fill{ss02}\Fill[key]{ss01}\Fill[key]{ss13}\Fill[key]{ss03}\Fill[key]{ss10}\Cell{ss02}{\ttfamily 8}\Cell{ss01}{\ttfamily f}\Cell{ss13}{\ttfamily b}\Cell{ss03}{\ttfamily d}\Cell{ss10}{\ttfamily a}}{}{} % tk[1,2,3]
+                {\Fill{ss20}\Fill{ss32}\Fill{ss33}\Fill{ss23}\Fill{ss30}\Fill{ss31}\Fill{ss02}\Fill{ss01}\Fill{ss13}\Fill{ss03}\Fill{ss10}\Cell{ss20}{\ttfamily 0}\Cell{ss32}{\ttfamily 0}\Cell{ss33}{\ttfamily 0}\Cell{ss23}{\ttfamily 0}\Cell{ss30}{\ttfamily 0}\Cell{ss31}{\ttfamily 0}\Cell{ss02}{\ttfamily 0}\Cell{ss01}{\ttfamily 1}\Cell{ss13}{\ttfamily 2}\Cell{ss03}{\ttfamily 3}\Cell{ss10}{\ttfamily 4}} % state (after subcells)
+                {\Fill{ss20}\Fill{ss30}\Fill{ss03}\Fill{ss31}\Fill{ss13}\Fill{ss10}\Fill{ss01}\Fill{ss32}\Fill{ss02}\Fill{ss33}\Fill{ss23}\Cell{ss20}{\ttfamily 0}\Cell{ss30}{\ttfamily 0}\Cell{ss03}{\ttfamily 0}\Cell{ss31}{\ttfamily 0}\Cell{ss13}{\ttfamily 0}\Cell{ss10}{\ttfamily 0}\Cell{ss01}{\ttfamily 0}\Cell{ss32}{\ttfamily 0}\Cell{ss02}{\ttfamily 0}\Cell{ss33}{\ttfamily 0}\Cell{ss23}{\ttfamily 0}} % state (after addtweakey)
+                {\Fill{ss33}\Fill{ss21}\Fill{ss11}\Fill{ss01}\Fill{ss31}\Fill{ss02}\Fill{ss30}\Fill{ss10}\Fill{ss03}\Fill{ss32}\Fill{ss22}\Cell{ss33}{\ttfamily 0}\Cell{ss21}{\ttfamily 0}\Cell{ss11}{\ttfamily 0}\Cell{ss01}{\ttfamily 0}\Cell{ss31}{\ttfamily 0}\Cell{ss02}{\ttfamily 0}\Cell{ss30}{\ttfamily 0}\Cell{ss10}{\ttfamily 0}\Cell{ss03}{\ttfamily 0}\Cell{ss32}{\ttfamily 0}\Cell{ss22}{\ttfamily 0}} % state (after shiftrows)
+
+  \SkinnyFin[18]
+                {\Fill{ss00}\Fill{ss03}\Fill{ss10}\Fill{ss21}\Fill{ss31}\Fill{ss33}\Fill{ss11}\Fill{ss20}\Fill{ss01}\Fill{ss02}\Fill{ss12}\Fill{ss30}\Fill{ss13}\Fill{ss32}\Cell{ss00}{\ttfamily 0}\Cell{ss03}{\ttfamily 0}\Cell{ss10}{\ttfamily 0}\Cell{ss21}{\ttfamily 0}\Cell{ss31}{\ttfamily 0}\Cell{ss33}{\ttfamily 0}\Cell{ss11}{\ttfamily 0}\Cell{ss20}{\ttfamily 0}\Cell{ss01}{\ttfamily 0}\Cell{ss02}{\ttfamily 0}\Cell{ss12}{\ttfamily 0}\Cell{ss30}{\ttfamily 0}\Cell{ss13}{\ttfamily 0}\Cell{ss32}{\ttfamily 0}}
+\end{tikzpicture}
+%\caption{ZC/Integral attack on 22 rounds of \SKINNY[$n$-$2n$]. Twakeys cells that are active at most 2 times: TK[08] . \#Involved key cells (maximum): 24}
+%\end{figure}
+\end{document}
