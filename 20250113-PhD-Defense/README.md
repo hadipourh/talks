@@ -1,6 +1,6 @@
-# My Talk in [ASK 2024, Kolkata, India](https://askworkshop.github.io/ask2024/)
+# My Ph.D. Defense [Graz, Austria]
 
-This repository includes the LaTex sources for my talk at [ASK 2024, Kolkata, India](https://caramba.loria.fr/seminars/) to present: [***Differential-Linear Attacks***](https://ia.cr/2024/255)
+This repository includes the LaTeX sources for my Ph.D. defense slides: [***Automated Methods in Cryptanalysis and Design of Symmetric-Key Cryptographic Primitives***]
 
 
 Use the following command to compile the latex file:
