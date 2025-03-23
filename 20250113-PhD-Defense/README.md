@@ -1,6 +1,6 @@
-# My Ph.D. Defense [Graz, Austria]
+# My Ph.D. Defens -- Graz, Austria
 
-This repository includes the LaTeX sources for my Ph.D. defense slides: [***Automated Methods in Cryptanalysis and Design of Symmetric-Key Cryptographic Primitives***]
+This repository includes the LaTeX sources for my Ph.D. defense slides: ***Automated Methods in Cryptanalysis and Design of Symmetric-Key Cryptographic Primitives***
 
 
 Use the following command to compile the latex file:
